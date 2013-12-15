@@ -1,0 +1,92 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../style/style.css">
+<title>Configuration</title>
+</head>
+<body>
+<a href="../index.html">User Guide</a> &gt; <a href="index.html">Installation and Configuration</a> &gt;
+<h1>Configuration</h1>
+<p>The configuration will start when you first start <em>RsBudget</em>. Just double-click on the executable
+that you will find in the extracted folder.</p>
+
+<p>The program will ask first which language you want to use for setup. Select your language and click
+OK to start the configuration. You should see a Welcome Screen in your chosen language.</p>
+
+<p>Click "Next" to see the Database Configuration Page.</p>
+
+<a name="dbsetup"></a>
+<h2>Database Configuration</h2>
+<p><em>RsBudget</em> stores all your data in a database. The choice which database it uses is on you. This page
+asks you for details, especially which database product you chose and the access information (login, password)
+to it.</p>
+
+<p>An important question is the "Use Full Encryption" checkbox. Full encryption means that <b>all</b> your data in the
+database will be encrypted so that other users of your computer cannot read it even though they get access to your
+database. You should keep in mind that this setting cannot be changed once the confoguration completed.</p>
+
+<p>Full encryption uses your application password (see next section) to encrypt and decrypt the data. As your
+application password is not stored anywhere, losing your password means that you lose all your data. So consider
+carefully whether you want switch on full encryption.</p>
+
+<p>Click the "Test Connection" button to check whether your setting are correct. The program will inform you
+about any existing data and mismatches in your database settings.</p>
+
+<p>Click "Next" to assign your application password. If you didn't test the database connection yet manually,
+the program will do so now and will not proceed if it detects any misconfiguration.</p>
+
+<a name="password"></a>
+<h2>Setting an Application Password</h2>
+<p>The application password protects your data from any unauthorized users. It is not stored anywhere on your
+computer so you don't need to be afraid that anyone can ever steal it by stealing your computer or scanning
+your disk.</p>
+
+<p>The program will ask you first each time it starts up to make sure that no unauthorized persons access your data.
+However, professional attackers could either see your data directly in the database (if you didn't select full
+encryption) or grab your password by spy software when you are typing it in. There is no 100 percent safety. ;-)</p>
+
+<p>Type in your password twice so <em>RsBudget</em> can be sure that you entered the password correctly.</p>
+
+<p>Click "Next" to setup your default bank account.</p>
+
+<a name="account"></a>
+<h2>Default Bank Account</h2>
+<p><em>RsBudget</em> requires each transaction to be connected with a bank account. This can either be your
+real bank account or any "virtual" that you make up for the program. There is currently no further meaning
+of that bank account. However, future extensions will be made available which can download transactions
+automatically from your bank so you save typing effort.</p>
+
+<p>The Bank selection is currently based on German banks only. If you don't have a German bank account, just select
+any bank randomly and continue. As mentioned before, there is currently no further action behind this setting.
+A future update could enhance this to care for others than German banks.</p>
+
+<p>Enter the name that you want to refer to for your account and the account number and owner as known by the bank.</p>
+
+<p>Click "Next" to setup the default transaction category.</p>
+ 
+<a name="category"></a>
+<h2>Default Transaction Category</h2>
+<p>Each transaction is associated with a category. You will be able to create your own categories later in the
+program. However, at the beginning at least one category is required that all transactions are assigned to by
+default. <em>RsBudget</em> proposes "Misc" as the name for it, but you can change it to whatever you feel
+appropriate.</p>
+
+<p>Click "Next" to review your settings.</p>
+
+<a name="summary"></a>
+<h2>Setup Summary</h2>
+<p>The last screen shows again all settings that you have done in the previous screens. Review them
+carefully and press "Finish" to confirm them. Otherwise, click "Previous" to go back to the setting page
+that you need to change.</p>
+
+<p><em>RsBudget</em> will now create all required database tables and initial data and, if successful, start
+up with the main screen. Congratulation! Your installation is ready to use.</p>
+
+<p>Go to the <a href="../introduction/index.html">Introduction</a> page to learn the philosophy of how 
+<em>RsBudget</em> manages and logs your transactions. The <a href="../firstSteps/index.html">First Steps</a>
+help page will show you how to begin and how to plan and manage your first budgets.</p>  
+<hr/>
+<p style="text-align: left;">Previous:<br/><a href="installation.html">Installing RsBudget</a></p>
+
+
+</body>
+</html>

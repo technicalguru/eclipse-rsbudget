@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toc label="%toc.firstSteps" topic="firstSteps/index.html">
+	<topic label="%toc.firstSteps.ui" href="firstSteps/index.html#ui"/>
+	<topic label="%toc.firstSteps.start" href="firstSteps/index.html#start">
+		<topic label="%toc.firstSteps.start.step1" href="firstSteps/index.html#step1"/>
+		<topic label="%toc.firstSteps.start.step2" href="firstSteps/index.html#step2"/>
+		<topic label="%toc.firstSteps.start.step3" href="firstSteps/index.html#step3"/>
+		<topic label="%toc.firstSteps.start.step4" href="firstSteps/index.html#step4"/>
+		<topic label="%toc.firstSteps.start.step5" href="firstSteps/index.html#step5"/>
+	</topic>
+	<topic label="%toc.firstSteps.next" href="firstSteps/index.html#next"/>
+</toc>

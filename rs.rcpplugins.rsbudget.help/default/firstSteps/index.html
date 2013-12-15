@@ -1,0 +1,113 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../style/style.css">
+<title>First Steps</title>
+</head>
+<body>
+<a href="../index.html">User Guide</a> &gt;
+<h1>First Steps</h1>
+
+<a name="ui"/><h2>The User Interface</h2>
+<p><em>RsBudget</em> is based on Eclipse RCP which delivers a few very user-friendly features. The window is split into two parts.
+The main area contains your <a href="../views/generalPlanning.html">General</a> and <a href="../views/monthlyPlanning.html">Monthly Budget Planning</a>. 
+It also shows the <a href="../views/statistics.html">statistics</a> of your financial records. 
+All three features are separated by a "Tabbed" Panel. Select each individual "Tab" by clicking onto the title of it.</p>
+<p>At the right you will find additional views, such as the list of <a href="../views/categories.html">Categories</a>, a 
+<a href="../views/details.html">Details view</a> and an area where you can note down <a href="../views/remarks.html">remarks</a> for
+the planning of the respective month. The size each of these views 
+occupies can be changed by dragging the border into the respective direction. Click on view's border with your mouse, 
+keep the mouse button down and move it. Release the mouse button when the border is at the position you desire. <em>RsBudget</em> 
+will remember your decision and position the view accordingly next time you open it.</p>
+<p>Another nice feature is that you can drag areas onto other Tab Panes. Imagine you want the Details panel to be at the right
+bottom of the window and not at the right top where it is currently. Click on the title and keep the mouse button down while
+you move the mouse to the position where you want the view to be positioned. Red lines will appear to show where the view would
+land when you release the mouse button. You can even "detach" a view from the window. Just drag the view as described above outside
+of window.</p>
+<p>All changes can be reverted when you open the <a href="../settings/index.html">Preferences Dialog</a> and tick the "Reset window 
+layout on next start" box. <em>RsBudget</em> will reset all your changes when you open it next.</p>
+<p>Each Tab has a Toolbar that appears right to its title when the tab is shown. This Toolbar contains buttons which trigger insert
+or delete actions, sort table rows or other actions available to the respective tab. A Toolbar button is dimmed (disabled) when
+the action is not available at the moment. E.g. the Delete button will be disabled when you did not select any row to be deleted.</p>
+<p>The main window also has a menu and the global toolbar where the most important actions can be triggered from. Here you 
+can exit <em>RsBudget</em> or open the <a href="../settings/index.html">Preferences Dialog</a>. The Help menu offers you access to 
+documentation and program updates.</p>
+
+<a name="start"/>
+<h2>How to Start</h2>
+
+<a name="step1"/>
+<h3>Step 1 - Define Categories</h3>
+<p>The first thing you should start with is the list of <a href="../views/categories.html">Categories</a>. You will find it at the top-right
+of the window. At the beginning, it only contains one single category. It is the one that you defined when you configured <em>RsBudget</em>.
+Categories are used to cluster your financial transactions. They server as containers to collect transactions belonging together
+logically. Typical categories are "Food", "Energy Costs" or "Insurances". Later, you will be able to see 
+<a href="../views/statistics.html">statistics</a> which tell you totals of this category in a certain period or trends over time.</p>
+<p>It is not required to have many categories. You can change them at any time. However, the more financial records you stored within
+<em>RsBudget</em> the more effort you will have to spend in order to assign them to a new category. So you should have at least a
+minimum set that is reasonable to you.</p>
+<p>In order to create a new category, select the <a href="../views/categories.html">Categories</a> view and either press the 
+<code>Insert</code> key or the 
+<img src="../../images/table-insert-row.png"/> button. A new line will appear at the end of the list. Double-click the name of the 
+new row and enter the title. Hit <code>Enter</code> when you are done.</p>
+<p>One of the categories is markes as the default one. All transactions not belonging into any other category will automatically be
+assigned to this one.</p>
+<p>There is also a simple "Rules Engine" which helps you to automatically assign a category while you enter a new transaction. More 
+details can be found in the <a href="../settings/categoryRules.html">Preferences Dialog</a>.</p>
+
+<a name="step2"/>
+<h3>Step 2 - Create a General Plan</h3>
+<p>You will also need a General Plan that describes how each month in your financial planning looks like. Select the 
+<a href="../views/generalPlanning.html">General Planning</a> view and start inserting transactions. You create new transactions as
+you did before for categories. Hit <code>Insert</code> or the click the <img src="../../images/table-insert-row.png"/> button.</p>
+<p>The General Plan is a template only. It does not reflect real transactions yet. The General Plan serves you to plan your finances.
+Create transactions to plan for monthly rent, insurance expenses, salary income and whatever can be foreseen to happen in a
+month.</p>
+<p>There will be transactions that do not occur every month but every two, three or even twelve months. The Cycle and Occurrance
+columns can be changed to reflect this behaviour.</p>
+<p>Finally, you can transform some transactions into <em>Budgets</em>. This means they will be virtual wallets that real transactions
+are assigned to and will reduce.</p>
+
+<a name="step3"/>
+<h3>Step 3 - Create a Monthly Plan</h3>
+<p>The General Plan is a blueprint for a real plan of a specific month. Select the <a href="../views/monthlyPlanning.html">Monthly Planning</a>
+tab, select the correct month (current month is already pre-selected) and click on the <img src="../../images/money--plus.png"/> button.
+This will create the Monthly Plan according to the General Plan that you created earlier.</p>
+<p>The Monthly Plan now contains all transactions that are planned. The "Planned Amount" column contains the values that you entered
+earlier in the General Plan. An additional column, "Actual Amount" will receive the actual numbers that occurred. The first column, 
+"Transaction Date", will be set when a transaction really takes place.</p>
+<p>You can add or remove transactions or budgets. Simply press <code>Insert</code> key or click the  <img src="../../images/table-insert-row.png"/> button.
+
+<a name="step4"/>
+<h3>Step 4 - Tracking Expenses</h3>
+<p>To enter a real transaction, search for the correct row in the plan and double-click the "Actual Amount" field of that row. Enter
+the amount that the transaction is about. Expenses must be signed (with "-" sign), incomes can be entered as is. Finish your input
+by hitting the <code>Enter</code> key. <em>RsBudget</em> now automatically sets the "Transaction Date" of that row.</p>
+<p>Alternately, you can double-click the "Transaction Date" column and enter the date when the transactions occurred. <em>RsBudget</em>
+will set the "Actual Amount" to the value that the "Planned Amount" listed. Regardless which way you choose, all values can be
+edited at each time by simply double-clicking the respective field.</p>
+<p>If an unplanned transaction appears on your bank account, you can add a new row into your Monthly Plan by either pressing the
+<code>Insert</code> key or clicking the <img src="../../images/table-insert-row.png"/> button. Transactions that are not valid
+anymore can be removed by selecting them and pressing the <code>Delete</code> key or clicking the
+<img src="../../images/table-delete-row.png"/> button. The same way you can remove an actual transaction so that the planned
+transactions remains.</p>
+<p>All changes that you perform within the table are saved immediately to your database. There is no need to explicitly save
+anything. Furthermore, the values at the top of the view will be updated according to your changes. They tell you what your
+planned and actual expenses were and what the forecast will be at the end of the month.</p>
+
+<a name="step5"/>
+<h3>Step 5 - Feeding the Statistics</h3>
+<p>A few values need to be set explicitly for the history and statistics. The Account Balance at the beginning and the end of 
+the month is such a value. Click the <img src="../../images/wallet.png"/> button and enter your values. The dialog suggests
+a few options which make it easier for you to define the correct value.</p>
+
+<a name="next"/>
+<h2>What to do next</h2>
+<p>You already know how to generally plan your expenses and how to track them. Here are a few help pages that further describe
+some of these features and how <em>RsBudget</em> supports you at these tasks:</p>
+<ul>
+	<li><a href="../generalPlanning/index.html">General Planning</a></li>
+	<li><a href="../monhtlyPlanning/index.html">Monthly Planning and Tracking</a></li>
+	<li><a href="../settings/index.html">Configuring <em>RsBudget</em></a></li>
+</ul>
+</body>
+</html>

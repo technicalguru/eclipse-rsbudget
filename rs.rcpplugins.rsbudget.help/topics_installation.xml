@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toc label="%toc.installation" topic="installation/index.html">
+	<topic label="%toc.installation.prerequisites" href="installation/prerequisites.html">
+		<topic label="%toc.installation.prerequisites.jre" href="installation/prerequisites.html#jre"/>
+		<topic label="%toc.installation.prerequisites.database" href="installation/prerequisites.html#database"/>
+	</topic>
+	<topic label="%toc.installation.installation" href="installation/installation.html"/>
+	<topic label="%toc.installation.configuration" href="installation/configuration.html">
+		<topic label="%toc.installation.configuration.dbsetup" href="installation/configuration.html#dbsetup"/>
+		<topic label="%toc.installation.configuration.password" href="installation/configuration.html#password"/>
+		<topic label="%toc.installation.configuration.account" href="installation/configuration.html#account"/>
+		<topic label="%toc.installation.configuration.category" href="installation/configuration.html#category"/>
+		<topic label="%toc.installation.configuration.summary" href="installation/configuration.html#summary"/>
+	</topic>
+	<topic label="%toc.installation.update" href="installation/update.html"/>
+	
+</toc>

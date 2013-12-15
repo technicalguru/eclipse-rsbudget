@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toc label="%toc.userguide" topic="index.html">
+	<topic>
+		<link toc="topics_introduction.xml"/>
+	</topic>
+	<topic>
+		<link toc="topics_installation.xml"/>
+	</topic>
+	<topic>
+		<link toc="topics_firstSteps.xml"/>
+	</topic>
+	<topic>
+		<link toc="topics_dataSecurity.xml"/>
+	</topic>
+	<topic>
+		<link toc="topics_settings.xml"/>
+	</topic>
+	<topic>
+		<link toc="topics_views.xml"/>
+	</topic>
+	<topic>
+		<link toc="topics_generalPlanning.xml"/>
+	</topic>
+	<topic>
+		<link toc="topics_monthlyPlanning.xml"/>
+	</topic>
+	<topic>
+		<link toc="topics_statistics.xml"/>
+	</topic>
+	<topic>
+		<link toc="topics_support.xml"/>
+	</topic>
+	<topic>
+		<link toc="topics_legal.xml"/>
+	</topic>
+</toc>
