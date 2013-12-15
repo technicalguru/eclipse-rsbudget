@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.e4.ui.workbench.swt.E4Application"
+            name="RsBudget">
+         <property
+               name="appName"
+               value="RsBudget">
+         </property>
+         <property
+               name="lifeCycleURI"
+               value="bundleclass://rs.rcpplugins.rsbudget/rsbudget.login.LifecycleHandler">
+         </property>
+         <property
+               name="applicationXMI"
+               value="rs.rcpplugins.rsbudget/Application.e4xmi">
+         </property>
+         <property
+               name="windowImages"
+               value="resources/icons/cash16.png,resources/icons/cash.png,resources/icons/cash48.png,resources/icons/cash64.png,resources/icons/cash128.png">
+         </property>
+         <property
+               name="aboutText"
+               value="Track your expenses">
+         </property>
+      </product>
+   </extension>
+
+</plugin>
