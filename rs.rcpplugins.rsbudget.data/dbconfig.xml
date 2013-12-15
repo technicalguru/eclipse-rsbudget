@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbconfig>
+	<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+	
+	<datasource class="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource">
+		<property name="url">jdbc:mysql://localhost:3306/haushalt</property>
+		<property name="user">rsbudget</property>
+		<property name="password">rsbudget</property>
+	</datasource>
+</dbconfig>

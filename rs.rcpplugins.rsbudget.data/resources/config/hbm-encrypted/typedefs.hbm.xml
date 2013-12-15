@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+   Hibernate XML Mapping File
+-->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<typedef class="rs.data.hibernate.type.RsDateType" name="RsDate"/>
+	<typedef class="rs.data.hibernate.type.RsMonthType" name="RsMonth"/>
+	<typedef class="rs.data.hibernate.type.EnumerationType" name="PlannedPeriod">
+		<param name="class">rsbudget.data.util.PlannedPeriod</param>
+	</typedef>
+	
+	<typedef class="rs.data.hibernate.type.crypto.RsDateEncryptedType" name="RsDate-encrypted"/>
+	<typedef class="rs.data.hibernate.type.crypto.RsMonthEncryptedType" name="RsMonth-encrypted"/>
+	<typedef class="rs.data.hibernate.type.crypto.EnumEncryptedType" name="PlannedPeriod-encrypted">
+		<param name="class">rsbudget.data.util.PlannedPeriod</param>
+	</typedef>
+	
+	<typedef class="rs.data.hibernate.type.crypto.BooleanEncryptedType" name="boolean-encrypted"/>
+	<typedef class="rs.data.hibernate.type.crypto.BooleanEncryptedType" name="Boolean-encrypted">
+		<param name="simple">false</param>
+	</typedef>
+	<typedef class="rs.data.hibernate.type.crypto.ByteEncryptedType" name="byte-encrypted"/>
+	<typedef class="rs.data.hibernate.type.crypto.ByteEncryptedType" name="Byte-encrypted">
+		<param name="simple">false</param>
+	</typedef>
+	<typedef class="rs.data.hibernate.type.crypto.CharEncryptedType" name="char-encrypted"/>
+	<typedef class="rs.data.hibernate.type.crypto.CharEncryptedType" name="Character-encrypted">
+		<param name="simple">false</param>
+	</typedef>
+	<typedef class="rs.data.hibernate.type.crypto.DoubleEncryptedType" name="double-encrypted"/>
+	<typedef class="rs.data.hibernate.type.crypto.DoubleEncryptedType" name="Double-encrypted">
+		<param name="simple">false</param>
+	</typedef>
+	<typedef class="rs.data.hibernate.type.crypto.FloatEncryptedType" name="float-encrypted"/>
+	<typedef class="rs.data.hibernate.type.crypto.FloatEncryptedType" name="Float-encrypted">
+		<param name="simple">false</param>
+	</typedef>
+	<typedef class="rs.data.hibernate.type.crypto.IntEncryptedType" name="int-encrypted"/>
+	<typedef class="rs.data.hibernate.type.crypto.IntEncryptedType" name="Integer-encrypted">
+		<param name="simple">false</param>
+	</typedef>
+	<typedef class="rs.data.hibernate.type.crypto.LongEncryptedType" name="long-encrypted"/>
+	<typedef class="rs.data.hibernate.type.crypto.LongEncryptedType" name="Long-encrypted">
+		<param name="simple">false</param>
+	</typedef>
+	<typedef class="rs.data.hibernate.type.crypto.ShortEncryptedType" name="short-encrypted"/>
+	<typedef class="rs.data.hibernate.type.crypto.ShortEncryptedType" name="Short-encrypted">
+		<param name="simple">false</param>
+	</typedef>
+	<typedef class="rs.data.hibernate.type.crypto.StringEncryptedType" name="string-encrypted"/>
+	<typedef class="rs.data.hibernate.type.crypto.DateEncryptedType" name="Date-encrypted"/>
+	<typedef class="rs.data.hibernate.type.crypto.TimestampEncryptedType" name="Timestamp-encrypted"/>
+	<!-- Commented out for Java 6 compatibility
+	<typedef class="rs.data.hibernate.type.crypto.LocaleEncryptedType" name="Locale-encrypted"/ -->
+	<typedef class="rs.data.hibernate.type.crypto.TimezoneEncryptedType" name="TimeZone-encrypted"/>
+	<typedef class="rs.data.hibernate.type.crypto.UrlEncryptedType" name="URL-encrypted"/>
+	
+</hibernate-mapping>		

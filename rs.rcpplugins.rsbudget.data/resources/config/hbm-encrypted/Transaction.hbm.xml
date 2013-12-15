@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+   Hibernate XML Mapping File
+-->
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+   <class name="rsbudget.data.dto.TransactionDTO" table="transactions" dynamic-insert="true" dynamic-update="true"  batch-size="300">
+		<id name="id" column="id" type="long" >
+			<generator class="native"/>
+		</id>
+
+		<property name="hash" type="string-encrypted" column="tx_hash"/>
+		<property name="text" type="string-encrypted" column="transaction_text"/>
+		<property name="annotation" type="string-encrypted" column="annotation"/>
+		<property name="amount" type="float-encrypted" column="amount"/>
+		<many-to-one name="category" class="rsbudget.data.dto.CategoryDTO" column="category"/> 
+		<many-to-one name="budget" class="rsbudget.data.dto.BudgetDTO" column="budget"/> 
+		<many-to-one name="plannedTransaction" class="rsbudget.data.dto.PlannedTransactionDTO" column="planned_transaction"/> 
+		<many-to-one name="account" class="rsbudget.data.dto.AccountDTO" column="account"/> 
+		<property name="partnerName" type="string-encrypted" column="partner_name"/>
+		<property name="partnerBank" type="string-encrypted" column="partner_bank"/>
+		<property name="partnerAccountNumber" type="string-encrypted" column="partner_account"/>
+		<property name="transactionDate" type="RsDate-encrypted" column="transaction_date"/>
+		<property name="valueDate" type="RsDate-encrypted" column="value_date"/>
+		<many-to-one name="plan" class="rsbudget.data.dto.PlanDTO" column="plan"/> 
+		<property name="displayOrder" type="int-encrypted" column="display_order"/>
+		<property name="creationDate" type="RsDate-encrypted" column="creation_date"/>
+		<property name="changeDate" type="RsDate-encrypted" column="change_date"/>
+	</class>
+</hibernate-mapping>

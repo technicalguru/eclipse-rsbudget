@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+		
+		<!-- How to find the Transaction -->
+		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.CMTTransactionFactory</property>
+		
+		<!-- How to produce transaction -->
+		<property name="hibernate.transaction.jta.platform">rs.data.hibernate.util.JOTMJtaPlatform</property>
+		
+		<!-- Session context with JTA -->
+		<property name="current_session_context_class">jta</property>
+		
+		<!-- Isolation level -->
+		<property name="hibernate.connection.isolation">2</property>
+		
+		<!-- Performance speedup -->
+		<property name="hibernate.jdbc.batch_size">40</property>
+		
+		<!-- Show SQL property -->
+		<property name="hibernate.show_sql">false</property>
+		<property name="hibernate.format_sql">true</property>
+		
+		<!-- Create/Upgrade tables automatically -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<!-- Required to enable JOTM with Hibernate -->
+		<property name="hibernate.connection.provider_class">rs.data.hibernate.util.DataSourceConnectionProvider</property>
+		
+		<!-- Class mappings -->
+		<mapping resource="config/hbm/typedefs.hbm.xml"/>
+		<mapping resource="config/hbm/Account.hbm.xml"/>
+		<mapping resource="config/hbm/AccountStatus.hbm.xml"/>
+		<mapping resource="config/hbm/Bank.hbm.xml"/>
+		<mapping resource="config/hbm/Budget.hbm.xml"/>
+		<mapping resource="config/hbm/BudgetRecognition.hbm.xml"/>
+		<mapping resource="config/hbm/Category.hbm.xml"/>
+		<mapping resource="config/hbm/CategoryRecognition.hbm.xml"/>
+		<mapping resource="config/hbm/HistoricalItem.hbm.xml"/>
+		<mapping resource="config/hbm/HistoricalItemStatus.hbm.xml"/>
+		<mapping resource="config/hbm/PeriodicalBudget.hbm.xml"/>
+		<mapping resource="config/hbm/PeriodicalTransaction.hbm.xml"/>
+		<mapping resource="config/hbm/Plan.hbm.xml"/>
+		<mapping resource="config/hbm/PlannedTransaction.hbm.xml"/>
+		<mapping resource="config/hbm/Setting.hbm.xml"/>
+		<mapping resource="config/hbm/Transaction.hbm.xml"/>
+		
+	</session-factory>
+	
+</hibernate-configuration>

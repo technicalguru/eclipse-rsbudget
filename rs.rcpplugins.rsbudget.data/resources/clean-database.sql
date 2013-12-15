@@ -1,0 +1,15 @@
+delete from transactions;
+delete from planned_transactions;
+delete from historical_item_status;
+delete from account_status;
+delete from historical_items;
+delete from budgets;
+delete from plans;
+delete from budget_recognitions;
+delete from category_recognitions;
+delete from periodical_transaction;
+delete from periodical_budgets;
+delete from settings;
+delete from transaction_categories;
+delete from accounts;
+delete from banks;
