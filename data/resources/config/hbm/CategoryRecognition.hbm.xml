@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+   Hibernate XML Mapping File
+-->
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+   <class name="rsbudget.data.dto.CategoryRecognitionDTO" table="category_recognitions" batch-size="300">
+		<id name="id" column="id" type="long" >
+			<generator class="native"/>
+		</id>
+
+		<many-to-one name="category" class="rsbudget.data.dto.CategoryDTO" column="category"/> 
+		<property name="rank" type="int" column="rank"/>
+		<property name="expression" type="string" column="expression"/>
+		<property name="creationDate" type="RsDate" column="creation_date"/>
+		<property name="changeDate" type="RsDate" column="change_date"/>
+	</class>
+</hibernate-mapping>

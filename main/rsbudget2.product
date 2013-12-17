@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="RsBudget" id="rs.rcpplugins.rsbudget.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="2.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+
+   <aboutInfo>
+      <text>
+         Track your expenses
+      </text>
+   </aboutInfo>
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <programArgs>-data @user.home/.rsbudget/workspace</programArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages i16="/rs.rcpplugins.rsbudget.main/resources/icons/cash16.png" i32="/rs.rcpplugins.rsbudget.main/resources/icons/cash.png" i48="/rs.rcpplugins.rsbudget.main/resources/icons/cash48.png" i64="/rs.rcpplugins.rsbudget.main/resources/icons/cash64.png" i128="/rs.rcpplugins.rsbudget.main/resources/icons/cash128.png"/>
+
+   <launcher name="rsbudget">
+      <linux icon="/rs.rcpplugins.rsbudget/resources/icons/cash.xpm"/>
+      <solaris/>
+      <win useIco="false">
+         <bmp
+            winSmallHigh="/rs.rcpplugins.rsbudget.main/resources/icons/cash16.bmp"
+            winSmallLow="/rs.rcpplugins.rsbudget.main/resources/icons/cash16-8.bmp"
+            winMediumHigh="/rs.rcpplugins.rsbudget.main/resources/icons/cash32.bmp"
+            winMediumLow="/rs.rcpplugins.rsbudget.main/resources/icons/cash32-8.bmp"
+            winLargeHigh="/rs.rcpplugins.rsbudget.main/resources/icons/cash48.bmp"
+            winLargeLow="/rs.rcpplugins.rsbudget.main/resources/icons/cash48-8.bmp"
+            winExtraLargeHigh="/rs.rcpplugins.rsbudget.main/resources/icons/cash256.bmp"/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <license>
+        <url>http://techblog.ralph-schuster.eu/rsbudget</url>
+        <text>
+   (C) Copyright by Ralph Schuster, published under GPL3
+         </text>
+   </license>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="org.eclipse.e4.rcp"/>
+      <feature id="rs.rcpplugins.common.feature"/>
+      <feature id="rs.rcpplugins.rsbudget.feature"/>
+      <feature id="org.eclipse.emf.ecore"/>
+      <feature id="org.eclipse.emf.common"/>
+      <feature id="org.eclipse.equinox.p2.core.feature"/>
+   </features>
+
+
+</product>

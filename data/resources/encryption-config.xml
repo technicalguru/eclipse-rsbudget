@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file must be locateable via classpath or referenced by -Dencryption.config=<cp-related-path> java runtime argument -->
+<config>	
+	<cryptingDelegate class="rs.baselib.crypto.DefaultCryptingDelegate"/>
+	<passwordCallback type="key" class="rsbudget.data.util.RsBudgetPasswordCallback"/>
+</config>

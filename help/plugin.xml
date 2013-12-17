@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="rs.rcpplugins.common.e4.help">
+      <toc
+            file="toc.xml"
+            primary="true">
+      </toc>
+   </extension>
+   <extension
+         point="rs.rcpplugins.common.e4.help.css">
+      <css
+            file="style/style.css">
+      </css>
+   </extension>
+</plugin>

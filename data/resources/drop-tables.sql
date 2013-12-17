@@ -1,0 +1,15 @@
+drop table transactions;
+drop table planned_transactions;
+drop table historical_item_status;
+drop table account_status;
+drop table historical_items;
+drop table budgets;
+drop table plans;
+drop table budget_recognitions;
+drop table category_recognitions;
+drop table periodical_transaction;
+drop table periodical_budgets;
+drop table settings;
+drop table transaction_categories;
+drop table accounts;
+drop table banks;

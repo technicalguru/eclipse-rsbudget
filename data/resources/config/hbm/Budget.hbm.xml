@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+   Hibernate XML Mapping File
+-->
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+   <class name="rsbudget.data.dto.BudgetDTO" table="budgets" batch-size="300">
+		<id name="id" column="id" type="long" >
+			<generator class="native"/>
+		</id>
+
+		<property name="name" type="string" column="name"/>
+		<property name="amount" type="float" column="amount"/>
+		<many-to-one name="category" class="rsbudget.data.dto.CategoryDTO" column="category"/> 
+		<property name="creationDate" type="RsDate" column="creation_date"/>
+		<property name="changeDate" type="RsDate" column="change_date"/>
+		<many-to-one name="plan" class="rsbudget.data.dto.PlanDTO" column="plan"/> 
+		<property name="displayOrder" type="int" column="display_order"/>
+		
+		<set name="transactions">
+			<key column="budget"/>
+			<one-to-many class="rsbudget.data.dto.TransactionDTO"/>
+		</set>
+		
+		<set name="plannedTransactions">
+			<key column="budget"/>
+			<one-to-many class="rsbudget.data.dto.PlannedTransactionDTO"/>
+		</set>
+	</class>
+</hibernate-mapping>

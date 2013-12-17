@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+   Hibernate XML Mapping File
+-->
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<typedef class="rs.data.hibernate.type.RsDateType" name="RsDate"/>
+	<typedef class="rs.data.hibernate.type.RsMonthType" name="RsMonth"/>
+	<typedef class="rs.data.hibernate.type.EnumerationType" name="PlannedPeriod">
+		<param name="class">rsbudget.data.util.PlannedPeriod</param>
+	</typedef>
+	<typedef class="rs.data.hibernate.type.UrlType" name="URL"/>
+	<typedef class="rs.data.hibernate.type.encrypt.StringEncryptedType" name="string-encrypted"/>
+	
+	<!-- Type definitions 
+	<typedef class="de.oventa.model.types.Typo3BooleanType" name="Typo3Boolean"/>
+	<typedef class="de.oventa.model.types.TimePeriodType" name="TimePeriod"/>
+	<typedef class="de.oventa.model.types.GameResultType" name="GameResult"/>
+	-->
+</hibernate-mapping>		

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<DaoFactory class="rsbudget.data.impl.RsBudgetDaoFactoryImpl">
+		<!-- URL Transformer -->
+		<URLTransformer class="rsbudget.data.util.EclipseUrlTransformer"/>
+
+		<DaoMaster class="rs.data.hibernate.HibernateDaoMaster">
+			<!-- Parameters -->
+			<property name="dbconfig-file">class:rsbudget.data.util.DbConfigLocator</property>
+			<property name="hbmconfig-file">config/hbm-encrypted/hibernate.cfg.xml</property>
+		</DaoMaster>
+		
+		<!-- DAO definitions -->
+		<Dao class="rsbudget.data.impl.dao.AccountDAOImpl"/>
+		<Dao class="rsbudget.data.impl.dao.AccountStatusDAOImpl"/>
+		<Dao class="rsbudget.data.impl.dao.BankDAOImpl"/>
+		<Dao class="rsbudget.data.impl.dao.BankInfoDAOImpl"/>
+		<Dao class="rsbudget.data.impl.dao.BudgetDAOImpl"/>
+		<Dao class="rsbudget.data.impl.dao.BudgetRecognitionDAOImpl"/>
+		<Dao class="rsbudget.data.impl.dao.CategoryDAOImpl"/>
+		<Dao class="rsbudget.data.impl.dao.CategoryRecognitionDAOImpl"/>
+		<Dao class="rsbudget.data.impl.dao.HistoricalItemDAOImpl"/>
+		<Dao class="rsbudget.data.impl.dao.HistoricalItemStatusDAOImpl"/>
+		<Dao class="rsbudget.data.impl.dao.PeriodicalBudgetDAOImpl"/>
+		<Dao class="rsbudget.data.impl.dao.PeriodicalTransactionDAOImpl"/>
+		<Dao class="rsbudget.data.impl.dao.PlanDAOImpl"/>
+		<Dao class="rsbudget.data.impl.dao.PlannedTransactionDAOImpl"/>
+		<Dao class="rsbudget.data.impl.dao.SettingDAOImpl"/>
+		<Dao class="rsbudget.data.impl.dao.TransactionDAOImpl"/>
+	</DaoFactory>
+</config>

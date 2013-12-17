@@ -1,0 +1,29 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>eu.ralph-schuster</groupId>
+		<artifactId>rs.rcpplugins.tycho-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	
+	<groupId>eu.ralph-schuster</groupId>
+	<artifactId>rs.rcpplugins.rsbudget</artifactId>
+	<version>2.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>rs.rcpplugins.rsbudget</name>
+	<description>RsBudget Expense Tracker</description>
+
+	<scm>
+		<connection>scm:svn:https://h2031995.stratoserver.net/svn/OSS/rs.rcpplugins.rsbudget/trunk</connection>
+		<developerConnection>scm:svn:https://h2031995.stratoserver.net/svn/OSS/rs.rcpplugins.rsbudget/trunk</developerConnection>
+		<url>https://h2031995.stratoserver.net/svn/OSS/rs.rcpplugins.rsbudget/trunk</url>
+	</scm>
+
+	<modules>
+		<module>data</module>
+		<module>help</module>
+		<module>main</module>
+		<module>feature</module>
+	</modules>
+</project>

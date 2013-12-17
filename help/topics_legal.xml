@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toc label="%toc.legal" topic="legal/index.html">
+	<topic label="%toc.legal.license" href="legal/license.html"/>
+	<topic label="%toc.legal.3rdparty" href="legal/3rdparty.html">
+		<topic label="%toc.legal.3rdparty.software" href="legal/3rdparty.html#software"/>
+		<topic label="%toc.legal.3rdparty.images" href="legal/3rdparty.html#images"/>
+	</topic>
+</toc>

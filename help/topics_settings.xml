@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toc label="%toc.settings" topic="settings/index.html">
+	<topic label="%toc.settings.general" href="settings/general.html">
+		<topic label="%toc.settings.general.language" href="settings/general.html#language"/>
+		<topic label="%toc.settings.general.currency" href="settings/general.html#currency"/>
+		<topic label="%toc.settings.general.layout" href="settings/general.html#layout"/>
+		<topic label="%toc.settings.general.restart" href="settings/general.html#restart"/>
+	</topic>
+	<topic label="%toc.settings.network" href="settings/network.html"/>
+	<topic label="%toc.settings.accounts" href="settings/account.html">
+		<topic label="%toc.settings.accounts.change" href="settings/account.html#change"/>
+		<topic label="%toc.settings.accounts.create" href="settings/account.html#create"/>
+		<topic label="%toc.settings.accounts.delete" href="settings/account.html#delete"/>
+	</topic>
+	<topic label="%toc.settings.rules" href="settings/rules.html">
+		<topic label="%toc.settings.rules.assignment" href="settings/rules.html#assignment"/>
+		<topic label="%toc.settings.rules.categories" href="settings/rules.html#categories"/>
+		<topic label="%toc.settings.rules.budgets" href="settings/rules.html#budgets"/>
+	</topic>
+	<topic label="%toc.settings.history" href="settings/history.html">
+		<topic label="%toc.settings.history.threshold" href="settings/history.html#threshold"/>
+		<topic label="%toc.settings.history.additional" href="settings/history.html#additional"/>
+	</topic>
+	<topic label="%toc.settings.colors" href="settings/colors.html"/>
+</toc>
