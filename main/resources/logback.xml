@@ -12,6 +12,7 @@
 		</encoder>
 	</appender>
 	
+	<logger name="org.objectweb.jotm" level="INFO"/>
 	<logger name="rsbudget" level="INFO"/>
 	<logger name="rs" level="INFO"/>
 	
