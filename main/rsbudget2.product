@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="RsBudget" id="rs.rcpplugins.rsbudget.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="2.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="RsBudget" id="rs.rcpplugins.rsbudget.main.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="2.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <text>
@@ -14,6 +14,7 @@
 
    <launcherArgs>
       <programArgs>-data @user.home/.rsbudget/workspace</programArgs>
+      <vmArgs>-Dlogback.configurationFile=platform:/plugin/rs.rcpplugins.rsbudget.main/resources/logback.xml</vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
