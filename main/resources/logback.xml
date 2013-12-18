@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false" scan="true">
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>rsbudget.log</file>
+        <file>${user.home}/.rsbudget/rsbudget.log</file>
         <encoder>
 			<pattern>%date [%-5level] %logger{0} - %msg%n</pattern>
         </encoder>
