@@ -21,7 +21,7 @@
    <windowImages i16="/rs.rcpplugins.rsbudget.main/resources/icons/cash16.png" i32="/rs.rcpplugins.rsbudget.main/resources/icons/cash.png" i48="/rs.rcpplugins.rsbudget.main/resources/icons/cash48.png" i64="/rs.rcpplugins.rsbudget.main/resources/icons/cash64.png" i128="/rs.rcpplugins.rsbudget.main/resources/icons/cash128.png"/>
 
    <launcher name="rsbudget">
-      <linux icon="/rs.rcpplugins.rsbudget/resources/icons/cash.xpm"/>
+      <linux icon="/rs.rcpplugins.rsbudget.main/resources/icons/cash.xpm"/>
       <solaris/>
       <win useIco="false">
          <bmp
