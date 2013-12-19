@@ -423,7 +423,7 @@ public class PreferencesUtils {
 	 */
 	public static String getProxyPassword() {
 		String rc = getProxyPreferences().get("password", null);
-		if (rc != null) rc = decrypt(rc);
+		if (!CommonUtils.isEmpty(rc)) rc = decrypt(rc);
 		return rc;
 	}
 
@@ -474,6 +474,7 @@ public class PreferencesUtils {
 	 * @return encrypted string
 	 */
 	protected static String encrypt(String s) {
+		if (CommonUtils.isEmpty(s)) return s;
 		try {
 			Encrypter enc = new Encrypter(getKey(), getSalt(), 0);
 			return enc.encrypt(s);
@@ -489,6 +490,7 @@ public class PreferencesUtils {
 	 * @return decrypted string
 	 */
 	protected static String decrypt(String s) {
+		if (CommonUtils.isEmpty(s)) return s;
 		try {
 			Decrypter dec = new Decrypter(getKey(), getSalt(), 0);
 			return dec.decrypt(s);
