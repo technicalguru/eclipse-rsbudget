@@ -25,6 +25,5 @@
 		<module>help</module>
 		<module>main</module>
 		<module>feature</module>
-		<module>p2</module>
 	</modules>
 </project>
