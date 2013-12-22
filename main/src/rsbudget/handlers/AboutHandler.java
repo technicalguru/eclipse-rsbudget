@@ -13,6 +13,7 @@ import org.osgi.framework.Version;
 
 import rs.baselib.crypto.EncryptionUtils;
 import rs.baselib.io.FileFinder;
+import rs.baselib.util.CommonUtils;
 import rs.e4.about.RsAboutDialog;
 import rsbudget.data.api.RsBudgetDaoFactory;
 import rsbudget.data.api.dao.SettingDAO;
@@ -55,8 +56,8 @@ public class AboutHandler {
 		IProduct product = Platform.getProduct();
 		String s = ProductProperties.getAboutText(product);
 		s += "\n\nVersion: "+getVersionString(product.getDefiningBundle().getVersion());
-		s += "\nBuild Id: 201311151251";
-		s += "\n\n(C) Copyright by Ralph Schuster, published under GPL3";
+		s += getBuildId(product.getDefiningBundle().getVersion());
+		s += "\n\n\u00a9 Copyright by Ralph Schuster, published under GPL3";
 		s += "\nVisit http://techblog.ralph-schuster.eu/rsbudget";
 		s += "\n\n\nInstallation Key:\n"+EncryptionUtils.encodeBase64(applicationKey)+"\n";
 		return s;
@@ -64,6 +65,12 @@ public class AboutHandler {
 
 	protected String getVersionString(Version version) {
 		return version.getMajor()+"."+version.getMinor()+"."+version.getMicro();
+	}
+	protected String getBuildId(Version version) {
+		if (!CommonUtils.isEmpty(version.getQualifier())) {
+			return "\nBuild Id: "+version.getQualifier();
+		}
+		return "";
 	}
 
 }
