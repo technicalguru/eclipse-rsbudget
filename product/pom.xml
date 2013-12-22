@@ -14,7 +14,7 @@
 	
 	<artifactId>rs.rcpplugins.rsbudget.product</artifactId>
 	<packaging>eclipse-repository</packaging>
-	<name>rs.rcpplugins.rsbudget.product</name>
+	<name>${project.artifactId}</name>
 	<description>Product Definition</description>
 
 	<build>
