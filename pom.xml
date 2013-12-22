@@ -25,5 +25,6 @@
 		<module>help</module>
 		<module>main</module>
 		<module>feature</module>
+		<module>product</module>
 	</modules>
 </project>
