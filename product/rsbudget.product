@@ -20,20 +20,22 @@
 
    <windowImages i16="/rs.rcpplugins.rsbudget.main/resources/icons/cash16.png" i32="/rs.rcpplugins.rsbudget.main/resources/icons/cash.png" i48="/rs.rcpplugins.rsbudget.main/resources/icons/cash48.png" i64="/rs.rcpplugins.rsbudget.main/resources/icons/cash64.png" i128="/rs.rcpplugins.rsbudget.main/resources/icons/cash128.png"/>
 
+
    <launcher name="rsbudget">
-      <linux icon="/rs.rcpplugins.rsbudget.main/resources/icons/cash.xpm"/>
+      <linux icon="/../../../../main/resources/icons/cash.xpm"/>
       <solaris/>
       <win useIco="false">
          <bmp
-            winSmallHigh="/rs.rcpplugins.rsbudget.main/resources/icons/cash16.bmp"
-            winSmallLow="/rs.rcpplugins.rsbudget.main/resources/icons/cash16-8.bmp"
-            winMediumHigh="/rs.rcpplugins.rsbudget.main/resources/icons/cash32.bmp"
-            winMediumLow="/rs.rcpplugins.rsbudget.main/resources/icons/cash32-8.bmp"
-            winLargeHigh="/rs.rcpplugins.rsbudget.main/resources/icons/cash48.bmp"
-            winLargeLow="/rs.rcpplugins.rsbudget.main/resources/icons/cash48-8.bmp"
-            winExtraLargeHigh="/rs.rcpplugins.rsbudget.main/resources/icons/cash256.bmp"/>
+            winSmallHigh="/../../../../main/resources/icons/cash16.bmp"
+            winSmallLow="/../../../../main/resources/icons/cash16-8.bmp"
+            winMediumHigh="/../../../../main/resources/icons/cash32.bmp"
+            winMediumLow="/../../../../main/resources/icons/cash32-8.bmp"
+            winLargeHigh="/../../../../main/resources/icons/cash48.bmp"
+            winLargeLow="/../../../../main/resources/icons/cash48-8.bmp"
+            winExtraLargeHigh="/../../../../main/resources/icons/cash256.bmp"/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
@@ -55,16 +57,22 @@
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.emf.common"/>
       <feature id="org.eclipse.equinox.p2.core.feature"/>
+      <feature id="org.eclipse.m2e.logback.feature"/>
+      <feature id="org.eclipse.recommenders.feature.3rd.orbit"/>
    </features>
 
    <configurations>
+      <plugin id="ch.qos.logback.classic" autoStart="true" startLevel="1" />
+      <plugin id="ch.qos.logback.core" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="3" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="3" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="3" />
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.osgi" autoStart="true" startLevel="0" />
+      <plugin id="org.slf4j.api" autoStart="true" startLevel="1" />
       <plugin id="rs.rcpplugins.common.jcl-over-slf4j" autoStart="true" startLevel="1" />
-      <plugin id="rs.rcpplugins.common.osgilogging-over-slf4j" autoStart="true" startLevel="1" />
+      <plugin id="rs.rcpplugins.common.osgilogging-over-slf4j" autoStart="true" startLevel="0" />
    </configurations>
 
 </product>
