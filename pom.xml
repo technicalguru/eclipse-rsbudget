@@ -7,6 +7,10 @@
 		<version>1.0.0</version>
 	</parent>
 	
+	<properties>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
+
 	<artifactId>rs.rcpplugins.rsbudget</artifactId>
 	<version>2.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -18,6 +22,17 @@
 		<developerConnection>scm:svn:https://h2031995.stratoserver.net/svn/OSS/rs.rcpplugins.rsbudget/trunk</developerConnection>
 		<url>https://h2031995.stratoserver.net/svn/OSS/rs.rcpplugins.rsbudget/trunk</url>
 	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>strato-server</id>
+			<url>scp://h2031995.stratoserver.net/var/www/vhosts/ralph-schuster.eu/download/rcp-updates/rsbudget</url>
+		</repository>
+		<snapshotRepository>
+			<id>strato-server</id>
+			<url>scp://h2031995.stratoserver.net/var/www/vhosts/ralph-schuster.eu/download/rcp-updates/rsbudget-snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<modules>
 		<module>data</module>
