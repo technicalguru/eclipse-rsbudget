@@ -26,11 +26,11 @@
 	<distributionManagement>
 		<repository>
 			<id>strato-server</id>
-			<url>scp://h2031995.stratoserver.net/var/www/vhosts/ralph-schuster.eu/download/rcp-updates/rsbudget</url>
+			<url>scp://h2031995.stratoserver.net/var/www/vhosts/ralph-schuster.eu/download/rsbudget/releases</url>
 		</repository>
 		<snapshotRepository>
 			<id>strato-server</id>
-			<url>scp://h2031995.stratoserver.net/var/www/vhosts/ralph-schuster.eu/download/rcp-updates/rsbudget-snapshots</url>
+			<url>scp://h2031995.stratoserver.net/var/www/vhosts/ralph-schuster.eu/download/rsbudget/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 

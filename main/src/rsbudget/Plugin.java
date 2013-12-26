@@ -30,9 +30,9 @@ public class Plugin {
 	public static final String DELETE_ROW_COMMAND_ID = "rs.rcpplugins.rsbudget.command.deleterow";
 	
 	/** The release site */
-	public static final String RELEASE_CHANNEL = "http://download.ralph-schuster.eu/rcp-updates/rsbudget/";
+	public static final String RELEASE_CHANNEL = "http://download.ralph-schuster.eu/rsbudget/releases";
 	/** The snapshot site */
-	public static final String SNAPSHOT_CHANNEL = "http://download.ralph-schuster.eu/rcp-updates/rsbudget-snapshots/";
+	public static final String SNAPSHOT_CHANNEL = "http://download.ralph-schuster.eu/rsbudget/snapshots/";
 	
 	public static final TranslationService TRANSLATIONS = E4Utils.getTopContext().get(TranslationService.class);
 	
