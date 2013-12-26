@@ -20,7 +20,6 @@ import org.eclipse.e4.ui.workbench.IWorkbench;
 import org.eclipse.equinox.p2.core.IProvisioningAgent;
 import org.eclipse.equinox.p2.operations.ProvisioningJob;
 import org.eclipse.equinox.p2.operations.ProvisioningSession;
-import org.eclipse.equinox.p2.operations.Update;
 import org.eclipse.equinox.p2.operations.UpdateOperation;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Shell;
@@ -123,12 +122,7 @@ public class UpdateHandler {
 					sync.syncExec(new Runnable() {
 						@Override
 						public void run() {
-							String updates = "";
-							Update[] possibleUpdates = operation.getPossibleUpdates();
-							for (Update update : possibleUpdates) {
-								updates += update + "\n";
-							}
-							doInstall = MessageDialog.openQuestion(parent, "Really install updates?", updates);
+							doInstall = MessageDialog.openQuestion(parent, Plugin.translate("update.question.title"), Plugin.translate("update.question.message"));
 						}
 					});
 				}
@@ -152,7 +146,7 @@ public class UpdateHandler {
 
 									@Override
 									public void run() {
-										boolean restart = MessageDialog.openQuestion(parent, "Updates installed, restart?", "Updates have been installed successfully, do you want to restart?");
+										boolean restart = MessageDialog.openQuestion(parent, Plugin.translate("update.restart.title"), Plugin.translate("update.restart.message"));
 										try {
 											IPreferences prefs = Plugin.getUserPreferences();
 											prefs.putBoolean("resetApplication", true);
