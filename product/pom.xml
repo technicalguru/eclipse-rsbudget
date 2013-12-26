@@ -59,7 +59,7 @@
 					<path>target/repository</path>
 					<targetPath>.</targetPath>
 					<preCommands>
-						<preCommand>touch $repository.basedir/test.txt</preCommand>
+						<preCommand>rm -rf $repository.basedir/*</preCommand>
 					</preCommands>
 				</configuration>
 			</plugin>

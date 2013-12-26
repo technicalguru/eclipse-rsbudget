@@ -15,6 +15,7 @@ import rs.baselib.crypto.EncryptionUtils;
 import rs.baselib.io.FileFinder;
 import rs.baselib.util.CommonUtils;
 import rs.e4.about.RsAboutDialog;
+import rsbudget.Plugin;
 import rsbudget.data.api.RsBudgetDaoFactory;
 import rsbudget.data.api.dao.SettingDAO;
 
@@ -63,9 +64,20 @@ public class AboutHandler {
 		return s;
 	}
 
+	/**
+	 * Builds the version number for display.
+	 * @param version product version object
+	 * @return string to be displayed
+	 */
 	protected String getVersionString(Version version) {
-		return version.getMajor()+"."+version.getMinor()+"."+version.getMicro();
+		return version.getMajor()+"."+version.getMinor()+"."+version.getMicro()+getBrandingTitle();
 	}
+	
+	/**
+	 * Builds the BuildId as string.
+	 * @param version product version object
+	 * @return string to be displayed
+	 */
 	protected String getBuildId(Version version) {
 		if (!CommonUtils.isEmpty(version.getQualifier())) {
 			return "\nBuild Id: "+version.getQualifier();
@@ -73,4 +85,11 @@ public class AboutHandler {
 		return "";
 	}
 
+	/**
+	 * Returns the branding title.
+	 * @return string to be displayed
+	 */
+	protected String getBrandingTitle() {
+		return " "+Plugin.BRANDING_TITLE;
+	}
 }

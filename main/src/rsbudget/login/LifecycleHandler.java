@@ -73,7 +73,7 @@ public class LifecycleHandler {
 			}
 			BootstrapWizardLanguage.setLanguage(dlg.getValue());
 			try {
-				PreferencesService.INSTANCE.getUserPreferences(Plugin.APPLICATION_KEY).get("languages/userInterface", BootstrapWizardLanguage.getLanguageKey());
+				Plugin.getUserPreferences().get("languages/userInterface", BootstrapWizardLanguage.getLanguageKey());
 			} catch (BackingStoreException e) {
 				e.printStackTrace(); // Warn, its not important
 			}
@@ -110,7 +110,7 @@ public class LifecycleHandler {
 		DataUtils.register(factory, ctx);
 		ctx.set(IPreferencesService.class, PreferencesService.INSTANCE);
 		try {
-			ctx.set(IPreferences.class, PreferencesService.INSTANCE.getUserPreferences(Plugin.APPLICATION_KEY));
+			ctx.set(IPreferences.class, Plugin.getUserPreferences());
 		} catch (BackingStoreException e) {
 			e.printStackTrace();
 		}
@@ -131,7 +131,7 @@ public class LifecycleHandler {
 
 	protected void cleanupUserXmi() {
 		try {
-			IPreferences prefs = PreferencesService.INSTANCE.getUserPreferences(Plugin.APPLICATION_KEY);
+			IPreferences prefs = Plugin.getUserPreferences();
 			if (prefs.getBoolean("resetApplication", false)) {
 				File f = new File(PreferencesService.INSTANCE.getUserPreferencesHome(Plugin.APPLICATION_KEY), "workspace/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi");
 				if (f.exists()) {

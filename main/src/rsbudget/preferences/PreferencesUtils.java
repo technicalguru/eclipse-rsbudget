@@ -20,7 +20,6 @@ import rs.baselib.crypto.Decrypter;
 import rs.baselib.crypto.Encrypter;
 import rs.baselib.lang.LangUtils;
 import rs.baselib.prefs.IPreferences;
-import rs.baselib.prefs.PreferencesService;
 import rs.baselib.util.CommonUtils;
 import rsbudget.Plugin;
 import rsbudget.util.RsBudgetColors;
@@ -231,7 +230,7 @@ public class PreferencesUtils {
 	 */
 	public static IPreferences getPreferences(boolean create, String... keys) {
 		try {
-			IPreferences rc = PreferencesService.INSTANCE.getUserPreferences(Plugin.APPLICATION_KEY);
+			IPreferences rc = Plugin.getUserPreferences();
 			for (String key : keys) {
 				if (!create && !rc.nodeExists(key)) return null;
 				rc = rc.node(key);
@@ -534,7 +533,7 @@ public class PreferencesUtils {
 	 */
 	public static void flush() {
 		try {
-			PreferencesService.INSTANCE.getUserPreferences(Plugin.APPLICATION_KEY).flush();
+			Plugin.getUserPreferences().flush();
 		} catch (BackingStoreException e) {
 			LoggerFactory.getLogger(PreferencesUtils.class).error("Cannot flush preferences", e);
 		}

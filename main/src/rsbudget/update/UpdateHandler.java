@@ -28,7 +28,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import rs.baselib.prefs.IPreferences;
-import rs.baselib.prefs.PreferencesService;
 import rsbudget.Plugin;
 
 /**
@@ -37,9 +36,6 @@ import rsbudget.Plugin;
  *
  */
 public class UpdateHandler {
-
-	/** Repository location */
-	private static final String REPOSITORY_LOC = System.getProperty("UpdateHandler.Repo", Plugin.UPDATE_LOCATION);
 
 	@Execute
 	public void execute(final IProxyService proxyService, final IProvisioningAgent agent, final Shell parent, final UISynchronize sync, final IWorkbench workbench) {		
@@ -57,12 +53,22 @@ public class UpdateHandler {
 				// create uri
 				URI uri = null;
 				try {
-					uri = new URI(REPOSITORY_LOC);
+					String location = Plugin.getUserPreferences().get("updateChannel", Plugin.RELEASE_CHANNEL);
+					LoggerFactory.getLogger(getClass()).info("Using update site: "+location);
+					uri = new URI(location);
 				} catch (final URISyntaxException e) {
 					sync.syncExec(new Runnable() {
 						@Override
 						public void run() {
 							MessageDialog.openError(parent, "URI invalid", e.getMessage());
+						}
+					});
+					return Status.CANCEL_STATUS;
+				} catch (final BackingStoreException e) {
+					sync.syncExec(new Runnable() {
+						@Override
+						public void run() {
+							MessageDialog.openError(parent, "Cannot detect update channel", e.getMessage());
 						}
 					});
 					return Status.CANCEL_STATUS;
@@ -148,7 +154,7 @@ public class UpdateHandler {
 									public void run() {
 										boolean restart = MessageDialog.openQuestion(parent, "Updates installed, restart?", "Updates have been installed successfully, do you want to restart?");
 										try {
-											IPreferences prefs = PreferencesService.INSTANCE.getUserPreferences(Plugin.APPLICATION_KEY);
+											IPreferences prefs = Plugin.getUserPreferences();
 											prefs.putBoolean("resetApplication", true);
 											prefs.flush();
 										} catch (BackingStoreException e) {
