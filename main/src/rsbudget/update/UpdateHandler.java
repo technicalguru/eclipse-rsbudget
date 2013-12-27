@@ -27,6 +27,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import rs.baselib.prefs.IPreferences;
+import rs.e4.util.JobUtils;
 import rsbudget.Plugin;
 
 /**
@@ -80,8 +81,10 @@ public class UpdateHandler {
 				/* 2. check for updates */
 
 				// run update checks causing I/O
-				final IStatus status = operation.resolveModal(monitor);
-
+				IProgressMonitor resolveMonitor = JobUtils.createProgressMonitor(parent);
+				final IStatus status = operation.resolveModal(resolveMonitor);
+				resolveMonitor.done(); // Just in case
+				
 				// failed to find updates (inform user and exit)
 				//System.out.println(status.getCode()+" "+status.getMessage()+" "+status.getSeverity());
 				if (!status.isOK() || (status.getCode() == 10001)) {
@@ -129,7 +132,8 @@ public class UpdateHandler {
 
 				// start installation
 				if (doInstall) {
-					final ProvisioningJob provisioningJob = operation.getProvisioningJob(monitor);
+					IProgressMonitor installMonitor = JobUtils.createProgressMonitor(parent);
+					final ProvisioningJob provisioningJob = operation.getProvisioningJob(installMonitor);
 					// updates cannot run from within Eclipse IDE!!!
 					if (provisioningJob == null) {
 						System.err.println("Running update from within Eclipse IDE? This won't work!!!");
