@@ -120,6 +120,7 @@
       <children xsi:type="menu:ToolControl" xmi:id="_lrbVEEzxEeKYjd7iLXy0hw" elementId="rs.rcpplugins.rsbudget.toolcontrol.statusentry" contributionURI="bundleclass://rs.rcpplugins.rsbudget.main/rsbudget.statusbar.StatusEntry">
         <tags>stretch</tags>
       </children>
+      <children xsi:type="menu:ToolControl" xmi:id="_N4VUwG7zEeOl2qDSXddSRQ" elementId="rs.rcpplugins.rsbudget.main.toolcontrol.progressbar" contributionURI="bundleclass://rs.rcpplugins.common.e4/rs.e4.swt.control.ProgressBarToolItem"/>
       <children xsi:type="menu:ToolControl" xmi:id="_3c4dIEz0EeKYjd7iLXy0hw" elementId="rs.rcpplugins.rsbudget.toolcontrol.label0" contributionURI="bundleclass://rs.rcpplugins.rsbudget.main/rsbudget.statusbar.LabelEntry">
         <persistedState key="text" value="%statusbar.status.current"/>
       </children>
