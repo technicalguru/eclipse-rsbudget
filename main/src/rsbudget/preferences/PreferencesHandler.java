@@ -6,7 +6,7 @@ package rsbudget.preferences;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.workbench.IWorkbench;
-import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.widgets.Shell;
 
 /**
@@ -27,11 +27,13 @@ public class PreferencesHandler {
 	 */
 	@Execute
 	public void execute(IWorkbench workbench, IEclipseContext context, Shell shell) {
-		PreferencesDialog dlg = new PreferencesDialog(shell, workbench);
-		dlg.create();
-		if (dlg.open() == Dialog.OK) {
-			// Do something!
-		}
+		final PreferencesDialog dlg = new PreferencesDialog(shell, workbench);
+		BusyIndicator.showWhile(shell.getDisplay(), new Runnable() {
+			public void run() {
+				dlg.create();
+			}
+		});
+		dlg.open();
 	}
 
 }
