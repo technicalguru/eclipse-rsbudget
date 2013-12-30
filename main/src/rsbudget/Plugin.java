@@ -24,7 +24,7 @@ public class Plugin {
 	public static final String APPLICATION_KEY = RsBudgetDaoFactory.APPLICATION_KEY;
 	public static final String APPLICATION_NAME = "RsBudget";
 	public static final String APPLICATION_SPLASH_VERSION = "2.0";
-	public static final String BRANDING_TITLE = "Beta2";
+	public static final String BRANDING_TITLE = "Beta3";
 	public static final String APPLICATION_SUBTITLE = "Track your expenses";
 	public static final String NEW_ROW_COMMAND_ID = "rs.rcpplugins.rsbudget.command.newrow";
 	public static final String DELETE_ROW_COMMAND_ID = "rs.rcpplugins.rsbudget.command.deleterow";
