@@ -6,9 +6,60 @@
 <body>
 <a href="../index.html">User Guide</a> &gt; <a href="index.html">Settings and Preferences</a> &gt;
 <h1>Account Settings</h1>
-		<li><a href="account.html#change">Change Account</a></li>
-		<li><a href="account.html#create">Create a new Account</a></li>
-		<li><a href="account.html#delete">Delete an Account</a></li>
-</ul>
+<p style="float:clear;">This tab lists the bank accounts for your <em>RsBudget</em> installation. You 
+can create, modify and change accounts.</p>
+<p>Accounts currently have no further meaning. However, each transaction record needs to be attached 
+to a bank account to enable future enhancements, e.g. HBCI downloads from your bank.</p>
+
+<p><a href="../../images/en/settings-account.png"><img class="screenshot" border="no" src="../../images/en/settings-account.png" width="500"/></a></p>
+
+<h2 id="create">Create a new Account</h2>
+<p>Click the "Create Account" link. This will create and select a new record. Please refer to the 
+<a href="#change">Change Account</a> section to fill the form.</p>
+
+<h2 id="change">Change Account</h2>
+<p>Following fields can be modified:</p>
+<table>
+<tr>
+	<th>Field</th>
+	<th>Description</th>
+</tr>
+<tr>
+	<td>Name</td>
+	<td>Each account is referred to by its name. Please choose a meaningful name.</td>
+</tr>
+<tr>
+	<td>Owner</td>
+	<td>The owner of the account. This is usually your name.</td>
+</tr>
+<tr>
+	<td>Acct. Number</td>
+	<td>The number of your account.</td>
+</tr>
+<tr>
+	<td>BIC</td>
+	<td>Bank Identification Code. Select the bank. If your bank is not listed (German banks only), please choose any bank.</td>
+</tr>
+<tr>
+	<td>Default</td>
+	<td>This flag marks the account as the default account. <em>RsBudget</em> will automatically attach 
+	    all transactions with this account. However, you can select the account for each individual transaction.</td>
+</tr>
+<tr>
+	<td>Planning Relevant</td>
+	<td>The account will be included in the plan calculations. Remove the flag when this account
+	    shall be used for statistical or informational reasons only (e.g. for Share Depots).</td>
+</tr>	
+</table>
+
+<h2 id="delete">Delete an Account</h2>
+<p>Click the "Delete Account" link. <em>RsBudget</em> will ask you for confirmation and then remove the account
+from the list. However, the account is not physically deleted but marked as inactive only. You can revert your
+action when you cancel the Preferences dialog. Once you confirmed all changes with "OK", the deactivation will
+be performed and there is currently no possibility to re-enable the account (Future Enhancement).</p>
+<hr/>
+<p style="text-align: left; float:left;">Previous:<br/><a href="network.html">Network Settings</a></p>
+<p style="text-align: right; float:right;">Next:<br/><a href="rules.html">Rules Settings</a></p>
+  
 </body>
 </html>

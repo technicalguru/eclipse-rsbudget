@@ -1,4 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <toc label="%toc.views" topic="views/index.html">
-	
+	<topic label="%toc.views.generalplanning" href="views/general-planning.html">
+		<topic label="%toc.views.information" href="views/general-planning.html#information">
+			<topic label="%toc.views.generalplanning.summary" href="views/general-planning.html#summary"/>
+			<topic label="%toc.views.generalplanning.plan" href="views/general-planning.html#plan"/>
+		</topic>
+		<topic label="%toc.views.tasks" href="views/general-planning.html#tasks">
+			<topic label="%toc.views.generalplanning.createtx" href="views/general-planning.html#createtx"/>
+			<topic label="%toc.views.generalplanning.modifytx" href="views/general-planning.html#modifytx"/>
+			<topic label="%toc.views.generalplanning.movetx" href="views/general-planning.html#movetx"/>
+			<topic label="%toc.views.generalplanning.transformtx" href="views/general-planning.html#transformtx"/>
+			<topic label="%toc.views.generalplanning.deletetx" href="views/general-planning.html#deletetx"/>
+		</topic>
+	</topic>
+	<topic label="%toc.views.monthlyplanning" href="views/monthly-planning.html">
+		<topic label="%toc.views.information" href="views/monthly-planning.html#information">
+			<topic label="%toc.views.monthlyplanning.summary" href="views/monthly-planning.html#summary"/>
+			<topic label="%toc.views.monthlyplanning.plan" href="views/monthly-planning.html#plan"/>
+		</topic>
+		<topic label="%toc.views.tasks" href="views/monthly-planning.html#tasks">
+			<topic label="%toc.views.monthlyplanning.createplan" href="views/monthly-planning.html#createplan"/>
+			<topic label="%toc.views.monthlyplanning.createtx" href="views/monthly-planning.html#createtx"/>
+			<topic label="%toc.views.monthlyplanning.modifytx" href="views/monthly-planning.html#modifytx"/>
+			<topic label="%toc.views.monthlyplanning.movetx" href="views/monthly-planning.html#movetx"/>
+			<topic label="%toc.views.monthlyplanning.sorttx" href="views/monthly-planning.html#sorttx"/>
+			<topic label="%toc.views.monthlyplanning.transformtx" href="views/monthly-planning.html#transformtx"/>
+			<topic label="%toc.views.monthlyplanning.deletetx" href="views/monthly-planning.html#deletetx"/>
+			<topic label="%toc.views.monthlyplanning.setbalances" href="views/monthly-planning.html#setbalances"/>
+		</topic>
+	</topic>
+	<topic label="%toc.views.history" href="views/history.html">
+		<topic label="%toc.views.information" href="views/history.html#information"/>
+		<topic label="%toc.views.tasks" href="views/history.html#tasks">
+			<topic label="%toc.views.history.modify" href="views/history.html#modify"/>
+		</topic>
+	</topic>
+	<topic label="%toc.views.details" href="views/details.html">
+		<topic label="%toc.views.information" href="views/details.html#information"/>
+	</topic>
+	<topic label="%toc.views.categories" href="views/categories.html">
+		<topic label="%toc.views.information" href="views/categories.html#information"/>
+		<topic label="%toc.views.tasks" href="views/categories.html#tasks">
+			<topic label="%toc.views.categories.create" href="views/categories.html#create"/>
+			<topic label="%toc.views.categories.modify" href="views/categories.html#modify"/>
+			<topic label="%toc.views.categories.delete" href="views/categories.html#delete"/>
+		</topic>
+	</topic>
+	<topic label="%toc.views.remarks" href="views/remarks.html">
+		<topic label="%toc.views.information" href="views/remarks.html#information"/>
+		<topic label="%toc.views.tasks" href="views/categories.html#tasks">
+			<topic label="%toc.views.remarks.modify" href="views/remarks.html#modify"/>
+		</topic>
+	</topic>
 </toc>
