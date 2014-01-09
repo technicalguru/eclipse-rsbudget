@@ -14,11 +14,11 @@ you through the process of preparing your computer.</p>
 <p><em>RsBudget</em> is based on Eclipse' Rich Client Platform (RCP) which is fully based on Java. However, Java is not part of the 
 <em>RsBudget</em> installation package. That's why you will need a current Java Runtime Environment (JRE). Please, download
 and install at least a JRE 7 on your computer. <em>RsBudget</em> was developed and tested with <a href="http://java.oracle.com/">Oracle's JRE</a>, 
-so it is recommended to use their product. Follow the instructions of your choice to install the JRE.</p>
+so it is recommended to use their product. Follow the instructions of your product choice to install the JRE.</p>
 
 <a name="database"></a>
 <h2>Database Software</h2>
-<p><em>RsBudget</em> saves all your information in any SQL based database engine. Here is a list of choices.</p>
+<p><em>RsBudget</em> saves all your information in SQL based database engine. Here is a list of choices.</p>
 <ul>
 <li><a href="#hsqldb">HyperSQL</a> (HSQLDB) - no further installation required</li>
 <li><a href="#mysql">MySQL 5.x</a></li>
@@ -26,14 +26,12 @@ so it is recommended to use their product. Follow the instructions of your choic
 <li><a href="http://www.ibm.com/software/data/db2/">DB2</a> - generally supported but not tested (see <a href="#other">Other Databases</a>)</li>
 </ul>
 <p>There is no additional installation required if you opt for HyperSQL. The required software is packaged along
-with <em>RsBudget</em>. However, it is recommended to use MySQL as it is best supported and most-stable against
-program crashes.</p>
+with <em>RsBudget</em>. However, it is recommended to use MySQL as it is best supported by <em>RsBudget</em>.</p>
 
 <a name="hsqldb"></a>
 <h3>Using HyperSQL</h3>
 <p>There are no additional steps to perform for <a href="http://hsqldb.org/">HyperSQL</a>. The software is already packaged with <em>RsBudget</em>.
-This choice is 2nd best only as HyperSQL is not tested thoroughly and might lose data when the program or your
-computer crashes.</p>
+This choice is 2nd best only as HyperSQL is not tested thoroughly enough with <em>RsBudget</em>.</p>
 
 <a name="mysql"></a>
 <h3>Using MySQL</h3>
@@ -51,7 +49,8 @@ Install it according to the MySQL installation instructions. Additionally, you w
 <h3>Other Databases</h3>
 <p>It is generally possible to use any database supporting JDBC and Hibernate. If you choose to use such a database for
 your <em>RsBudget</em> installation, you will need to perform additional steps. The current version, however,
-does not support them. If you are an expert in Java development, you will need to perform the following tasks:</p>
+does not support them out-of-the-box. Therefore, this is recommended for experts in Java development, only. 
+You will need to perform the following tasks:</p>
 <ul>
 	<li>Install your database product</li>
 	<li>Setup the database user</li>
@@ -62,7 +61,7 @@ does not support them. If you are an expert in Java development, you will need t
 	<li>Provide the JDBC driver via classpath to <em>RsBudget</em></li>
 </ul>
 <p>The best way to perform all these tasks is to setup <em>RsBudget</em> for MySQL first and then copy all
-database data to your product. Finally, you would need to change the <code>dbconfig.xml</code> file that
+database data to your product. Finally, you will need to change the <code>dbconfig.xml</code> file that
 <em>RsBudget</em> has created while performing the initial setup in your <code>$HOME/.rsbudget</code>
 directory.</p>
 <p>A future version of <em>RsBudget</em> will support other database products.</p>

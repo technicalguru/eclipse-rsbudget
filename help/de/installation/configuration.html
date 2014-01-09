@@ -1,0 +1,95 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../style/style.css">
+<title>Konfiguration</title>
+</head>
+<body>
+<a href="../index.html">Benutzerhandbuch</a> &gt; <a href="index.html">Installieren und Konfigurieren</a> &gt;
+<h1>Konfiguration</h1>
+<p><em>RsBudget</em> wird den Konfigurations-Wizard starten, wenn Sie das Programm zu ersten Mal aufrufen. Doppel-klicken
+Sie dazu einfach auf das ausf&uuml;hrbare Programm in dem Verzeichnis, in das Sie entpackt haben.</p>
+
+<p>Das Programm wird zun&auml;chst nach der Sprache f&uuml;r das Setup fragen. W&auml;hlen Sie Ihre Sprache aus und
+klicken Sie OK, um die Konfiguration zu starten. Sie sollten dann durch einen Willkommens-Meldung begr&uuml;&szlig;t werden.</p>
+
+<p><a href="../../images/de/setup-welcome.png"><img class="screenshot" border="no" src="../../images/de/setup-welcome.png" width="400"/></a></p>
+
+<p>Klicken Sie "Next" um zur Datenbank-Konfiguration zu gelangen.</p>
+
+<h2 id="dbsetup">Datenbank-Konfiguration</h2>
+<p><a href="../../images/de/setup-database.png"><img class="screenshot" border="no" src="../../images/de/setup-database.png" width="400"/></a></p>
+<p><em>RsBudget</em> speichert alle Daten in einer Datenbank. Welche Datenbank-Software Sie benutzen, ist Ihre Entscheidung. Diese Seite
+fragt Sie nach den Details Ihrer Konfiguration, speziell nach dem verwendeten Datenbank-Produkt und wie auf die Datenbank zugegriffen
+werden kann (Benutzer, Passwort).</p>
+
+<p>Eine wichtige Frage ist die nach der Vollverschl&uuml;sselung. Vollverschl&uuml;sselung bedeutet, dass s&auml;tliche Daten nur verschl&uuml;sselt
+abgelegt werden. Damit k&ouml;nnen Dritte, die Zugriff auf den Rechner haben, diese Daten nicht lesen. Sie sollten allerdings
+ber&uuml;cksichtigen, dass diese Einstellung sp&auml;ter nicht mehr ge&auml;ndert werden kann.</p>
+
+<p>Die Vollverschl&uuml;sselung verwendet Ihr Anwendungspasswort (siehe unten), um die Daten zu ver- bzw. entschl&uuml;sseln. Da dieses Passwort
+nirgendwo gespeichert wird, bedeutet der Verlust des Passworts gleichzeitig auch der Verlust aller Daten. Daher sollten
+Sie sorgf&auml;ltig abw&auml;gen, ob Sie Vollverschl&uuml;sselung wirklich ben&ouml;tigen.</p>
+
+<p>Klicken Sie auf "Verbinden testen", um Ihre Einstellungen auf Korrektheit zu pr&uuml;fen. Das Programm informiert Sie dann &uuml;ber
+eventuell bereits existierende Daten oder Fehler in den Datenbank-Einstellungen.</p>
+
+<p>Mit "Next" gelangen Sie zur Vergabe des Anwendungspasswortes. Sollten Sie die Verbindung bis dahin noch nicht manuell gepr&uuml;ft haben,
+so wird das Programm dies sp&auml;testens zu diesem Zeitpunkt tun, um fehlerhafte Einstellungen zu vermeiden.</p>
+
+<h2 id="password">Anwendungspasswort vergeben</h2>
+<p><a href="../../images/de/setup-password.png"><img class="screenshot" border="no" src="../../images/de/setup-password.png" width="400"/></a></p>
+<p>Das Anwendungspasswort verhindert den nicht authorisierten Zugriff auf Ihre Daten durch Dritte. Da es nirgends gespeichert wird, m&uuml;ssen
+Sie auch nicht bef&uuml;rchten, dass es gestohlen wird, in dem man Ihren PC entwendet oder Ihre Festplatte durchsucht.</p>
+
+<p>Bei jedem Programmstart wird <em>RsBudget</em> zun&auml;chst nach Ihrem Passwort fragen, um sicherzustellen, dass keine 
+nicht-authorisierten Personen Zugriff erhalten. Professionelle Angreifer k&ouml;nnen aber Ihre Daten aus der Datenbank
+auslesen (falls Sie keine Vollverschl&uuml;seelung ausgew&auml;hlt haben), oder das Passwort &uuml;ber Spionage-Software
+direkt an der Tastatur mitlesen. Es gibt keine 100%-ige Sicherheit. ;-)</p>
+
+<p>Geben Sie Ihr Passwort zweimal an, so dass <em>RsBudget</em> sicher sein kann, dass Sie das Passwort korrekt eingegeben haben.</p>
+
+<p>Klicken Sie "Next", um Ihr Standard-Konto einzurichten.</p>
+
+<h2 id="account">Standard-Konto einrichten</h2>
+<p><a href="../../images/de/setup-account.png"><img class="screenshot" border="no" src="../../images/de/setup-account.png" width="400"/></a></p>
+<p><em>RsBudget</em> verkn&uuml;pft jede Transaktion mit einem Bank-Konto. Das kann entweder ein reales Konto sein
+oder aber irgendein "virtuelles" Konto, dass Sie nur f&uuml;r diese Zwecke erfinden. An dieses Konto sind derzeit
+keine weiteren Aktivit&auml;ten gekn&uuml;pft. Zuk&uuml;nftige Erweiterungen werden die Kontodaten jedoch benutzen,
+um z.B. Transaktionen automatisch per HBCI von Ihrer Bank zu laden.</p>
+
+<p>Die derzeitige Implementierung basiert auf deutschen Banken. Sollten Sie kein Konto bei einer deutschen Bank besitzen, w&auml;hlen Sie
+einfach zuf&auml;llig eine Bank aus. Wie bereits erw&auml;hnt, gibt es derzeitig keine speziellen Aktionen, die diese
+Daten ben&ouml;tigen. Zuk&uuml;nftige Updates werden auch nicht-deutsche Banken unterst&uuml;tzen.</p>
+
+<p>Geben Sie den Namen f&uuml;r Ihr Konto ein, mit dem Sie das Konto sp&auml;ter identifizieren wollen, sowie
+den Kontoinhaber, die Bankleitzahl und die Kontonummer.</p>
+
+<p>Klicken Sie auf "Next", um mit der Einrichtung der Standard-Kategorie fortzufahren.</p>
+ 
+<h2 id="category">Standard-Kategorie einrichten</h2>
+<p><a href="../../images/de/setup-category.png"><img class="screenshot" border="no" src="../../images/de/setup-category.png" width="400"/></a></p>
+<p>Jede Transaktion ist mit einer Kategorie verkn&uuml;pft, die Sie selbst vergeben k&ouml;nnen. <em>RsBudget</em> gibt Ihnen sp&auml;ter die M&ouml;glichkeit,
+diese Kategorien nach Belieben zu erzeugen. Zu Beginn wird aber zumindest eine Kategorie ben&ouml;tigt, die standardm&auml;&szlig;ig
+vergeben wird. <em>RsBudget</em> schl&auml;gt "Sonstiges" als Name vor. Sie k&ouml;nnen aber auch jeden anderen Namen verwenden, den Sie passend
+finden.</p>
+
+<p>Mit "Next" gelangen Sie zur Zusammenfassung aller Einstellungen.</p>
+
+<h2 id="summary">Konfigurations-Zusammenfassung</h2>
+<p><a href="../../images/de/setup-summary.png"><img class="screenshot" border="no" src="../../images/de/setup-summary.png" width="400"/></a></p>
+<p>Die letzte Seite fasst noch einmal alle Einstellungen zusammen, die Sie bisher vorgenommen haben. Pr&uuml;fen Sie die Richtigkeit
+der angezeigten Daten und best&auml;tigen Sie diese mit "Finish". Ansonsten gehen Sie mit "Back" zur betreffenden Seite
+zur&uuml;ck, um die Einstellungen abzu&auml;ndern.</p>
+
+<p>Mit Klick auf "Finish" wird <em>RsBudget</em> die Datenbankstruktur erzeugen, die initialen Daten eintragen und, sofern erfolgreich,
+die Anwendung durch &Ouml;ffnen des Hauptfensters starten. Herzlichen Gl&uuml;ckwunsch! Ihre Installation ist nun einsatzbereit.</p>
+
+<p>Im Kapitel <a href="../introduction/index.html">Einf&uuml;hrung</a> erfahren Sie mehr &uuml;ber die Philosophie von <em>RsBudget</em> 
+und wie das Programm Transaktionen verwaltet. Das Kapitel <a href="../firstSteps/index.html">Erste Schritte</a> hilft Ihnen, sich im
+Programm zurechtzufinden und Ihre ersten Budgets zu planen und nachzuverfolgen.</p>  
+<hr/>
+<p style="text-align: left;">Previous:<br/><a href="installation.html">RsBudget installieren</a></p>
+
+
+</body>
+</html>

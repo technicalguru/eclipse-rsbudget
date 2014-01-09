@@ -1,0 +1,70 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../style/style.css">
+<title>Voraussetzungen</title>
+</head>
+<body>
+<a href="../index.html">Benutzerhandbuch</a> &gt; <a href="index.html">Installieren und Konfigurieren</a> &gt;
+<h1>Voraussetzungen</h1>
+<p>Bevor Sie <em>RsBudget</em> installieren k&ouml;nnen, m&uuml;ssen Sie weitere, zus&auml;tzliche Software installieren.
+Dieser Abschnitt beschreibt, wie Sie Ihren PC vorbereiten.</p>
+
+<h2 id="jre">Java Runtime Environment</h2>
+<p><em>RsBudget</em> basiert auf der Eclipse Rich Client Platform (RCP), die wiederum auf Java basiert. Java ist jedoch nicht Bestandteil
+des Installationspakets von <em>RsBudget</em>. Deshalb m&uuml;ssen Sie eine aktuelle Java-Laufzeitumgebung (JRE) selbst installieren. Bitte
+installieren Sie mindestens Java 7 auf Ihrem Computer. <em>RsBudget</em> wurde mit <a href="http://java.oracle.com/">Oracle Java</a>
+entwickelt und getestet. Daher ist es empfehlenswert, dieses Produkt zu verwenden. Befolgen Sie die jeweiligen Installationsanweisungen
+Ihrer Java-JRE.</p>
+
+<h2 id="database">Datenbank-Software</h2>
+<p><em>RsBudget</em> speichert s&auml;mtliche Daten in einer SQL-Datenbank. Hier ist eine Auswahl:</p>
+<ul>
+<li><a href="#hsqldb">HyperSQL</a> (HSQLDB) - keine weitere Installation erforderlich</li>
+<li><a href="#mysql">MySQL 5.x</a></li>
+<li><a href="http://www.oracle.com/us/products/database/overview/index.html">Oracle</a> - unterst&uuml;tzt, jedoch nicht getestet (siehe auch 
+      <a href="#other">Andere Datenbank-Software</a>)</li>
+<li><a href="http://www.ibm.com/software/data/db2/">DB2</a> - unterst&uuml;tzt, jedoch nicht getestet (siehe auch 
+      <a href="#other">Andere Datenbank-Software</a>)</li>
+</ul>
+<p>Für HyperSQL wird keine separate Installation ben&ouml;tigt. Die Software ist bereits im <em>RsBudget</em>-Installationspaket enthalten. 
+Empfohlen ist jedoch die Verwendung von MySQL, da es durch <em>RsBudget</em> am Besten unterst&uuml;tzt wird.</p>
+
+<h3 id="hsqldb">Verwendung von HyperSQL</h3>
+<p>F&uuml;r <a href="http://hsqldb.org/">HyperSQL</a> m&uuml;ssen keine weiteren Installationsschritte durchgef&uuml;hrt werden. Die
+erforderlichen Bibliotheken sind bereits im <em>RsBudget</em>-Installationspaket enthalten. HyperSQL ist nur die zweitbeste Wahl
+, da es unzureichend mit <em>RsBudget</em> getestet wurde.</p>
+
+<h3 id="mysql">Verwendung von MySQL</h3>
+<p><a href="http://www.mysql.com/products/community/">MySQL 5.x</a> ist die empfohlene Datenbank-Software f&uuml;r <em>RsBudget</em>. 
+Installieren Sie die Software anhand der MySQL-Installationsanweisungen. Au&szlig;erdem m&uuml;ssen folgende Schritte durchgef&uuml;hrt
+werden:</p>
+<ol>
+	<li>Erstellen Sie eine Datenbank, z.B. mit Namen <code>rsbudget</code>.</li>
+	<li>Erstellen Sie einen Datenbenutzer <code>rsbudget</code> (andere Namen erlaubt) und vergeben Sie ein Passwort.</li>
+	<li>Berechtigen Sie den neuen Benutzer, <b>alle</b> Operationen auf der neuen Datenbank auszuf&uuml;hren. Dies sollte insbesondere
+	   die CREATE-, ALTER- und DROP-TABLE-Berechtigungen sowie die SELECT-, INSERT-, UPDATE-, DELETE-Berechtigungen beinhalten.</li>
+</ol>
+<p>Notieren Sie sich die gemachten Einstellungen f&uuml;r MySQL, da <em>RsBudget</em> w&auml;hrend der initialen Einrichtung danach fragen wird.</p>
+
+<h3 id="other">Andere Datenbank-Software</h3>
+<p>Prinzipiell ist es m&ouml;glich, auch jede andere Datenbank-Software zu verwenden, die JDBC und Hibernate unterst&uuml;tzt. Sollten Sie
+sich f&uuml;r eine solche Software entscheiden, m&uuml;ssen Sie einige weitere Installationsschritte ausf&uuml;hren. Bitte beachten Sie aber,
+das die aktuelle <em>RsBudget</em>-Version diesbez&uuml;glich nicht getestet wurde und es zu Fehlern kommen kann. Daher kann dies nur
+erfahrenen Java-Entwickler empfohlen werden. Befolgen Sie bitte folgende Anweisungen:</p>
+<ul>
+	<li>Installieren Sie die Datenbank-Software</li>
+	<li>Erstellen Sie einen Datenbankbenutzer</li>
+	<li>Erstellen Sie eine Datenbank-Instanz, die die <em>RsBudget</em>-Daten aufnehmen soll</li>
+	<li>Erzeugen Sie die Datenbank-Struktur</li>
+	<li>Erzeugen Sie die Basis-Daten innerhalb der Datenbank</li>
+	<li>Erstellen Sie die Datei <code>dbconfig.xml</code> in Ihrem Home-Verzeichnis (Unterverzeichnis <code>.rsbudget</code>)</li>
+	<li>Stellen Sie den richtigen JDBC-Treiber per Classpath f&uuml; <em>RsBudget</em> zur Verrf&uuml;gung</li>
+</ul>
+<p>Die beste Methode, diese Konfiguration vorzunehmen, ist es, <em>RsBudget</em> zun&auml;chst f&uuml; MySQL einzurichten und danach
+alle MySQL-Daten in Ihre gew&uuml;nschte Datenbank zu kopieren. Anschlie&szlig;end m&uuml;ssen Sie lediglich die datei <code>dbconfig.xml</code>
+ anpassen, die <em>RsBudget</em> w&auml;hrend des Setups im Verzeichnis <code>$HOME/.rsbudget</code> angelegt hat.</p>
+<p>Zuk&uuml;nftige <em>RsBudget</em>-Versionen werden weitere Datenbank-Produkte unterst&uuml;tzen.</p>
+<hr/>
+<p style="text-align: right;">Next:<br/><a href="installation.html">RsBudget installieren</a></p>
+</body>
+</html>
