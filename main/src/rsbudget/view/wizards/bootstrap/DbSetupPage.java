@@ -458,7 +458,11 @@ public class DbSetupPage extends AbstractWizardPage {
 	public void performCancel() {
 		try {
 			File f = DbConfigLocator.getUserDbConfigFile();
-			if (f.exists()) f.delete();
+			if (f.exists()) {
+				File failed = new File(f.getAbsolutePath()+".failed");
+				if (failed.exists()) failed.delete();
+				f.renameTo(failed);
+			}
 		} catch (Exception e) {
 			// Ignore
 		}
