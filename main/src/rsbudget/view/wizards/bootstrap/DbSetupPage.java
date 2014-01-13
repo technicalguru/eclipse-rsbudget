@@ -427,7 +427,10 @@ public class DbSetupPage extends AbstractWizardPage {
 
 		// Create the dbconfig.xml file
 		try {
-			PrintWriter out = new PrintWriter(DbConfigLocator.getUserDbConfigFile());
+			File configFile = DbConfigLocator.getUserDbConfigFile();
+			File f = configFile.getParentFile();
+			if (!f.exists()) f.mkdirs();
+			PrintWriter out = new PrintWriter(configFile);
 			out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 			out.println("<dbconfig>");
 			out.println("   <property name=\"hibernate.dialect\">"+((IHibernateDialectProvider)provider).getHibernateDialect()+"</property>");
@@ -437,6 +440,7 @@ public class DbSetupPage extends AbstractWizardPage {
 			out.println("      <property name=\"password\">"+provider.getDbPassword(getPassword())+"</property>");
 			out.println("   </datasource>");
 			out.println("</dbconfig>");
+			out.flush();
 			out.close();
 
 			RsBudgetConfigurationService.setEncrypted(isEncryption());
