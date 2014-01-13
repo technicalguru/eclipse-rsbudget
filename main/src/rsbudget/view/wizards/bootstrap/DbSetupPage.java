@@ -330,12 +330,12 @@ public class DbSetupPage extends AbstractWizardPage {
 	}
 
 	protected boolean testConnection(boolean showOk) {
-		IJdbcConnectionProvider provider = getDbProvider();
-		String host     = getHost();
-		String port     = getPort();
-		String dbname   = getDbName();
-		String login    = getUser();
-		String password = getPassword();
+		IJdbcConnectionProvider2 provider = getDbProvider();
+		String host     = provider.getHost(getHost());
+		String port     = provider.getPort(getPort());
+		String dbname   = provider.getDbName(getDbName());
+		String login    = provider.getDbLogin(getUser());
+		String password = provider.getDbPassword(getPassword());
 		Connection con = null;
 		try {
 			con = provider.getConnection(host, port, dbname, login, password);
