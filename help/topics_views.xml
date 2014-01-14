@@ -19,6 +19,7 @@
 			<topic label="%toc.views.monthlyplanning.plan" href="views/monthly-planning.html#plan"/>
 		</topic>
 		<topic label="%toc.views.tasks" href="views/monthly-planning.html#tasks">
+			<topic label="%toc.views.monthlyplanning.selectmonth" href="views/monthly-planning.html#selectmonth"/>
 			<topic label="%toc.views.monthlyplanning.createplan" href="views/monthly-planning.html#createplan"/>
 			<topic label="%toc.views.monthlyplanning.createtx" href="views/monthly-planning.html#createtx"/>
 			<topic label="%toc.views.monthlyplanning.modifytx" href="views/monthly-planning.html#modifytx"/>

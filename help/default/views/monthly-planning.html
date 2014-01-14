@@ -6,19 +6,180 @@
 <body>
 <a href="../index.html">User Guide</a> &gt; <a href="index.html">Views</a> &gt; 
 <h1>Monthly Planning</h1>
+<p><a href="../../images/en/views-monthly.png"><img class="screenshot" border="no" src="../../images/en/views-monthly.png" width="500"/></a></p>
+
 <h2 id="information">Data Description</h2>
+<p>The view is divided into two separate sections. The upper part is the <em>Summary Section</em>. It shows the month navigation
+and basic figures of your selected plan. The lower part shows the planned and actual transactions of the selected month.</p>
+
 <h3 id="summary">Summary Section</h3>
-<h3 id="plan">Plan Table</h3>
+<p>The section summarizes the plan so you can see the financial status of the selected month.</p>
+<table>
+	<tr>
+		<th>Field</th>
+		<th>Description</th>
+	<tr>
+	<tr>
+		<td>Status on &lt;1st-of-month&gt;</td>
+		<td>The total of all accounts that are planning relevant at the beginning of the month (Opening Balance).</td>
+	</tr>
+	<tr>
+		<td>Current Status</td>
+		<td>The current balance as known by <em>RsBudget</em>.</td>
+	</tr>
+	<tr>
+		<td>Status on &lt;last-of-month&gt;</td>
+		<td>The total of all accounts that are planning relevant at the end of the month (Closing Balance). Unless the
+		    month has not yet been closed (see <a href="#setbalances">Set start and end balance</a>), this is a forecast.</td>
+	</tr>
+	<tr>
+		<td>Ledgerless Accounting</td>
+		<td>The total of all missing transactions. The number reflects the amount that <em>RsBudget</em> still expects
+		    to occur in this month.</td>
+	</tr>
+	<tr>
+		<td>Relative Balance</td>
+		<td>The profit/loss calculation of this month. Unless the month has not yet been closed (see 
+		    <a href="#setbalances">Set start and end balance</a>), this is a forecast.</td>
+	</tr>
+	<tr>
+		<td>Absolute Balance</td>
+		<td>The difference to your <a href="../settings/history.html#threshold">custom Profit/Loss threshold</a>.Unless the month 
+		    has not yet been closed (see <a href="#setbalances">Set start and end balance</a>), this is a forecast. </td>
+	</tr>
+	<tr>
+		<td>Planned Expenses</td>
+		<td>The total of all planned expenses.</td>
+	</tr>
+	<tr>
+		<td>Planned Income</td>
+		<td>The total of all planned income.</td>
+	</tr>
+	<tr>
+		<td>Planned Balance</td>
+		<td>The profit/loss calculation as planned in this month.</td>
+	</tr>
+	<tr>
+		<td>Actual Expenses</td>
+		<td>The total of all actual expenses (expenses that already occurred).</td>
+	</tr>
+	<tr>
+		<td>Actual Income</td>
+		<td>The total of all actual incoming transaction (income already booked).</td>
+	</tr>
+	<tr>
+		<td>Actual Balance</td>
+		<td>The profit/loss calculation using transactions already occurred.</td>
+	</tr>
+</table>
+<h3 id="plan">Transaction Table</h3>
+<p>The transaction table shows all planned and actual transactions. A turquoise background identifies budgets. White background
+identifies single transactions. The following table describes the values displayed in each column.</p>
+<table>
+	<tr>
+		<th>Column</th>
+		<th>Description</th>
+	<tr>
+	<tr>
+		<td>Date</td>
+		<td>The date this transaction was booked. The field is filled for actual transactions only.</td>
+	</tr>
+	<tr>
+		<td>Text</td>
+		<td>The transaction text.</td>
+	</tr>
+	<tr>
+		<td>Details</td>
+		<td>Details about the transaction, e.g. origin or receiver. (optional)</td>
+	</tr>
+	<tr>
+		<td>Budget</td>
+		<td>The budget this transaction belongs to and is accounted within. (optional)</td>
+	</tr>
+	<tr>
+		<td>Category</td>
+		<td>The category this transaction belongs to.</td>
+	</tr>
+	<tr>
+		<td>Planned</td>
+		<td>The planned amount.</td>
+	</tr>
+	<tr>
+		<td>Actual</td>
+		<td>The actual amount. The figure reflects the consumed amount when the row is a budget.</td>
+	</tr>
+</table>
 
 <h2 id="tasks">Tasks</h2>
-<h3 id="createplan">Create a plan</h3>
-<h3 id="createtx">Create a new transaction</h3>
-<h3 id="modifytx">Modify a transaction</h3>
-<h3 id="movetx">Move a transaction</h3>
-<h3 id="sorttx">Sort transactions</h3>
-<h3 id="transformtx">Convert transactions to budgets</h3>
-<h3 id="deletetx">Delete a transaction</h3>
-<h3 id="setbalances">Set start and end balance</h3>
+<h3 id="selectmonth">Select a month</h3>
+<p><em>RsBudget</em> opens the current month by default. You can select another month by navigating with the links
+on top of the Summary Section.</p>
+<ul>
+	<li>Click the name of the months in order to select the month of the same year.</li>
+	<li>Click <img src="../../images/go-first.png"/> to select the same month of the previous year.</li>
+	<li>Click <img src="../../images/go-previous.png"/> to select the previous month.</li>
+	<li>Click <img src="../../images/go-next.png"/> to select the next month.</li>
+	<li>Click <img src="../../images/go-last.png"/> to select the same month of the next year.</li>
+	 
+</ul>
 
+<h3 id="createplan">Create a plan</h3>
+<p>You'll need to create the plan for the month before you can start tracking. Click <img src="../../images/money--plus.png"/> at the
+view's toolbar. The plan will be created from the <a href="../generalPlanning/index.html">General Plan</a>.</p>
+
+<p>You can delete a plan by clicking on <img src="../../images/money--minus.png"/> at the view's toolbar.</p>
+
+<h3 id="createtx">Create a new transaction</h3>
+<p>Create a new transaction by</p>
+<ul>
+	<li>Right-click on the transaction table. Select "New Transaction" from the context menu.</li>
+	<li>Click the "New Transaction" button <img src="../../images/table-insert-row.png"/> directly above the transaction table.</li>
+	<li>Click the "New Transaction" button <img src="../../images/table-insert-row.png"/> from the view's toolbar.</li>
+	<li>Press the "Insert" key.</li>
+</ul>
+<p>All methods will create a new transaction at the end of the table and scroll to the new row in order to make it visible.
+The editing cursor is placed within the Text field so you can start typing.</p>
+
+<h3 id="modifytx">Modify a transaction</h3>
+<p>Double-click the value in the transaction table that you want to modify. Depending on the column, a text editor or combo box will
+appear so you can change the current value of the cell. Hit "Enter" when you made your change or click anywhere else on the screen.
+The new new value will be saved immediately.</p>
+<p>You can cancel editing by simply pressing "Esc" on your keyboard. This will revert the change you already made in the editor
+and bring back the old value.</p>
+
+<h3 id="movetx">Move a transaction</h3>
+<p>It is possible to change the order of transactions in the table. Right-click the row and select "Move Up" or "Move Down" from the
+context menu. The same action can be triggered by pressing Ctrl+Up or Ctrl+Down respectively.</p>
+
+<h3 id="sorttx">Sort transactions</h3>
+<p>All transactions can be sorted according to their actual transaction date by clicking the <img src="../../images/sort_ascend_16x16.png"/>
+button in the view's toolbar. Planned transactions will be added to the bottom of the table, keeping the previous order of these
+transactions. Budgets are always at the top of the table.</p>
+
+<h3 id="transformtx">Convert transactions to budgets</h3>
+<p>Transactions can be converted into budgets and vice versa. Right-click on a row and select "Convert to Budget" or
+"Convert to Transaction" respectively.</p>
+
+<h3 id="deletetx">Delete a transaction</h3>
+<p>Of course, you can delete transactions and budgets from the transaction table. If the transaction contains an actual amount then 
+this will be deleted and the row becomes a planned transaction only. If there is no actual amount (planned transaction) then
+the row will be finally deleted.</p>
+<ul>
+	<li>Right-click on the transaction table. Select "Delete" from the context menu.</li>
+	<li>Click the "Delete" button <img src="../../images/table-delete-row.png"/> directly above the transaction table.</li>
+	<li>Click the "Delete" button <img src="../../images/table-delete-row.png"/> from the view's toolbar.</li>
+	<li>Press the "Delete" key.</li>
+</ul>
+<p><em>RsBudget</em> will ask you for confirmation before actually deleting the row(s) selected.</p>
+
+<h3 id="setbalances">Set start and end balance</h3>
+<p>The Opening and Closing Balance of a month is kept separately. You need to define them when starting respectively finalizing the
+month. Click the <img src="../../images/book-brown.png"/> button from the the view's toolbar. A separate dialog will appear.</p>
+
+<p><img src="../../images/en/balances-dialog.png"/></p>
+
+<p>The specific options vary depending on your current plan and situation. The left side defines the Opening Balance, the right side of
+the dialog defines the Closing Balance. You can either select a balance proposed or manually enter a specific amount for each of them. Click
+"OK" when you finished your input, or abort with "Cancel".</p> 
 </body>
 </html>
