@@ -6,8 +6,44 @@
 <body>
 <a href="../index.html">User Guide</a> &gt; <a href="index.html">Views</a> &gt; 
 <h1>History</h1>
+<p>This view displays the historical records of balances. This includes all accounts and any
+<a href="../settings/history.html#additional">additional historical items</a> that you defined 
+in the <a href="../settings/index.html">settings dialog</a>.</p>
+
+<p><a href="../../images/en/views-history.png"><img class="screenshot" border="no" src="../../images/en/views-history.png" width="500"/></a></p>
+
 <h2 id="information">Data Description</h2>
-<h3 id="tasks">Tasks</h3>
+<p>The table contains a row for each month in history. The columns list the individual values recorded. Turquoise columns are
+calculated by <em>RsBudget</em> and cannot be edited.</p>
+<table>
+	<tr>
+		<th>Column</th>
+		<th>Description</th>
+	<tr>
+	<tr>
+		<td>Date</td>
+		<td>The date in history. Bold text marks the beginning of a new year.</td>
+	</tr>
+	<tr>
+		<td>Status</td>
+		<td>The recorded Opening Balance of the date.</td>
+	</tr>
+	<tr>
+		<td>Change</td>
+		<td>The difference of the value in comparison to the row above.</td>
+	</tr>
+	<tr>
+		<td>Car Total Miles<br/>(Example)</td>
+		<td>An additional value as defined by the <a href="../settings/history.html#additional">settings dialog</a>.</td>
+	</tr>
+</table>
+<p>The <a href="../settings/history.html#additional">Settings Dialog</a> defines whether the "Change" column is displayed for additional values.</p>
+
+<h2 id="tasks">Tasks</h2>
 <h3 id="modify">Modify historical data</h3>
+<p>Turquoise columns are calculated by <em>RsBudget</em> and cannot be edited. All other values can be edited by double-clicking the
+cell. An editor will appear allowing you to enter, modify or delete the value. Hit "Enter" to finish the input or press "Esc" to
+cancel editing.</p>
+
 </body>
 </html>
