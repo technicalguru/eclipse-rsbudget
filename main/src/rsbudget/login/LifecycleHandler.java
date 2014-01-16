@@ -120,14 +120,18 @@ public class LifecycleHandler {
 		} catch (BackingStoreException e) {
 			e.printStackTrace();
 		}
-		
+
 		if (CommonUtils.isMac()) {
-	        CocoaUIEnhancer enhancer = new CocoaUIEnhancer(Plugin.APPLICATION_NAME);
-	        CocoaE4Handler exitHandler = new CocoaE4Handler(ExitHandler.class, ctx);
-	        CocoaE4Handler aboutHandler = new CocoaE4Handler(AboutHandler.class, ctx);
-	        CocoaE4Handler settingsHandler = new CocoaE4Handler(PreferencesHandler.class, ctx);
-	        enhancer.hookApplicationMenu( display, exitHandler, aboutHandler, settingsHandler);
-	    }
+			try {
+				CocoaUIEnhancer enhancer = new CocoaUIEnhancer(Plugin.APPLICATION_NAME);
+				CocoaE4Handler exitHandler = new CocoaE4Handler(ExitHandler.class, ctx);
+				CocoaE4Handler aboutHandler = new CocoaE4Handler(AboutHandler.class, ctx);
+				CocoaE4Handler settingsHandler = new CocoaE4Handler(PreferencesHandler.class, ctx);
+				enhancer.hookApplicationMenu( display, exitHandler, aboutHandler, settingsHandler);
+			} catch (Throwable t) {
+				t.printStackTrace();
+			}
+		}
 	}
 
 	/**
