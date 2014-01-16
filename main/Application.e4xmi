@@ -74,8 +74,8 @@
                   <children xsi:type="menu:HandledMenuItem" xmi:id="_qVgkoCTbEeKnAs5osbhstQ" elementId="rs.rcpplugins.rsbudget.handledmenuitem.deletecategory" label="%e4xmi.part.categories.menuitem.deletecategory.label" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/table--minus.png" command="_bP49sCRJEeK1q7gtyHONTA"/>
                 </menus>
                 <toolbar xmi:id="_EBVMYCRJEeK1q7gtyHONTA" elementId="rs.rcpplugins.rsbudget.toolbar.categories">
-                  <children xsi:type="menu:HandledToolItem" xmi:id="_QtFtUCRJEeK1q7gtyHONTA" elementId="rs.rcpplugins.rsbudget.handledtoolitem.newcategory" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/table--plus.png" tooltip="%e4xmi.part.categories.toolitem.newcategory.tooltip" command="_JaykYCRJEeK1q7gtyHONTA"/>
-                  <children xsi:type="menu:HandledToolItem" xmi:id="_fuZwYCRJEeK1q7gtyHONTA" elementId="rs.rcpplugins.rsbudget.handledtoolitem.deletecategory" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/table--minus.png" tooltip="%e4xmi.part.categories.toolitem.deletecategory.tooltip" command="_bP49sCRJEeK1q7gtyHONTA"/>
+                  <children xsi:type="menu:HandledToolItem" xmi:id="_QtFtUCRJEeK1q7gtyHONTA" elementId="rs.rcpplugins.rsbudget.handledtoolitem.newcategory" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/table-insert-row.png" tooltip="%e4xmi.part.categories.toolitem.newcategory.tooltip" command="_JaykYCRJEeK1q7gtyHONTA"/>
+                  <children xsi:type="menu:HandledToolItem" xmi:id="_fuZwYCRJEeK1q7gtyHONTA" elementId="rs.rcpplugins.rsbudget.handledtoolitem.deletecategory" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/table-delete-row.png" tooltip="%e4xmi.part.categories.toolitem.deletecategory.tooltip" command="_bP49sCRJEeK1q7gtyHONTA"/>
                 </toolbar>
               </children>
             </children>
