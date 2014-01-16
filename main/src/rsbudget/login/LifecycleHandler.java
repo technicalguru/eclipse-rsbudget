@@ -30,14 +30,20 @@ import org.slf4j.LoggerFactory;
 import rs.baselib.prefs.IPreferences;
 import rs.baselib.prefs.IPreferencesService;
 import rs.baselib.prefs.PreferencesService;
+import rs.baselib.util.CommonUtils;
 import rs.e4.E4Utils;
 import rs.e4.splash.ISplashFormHandler;
 import rs.e4.splash.PasswordSplashHandler;
+import rs.e4.swt.action.CocoaE4Handler;
+import rs.e4.swt.action.CocoaUIEnhancer;
 import rs.e4.util.DataUtils;
 import rsbudget.Plugin;
 import rsbudget.data.RsBudgetModelService;
 import rsbudget.data.api.RsBudgetDaoFactory;
 import rsbudget.data.util.DbConfigLocator;
+import rsbudget.handlers.AboutHandler;
+import rsbudget.handlers.ExitHandler;
+import rsbudget.preferences.PreferencesHandler;
 import rsbudget.preferences.PreferencesUtils;
 import rsbudget.view.wizards.bootstrap.BootstrapWizard;
 import rsbudget.view.wizards.bootstrap.BootstrapWizardLanguage;
@@ -114,6 +120,14 @@ public class LifecycleHandler {
 		} catch (BackingStoreException e) {
 			e.printStackTrace();
 		}
+		
+		if (CommonUtils.isMac()) {
+	        CocoaUIEnhancer enhancer = new CocoaUIEnhancer(Plugin.APPLICATION_NAME);
+	        CocoaE4Handler exitHandler = new CocoaE4Handler(ExitHandler.class, ctx);
+	        CocoaE4Handler aboutHandler = new CocoaE4Handler(AboutHandler.class, ctx);
+	        CocoaE4Handler settingsHandler = new CocoaE4Handler(PreferencesHandler.class, ctx);
+	        enhancer.hookApplicationMenu( display, exitHandler, aboutHandler, settingsHandler);
+	    }
 	}
 
 	/**
