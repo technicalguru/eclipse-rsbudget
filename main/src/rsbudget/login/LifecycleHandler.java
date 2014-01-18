@@ -124,9 +124,9 @@ public class LifecycleHandler {
 		if (CommonUtils.isMac()) {
 			try {
 				CocoaUIEnhancer enhancer = new CocoaUIEnhancer(Plugin.APPLICATION_NAME);
-				CocoaE4Handler exitHandler = new CocoaE4Handler(ExitHandler.class, ctx);
-				CocoaE4Handler aboutHandler = new CocoaE4Handler(AboutHandler.class, ctx);
-				CocoaE4Handler settingsHandler = new CocoaE4Handler(PreferencesHandler.class, ctx);
+				CocoaE4Handler exitHandler = new CocoaE4Handler(ExitHandler.class, Plugin.translate("e4xmi.menuitem.exit.label"), ctx);
+				CocoaE4Handler aboutHandler = new CocoaE4Handler(AboutHandler.class, Plugin.translate("e4xmi.menu.help.about"), ctx);
+				CocoaE4Handler settingsHandler = new CocoaE4Handler(PreferencesHandler.class, Plugin.translate("e4xmi.menuitem.preferences.label"), ctx);
 				enhancer.hookApplicationMenu( display, exitHandler, aboutHandler, settingsHandler);
 			} catch (Throwable t) {
 				t.printStackTrace();
