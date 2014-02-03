@@ -61,7 +61,8 @@ public class BootstrapWizard extends Wizard {
 		page6 = new SummaryPage(page2, page4, page5);
 		addPage(page6);
 
-		((WizardDialog)getContainer()).addPageChangingListener(new IPageChangingListener() {
+		WizardDialog container = (WizardDialog)getContainer();
+		container.addPageChangingListener(new IPageChangingListener() {
 			@Override
 			public void handlePageChanging(PageChangingEvent event) {
 				if (compare(event.getCurrentPage(),event.getTargetPage()) < 0) { 
@@ -111,6 +112,7 @@ public class BootstrapWizard extends Wizard {
 		return false;
 	}
 
+	
 	protected class Finisher implements IRunnableWithProgress {
 
 		public boolean result = true;
@@ -118,7 +120,7 @@ public class BootstrapWizard extends Wizard {
 		@Override
 		public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 			int amount = getPages().length;
-			monitor.beginTask("Applying settings", amount);
+			monitor.beginTask(BootstrapWizardLanguage.get("finishing"), amount);
 			try {
 				for (IWizardPage page : getPages()) {
 					monitor.worked(1);
