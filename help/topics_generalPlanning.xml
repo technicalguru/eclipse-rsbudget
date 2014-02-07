@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <toc label="%toc.generalPlanning" topic="generalPlanning/index.html">
-	
+	<topic label="%toc.generalPlanning.createtx" href="generalPlanning/index.html#createtx"/>
+	<topic label="%toc.generalPlanning.changecycle" href="generalPlanning/index.html#changecycle"/>
+	<topic label="%toc.generalPlanning.assigncategory" href="generalPlanning/index.html#assigncategory"/>
+	<topic label="%toc.generalPlanning.createbudget" href="generalPlanning/index.html#createbudget"/>
+	<topic label="%toc.generalPlanning.assignbudget" href="generalPlanning/index.html#assignbudget"/>
+	<topic label="%toc.generalPlanning.order" href="generalPlanning/index.html#order"/>
+	<topic label="%toc.generalPlanning.deletetx" href="generalPlanning/index.html#deletetx"/>
 </toc>

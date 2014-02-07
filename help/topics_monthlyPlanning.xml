@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <toc label="%toc.monthlyPlanning" topic="monthlyPlanning/index.html">
-	
+	<topic label="%toc.monthlyPlanning.createplan" href="monthlyPlanning/index.html#createplan"/>
+	<topic label="%toc.monthlyPlanning.setopeningstatus" href="monthlyPlanning/index.html#setopeningstatus"/>
+	<topic label="%toc.monthlyPlanning.tracking" href="monthlyPlanning/index.html#tracking"/>
+	<topic label="%toc.monthlyPlanning.closing" href="monthlyPlanning/index.html#closing"/>
 </toc>
