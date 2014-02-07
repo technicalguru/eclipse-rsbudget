@@ -16,7 +16,7 @@ import rs.baselib.util.ILocaleDisplayProvider;
  */
 public enum PlannedPeriod implements ILocaleDisplayProvider {
 
-	WEEKLY(0, "weekly", "woechentlich"),
+	WEEKLY(0, "weekly", "w\u00f6chentlich"),
 	MONTHLY(0, "monthly", "monatlich"),
 	QUARTERLY(3, "quarterly", "viertelj\u00E4hrlich"),
 	HALF_YEARLY(6, "half-yearly", "halbj\u00E4hrlich"),

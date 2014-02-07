@@ -107,6 +107,7 @@ public class PeriodicalBudgetBO extends AbstractRsBudgetDbBO<PeriodicalBudgetDTO
 		PlannedPeriod oldValue = getPlannedPeriod();
 		getTransferObject().setPlannedPeriod(plannedPeriod);
 		if (getMonthSequenceNumber() > plannedPeriod.getMaxSequence()) setMonthSequenceNumber(plannedPeriod.getMaxSequence());
+		if ((getMonthSequenceNumber() == 0) && (plannedPeriod.getMaxSequence() > 0)) setMonthSequenceNumber(1);
 		firePropertyChange(PROPERTY_PLANNED_PERIOD, oldValue, plannedPeriod);
 	}
 

@@ -86,7 +86,12 @@ public class BudgetRowWrapper extends AbstractBean implements IWrapper {
 			case PeriodicalTransaction.PROPERTY_MONTH_SEQUENCE_NUMBER: propertyName = PROPERTY_SEQUENCE_NUMBER; break;
 			}
 		}
-		if (propertyName != null) firePropertyChange(propertyName, evt.getOldValue(), evt.getNewValue());
+		if (propertyName != null) {
+			firePropertyChange(propertyName, evt.getOldValue(), evt.getNewValue());
+			if (PROPERTY_PLANNED_PERIOD.equals(propertyName)) {
+				firePropertyChange(PROPERTY_SEQUENCE_NUMBER, "", getSequenceNumber()); 
+			}
+		}
 	}
 	
 	/**

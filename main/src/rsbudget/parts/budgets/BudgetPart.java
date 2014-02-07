@@ -517,6 +517,7 @@ public class BudgetPart {
 		budgets = Properties.selfList(BudgetRowWrapper.class).observe(l);
 		budgets.addChangeListener(changeListener);
 		bind(BudgetRowWrapper.PROPERTY_PLANNED_PERIOD);
+		bind(BudgetRowWrapper.PROPERTY_SEQUENCE_NUMBER);
 		bind(BudgetRowWrapper.PROPERTY_TX_BUDGET);
 		bind(BudgetRowWrapper.PROPERTY_AMOUNT);
 		
