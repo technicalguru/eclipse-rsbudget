@@ -16,6 +16,8 @@ import rsbudget.preferences.PreferencesUtils;
  */
 public class TableColumnResizeListener implements ControlListener {
 
+	public static final String KEY_CHANGED = "__columnsChanged__";
+	
 	private String table;
 	private String column;
 	

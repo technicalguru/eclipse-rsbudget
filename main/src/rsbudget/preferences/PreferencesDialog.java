@@ -73,6 +73,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import rs.baselib.lang.LangUtils;
+import rs.baselib.prefs.IPreferences;
 import rs.baselib.util.BeanComparator;
 import rs.e4.celledit.BeanEditingSupportModel;
 import rs.e4.celledit.CellEditorActivationStrategy;
@@ -118,6 +119,7 @@ import rsbudget.data.api.dao.HistoricalItemDAO;
 import rsbudget.data.api.dao.SettingDAO;
 import rsbudget.data.impl.bo.AccountBO;
 import rsbudget.util.DaoContentProvider;
+import rsbudget.util.TableColumnResizeListener;
 
 public class PreferencesDialog extends TitleAreaDialog {
 
@@ -202,7 +204,8 @@ public class PreferencesDialog extends TitleAreaDialog {
 	/** The list of history items currently displayed */
 	private IObservableList historyItems;
 	private List<HistoricalItem> initialHistoryItems;
-
+	private int initialActiveHistoryItems = 0;
+	
 	private RsBudgetPreferences preferences;
 	private DataBindingContext bindingContext;
 	private IWorkbench workbench;
@@ -771,6 +774,10 @@ public class PreferencesDialog extends TitleAreaDialog {
 				}
 			}
 			initialHistoryItems = new ArrayList<>(l);
+			initialActiveHistoryItems = 0;
+			for (HistoricalItem o : initialHistoryItems) {
+				if (o.isShowHistory()) initialActiveHistoryItems++;
+			}
 			Collections.sort(l);
 			historyItems = Properties.selfList(HistoricalItem.class).observe(l);
 			BeanProperties.value(HistoricalItem.class, HistoricalItem.PROPERTY_SHOW_HISTORY).observeDetail(historyItems);
@@ -1209,12 +1216,14 @@ public class PreferencesDialog extends TitleAreaDialog {
 				}
 			}
 			HistoricalItemDAO dao3 = factory.getHistoricalItemDAO();
+			int histActive = 0;
 			for (Object o : historyItems) {
 				HistoricalItem b = (HistoricalItem)o;
 				if (b.isChanged()) {
 					if (b.isNew()) dao3.create(b);
 					dao3.saveObject(b);
 				}
+				if (b.isShowHistory()) histActive++;
 			}
 			for (HistoricalItem o : initialHistoryItems) {
 				if (!historyItems.contains(o)) {
@@ -1225,6 +1234,14 @@ public class PreferencesDialog extends TitleAreaDialog {
 
 			setProfitLossThreshold(getAbsoluteLimit());
 			factory.commit();
+			if (histActive > initialActiveHistoryItems) {
+				// Delete the width preference to give space for new columns
+				IPreferences prefs = PreferencesUtils.getPreferences(false, "tables", "history");
+				if (prefs != null) {
+					prefs.putBoolean(TableColumnResizeListener.KEY_CHANGED, true);
+					prefs.parent().flush();
+				}
+			}
 		} catch (Throwable t) {
 			log.error("Cannot save preferences", t);
 			try {

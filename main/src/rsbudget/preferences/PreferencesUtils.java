@@ -23,6 +23,7 @@ import rs.baselib.prefs.IPreferences;
 import rs.baselib.util.CommonUtils;
 import rsbudget.Plugin;
 import rsbudget.util.RsBudgetColors;
+import rsbudget.util.TableColumnResizeListener;
 
 /**
  * Gets and sets some preferences.
@@ -210,6 +211,20 @@ public class PreferencesUtils {
 	 * @return the proxy preferences
 	 */
 	public static IPreferences getTableColumnPreferences(String table, String column, boolean create) {
+		if (!create) {
+			IPreferences tablesPrefs = getPreferences(false, "tables");
+			if (tablesPrefs != null) {
+				IPreferences tablePrefs = getPreferences(false, "tables", table);
+				if ((tablePrefs != null) && tablePrefs.getBoolean(TableColumnResizeListener.KEY_CHANGED, false)) {
+					try {
+						tablePrefs.removeNode();
+						tablesPrefs.flush();
+					} catch (BackingStoreException e) {
+						LoggerFactory.getLogger(PreferencesUtils.class).error("Cannot remove node tables/"+table, e);
+					}
+				}
+			}
+		}
 		return getPreferences(create, "tables", table, column);
 	}
 
@@ -221,7 +236,7 @@ public class PreferencesUtils {
 	public static IPreferences getPreferences(String... keys) {
 		return getPreferences(true, keys);
 	}
-	
+
 	/**
 	 * Returns the node with given path
 	 * @param create whether to create the node or return null instead
@@ -526,7 +541,7 @@ public class PreferencesUtils {
 		IPreferences colPrefs = getTableColumnPreferences(table, column, true);
 		colPrefs.putInt("width", width);
 	}
-	
+
 	/**
 	 * Flushes the preferences.
 	 * @throws BackingStoreException
