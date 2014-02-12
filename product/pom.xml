@@ -48,7 +48,7 @@
 					<products>
 						<product>
 							<id>rsbudget</id>
-							<rootFolder>rsbudget-${project.version}</rootFolder>
+							<rootFolder>rsbudget-${product-root-folder}</rootFolder>
 						</product>
 					</products>
 				</configuration>

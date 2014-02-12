@@ -9,6 +9,7 @@
 	
 	<properties>
 		<maven.deploy.skip>true</maven.deploy.skip>
+		<product-root-folder>2.0.0</product-root-folder>
 	</properties>
 
 	<artifactId>rs.rcpplugins.rsbudget</artifactId>
