@@ -98,6 +98,7 @@ public class BootstrapWizardLanguage {
 			"error.message", "An error occurred. Please re-start the application and try again!\n{0}",
 			"label.on", "Yes",
 			"label.off", "No",
+			"not-applicable", "N/A",
 			"finishing", "Applying settings",
 		},
 		// German
@@ -164,6 +165,7 @@ public class BootstrapWizardLanguage {
 			"error.message", "Es ist ein Fehler aufgetreten. Bitte schlie\u00dfen Sie die Anwendung und starten Sie erneut!\n{0}",
 			"label.on", "Ja",
 			"label.off", "Nein",
+			"not-applicable", "N/A",
 			"finishing", "Konfiguration speichern",
 		}
 	};

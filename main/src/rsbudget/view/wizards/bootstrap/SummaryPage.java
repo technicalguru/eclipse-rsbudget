@@ -7,6 +7,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 
+import rs.baselib.sql.IJdbcConnectionProvider2;
 import rs.baselib.util.IDisplayProvider;
 import rsbudget.data.api.bo.Account;
 import rsbudget.data.api.bo.Bank;
@@ -23,6 +24,10 @@ public class SummaryPage extends AbstractWizardPage {
 	private AccountPage accountPage;
 	private CategoryPage categoryPage;
 	private Label lblDbType;
+	private Label lblDbHost;
+	private Label lblDbName;
+	private Label lblDbUser;
+	private Label lblDbPasswd;
 	private Label lblEncryption;
 	private Label lblAccountName;
 	private Label lblAccountOwner;
@@ -72,6 +77,34 @@ public class SummaryPage extends AbstractWizardPage {
 
 		lblDbType = new Label(sctnDbType, SWT.NONE);
 		lblDbType.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+		
+		lblName_0 = new Label(sctnDbType, SWT.NONE);
+		lblName_0.setText(BootstrapWizardLanguage.get("dbsetup.host"));
+		lblName_0.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+
+		lblDbHost = new Label(sctnDbType, SWT.NONE);
+		lblDbHost.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+		
+		lblName_0 = new Label(sctnDbType, SWT.NONE);
+		lblName_0.setText(BootstrapWizardLanguage.get("dbsetup.dbname"));
+		lblName_0.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+
+		lblDbName = new Label(sctnDbType, SWT.NONE);
+		lblDbName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+		
+		lblName_0 = new Label(sctnDbType, SWT.NONE);
+		lblName_0.setText(BootstrapWizardLanguage.get("dbsetup.user"));
+		lblName_0.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+
+		lblDbUser = new Label(sctnDbType, SWT.NONE);
+		lblDbUser.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
+		
+		lblName_0 = new Label(sctnDbType, SWT.NONE);
+		lblName_0.setText(BootstrapWizardLanguage.get("dbsetup.passwd"));
+		lblName_0.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+
+		lblDbPasswd = new Label(sctnDbType, SWT.NONE);
+		lblDbPasswd.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 3, 1));
 		
 		lblName_0 = new Label(sctnDbType, SWT.NONE);
 		lblName_0.setText(BootstrapWizardLanguage.get("dbsetup.encryption-label")+":");
@@ -164,8 +197,31 @@ public class SummaryPage extends AbstractWizardPage {
 	}
 	
 	public void updateLabels() {
-		IDisplayProvider dbProvider = (IDisplayProvider)dbSetupPage.getDbProvider();
-		lblDbType.setText(dbProvider.getDisplay());
+		IJdbcConnectionProvider2 dbProvider = dbSetupPage.getDbProvider();
+		lblDbType.setText(((IDisplayProvider)dbProvider).getDisplay());
+		if (dbProvider.isHostEnabled()) {
+			lblDbHost.setText(dbProvider.getHost(dbSetupPage.getHost())+":"+dbProvider.getPort(dbSetupPage.getPort()));
+		} else {
+			lblDbHost.setText(BootstrapWizardLanguage.get("not-applicable"));
+		}
+		if (dbProvider.isDbNameEnabled()) {
+			lblDbName.setText(dbProvider.getDbName(dbSetupPage.getDbName()));
+		} else {
+			lblDbName.setText(BootstrapWizardLanguage.get("not-applicable"));
+		}
+		if (dbProvider.isDbLoginEnabled()) {
+			lblDbUser.setText(dbProvider.getDbLogin(dbSetupPage.getUser()));
+		} else {
+			lblDbUser.setText(BootstrapWizardLanguage.get("not-applicable"));
+		}
+		if (dbProvider.isDbPasswordEnabled()) {
+			int num = dbProvider.getDbPassword(dbSetupPage.getPassword()).length();
+			String s = "";
+			for (int i=0; i<num; i++) s += "*";
+			lblDbPasswd.setText(s);
+		} else {
+			lblDbPasswd.setText(BootstrapWizardLanguage.get("not-applicable"));
+		}
 		lblEncryption.setText(BootstrapWizardLanguage.get(dbSetupPage.isEncryption() ? "label.on" : "label.off"));
 		
 		Bank bank = accountPage.getBank();
