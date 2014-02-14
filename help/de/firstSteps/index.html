@@ -1,0 +1,117 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../style/style.css">
+<title>Erste Schritte</title>
+</head>
+<body>
+<a href="../index.html">Benutzerhandbuch</a> &gt;
+<h1>Erste Schritte</h1>
+
+<h2 id="ui">Die Benutzeroberfl&auml;che</h2>
+<p><em>RsBudget</em> basiert auf Eclipse RCP, das schon viele benutzerfreundliche Features mitbringt. Das Haupt-Fenster
+ist in zwei Bereiche aufgeteilt. Der Hauptbereich enth&auml;lt die <a href="../views/general-planning.html">Allgemeine Planung</a> 
+und die <a href="../views/monthly-planning.html">Monatliche Ausgabenkontrolle</a>. Au&szlig;erdem finden Sie hier die 
+<a href="../views/statistics.html">historischen und statistischen Werte</a> Ihrer Finanzaktivit&auml;ten. 
+Alle drei Features sind in einem "Tab-Panel" zusammengefasst. Selektieren Sie ein "Tab", indem Sie auf den entsprechenden
+Titel klicken.</p>
+<p>Auf der rechten Seite finden Sie zus&auml;tzliche Ansichten, wie die f&uuml;r die <a href="../views/categories.html">Kategorien</a>,  
+die <a href="../views/details.html">Detailsansicht</a> und eine spezielle Maske zur Erfassung von 
+<a href="../views/remarks.html">Notizen</a> f&uuml;r den jeweiligen Monat. Die Gr&ouml;&szlig;e dieser Ansichten kann durch
+einfaches "Ziehen" der R&auml;nder ver&auml;ndert werden. Klicken Sie dazu mit der Maus auf den Rand, halten Sie die Maustaste
+gedr&uuml;ckt und bewegen Sie die Maus dann in die entsprechende Richtung. Sobald Sie die gew&uuml;nschte Position erreicht
+haben, lassen Sie die Maustaste wieder los. <em>RsBudget</em> speichert Ihre &Auml;nderung ab und positioniert die Ansichten
+entsprechend Ihren W&uuml;nschen auch beim n&auml;chsten Start.</p>
+<p>Ein weiteres, n&uuml;tzliches Features ist das Ver&auml;ndern der Anordnung der Ansichten. So k&ouml;nnen Sie zum Beispiel die
+Detailansicht in der rechten, unteren Ecke platzieren. Klicken Sie dazu auf den Titel der Detailansicht und halten Sie die
+Maustaste gedr&uuml;ckt. Ziehen Sie nun die Ansicht an die neue Position. Farbige Linien helfen Ihnen dabei, vorherzusehen,
+wo die Ansicht bei Loslassen der Maustaste landen w&uuml;rde. Auf diese Weise k&ouml;nnen Sie Ansichten sogar vom Hauptfenster
+"abkoppeln". Ziehen Sie dazu die Ansicht einfach außerhalb des Hauptfensters, z.B. auf einen zweiten Bildschirm.</p>
+<p>Alle &Auml;nderungen k&ouml;nnen zur&uuml;ckgesetzt werden, in dem Sie im <a href="../settings/index.html">Einstellungs-Dialog</a> 
+den Haken bei "Window-Layout beim n&auml;chsten Start zur&uuml;cksetzen" machen. <em>RsBudget</em> wird dann bei erneutem
+Start Ihre &Auml;nderungen l&ouml;schen.</p>
+<p>Jedes "Tab" besitzt eine Werkzeugleiste (Toolbar), die rechts vom Titel angezeigt wird, wenn Sie den "Tab" selektiert haben.
+Diese Toolbar stellt Schaltfl&auml;chen zum Ausl&ouml;sen diverser Aktionen bereit, zum Beispiel zum Einf&uuml;gen oder L&ouml;schen
+von Tabellenzeilen, dem Sortieren von Tabellen oder andere sinnvolle Aktionen. Eine Schaltfl&auml;che ist grau dargestellt, wenn
+die entsprechende Aktion derzeit nicht ausgel&ouml;st werden kann. So ist zum Beispiel die Schaltfl&auml;che für das L&ouml;schen
+von Tabellenzeilen deaktiviert, wenn keine Zeile zum L&ouml;schen ausgew&auml;hlt wurde.</p>
+<p>Das Hauptfenster besitzt au&szlig;erdem ein Hauptmen&uuml; und eine globale Werkzeugleiste. Dort sind die wichtigsten Aktionen
+f&uuml;r Sie hinterlegt. Hier k&ouml;nnen Sie <em>RsBudget</em> beenden oder den <a href="../settings/index.html">Einstellungs-Dialog</a>
+&ouml;ffnen. Das Hilfe-Men&uuml; stellt Dokumentation und Hilfe-Texte bereit.</p>
+
+<h2 id="start">So geht's los</h2>
+
+<h3 id="step1">Schritt 1 - Kategorien anlegen</h3>
+<p>Sie sollten zun&auml;chst mit dem Anlegen von <a href="../views/categories.html">Kategorien</a> beginnen. Sie finden die Ansicht
+rechts oben im Hauptfenster. Zu Anfang enth&auml;lt die Liste nur eine einzelne Kategorie. Diese haben Sie angelegt, als Sie 
+<em>RsBudget</em> konfiguriert haben. Kategorien gruppieren Ihre Transaktionen in verschiedene Bereiche und dienen daher
+zur logischen Zusammenfassung von Transaktionen. Typische Kategorien sind zum Beispiel "Lebensmittel", "Energiekosten" oder 
+"Versicherungen". In der <a href="../views/statistics.html">Statistik-Ansicht</a> k&ouml;nnen Sie sp&auml;ter diese
+Kategorien anzeigen lassen, um Summen oder Trends &uuml;ber eine Zeitspanne anzuzeigen.</p>
+<p>Es ist nicht zwingend, viele Kategorien anzulegen. Sie k&ouml;nnen diese auch sp&auml;ter ver&auml;ndern. Allerdings erh&ouml;ht
+sich Ihr Aufwand f&uuml;r die Zuordnung von neuen Kategorien, je mehr Transaktionen bereits erfasst worden sind. Legen Sie daher
+zumindest ein f&uuml;r Sie sinnvolles Minimal-Set an Kategorien an.</p>
+<p>Selektieren Sie die <a href="../views/categories.html">Kategorien-Ansicht</a> und dr&uuml;cken Sie entweder die <code>Einf&uuml;gen</code>-Taste
+oder klicken Sie auf die Schaltfl&auml;che <img src="../../images/table-insert-row.png"/>. Am Ende der Tabelle wird eine neue Zeile erscheinen,
+der Cursor ist bereits zur Eingabe eines neuen Namens positioniert. Geben Sie den neuen Titel ein und dr&uuml;cken Sie die <code>Enter</code>-Taste.</p>
+<p>Eine Kategorie ist als "Standard" markiert. Alle Transaktionen, die keiner anderen Transaktionen zugeordnet sind, werden automatisch dieser
+Kategorie zugewiesen.</p>
+<p>Eine "Regel-Maschine" erleichtert Ihnen sp&auml;ter die Zuweisung von Kategorien. Weitere Informationen finden Sie 
+<a href="../settings/rules.html#categories">hier</a>.</p>
+
+<h3 id="step2">Schritt 2 - Den Allgemeinen Plan anlegen</h3>
+<p>Sie ben&ouml;tigen eine allgemeine Budgetplanung, die beschreibt, wie die einzelnen Monate Ihrer Finanzplanung aussehen werden. Selektieren Sie 
+dazu die <a href="../views/general-planning.html">Allgemeine Planung</a> und f&uuml;gen Sie eine neue Transaktion ein. Dies geschieht auf dieselbe
+Weise, wie Sie es schon f&uuml;r Kategorien getan haben. Dr&uuml;cken Sie die <code>Einf&uuml;gen</code>-Taste oder klicken Sie auf die
+Schaltfl&auml;che <img src="../../images/table-insert-row.png"/>.</p>
+<p>Der Allgemeine Plan ist eine Art Muster. Er stellt noch keine realen Transaktionen dar und dient so lediglich zur Planung Ihrer Finanzen.
+Erzeugen Sie Transaktionen f&uuml;r die monatliche Miete, Versicherungsbeitr&auml;ge, Gehaltszahlungen und was immer Sie an regelm&auml;&szlig;igen
+Zahlungen vorhersehen k&ouml;nnen.</p>
+<p>Nicht alle Transaktionen werden monatlich ausgef&uuml;hrt. Einige von ihnen werden nur alle zwei, drei oder sogar zw&ouml;lf Monate
+auftreten. Die Spalten Zyklus und Sequenz steuern dieses Verhalten.</p>
+<p>Schlie&szlig;lich wandeln Sie einzelne Transaktionen noch in <em>Budgets</em> um. Budgets sind virtuelle Brieftaschen, aus denen
+Sie bestimmte, konkrete Zahlungen t&auml;tigen wollen, z.B. "Benzin".</p>
+
+<h3 id="step3">Schritt 3 - Einen Monatsplan anlegen</h3>
+<p>Der Allgemeine Plan ist die Vorlage, um konkrete Monatspl&auml;ne erzeugen zu k&ouml;nnen. Selektieren Sie die 
+<a href="../views/monthly-planning.html">Monatsplanung</a> und navigieren Sie zum jeweiligen Monat (der aktuelle Monat ist bereits voreingestellt).
+Klicken Sie die Schaltfl&auml;che <img src="../../images/money--plus.png"/>. Dies wird den Monatsplan anhand der Vorlage des Allgemeinen
+Plans erzeugen.</p>
+<p>Der Monatsplan enth&auml;lt alle realen Transaktionen, die in dem jeweiligen Monat auftreten werden. Die Soll-Spalte enth&auml;lt den Wert, 
+den Sie zuvor im Allgemeinen Plan festgelegt haben. Eine weitere Spalte (Ist) wird den jeweils wirklichen Betrag enthalten, der
+transferiert wurde. Die erste Spalte (Datum) enth&auml;lt dann das Wertstellungsdatum.</p>
+<p>Sie k&ouml;nnen Transaktionen oder Budgets nach Belieben hinzuf&uuml;gen, ver&auml;ndern oder l&ouml;schen, wie Sie es auch schon zuvor in der
+Allgemeinen Planung getan haben.</p>
+
+<h3 id="step4">Schritt 4 - Einnahmen und Ausgaben kontrollieren</h3>
+<p>Um eine reale Transaktion einzugeben, suchen Sie die entsprechende Zeile und doppelklicken Sie auf das leere "Ist"-Feld.
+Geben Sie den tats&auml;chlichen Wert ein. Ausgaben m&uuml;ssen mit einem vorangestellten Minus ("-") gekennzeichnet werden, Einnahmen 
+sind durch positive Werte bestimmt. Dr&uuml;cken Sie die <code>Enter</code>-Taste, um die Eingabe abzuschlie&szlig;en. <em>RsBudget</em> 
+setzt das Transaktionsdatum dann automatisch auf den aktuellen Tag.</p>
+<p>Alternativ k&ouml;nnen Sie auch auf das leere "Datum"-Feld der entsprechenden Zeile doppelklicken und das Datum entsprechend ausw&auml;hlen.
+<em>RsBudget</em> setzt den Ist-Wert dann automatisch auf den eingetragenen Soll-Wert. Doch ganz gleich, welche Methode Sie benutzen,
+Sie k&ouml;nnen alle Werte jederzeit durch Doppelklick auf das jeweilige Feld ver&auml;ndern.</p>
+<p>Falls Sie eine ungeplante Transaktion eingeben m&uuml;ssen, f&uuml;gen Sie einfach eine neue Zeile durch Dr&uuml;cken der
+<code>Einf&uuml;gen</code>-Taste oder durch Klick auf die Schaltfl&auml;che <img src="../../images/table-insert-row.png"/> hinzu. 
+Obsolete bzw. &uuml;berfl&uuml;ssige Transaktionen k&ouml;nnen durch Selektieren und Dr&uuml;cken der <code>Entfernen</code>Taste bzw.
+Klicken auf die Schaltfl&auml;che <img src="../../images/table-delete-row.png"/> entfernt werden. Auf dieselbe Weise k&ouml;nnen Sie
+&uuml;brigens auch eine reale Transaktion wieder entfernen, so dass nur die geplante Transaktion stehen bleibt.</p>
+<p>Alle &Auml;nderungen, die Sie vornehmen, werden sofort in der Datenbank gespeichert. Daher ist es nicht erforderlich, explizit
+alles abzuspeichern. Ebenso werden die Statistik-Werte &uuml;ber der Tabelle automatisch angepasst, wenn Sie &Auml;nderungen 
+vorgenommen haben. Diese Statistikwerte geben Auskunft &uuml;ber Soll- und Ist-Werte und prognostizieren die Gewinn-/Verlustrechnung
+f&uuml;r den laufenden Monat.</p>
+
+<h3 id="step5">Schritt 5 - Die Statistik f&uuml;ttern</h3>
+<p>Nach Abschluss des Monats m&uuml;ssen Sie noch die Statistik des Systems "f&uuml;ttern", indem Sie die Salden zu Beginn und Ende des
+jeweiligen Monats festhalten.Klicken Sie auf die Schaltfl&auml;che <img src="../../images/wallet.png"/> und geben Sie Ihre Werte
+entsprechend ein. Der Dialog schl&auml;gt Ihnen einige sinnvolle Werte vor, so dass Sie die Eingabe leichter vornehmen k&ouml;nnen.</p>
+
+<h2 id="next">Wie es weitergeht</h2>
+<p>Sie wissen nun bereits, wie Sie die Allgemeine Planung vornehmen und Ihre monatlichen Transaktionen nachverfolgen. Hier sind einige
+weitere Hilfetexte, die Ihnen helfen werden, die angesprochenen Features effizienter zu nutzen:</p>
+<ul>
+	<li><a href="../generalPlanning/index.html">Allgemeine Planung</a></li>
+	<li><a href="../monthlyPlanning/index.html">Ausgaben kontrollieren</a></li>
+	<li><a href="../settings/index.html">Einstellungen</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../style/style.css">
+<title>Views</title>
+</head>
+<body>
+<a href="../index.html">User Guide</a> &gt; <a href="index.html">Views</a> &gt; 
+<h1>Categories</h1>
+<p>This view provides the managent of transaction categories.</p>
+<p><a href="../../images/de/views-categories.png"><img class="screenshot" border="no" src="../../images/de/views-categories.png"/></a></p>
+
+<h2 id="information">Data Description</h2>
+<p>The view consists of a single table</p>
+<table>
+	<tr>
+		<th>Column</th>
+		<th>Description</th>
+	<tr>
+	<tr>
+		<td>Default</td>
+		<td>Whether the category is the default category for transactions. Only one category can have the flag set.</td>
+	</tr>
+	<tr>
+		<td>Name</td>
+		<td>Name of category</td>
+	</tr>
+</table>
+
+<h2 id="tasks">Tasks</h2>
+<h3 id="create">Create a new category</h3>
+<p>Create a new category by</p>
+<ul>
+	<li>Right-click on the categories table. Select "New Category" from the context menu.</li>
+	<li>Click the "New Category" button <img src="../../images/table-insert-row.png"/> from the view's toolbar.</li>
+	<li>Press the "Insert" key.</li>
+</ul>
+<p>All methods will create a new category at the end of the table and scroll to the new row in order to make it visible.
+The editing cursor is placed within the Name field so you can start typing.</p>
+
+<h3 id="modify">Modify a category</h3>
+<p>Double-click the value in the table that you want to modify. Depending on the column, the checkbox will be ticked or a text editor will
+appear so you can change the current value of the cell. Hit "Enter" when you made your change or click anywhere else on the screen.
+The new new value will be saved immediately.</p>
+<p>You can cancel editing by simply pressing "Esc" on your keyboard. This will revert the change you already made in the editor
+and bring back the old value.</p>
+
+<h3 id="delete">Delete a catgeory</h3>
+<p>Of course, you can delete categories from the table:</p>
+<ul>
+	<li>Right-click on the table. Select "Delete" from the context menu.</li>
+	<li>Click the "Delete" button <img src="../../images/table-delete-row.png"/> from the view's toolbar.</li>
+	<li>Press the "Delete" key.</li>
+</ul>
+<p><em>RsBudget</em> will ask you for confirmation before actually deleting the row(s) selected. The row will be made invisible only
+when there are transactions assigned to the category.</p>
+</body>
+</html>

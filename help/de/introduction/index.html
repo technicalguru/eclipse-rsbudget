@@ -1,0 +1,200 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../style/style.css">
+<title>Introduction</title>
+</head>
+<body>
+<a href="../index.html">User Guide</a> &gt;
+<h1>Introduction</h1>
+<p><em>RsBudget</em> was designed and implemented to support controlling your private financial records. Its main purpose
+is to let you gain and keep control over your financial health. This chapter explains basic principles and terms so you
+can use the software efficiently.</p>
+<h2>The General Planning</h2>
+<p>The foundation of controlling is the plan. That's why <em>RsBudget</em> introduces a <em>General Plan</em>. This plan
+states what recurring transactions you expect and when they will occur. This General Plan can be easily deducted from
+your bank's monthly account statements. So here is an example of how such a General Plan could look like:</p>
+<table>
+	<tr>
+		<th>Transaction Text</th>
+		<th>Recurrence</th>
+		<th>Amount</th>
+	</tr>
+	<tr>
+		<td>Salary</td>
+		<td>monthly</td>
+		<td style="text-align: right;">1,500.00 EUR</td>
+	</tr> 
+	<tr>
+		<td>Rent</td>
+		<td>monthly</td>
+		<td style="text-align: right; color: red;">-700.00 EUR</td>
+	</tr> 
+	<tr>
+		<td>Health Insurance</td>
+		<td>monthly</td>
+		<td style="text-align: right; color: red;">-100.00 EUR</td>
+	</tr> 
+	<tr>
+		<td>Fuel</td>
+		<td>monthly</td>
+		<td style="text-align: right; color: red;">approx. -100.00 EUR</td>
+	</tr>
+	<tr>
+		<td>Food</td>
+		<td>monthly</td>
+		<td style="text-align: right; color: red;">approx. -200.00 EUR</td>
+	</tr>
+	<tr>
+		<td>Car Insurance</td>
+		<td>yearly<br/>(January)</td>
+		<td style="text-align: right; color: red;">-250.00 EUR</td>
+	</tr>
+	<tr class="summary">
+		<td>Period Balance</td>
+		<td>monthly</td>
+		<td style="text-align: right;">400.00 EUR</td>
+	</tr>
+	<tr class="summary">
+		<td>Period Balance</td>
+		<td>yearly</td>
+		<td style="text-align: right;">4.550.00 EUR</td>
+	</tr>
+	<tr class="summary">
+		<td>Average Balance</td>
+		<td>monthly</td>
+		<td style="text-align: right;">379.17 EUR</td>
+	</tr>
+</table>
+<p>The example plan above consists of six different items. The first three, "Salary" 
+and "Rent" and "Health Insurance", are single transactions that occur each month. The last 
+one, "Car Insurance" is a single transaction that occurs every year in January. All 
+four's primary characteristic is that there will be only one such transaction in the given period.</p>
+<p>"Fuel" and "Food" are different. They can occur multiple times in a given period. That's
+why they are called <em>Budgets</em>. Each individual transaction belonging to a Budget adds
+up to it.</p>
+<p>Finally, the General Plan forms the foundation of a Profit/Loss planning. The General Plan
+tells you whether your expenses in a period are funded by respective income. <em>RsBudget</em>
+will calculate the figures "Monthly Balance, "Yearly Balance" and "Average Balance" automatically.
+Those figures tell you your overall financial health.</p>
+
+<h2>Monthly Planning</h2>
+<p>Once you have created your General Plan, it is time to track your expenses. <em>RsBudget</em> organizes
+your expenses into individual months. Each month, e.g. December 2013, will have assigned a specific plan. 
+This <em>Monthly Plan</em> will be created out of the General Plan. The General Plan created earlier
+would result in this Monthly Plan:</p>
+<table>
+	<tr>
+		<th>Transaction Text</th>
+		<th>Type</th>
+		<th>Planned Amount</th>
+		<th>Actual Amount</th>
+	</tr>
+	<tr class="summary">
+		<td>Opening Balance</td>
+		<td></td>
+		<td style="text-align: right;">0.00 EUR</td>
+		<td style="text-align: right;">0.00 EUR</td>
+	</tr> 
+	<tr>
+		<td>Salary</td>
+		<td>Transaction</td>
+		<td style="text-align: right;">1,500.00 EUR</td>
+		<td style="text-align: right;"></td>
+	</tr> 
+	<tr>
+		<td>Rent</td>
+		<td>Transaction</td>
+		<td style="text-align: right; color: red;">-700.00 EUR</td>
+		<td style="text-align: right;"></td>
+	</tr> 
+	<tr>
+		<td>Health Insurance</td>
+		<td>Transaction</td>
+		<td style="text-align: right; color: red;">-100.00 EUR</td>
+		<td style="text-align: right;"></td>
+	</tr> 
+	<tr>
+		<td>Fuel</td>
+		<td>Budget</td>
+		<td style="text-align: right; color: red;">-100.00 EUR</td>
+		<td style="text-align: right;"></td>
+	</tr>
+	<tr>
+		<td>Food</td>
+		<td>Budget</td>
+		<td style="text-align: right; color: red;">-200.00 EUR</td>
+		<td style="text-align: right;"></td>
+	</tr>
+	<tr class="summary">
+		<td>Closing Balance</td>
+		<td></td>
+		<td style="text-align: right;">400.00 EUR</td>
+		<td style="text-align: right;">0.00 EUR</td>
+	</tr> 
+</table>
+<p>The "Car Insurance" is not listed here as it occurs each year in January only.</p>
+<p>Based on this plan, <em>RsBudget</em> now tracks your transactions and projects
+where your account balance will be (Column "Planned Amount"). The projection will
+be updated when you add actual transactions:</p>
+<table>
+	<tr>
+		<th>Transaction Text</th>
+		<th>Type</th>
+		<th>Planned Amount</th>
+		<th>Actual Amount</th>
+	</tr>
+	<tr class="summary">
+		<td>Opening Balance</td>
+		<td></td>
+		<td style="text-align: right;">0.00 EUR</td>
+		<td style="text-align: right;">0.00 EUR</td>
+	</tr> 
+	<tr>
+		<td>Salary</td>
+		<td>Transaction</td>
+		<td style="text-align: right;">1,500.00 EUR</td>
+		<td style="text-align: right;"></td>
+	</tr> 
+	<tr>
+		<td>Rent</td>
+		<td>Transaction</td>
+		<td style="text-align: right; color: red;">-700.00 EUR</td>
+		<td style="text-align: right; color: red;">-600,00 EUR</td>
+	</tr> 
+	<tr>
+		<td>Health Insurance</td>
+		<td>Transaction</td>
+		<td style="text-align: right; color: red;">-100.00 EUR</td>
+		<td style="text-align: right;"></td>
+	</tr> 
+	<tr>
+		<td>Fuel</td>
+		<td>Budget</td>
+		<td style="text-align: right; color: red;">-100.00 EUR</td>
+		<td style="text-align: right; color: red;">-50.00 EUR</td>
+	</tr>
+	<tr>
+		<td>Food</td>
+		<td>Budget</td>
+		<td style="text-align: right; color: red;">-200.00 EUR</td>
+		<td style="text-align: right; color: red;">-30.00 EUR</td>
+	</tr>
+	<tr class="summary">
+		<td>Closing Balance</td>
+		<td></td>
+		<td style="text-align: right;">500.00 EUR</td>
+		<td style="text-align: right; color: red;">-680.00 EUR</td>
+	</tr> 
+</table>
+<p>The situation above already had "Rent" and some "Fuel" and "Food" expenses happened. The
+actual balance of the month is -680.00 EUR because this reflects the total of this expenses.</p>
+<p>The "Planned Closing Balance" now states 500.00 EUR. This figures calculates because
+the "Rent" did not occur with -700.00 EUR as planned but with -600.00 EUR. As <em>RsBudget</em>
+assumes this to be a single expense in this period, it adds the difference to the projection.</p>
+<p>Likewise, "Food" and "Fuel" occurred with -80.00 EUR. But as they are Budgets, it is assumed
+that more of such transactions will occur. The difference will not be added to the projection
+until the month is closed.</p>
+
+
+</body>
+</html>

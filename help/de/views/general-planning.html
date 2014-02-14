@@ -1,0 +1,141 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../style/style.css">
+<title>Views</title>
+</head>
+<body>
+<a href="../index.html">User Guide</a> &gt; <a href="index.html">Views</a> &gt; 
+<h1>General Planning</h1>
+This view enables the General Budget Planning.
+<p><a href="../../images/de/views-general.png"><img class="screenshot" border="no" src="../../images/de/views-general.png" width="500"/></a></p>
+
+<h2 id="information">Data Description</h2>
+<p>The view is divided into two separate sections. The upper part is the <em>Summary Section</em>. It shows basic figures of your
+General Budget Planning. The lower part shows the transactions planned for individual periods.</p>
+
+<h3 id="summary">Summary Section</h3>
+<p>The section summarizes the plan so you can see your financial health.</p>
+<table>
+	<tr>
+		<th>Field</th>
+		<th>Description</th>
+	<tr>
+	<tr>
+		<td>Monthly Income</td>
+		<td>The total of all incoming transactions per month</td>
+	</tr>
+	<tr>
+		<td>Monthly Expenses</td>
+		<td>The total of all outgoing transactions per month</td>
+	</tr>
+	<tr>
+		<td>Monthly Balance</td>
+		<td>The profit/loss calculation of all transactions per month</td>
+	</tr>
+	<tr>
+		<td>Yearly Income</td>
+		<td>The total of all incoming transactions per year</td>
+	</tr>
+	<tr>
+		<td>Yearly Expenses</td>
+		<td>The total of all outgoing transactions per year</td>
+	</tr>
+	<tr>
+		<td>Yearly Balance</td>
+		<td>The profit/loss calculation of all transactions per year</td>
+	</tr>
+	<tr>
+		<td>Average Monthly Income</td>
+		<td>The average income in a month. The figure includes and levels all incoming transactions 
+		    in a year.</td>
+	</tr>
+	<tr>
+		<td>Average Monthly Expenses</td>
+		<td>The average expenses in a month. The figure includes and levels all outgoing transactions 
+		    in a year.</td>
+	</tr>
+	<tr>
+		<td>Average Monthly Balance</td>
+		<td>The average profit/loss calculation per month. The figure includes and levels all transactions 
+		    in a year.</td>
+	</tr>
+</table>
+
+<h3 id="plan">Transaction Table</h3>
+<p>The transaction table shows the planned transactions. A turquoise background identifies a budget. White background
+identifies single transactions. The following table describes the values displayed in each column.</p>
+<table>
+	<tr>
+		<th>Column</th>
+		<th>Description</th>
+	<tr>
+	<tr>
+		<td>Cycle</td>
+		<td>The periodicity of the transaction (monthly, quarterly, half-yearly, yearly)</td>
+	</tr>
+	<tr>
+		<td>Occurance</td>
+		<td>The months this transaction will occur in (blank for monthly transactions).</td>
+	</tr>
+	<tr>
+		<td>Text</td>
+		<td>The transaction text</td>
+	</tr>
+	<tr>
+		<td>Details</td>
+		<td>Details and remarks of the transaction, e.g. origin or receiver (optional).</td>
+	</tr>
+	<tr>
+		<td>Budget</td>
+		<td>The budget this transaction belongs to (optional).</td>
+	</tr>
+	<tr>
+		<td>Category</td>
+		<td>The category this transaction belongs to.</td>
+	</tr>
+	<tr>
+		<td>Amount</td>
+		<td>The amount this transaction is planned with. Positive numbers are incomes, negative numbers are expenses. The amount is colored
+		    according to your <a href="../settings/colors.html">color preferences</a>.</td>
+	</tr>
+</table>
+
+<h2 id="tasks">Tasks</h2>
+<h3 id="createtx">Create a new transaction</h3>
+<p>Create a new transaction by</p>
+<ul>
+	<li>Right-click on the transaction table. Select "New Transaction" from the context menu.</li>
+	<li>Click the "New Transaction" button <img src="../../images/table-insert-row.png"/> directly above the transaction table.</li>
+	<li>Click the "New Transaction" button <img src="../../images/table-insert-row.png"/> from the view's toolbar.</li>
+	<li>Press the "Insert" key.</li>
+</ul>
+<p>All methods will create a new transaction at the end of the table and scroll to the new row in order to make it visible.
+The editing cursor is placed within the Text field so you can start typing.</p>
+
+<h3 id="modifytx">Modify a transaction</h3>
+<p>Double-click the value in the transaction table that you want to modify. Depending on the column, a text editor or combo box will
+appear so you can change the current value of the cell. Hit "Enter" when you made your change or click anywhere else on the screen.
+The new new value will be saved immediately.</p>
+<p>You can cancel editing by simply pressing "Esc" on your keyboard. This will revert the change you already made in the editor
+and bring back the old value.</p>
+
+<h3 id="movetx">Move a transaction</h3>
+<p>It is possible to change the order of transactions in the table. Right-click the row and select "Move Up" or "Move Down" from the
+context menu. The same action can be triggered by pressing Ctrl+Up or Ctrl+Down respectively.</p>
+
+<h3 id="transformtx">Convert transactions to budgets</h3>
+<p>Transactions can be converted into budgets and vice versa. Right-click on a row and select "Convert to Budget" or
+"Convert to Transaction" respectively.</p>
+
+<h3 id="deletetx">Delete a transaction</h3>
+<p>Of course, you can delete transactions and budgets from the transaction table:</p>
+<ul>
+	<li>Right-click on the transaction table. Select "Delete" from the context menu.</li>
+	<li>Click the "Delete" button <img src="../../images/table-delete-row.png"/> directly above the transaction table.</li>
+	<li>Click the "Delete" button <img src="../../images/table-delete-row.png"/> from the view's toolbar.</li>
+	<li>Press the "Delete" key.</li>
+</ul>
+<p><em>RsBudget</em> will ask you for confirmation before actually deleting the row(s) selected.</p>
+
+</body>
+</html>

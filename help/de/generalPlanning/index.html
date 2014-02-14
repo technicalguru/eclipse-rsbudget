@@ -1,0 +1,61 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../style/style.css">
+<title>General Budget Planning</title>
+</head>
+<body>
+<a href="../index.html">User Guide</a> &gt;
+
+<h1>General Budget Planning</h1>
+<p>The General Budget Planning defines which transactions and budgets occur each month. You can think of it as a template.
+<em>RsBudget</em> uses this template to create specific transactions for a specific month. So this month is an
+instance of the template. While tracking your monthly expenses, you work within your 
+<a href="../monthlyPlanning/index.html">Monthly Budget Plan</a>.</p>
+<p>You can change your template as often as you like. Existing plans for specific months are not affected by these
+changes. They will be used only when you create a new plan for a specific month.</p>
+<p><a href="../../images/de/views-general.png"><img class="screenshot" border="no" src="../../images/de/views-general.png" width="500"/></a></p>
+<p><a href="../views/general-planning.html">A complete description of the view can be found here.</a></p>
+
+<h2 id="createtx">Creating a new transaction</h2>
+<p>Press the <code>Insert</code> key in order to create a new row in the table. The system will scroll to the end of
+the table and place the editing cursor in the text column. Just start typing the name of your transaction! Press <code>Tab</code> or
+double-click the Amount field of the same row in order to enter the amount that you plan for this transaction, e.g. "-10" for
+10 Dollars expense, or "10" for 10 Dollars income.</p>
+<p>The scenario just described a monthly recurring transaction. That means, <em>RsBudget</em> will insert this transaction in each
+new plan it creates for specific months.</p>
+
+<h2 id="changecycle">Changing the recurrence (cycle)</h2>
+<p>Some transactions do not occur every month but just once a quarter or year. You can define this behaviour by double-clicking the
+"Cycle" column of your transaction.</p>
+<p>Transactions that do not occur each month need an additional information: in what months they occur. Depending on the specific cycle,
+the options vary. The current selection can be seen in column "Occurrance". Double-click the value in order to change it.</p>
+
+<h2 id="assigncategory">Assigning a category</h2>
+<p>New transactions are assigned to the default category. You can change the category by double-clicking the respective column
+of your transaction and selecting from the list. (The list itself can be controlled in the <a href="../views/">Categories view</a>).</p>
+
+<h2 id="createbudget">Creating a budget</h2>
+<p>A budget in <em>RsBudget</em>'s terminology is a container of multiple transactions. It is used when you cannot tell in advance
+how many transactions of this type you will perform in a specific month. "Groceries" is such an example. You go to a grocery store
+mutliple time a month, but you do not want to spend more than $100 a month for it. Instead of creating many "potential" transactions
+in your template, you will use a budget.</p>
+<p>A budget is created by using an existing transactio. So the first step is to create a transaction as described above. Next, you
+right-click on the new transaction and the context menu will appear. Select the "Convert to budget" item. <em>RsBudget</em> will
+transform the row to a budget and move the row to the top of the list (all budgets are listed first). It will also get a turquoise
+background so you can easily distinguish between transactions and budgets.</p>
+
+<h2 id="assignbudget">Assigning a budget</h2>
+<p>Although it is not very common that specific transactions within budgets are known up-front, <em>RsBudget</em> let you define
+transactions <b>within</b> existing budgets. Double-click on the "Budget" column in your transaction's row and select the budget
+that your transaction belongs to.</p>
+
+<h2 id="order">Changing the transaction order</h2>
+<p>You can define the order of budgets and transactions in your template by either using the context menu (right-click) or pressing
+the <code>Ctrl+Up</code> and <code>Ctrl-Down</code> keys. The order is used when <em>RsBudget</em> creates your monthly plan.</p>
+
+<h2 id="deletetx">Deleting a transaction</h2>
+<p>Delete a transaction or budget from your template by selecting the respective row. Then press <code>Delete</code> or click on the
+<img src="../../images/table-insert-row.png"/> button. Confirm the the dialog question and the row will disappear.</p>
+<p>This action has no effect on existing plans for specific months.</p> 
+</body>
+</html>
