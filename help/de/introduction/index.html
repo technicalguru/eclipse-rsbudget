@@ -1,199 +1,207 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="../../style/style.css">
-<title>Introduction</title>
+<title>Einf&uuml;hrung</title>
 </head>
 <body>
-<a href="../index.html">User Guide</a> &gt;
-<h1>Introduction</h1>
-<p><em>RsBudget</em> was designed and implemented to support controlling your private financial records. Its main purpose
-is to let you gain and keep control over your financial health. This chapter explains basic principles and terms so you
-can use the software efficiently.</p>
-<h2>The General Planning</h2>
-<p>The foundation of controlling is the plan. That's why <em>RsBudget</em> introduces a <em>General Plan</em>. This plan
-states what recurring transactions you expect and when they will occur. This General Plan can be easily deducted from
-your bank's monthly account statements. So here is an example of how such a General Plan could look like:</p>
+<a href="../index.html">Benutzerhandbuch</a> &gt;
+<h1>Einf&uuml;hrung</h1>
+<p><em>RsBudget</em> wurde entwickelt, um Sie bei Ihrer finanziellen Planung zu unterst&uuml;tzen. Dabei liegt der wesentliche
+Schwerpunkt darauf, Ihre finanzielle Gesundheit zu planen und nachzuverfolgen. Dieses Kapitel erkl&auml;rt die Basisprinzipien
+und Begriffe, so dass Sie die Software verstehen und effizient nutzen k&ouml;nnen.</p>
+
+<h2>Die Allgemeine Planung</h2>
+<p>Die Basis einer guten Kontrolle ist ihre Planung. Daher verwendet <em>RsBudget</em> einen <em>Allgemeinen Plan</em>. Dieser
+Plan f&uuml;hrt auf, welche Transaktionen regelm&auml;&szlig;ig stattfinden, und wann sie das tun. Der Allgemeine Plan kann
+sehr einfach aus Ihren monatlichen Kontoausz&uuml;gen abgeleitet werden. Hier ist ein Beispiel, wie wolch ein Plan aussehen
+k&ouml;nnte:</p>
 <table>
 	<tr>
-		<th>Transaction Text</th>
-		<th>Recurrence</th>
-		<th>Amount</th>
+		<th>Buchungstext</th>
+		<th>Periodizit&auml;t</th>
+		<th>Betrag</th>
 	</tr>
 	<tr>
-		<td>Salary</td>
-		<td>monthly</td>
+		<td>Gehalt</td>
+		<td>monatlich</td>
 		<td style="text-align: right;">1,500.00 EUR</td>
 	</tr> 
 	<tr>
-		<td>Rent</td>
-		<td>monthly</td>
+		<td>Miete</td>
+		<td>monatlich</td>
 		<td style="text-align: right; color: red;">-700.00 EUR</td>
 	</tr> 
 	<tr>
-		<td>Health Insurance</td>
-		<td>monthly</td>
+		<td>Krankenversicherung</td>
+		<td>monatlich</td>
 		<td style="text-align: right; color: red;">-100.00 EUR</td>
 	</tr> 
 	<tr>
-		<td>Fuel</td>
-		<td>monthly</td>
-		<td style="text-align: right; color: red;">approx. -100.00 EUR</td>
+		<td>Benzin</td>
+		<td>monatlich</td>
+		<td style="text-align: right; color: red;">ca. -100.00 EUR</td>
 	</tr>
 	<tr>
-		<td>Food</td>
-		<td>monthly</td>
-		<td style="text-align: right; color: red;">approx. -200.00 EUR</td>
+		<td>Lebensmittel</td>
+		<td>monatlich</td>
+		<td style="text-align: right; color: red;">ca. -200.00 EUR</td>
 	</tr>
 	<tr>
-		<td>Car Insurance</td>
-		<td>yearly<br/>(January)</td>
+		<td>Kfz-Versicherung</td>
+		<td>j&auml;hrlich<br/>(Januar)</td>
 		<td style="text-align: right; color: red;">-250.00 EUR</td>
 	</tr>
 	<tr class="summary">
-		<td>Period Balance</td>
-		<td>monthly</td>
+		<td>G/V</td>
+		<td>monatlich</td>
 		<td style="text-align: right;">400.00 EUR</td>
 	</tr>
 	<tr class="summary">
-		<td>Period Balance</td>
-		<td>yearly</td>
+		<td>G/V</td>
+		<td>j&auml;hrlich</td>
 		<td style="text-align: right;">4.550.00 EUR</td>
 	</tr>
 	<tr class="summary">
-		<td>Average Balance</td>
-		<td>monthly</td>
+		<td>Durchschnittl. G/V</td>
+		<td>monatlich</td>
 		<td style="text-align: right;">379.17 EUR</td>
 	</tr>
 </table>
-<p>The example plan above consists of six different items. The first three, "Salary" 
-and "Rent" and "Health Insurance", are single transactions that occur each month. The last 
-one, "Car Insurance" is a single transaction that occurs every year in January. All 
-four's primary characteristic is that there will be only one such transaction in the given period.</p>
-<p>"Fuel" and "Food" are different. They can occur multiple times in a given period. That's
-why they are called <em>Budgets</em>. Each individual transaction belonging to a Budget adds
-up to it.</p>
-<p>Finally, the General Plan forms the foundation of a Profit/Loss planning. The General Plan
-tells you whether your expenses in a period are funded by respective income. <em>RsBudget</em>
-will calculate the figures "Monthly Balance, "Yearly Balance" and "Average Balance" automatically.
-Those figures tell you your overall financial health.</p>
+<p>Das obige Beispiel besteht aus sechs verschiedenen Eintr&auml;gen. Die ersten drei,
+"Gehalt", "Miete" und "Krankenversicherung" sind Einzel-Transaktionen, die jeden
+Monat auftreten. Die letzte Transaktion, "Kfz-Versicherung" tritt nur einmal im Jahr auf,
+im Januar. Allen vier Transaktionen ist gemein, dass sie innerhalb der jeweiligen 
+Zeitspanne nur ein einziges Mal auftreten.</p>
+<p>"Benzin" und "Lebensmittel" sidn anders. Sie k&ouml;nnen innerhalb der jeweiligen Zeitspanne
+mehrmals auftreten. Darum werden sie als <em>Budgets</em> bezeichnet. Einzelne, individuelle
+Transaktionen, die dem Budget zugeordnet werden, summieren sich entsprechend auf.</p>
+<p>Letztendlich bildet der Allgemeine Plan die Grundlage f&uuml;r eine Gewinn/Verlustrechnung.
+Damit zeigt der Plan auf, ob all Ihre Ausgaben durch entsprechende Einnahmen gedeckt sind. <em>RsBudget</em>
+berechnet die Werte "Monatlicher G/V", "J&auml;hrlicher G/V" und "Durchschnittlicher G/V" automatisch.
+Sie geben Auskunft &uuml;ber Ihre finanzielle Gesundheit.</p>
 
-<h2>Monthly Planning</h2>
-<p>Once you have created your General Plan, it is time to track your expenses. <em>RsBudget</em> organizes
-your expenses into individual months. Each month, e.g. December 2013, will have assigned a specific plan. 
-This <em>Monthly Plan</em> will be created out of the General Plan. The General Plan created earlier
-would result in this Monthly Plan:</p>
+<h2>Ein- und Ausgaben kontrollieren</h2>
+<p>Sobald Sie den Allgemeinen Plan erstellt haben, k&ouml;nnen Sie Ihre Einnahmen und Ausgaben nachverfolgen.
+<em>RsBudget</em> organisiert Ihre Buchungen innerhalb von Kalendermonaten. Jeder Monat, z.B, Dezember 2013
+bekommt dabei einen eigenen, individuellen Plan zugeordnet. Dieser <em>Monatliche Plan</em> wird aus dem Allgemeinen
+Plan erzeugt. Der oben dargestellte Allgemeine Plan w&uuml;rde f&uuml;r Dezember 2013 folgenden Monatsplan
+erzeugen:</p>
 <table>
 	<tr>
-		<th>Transaction Text</th>
-		<th>Type</th>
-		<th>Planned Amount</th>
-		<th>Actual Amount</th>
+		<th>Buchungstext</th>
+		<th>Typ</th>
+		<th>Soll</th>
+		<th>Ist</th>
 	</tr>
 	<tr class="summary">
-		<td>Opening Balance</td>
+		<td>Er&ouml;ffnungs-Saldo</td>
 		<td></td>
 		<td style="text-align: right;">0.00 EUR</td>
 		<td style="text-align: right;">0.00 EUR</td>
 	</tr> 
 	<tr>
-		<td>Salary</td>
-		<td>Transaction</td>
+		<td>Gehalt</td>
+		<td>Transaktion</td>
 		<td style="text-align: right;">1,500.00 EUR</td>
 		<td style="text-align: right;"></td>
 	</tr> 
 	<tr>
-		<td>Rent</td>
-		<td>Transaction</td>
+		<td>Miete</td>
+		<td>Transaktion</td>
 		<td style="text-align: right; color: red;">-700.00 EUR</td>
 		<td style="text-align: right;"></td>
 	</tr> 
 	<tr>
-		<td>Health Insurance</td>
-		<td>Transaction</td>
+		<td>Krankenversicherung</td>
+		<td>Transaktion</td>
 		<td style="text-align: right; color: red;">-100.00 EUR</td>
 		<td style="text-align: right;"></td>
 	</tr> 
 	<tr>
-		<td>Fuel</td>
+		<td>Benzin</td>
 		<td>Budget</td>
 		<td style="text-align: right; color: red;">-100.00 EUR</td>
 		<td style="text-align: right;"></td>
 	</tr>
 	<tr>
-		<td>Food</td>
+		<td>Lebensmittel</td>
 		<td>Budget</td>
 		<td style="text-align: right; color: red;">-200.00 EUR</td>
 		<td style="text-align: right;"></td>
 	</tr>
 	<tr class="summary">
-		<td>Closing Balance</td>
+		<td>Schluss-Saldo</td>
 		<td></td>
 		<td style="text-align: right;">400.00 EUR</td>
 		<td style="text-align: right;">0.00 EUR</td>
 	</tr> 
 </table>
-<p>The "Car Insurance" is not listed here as it occurs each year in January only.</p>
-<p>Based on this plan, <em>RsBudget</em> now tracks your transactions and projects
-where your account balance will be (Column "Planned Amount"). The projection will
-be updated when you add actual transactions:</p>
+<p>Die "Kfz-Versicherung" ist nicht Bestandteil des Dezember-Plans, da sie ja nur im Januar
+auftritt.</p>
+<p>Basierend auf diesem Monatsplan, kann <em>RsBudget</em> Ihre Transactions nachverfolgen und
+vorhersagen, wie der Schluss-Saldo aussehen wird (Spalte "Soll"). Die Vorhersage wird jeweils
+aktualisiert, sobald Buchungen durchgef&uuml;hrt wurden:</p>
 <table>
 	<tr>
-		<th>Transaction Text</th>
-		<th>Type</th>
-		<th>Planned Amount</th>
-		<th>Actual Amount</th>
+		<th>Buchungstext</th>
+		<th>Typ</th>
+		<th>Soll</th>
+		<th>Ist</th>
 	</tr>
 	<tr class="summary">
-		<td>Opening Balance</td>
+		<td>Er&ouml;ffnungs-Saldo</td>
 		<td></td>
 		<td style="text-align: right;">0.00 EUR</td>
 		<td style="text-align: right;">0.00 EUR</td>
 	</tr> 
 	<tr>
-		<td>Salary</td>
-		<td>Transaction</td>
+		<td>Gehalt</td>
+		<td>Transaktion</td>
 		<td style="text-align: right;">1,500.00 EUR</td>
 		<td style="text-align: right;"></td>
 	</tr> 
 	<tr>
-		<td>Rent</td>
-		<td>Transaction</td>
+		<td>Miete</td>
+		<td>Transaktion</td>
 		<td style="text-align: right; color: red;">-700.00 EUR</td>
 		<td style="text-align: right; color: red;">-600,00 EUR</td>
 	</tr> 
 	<tr>
-		<td>Health Insurance</td>
-		<td>Transaction</td>
+		<td>Krankenversicherung</td>
+		<td>Transaktion</td>
 		<td style="text-align: right; color: red;">-100.00 EUR</td>
 		<td style="text-align: right;"></td>
 	</tr> 
 	<tr>
-		<td>Fuel</td>
+		<td>Benzin</td>
 		<td>Budget</td>
 		<td style="text-align: right; color: red;">-100.00 EUR</td>
 		<td style="text-align: right; color: red;">-50.00 EUR</td>
 	</tr>
 	<tr>
-		<td>Food</td>
+		<td>Lebensmittel</td>
 		<td>Budget</td>
 		<td style="text-align: right; color: red;">-200.00 EUR</td>
 		<td style="text-align: right; color: red;">-30.00 EUR</td>
 	</tr>
 	<tr class="summary">
-		<td>Closing Balance</td>
+		<td>Schluss-Saldo</td>
 		<td></td>
 		<td style="text-align: right;">500.00 EUR</td>
 		<td style="text-align: right; color: red;">-680.00 EUR</td>
 	</tr> 
 </table>
-<p>The situation above already had "Rent" and some "Fuel" and "Food" expenses happened. The
-actual balance of the month is -680.00 EUR because this reflects the total of this expenses.</p>
-<p>The "Planned Closing Balance" now states 500.00 EUR. This figures calculates because
-the "Rent" did not occur with -700.00 EUR as planned but with -600.00 EUR. As <em>RsBudget</em>
-assumes this to be a single expense in this period, it adds the difference to the projection.</p>
-<p>Likewise, "Food" and "Fuel" occurred with -80.00 EUR. But as they are Budgets, it is assumed
-that more of such transactions will occur. The difference will not be added to the projection
-until the month is closed.</p>
+<p>In der Situation sind "Miete", "Benzin" und "Lebensmittel" bereits aufgetreten. Der
+aktuelle Saldo f&uuml;r diesen Monat betr&auml;gt -680.00 EUR, also die Summe der bisherigen
+Ausgaben.</p>
+<p>Der "Geplante Schluss-Saldo" f&uuml;hrt nun 500.00 EUR auf. Diese Zahl kommt zustande,
+weil die Miete nicht wie geplant 700.00 EUR war, sondern nur 600.00 EUR. Da <em>RsBudget</em>
+annimmt, dass es sich bei der "Miete" um eine Einzel-Transaktion handelt, addiert sie den
+Differenzbetrag zur Vorhersage f&uuml;r diese Zeitspanne.</p>
+<p>&Auml;hnlich verh&auml;lt es sich mit "Lebensmittel" und "Benzin". Diese traten bisher mit 
+-80.00 EUR auf. Da es sich aber um Budgets handelt, wird angenommen, dass weitere, solche
+Transaktionen auftreten werden. Deshalb wird die Differenz auch nicht in der Vorhersage
+ber&uuml;cksichtigt, bis der Monat abgeschlossen ist.</p>
 
 
 </body>
