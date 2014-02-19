@@ -1,119 +1,121 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="../../style/style.css">
-<title>Views</title>
+<title>Monatliche Planung</title>
 </head>
 <body>
-<a href="../index.html">User Guide</a> &gt; <a href="index.html">Views</a> &gt; 
-<h1>Monthly Planning</h1>
-<p>This views actually plans and tracks your monthly financial activities.</p>
+<a href="../index.html">Benutzerhandbuch</a> &gt; <a href="index.html">Ansichten</a> &gt; 
+<h1>Monatliche Planung</h1>
+<p>Diese Ansicht wird verwendet, um die monatlichen, finanziellen Aktivit&auml;ten zu planen, nachzuverfolgen und
+zu kontrollieren.</p>
 
 <p><a href="../../images/de/views-monthly.png"><img class="screenshot" border="no" src="../../images/de/views-monthly.png" width="500"/></a></p>
 
-<h2 id="information">Data Description</h2>
-<p>The view is divided into two separate sections. The upper part is the <em>Summary Section</em>. It shows the month navigation
-and basic figures of your selected plan. The lower part shows the planned and actual transactions of the selected month.</p>
+<h2 id="information">View-Beschreibung</h2>
+<p>Die Ansicht ist vertikal in zwei Teile unterteilt. Der obere Teil ist die <em>Plan-&Uuml;bersicht</em>. Er zeigt die
+Navigationselemente zur Monatsauswahl und die Basiswerte Ihrer Planung an. Der untere Teil enth&auml;lt die geplanten
+und get&auml;tigten Transaktionen des ausgew&auml;hlten Monats.</p>
 
-<h3 id="summary">Summary Section</h3>
-<p>The section summarizes the plan so you can see the financial status of the selected month.</p>
+<h3 id="summary">Die Plan-&Uuml;bersicht</h3>
+<p>Dieser Teil fasst Ihre Planung zusammen, so dass Sie den finanziellen Status des ausgew&auml;hlten Monats sehen k&ouml;nnen.</p>
 <table>
 	<tr>
-		<th>Field</th>
-		<th>Description</th>
+		<th>Wert</th>
+		<th>Beschreibung</th>
 	<tr>
 	<tr>
-		<td>Status on &lt;1st-of-month&gt;</td>
-		<td>The total of all accounts that are planning relevant at the beginning of the month (Opening Balance).</td>
+		<td>Saldo am &lt;Monatsersten&gt;</td>
+		<td>Der Er&ouml;ffnungs-Saldo des Monats</td>
 	</tr>
 	<tr>
-		<td>Current Status</td>
-		<td>The current balance as known by <em>RsBudget</em>.</td>
+		<td>Aktueller Saldo</td>
+		<td>Der aktuelle Saldo, der <em>RsBudget</em> bekannt ist.</td>
 	</tr>
 	<tr>
-		<td>Status on &lt;last-of-month&gt;</td>
-		<td>The total of all accounts that are planning relevant at the end of the month (Closing Balance). Unless the
-		    month has not yet been closed (see <a href="#setbalances">Set start and end balance</a>), this is a forecast.</td>
+		<td>Saldo am &lt;Monatsletzten&gt;</td>
+		<td>Der Schluss-Saldo des Monats. Solange der Monat nicht abgeschlossen ist (siehe <a href="#setbalances">Kontosalden festlegen</a>), 
+		    handelt es sich um eine Vorhersage.</td>
 	</tr>
 	<tr>
-		<td>Ledgerless Accounting</td>
-		<td>The total of all missing transactions. The number reflects the amount that <em>RsBudget</em> still expects
-		    to occur in this month.</td>
+		<td>Offene Posten</td>
+		<td>Die Summe der noch offenen Positionen. Der Wert reflektiert die noch zu erwartenden tats&auml;chlichen Buchungen in diesem Monat.</td>
 	</tr>
 	<tr>
-		<td>Relative Balance</td>
-		<td>The profit/loss calculation of this month. Unless the month has not yet been closed (see 
-		    <a href="#setbalances">Set start and end balance</a>), this is a forecast.</td>
+		<td>G/V relativ</td>
+		<td>Die Gewinn- und Verlustrechnung f&uuml;r den Monat. Solange der Monat nicht abgeschlossen ist 
+		    (siehe <a href="#setbalances">Kontosalden festlegen</a>), handelt es sich um eine Vorhersage.</td>
 	</tr>
 	<tr>
-		<td>Absolute Balance</td>
-		<td>The difference to your <a href="../settings/history.html#threshold">custom Profit/Loss threshold</a>.Unless the month 
-		    has not yet been closed (see <a href="#setbalances">Set start and end balance</a>), this is a forecast. </td>
+		<td>G/V absolut</td>
+		<td>Die Differenz zu Ihrere individuellen <a href="../settings/history.html#threshold">Gewinn/Verlust-Schwelle</a>. Solange der Monat nicht abgeschlossen ist 
+		    (siehe <a href="#setbalances">Kontosalden festlegen</a>), handelt es sich um eine Vorhersage.</td>
 	</tr>
 	<tr>
-		<td>Planned Expenses</td>
-		<td>The total of all planned expenses.</td>
+		<td>Ausgaben Soll</td>
+		<td>Die Summe aller geplanten Ausgaben.</td>
 	</tr>
 	<tr>
-		<td>Planned Income</td>
-		<td>The total of all planned income.</td>
+		<td>Einnahmen Soll</td>
+		<td>Die Summe aller geplanten Einnahmen.</td>
 	</tr>
 	<tr>
-		<td>Planned Balance</td>
-		<td>The profit/loss calculation as planned in this month.</td>
+		<td>G/V Soll</td>
+		<td>Die Gewinn- und Verlustrechnung, wie sie geplant wurde.</td>
 	</tr>
 	<tr>
-		<td>Actual Expenses</td>
-		<td>The total of all actual expenses (expenses that already occurred).</td>
+		<td>Ausgaben Ist</td>
+		<td>Die Summe aller bisher get&auml;tigten Ausgaben.</td>
 	</tr>
 	<tr>
-		<td>Actual Income</td>
-		<td>The total of all actual incoming transaction (income already booked).</td>
+		<td>Einnahmen Ist</td>
+		<td>Die Summe aller tats&auml;chlichen Einnahmen.</td>
 	</tr>
 	<tr>
-		<td>Actual Balance</td>
-		<td>The profit/loss calculation using transactions already occurred.</td>
+		<td>G/V Ist</td>
+		<td>Die Gewinn- und Verlustrechnung, wie sie bisher ausf&auml;llt.</td>
 	</tr>
 </table>
-<h3 id="plan">Transaction Table</h3>
-<p>The transaction table shows all planned and actual transactions. A turquoise background identifies budgets. White background
-identifies single transactions. The following table describes the values displayed in each column.</p>
+<h3 id="plan">Die Buchungstabelle</h3>
+<p>Die Buchungstabelle zeigt alle geplanten und get&auml;tigten Buchungen und Budgets. Ein t&uuml;rkiser Hintergrund hebt Budgets hervor.
+Ein wei&szlig;er Hintergrund kennzeichnet einzelne Buchungen. Die folgende Tabelle beschreibt die verschiedenen Werte
+in den jeweiligen Spalten.</p>
 <table>
 	<tr>
-		<th>Column</th>
-		<th>Description</th>
+		<th>Spalte</th>
+		<th>Beschreibung</th>
 	<tr>
 	<tr>
-		<td>Date</td>
-		<td>The date this transaction was booked. The field is filled for actual transactions only.</td>
+		<td>Datum</td>
+		<td>Das datum, an dem die Buchung durchgef&uuml;hrt wurde. Das Feld ist nur bei get&auml;tigten Buchungen gesetzt.</td>
 	</tr>
 	<tr>
 		<td>Text</td>
-		<td>The transaction text.</td>
+		<td>Der Buchungstext</td>
 	</tr>
 	<tr>
 		<td>Details</td>
-		<td>Details about the transaction, e.g. origin or receiver. (optional)</td>
+		<td>Details und Hinweise zu dieser Buchung, z.B. Herkunft oder Referenz (optional).</td>
 	</tr>
 	<tr>
 		<td>Budget</td>
-		<td>The budget this transaction belongs to and is accounted within. (optional)</td>
+		<td>Das Budget, zu dem diese Buchung geh&ouml;rt (optional).</td>
 	</tr>
 	<tr>
-		<td>Category</td>
-		<td>The category this transaction belongs to.</td>
+		<td>Kategorie</td>
+		<td>Die Kategorie, die dieser Buchung zugeordnet ist.</td>
 	</tr>
 	<tr>
-		<td>Planned</td>
-		<td>The planned amount.</td>
+		<td>Soll</td>
+		<td>Der geplante Wert.</td>
 	</tr>
 	<tr>
-		<td>Actual</td>
-		<td>The actual amount. The figure reflects the consumed amount when the row is a budget.</td>
+		<td>Ist</td>
+		<td>Der Ist-Wert. Dieser Wert stellt das verbrauchte Budgets dar, wenn es sich um eine Budgetzeile handelt.</td>
 	</tr>
 </table>
 
-<h2 id="tasks">Tasks</h2>
-<h3 id="selectmonth">Select a month</h3>
+<h2 id="tasks">Aufgaben</h2>
+<h3 id="selectmonth">Einen Monat ausw&auml;hlen</h3>
 <p><em>RsBudget</em> opens the current month by default. You can select another month by navigating with the links
 on top of the Summary Section.</p>
 <ul>
@@ -125,60 +127,62 @@ on top of the Summary Section.</p>
 	 
 </ul>
 
-<h3 id="createplan">Create a plan</h3>
+<h3 id="createplan">Den Monatsplan anlegen</h3>
 <p>You'll need to create the plan for the month before you can start tracking. Click <img src="../../images/money--plus.png"/> at the
 view's toolbar. The plan will be created from the <a href="../generalPlanning/index.html">General Plan</a>.</p>
 
 <p>You can delete a plan by clicking on <img src="../../images/money--minus.png"/> at the view's toolbar.</p>
 
-<h3 id="createtx">Create a new transaction</h3>
-<p>Create a new transaction by</p>
+<h3 id="createtx">Eine neue Buchung anlegen</h3>
+<p>Erzeugen Sie eine neue Buchung, indem Sie</p>
 <ul>
-	<li>Right-click on the transaction table. Select "New Transaction" from the context menu.</li>
-	<li>Click the "New Transaction" button <img src="../../images/table-insert-row.png"/> directly above the transaction table.</li>
-	<li>Click the "New Transaction" button <img src="../../images/table-insert-row.png"/> from the view's toolbar.</li>
-	<li>Press the "Insert" key.</li>
+	<li>mit der rechten Maustaste auf die Tabelle klicken. W&auml;hlen Sie "Neue Buchung" aus dem Kontextmen&uuml;.</li>
+	<li>Klicken Sie auf die Schaltfl&auml;che <img src="../../images/table-insert-row.png"/> direkt &uuml;ber der Buchungstabelle.</li>
+	<li>Klicken Sie auf die Schaltfl&auml;che <img src="../../images/table-insert-row.png"/> in der Werzeugleiste der Ansicht.</li>
+	<li>Dr&uuml;cken Sie die <code>Einf&uuml;gen</code>-Taste</li>
 </ul>
-<p>All methods will create a new transaction at the end of the table and scroll to the new row in order to make it visible.
-The editing cursor is placed within the Text field so you can start typing.</p>
+<p>Alle Methoden erzeugen eine neue Buchung am Ende der Tabelle und scrollen dorthin, falls notwendig. Die Textmarke (Cursor) ist bereits
+im Feld f&uuml;r den Buchungstext platziert, so dass Sie sofort anfangen k&ouml;nnen, Ihren Text einzugeben.</p>
 
-<h3 id="modifytx">Modify a transaction</h3>
-<p>Double-click the value in the transaction table that you want to modify. Depending on the column, a text editor or combo box will
-appear so you can change the current value of the cell. Hit "Enter" when you made your change or click anywhere else on the screen.
-The new new value will be saved immediately.</p>
-<p>You can cancel editing by simply pressing "Esc" on your keyboard. This will revert the change you already made in the editor
-and bring back the old value.</p>
+<h3 id="modifytx">Eine Buchung bearbeiten</h3>
+<p>Doppelklicken Sie in der Tabelle auf den Wert, den Sie bearbeiten m&ouml;chten. Je nach Spalte erscheint ein Auswahlfeld, aus dem Sie
+den neuen Wert selektieren k&ouml;nnen, bzw. ein Textfeld, mit dem Sie den Text &auml;ndern k&ouml;nnen. Dr&uuml;cken Sie <code>Enter</code>,
+wenn Sie Ihre Eingabe beendet haben bzw. klicken Sie mit der Maus auf eine beliebige Stelle au&szlig;erhalb des Eingabefeldes. Ihre
+&Auml;nderung wird sofort abgespeichert.</p>
+<p>Sie k&ouml;nnen das Editieren abbrechen, wenn Sie <code>Esc</code> auf Ihrer Tastatur dr&uuml;cken. Ihr &Auml;nderung wird dann nicht abgespeichert.</p>
 
-<h3 id="movetx">Move a transaction</h3>
-<p>It is possible to change the order of transactions in the table. Right-click the row and select "Move Up" or "Move Down" from the
-context menu. The same action can be triggered by pressing Ctrl+Up or Ctrl+Down respectively.</p>
+<h3 id="movetx">Eine Buchung verschieben</h3>
+<p>Es ist m&ouml;glich, die Reihenfolge der Buchungen zu &auml;ndern. Klicken Sie dazu mit der rechten Maustaste auf die Tabelle und
+w&auml;hlen Sie "Nach oben" bzw. "Nach unten", um die ausgew&auml;hlte Buchung zu verschieben. Dieselbe Aktion k&ouml;nnen Sie
+auch &uuml;ber die Tastenkombinationen <code>Strg+&uarr;</code> und <code>Strg+&darr;</code> ausl&ouml;sen.</p>
 
-<h3 id="sorttx">Sort transactions</h3>
+<h3 id="sorttx">Buchungen sortieren</h3>
 <p>All transactions can be sorted according to their actual transaction date by clicking the <img src="../../images/sort_ascend_16x16.png"/>
 button in the view's toolbar. Planned transactions will be added to the bottom of the table, keeping the previous order of these
 transactions. Budgets are always at the top of the table.</p>
 
-<h3 id="transformtx">Convert transactions to budgets</h3>
-<p>Transactions can be converted into budgets and vice versa. Right-click on a row and select "Convert to Budget" or
-"Convert to Transaction" respectively.</p>
+<h3 id="transformtx">Buchungen in Budgets umwandeln</h3>
+<p>Transaktionen k&ouml;nnen in Buchungen und umgekehrt umgewandelt werden. Klicken Sie dazu mit der rechten Maustaste auf die entsprechende
+Zeile und w&auml;hlen Sie "In Budget umwandeln" bzw. "In Buchung umwandeln".</p>
 
-<h3 id="deletetx">Delete a transaction</h3>
-<p>Of course, you can delete transactions and budgets from the transaction table. If the transaction contains an actual amount then 
-this will be deleted and the row becomes a planned transaction only. If there is no actual amount (planned transaction) then
-the row will be finally deleted.</p>
+<h3 id="deletetx">Eine Buchung l&ouml;schen</h3>
+<p>Nat&uuml;rlich k&ouml;nnen Sie Buchungen und Budgets aus der Tabelle auch wieder l&ouml;schen. Handelt es sich bei der zu l&ouml;schenden
+Buchung um eine bereits get&auml;tigte Buchung (Ist-Wert gesetzt), so wird die Buchung zun&auml;chst r&uuml;ckg&auml;ngig gemacht, so dass
+nur der Soll-Wert stehen bleibt (geplante Buchung). Falls die Buchung noch nicht get&auml;tigt wurde (kein Ist-Wert), dann wird
+die selektierte Buchung gelöscht. Nehmen Sie die L&ouml;schung vor, indem Sie</p>
 <ul>
-	<li>Right-click on the transaction table. Select "Delete" from the context menu.</li>
-	<li>Click the "Delete" button <img src="../../images/table-delete-row.png"/> directly above the transaction table.</li>
-	<li>Click the "Delete" button <img src="../../images/table-delete-row.png"/> from the view's toolbar.</li>
-	<li>Press the "Delete" key.</li>
+	<li>mit der rechten Maustaste auf die Tabelle klicken. W&auml;hlen Sie "Buchung l&ouml;schen" aus dem Kontextmen&uuml;.</li>
+	<li>Klicken Sie auf die Schaltfl&auml;che <img src="../../images/table-delete-row.png"/> direkt &uuml;ber der Buchungstabelle.</li>
+	<li>Klicken Sie auf die Schaltfl&auml;che <img src="../../images/table-delete-row.png"/> in der Werzeugleiste der Ansicht.</li>
+	<li>Dr&uuml;cken Sie die <code>Entfernen</code>-Taste</li>
 </ul>
-<p><em>RsBudget</em> will ask you for confirmation before actually deleting the row(s) selected.</p>
+<p><em>RsBudget</em> wird Sie nach einer Best&auml;tigung fragen, bevor die ausgew&auml;hlte Zeile gel&ouml;scht wird.</p>
 
-<h3 id="setbalances">Set start and end balance</h3>
+<h3 id="setbalances">Kontosalden festlegen</h3>
 <p>The Opening and Closing Balance of a month is kept separately. You need to define them when starting respectively finalizing the
 month. Click the <img src="../../images/book-brown.png"/> button from the the view's toolbar. A separate dialog will appear.</p>
 
-<p><img src="../../images/en/balances-dialog.png"/></p>
+<p><img src="../../images/de/balances-dialog.png"/></p>
 
 <p>The specific options vary depending on your current plan and situation. The left side defines the Opening Balance, the right side of
 the dialog defines the Closing Balance. You can either select a balance proposed or manually enter a specific amount for each of them. Click

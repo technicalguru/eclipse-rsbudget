@@ -1,57 +1,56 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="../../style/style.css">
-<title>Views</title>
+<title>Kategorien</title>
 </head>
 <body>
-<a href="../index.html">User Guide</a> &gt; <a href="index.html">Views</a> &gt; 
-<h1>Categories</h1>
-<p>This view provides the managent of transaction categories.</p>
+<a href="../index.html">Benutzerhandbuch</a> &gt; <a href="index.html">Ansichten</a> &gt; 
+<h1>Kategorien</h1>
+<p>Diese Ansicht wird zum Verwalten der verf&uuml;gbaren Kategorien verwendet.</p>
 <p><a href="../../images/de/views-categories.png"><img class="screenshot" border="no" src="../../images/de/views-categories.png"/></a></p>
 
-<h2 id="information">Data Description</h2>
-<p>The view consists of a single table</p>
+<h2 id="information">View-Beschreibung</h2>
+<p>Die Ansicht besteht aus einer einzelnen Tabelle:</p>
 <table>
 	<tr>
-		<th>Column</th>
-		<th>Description</th>
+		<th>Spalte</th>
+		<th>Beschreibung</th>
 	<tr>
 	<tr>
 		<td>Default</td>
-		<td>Whether the category is the default category for transactions. Only one category can have the flag set.</td>
+		<td>Gesetzt, wenn die Spalte standardm&auml;&szlig; f&uuml;r Buchungen verwendet wird. Nur eine Kategorie kann dieses Flag gesetzt haben.</td>
 	</tr>
 	<tr>
 		<td>Name</td>
-		<td>Name of category</td>
+		<td>Name der Kategorie</td>
 	</tr>
 </table>
 
-<h2 id="tasks">Tasks</h2>
-<h3 id="create">Create a new category</h3>
-<p>Create a new category by</p>
+<h2 id="tasks">Aufgaben</h2>
+<h3 id="create">Eine neue Kategorie anlegen</h3>
+<p>Erstellen Sie eine neue Kategorie, indem Sie</p>
 <ul>
-	<li>Right-click on the categories table. Select "New Category" from the context menu.</li>
-	<li>Click the "New Category" button <img src="../../images/table-insert-row.png"/> from the view's toolbar.</li>
-	<li>Press the "Insert" key.</li>
+	<li>auf die Tabelle mit der rechten Maustaste klicken. W&auml;hlen Sie "Neue Kategorie" aus dem Kontextmen&uuml;.</li>
+	<li>Auf die Schaltfl&auml;che <img src="../../images/table-insert-row.png"/> aus der Werkzeugleiste der Ansicht klicken.</li>
+	<li>Die <code>Einf&uuml;gen</code>-Taste dr&uuml;cken.</li>
 </ul>
-<p>All methods will create a new category at the end of the table and scroll to the new row in order to make it visible.
-The editing cursor is placed within the Name field so you can start typing.</p>
+<p>Alle drei Methoden erzeugen eine neue Kategorie am Ende der Tabelle. Die Textmarke (Cursor) ist bereits im Namensfeld platziert, so dass
+Sie nur noch den Namen eingeben m&uuml;ssen.</p>
 
-<h3 id="modify">Modify a category</h3>
-<p>Double-click the value in the table that you want to modify. Depending on the column, the checkbox will be ticked or a text editor will
-appear so you can change the current value of the cell. Hit "Enter" when you made your change or click anywhere else on the screen.
-The new new value will be saved immediately.</p>
-<p>You can cancel editing by simply pressing "Esc" on your keyboard. This will revert the change you already made in the editor
-and bring back the old value.</p>
+<h3 id="modify">Eine Kategorie bearbeiten</h3>
+<p>Doppelklicken Sie in der Tabelle auf den Wert, den Sie ver&auml;ndern wollen. Je nach Spalte wird entweder die Checkbox angew&auml;hlt
+oder ein Textfeld erscheint, damit Sie den Wert ver&auml;ndern k&ouml;nnen. Dr&uuml;cken Sie  <code>Enter</code> wenn Sie Ihre Eingabe
+beendet haben oder klicken Sie mit der Maus irgendwo au&szlig;erhalb des Textfeldes. Die &Auml;nderung wird sofort gespeichert.</p>
+<p>Sie k&ouml;nnen das Editieren abbrechen, wenn Sie <code>Esc</code> auf Ihrer Tastatur dr&uuml;cken. Ihr &Auml;nderung wird dann nicht abgespeichert.</p>
 
-<h3 id="delete">Delete a catgeory</h3>
-<p>Of course, you can delete categories from the table:</p>
+<h3 id="delete">Eine Kategory l&ouml;schen</h3>
+<p>Nat&uuml;rlich k&ouml;nnen Sie Kategorien auch wieder l&ouml;schen:</p>
 <ul>
-	<li>Right-click on the table. Select "Delete" from the context menu.</li>
-	<li>Click the "Delete" button <img src="../../images/table-delete-row.png"/> from the view's toolbar.</li>
-	<li>Press the "Delete" key.</li>
+	<li>Klicken Sie mit der rechten Maustaste auf die Tabelle. W&auml;hlen Sie "L&ouml;schen" aus dem Kontextmen&uuml;.</li>
+	<li>Klicken Sie auf die Schaltfl&auml;che <img src="../../images/table-delete-row.png"/> aus der Werkzeugleiste.</li>
+	<li>Dr&uuml;cken Sie die <code>Entfernen</code>-Taste.</li>
 </ul>
-<p><em>RsBudget</em> will ask you for confirmation before actually deleting the row(s) selected. The row will be made invisible only
-when there are transactions assigned to the category.</p>
+<p><em>RsBudget</em> wird Sie zur Sicherheit noch einmal um R&uuml;ckbest&auml;tigung bitten, bevor die ausgew&auml;hlte Zeile gel&ouml;scht
+wird. Die Kategorie wird jedoch nur versteckt, wenn es Buchungen gibt, die mit dieser Kategorie verkn&uuml;pft sind.</p>
 </body>
 </html>

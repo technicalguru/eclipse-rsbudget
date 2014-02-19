@@ -1,41 +1,44 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="../../style/style.css">
-<title>Rules Settings</title>
+<title>Regeln</title>
 </head>
 <body>
-<a href="../index.html">User Guide</a> &gt; <a href="index.html">Settings and Preferences</a> &gt;
-<h1>Rules Settings</h1>
-<p>This tab controls how <em>RsBudget</em> assists you while creating transactions. It defines
-matching rules and whether to apply them or not.</p>
+<a href="../index.html">Benutzerhandbuch</a> &gt; <a href="index.html">Einstellungen</a> &gt;
+<h1>Regeln</h1>
+<p>Dieser Reiter bestimmt, wie <em>RsBudget</em> Sie bei der Eingabe neuer Buchungen unterst&uuml;tzt. Er definiert
+Vergleichsregeln und wie diese anzuwenden sind.</p>
 <p><a href="../../images/de/settings-rules.png"><img class="screenshot" border="no" src="../../images/de/settings-rules.png" width="500"/></a></p>
 
-<h2 id="assignment">Automatic Assignments</h2>
-<p>Mark the type of automatic assignments to be made. <em>RsBudget</em> will assign categories and budgets according to the
-defined rules (see sections below). This assignment will be done when you <b>create</b> a transaction and first enter
-a text for the transaction. Further modifications of the transaction will not trigger your rules again. This allows you 
-to modify assignments after the rules engine made its work for a transaction.</p>
+<h2 id="assignment">Automatische Zuweisungen</h2>
+<p>W&auml;hlen Sie aus, bei welchem Typ von Zuweisungen Sie unterst&uuml;tzt werden m&ouml;chten. <em>RsBudget</em> 
+kann Kategorien und Budgets anhand der definierten Regeln (s.u.) automatisch zuweisen. Diese Zuweisung geschieht nur,
+wenn Sie eine neue Buchung <b>anlegen</b> und den Buchungstext zum ersten Mal eingeben. Weitere &Auml;nderungen an einer
+Buchung f&uuml;hren nicht zu einer automatischen Regelanwendung. Dies erlaubt Ihnen, die automatische Zuweisung
+im Nachhinein zu ver&auml;ndern.</p>
 
-<h2 id="categories">Category Matching Rules</h2>
-<p>The table lists all rules that will be applied in order of processing. The first matching rule will be applied and
-following rules will be ignored. You can change this order by right-clicking on the table and selecting "Move Up"
-or "Move Down". The menu also offers you the possibility to either create a new rule or to delete the rule currently
-selected.</p>
-<p>Double-click the table record to modify it. The "Matching Expression" is a string that the transaction text must
-contain so that the rule applies. An applied rule will assign the category in column "Category" to the transaction.</p>
-<p><b>Example:</b> The screenshot above will assign category "Food" when a transaction lists "Grocery Store" in its text.</p> 
+<h2 id="categories">Regeln f&uuml;r Kategorien</h2>
+<p>Die Tabelle listet alle Regeln in der Reihenfolge ihrer Abarbeitung auf. Die erste anwendbare Regel f&uuml;hrt zum
+Abbruch der Zuweisung, und weitere Regeln werden ignoriert. Sie k&ouml;nnen die Reihenfolge &auml;ndern, wenn Sie
+mit der rechten Maustaste auf die Tabelle klicken und "Nach oben" bzw. "Nach unten" ausw&auml;hlen. Das Kontextmen&uuml;
+erlaubt Ihnen auch, eine neue Regel zu erstellen oder die ausgew&auml;hlte Regel zu l&ouml;schen.</p>
+<p>Doppelklicken Sie auf die Regel, um sie abzu&auml;ndern. Der  "Regelausdruck" ist ein Text, den der Buchungstext
+enthalten muss, damit die Regel angewendet wird. Eine angewandte Regel ver&auml;ndert die zugewiesene Kategorie in
+der Spalte "Kategorie" der jeweiligen Buchung.</p>
+<p><b>Beispiel:</b> Die Abbildung oben wird die Kategorie "Haushalt" zuweisen, wenn der Buchungstext "Einkaufen" enth&auml;lt.</p> 
 
-<h2 id="budgets">Budget Matching Rules</h2>
-<p>The table lists all rules that will be applied in order of processing. The first matching rule will be applied and
-following rules will be ignored. You can change this order by right-clicking on the table and selecting "Move Up"
-or "Move Down". The menu also offers you the possibility to either create a new rule or to delete the rule currently
-selected.</p>
-<p>Double-click the table record to modify it. The "Matching Expression" is a string that the transaction text must
-contain so that the rule applies. An applied rule will assign the budget in column "Budget" to the transaction.</p>
+<h2 id="budgets">Regeln f&uuml;r Budgets</h2>
+<p>Die Tabelle listet alle Regeln in der Reihenfolge ihrer Abarbeitung auf. Die erste anwendbare Regel f&uuml;hrt zum
+Abbruch der Zuweisung, und weitere Regeln werden ignoriert. Sie k&ouml;nnen die Reihenfolge &auml;ndern, wenn Sie
+mit der rechten Maustaste auf die Tabelle klicken und "Nach oben" bzw. "Nach unten" ausw&auml;hlen. Das Kontextmen&uuml;
+erlaubt Ihnen auch, eine neue Regel zu erstellen oder die ausgew&auml;hlte Regel zu l&ouml;schen.</p>
+<p>Doppelklicken Sie auf die Regel, um sie abzu&auml;ndern. Der  "Regelausdruck" ist ein Text, den der Buchungstext
+enthalten muss, damit die Regel angewendet wird. Eine angewandte Regel ver&auml;ndert das zugewiesene Budget in
+der Spalte "Budget" der jeweiligen Buchung.</p>
 
 <hr/>
-<p style="text-align: left; float:left;">Previous:<br/><a href="account.html">Account Settings</a></p>
-<p style="text-align: right; float:right;">Next:<br/><a href="history.html">History Settings</a></p>
+<p style="text-align: left; float:left;">Vorherige Seite:<br/><a href="account.html">Konto-Einstellungen</a></p>
+<p style="text-align: right; float:right;">N&auml;chste Seite:<br/><a href="history.html">Statistik</a></p>
 
 </body>
 </html>

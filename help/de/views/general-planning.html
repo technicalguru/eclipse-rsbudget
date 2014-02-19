@@ -1,141 +1,144 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="../../style/style.css">
-<title>Views</title>
+<title>Allgemeine Planung</title>
 </head>
 <body>
-<a href="../index.html">User Guide</a> &gt; <a href="index.html">Views</a> &gt; 
-<h1>General Planning</h1>
-This view enables the General Budget Planning.
+<a href="../index.html">Benutzerhandbuch</a> &gt; <a href="index.html">Ansichten</a> &gt; 
+<h1>Allgemeine Planung</h1>
+Diese Ansicht stellt die Allgemeine Planung zur Verf&uuml;gung.
 <p><a href="../../images/de/views-general.png"><img class="screenshot" border="no" src="../../images/de/views-general.png" width="500"/></a></p>
 
-<h2 id="information">Data Description</h2>
-<p>The view is divided into two separate sections. The upper part is the <em>Summary Section</em>. It shows basic figures of your
-General Budget Planning. The lower part shows the transactions planned for individual periods.</p>
+<h2 id="information">View-Beschreibung</h2>
+<p>Die Ansicht ist vertikal in zwei Teile unterteilt. Der obere Teil ist die <em>Plan-&Uuml;bersicht</em>. Sie zeigt Basiswerte Ihrer
+Allgemeinen Budgetplanung. Der untere Teil zeigt die Buchungen und Budgets f&uuml;r die jeweiligen Zyklen an.</p>
 
-<h3 id="summary">Summary Section</h3>
-<p>The section summarizes the plan so you can see your financial health.</p>
+<h3 id="summary">Die Plan-&Uuml;bersicht</h3>
+<p>Dieser Teil fasst Ihre Planung zusammen, so dass Sie Ihre finanzielle Gesundheit einsch&auml;tzen k&ouml;nnen.</p>
 <table>
 	<tr>
-		<th>Field</th>
-		<th>Description</th>
+		<th>Wert</th>
+		<th>Beschreibung</th>
 	<tr>
 	<tr>
-		<td>Monthly Income</td>
-		<td>The total of all incoming transactions per month</td>
+		<td>Monatliche Einnahmen</td>
+		<td>Die Summe der monatlichen Einnahmen</td>
 	</tr>
 	<tr>
-		<td>Monthly Expenses</td>
-		<td>The total of all outgoing transactions per month</td>
+		<td>Monatliche Ausgaben</td>
+		<td>Die Summe der monatlichen Ausgaben</td>
 	</tr>
 	<tr>
-		<td>Monthly Balance</td>
-		<td>The profit/loss calculation of all transactions per month</td>
+		<td>Monatlicher G/V</td>
+		<td>Der Gewinn/Verlust der Buchungen pro Monat</td>
 	</tr>
 	<tr>
-		<td>Yearly Income</td>
-		<td>The total of all incoming transactions per year</td>
+		<td>J&auml;hrliche Einnahmen</td>
+		<td>Die Summe aller Einnahmen pro Jahr</td>
 	</tr>
 	<tr>
-		<td>Yearly Expenses</td>
-		<td>The total of all outgoing transactions per year</td>
+		<td>J&auml;hrliche Ausgaben</td>
+		<td>Die Summe aller Ausgaben pro Jahr</td>
 	</tr>
 	<tr>
-		<td>Yearly Balance</td>
-		<td>The profit/loss calculation of all transactions per year</td>
+		<td>J&auml;hrlicher G/V</td>
+		<td>Der Gesamt-Gewinn/Verlust pro Jahr</td>
 	</tr>
 	<tr>
-		<td>Average Monthly Income</td>
-		<td>The average income in a month. The figure includes and levels all incoming transactions 
-		    in a year.</td>
+		<td>Durchschnitt Einnahmen/Monat</td>
+		<td>Das durchschnittliche, monatliche Einkommen. Dieser Wert gleicht unterschiedliche Einnahmen 
+		    in verschiedenen Monaten aus.</td>
 	</tr>
 	<tr>
-		<td>Average Monthly Expenses</td>
-		<td>The average expenses in a month. The figure includes and levels all outgoing transactions 
-		    in a year.</td>
+		<td>Durchschnitt Ausgaben/Monat</td>
+		<td>Die durchschnittlichen, monatlichen Ausgaben. Dieser Wert gleicht unterschiedliche Ausgaben 
+		    in verschiedenen Monaten aus.</td>
 	</tr>
 	<tr>
-		<td>Average Monthly Balance</td>
-		<td>The average profit/loss calculation per month. The figure includes and levels all transactions 
-		    in a year.</td>
+		<td>Durchschnitt G/V</td>
+		<td>Der durchschnittliche Gewinn/Verlust pro Monat. Dieser Wert gleicht die unterschiedlichen
+		    Einnahmen und Ausgaben in verschiedenen Monaten aus.</td>
 	</tr>
 </table>
 
-<h3 id="plan">Transaction Table</h3>
-<p>The transaction table shows the planned transactions. A turquoise background identifies a budget. White background
-identifies single transactions. The following table describes the values displayed in each column.</p>
+<h3 id="plan">Die Buchungstabelle</h3>
+<p>Die Buchungstabelle zeigt alle geplanten Buchungen und Budgets. Ein t&uuml;rkiser Hintergrund hebt Budgets hervor.
+Ein wei&szlig;er Hintergrund kennzeichnet einzelne Buchungen. Die folgende Tabelle beschreibt die verschiedenen Werte
+in den jeweiligen Spalten.</p>
 <table>
 	<tr>
-		<th>Column</th>
-		<th>Description</th>
+		<th>Spalte</th>
+		<th>Beschreibung</th>
 	<tr>
 	<tr>
-		<td>Cycle</td>
-		<td>The periodicity of the transaction (monthly, quarterly, half-yearly, yearly)</td>
+		<td>Zyklus</td>
+		<td>Der Zyklus, in dem diese Buchung auftritt (monatlich, alle 2 Monate, viertelj&auml;hrlich, halbj&auml;hrlich, j&auml;hrlich)</td>
 	</tr>
 	<tr>
-		<td>Occurance</td>
-		<td>The months this transaction will occur in (blank for monthly transactions).</td>
+		<td>Sequenz</td>
+		<td>Die Monate, in denen diese Buchung geplant ist (leer bei monatlichen Buchungen).</td>
 	</tr>
 	<tr>
 		<td>Text</td>
-		<td>The transaction text</td>
+		<td>Der Buchungstext</td>
 	</tr>
 	<tr>
 		<td>Details</td>
-		<td>Details and remarks of the transaction, e.g. origin or receiver (optional).</td>
+		<td>Details und Hinweise zu dieser Buchung, z.B. Herkunft oder Referenz (optional).</td>
 	</tr>
 	<tr>
 		<td>Budget</td>
-		<td>The budget this transaction belongs to (optional).</td>
+		<td>Das Budget, zu dem diese Buchung geh&ouml;rt (optional).</td>
 	</tr>
 	<tr>
-		<td>Category</td>
-		<td>The category this transaction belongs to.</td>
+		<td>Kategorie</td>
+		<td>Die Kategorie, die dieser Buchung zugeordnet ist.</td>
 	</tr>
 	<tr>
-		<td>Amount</td>
-		<td>The amount this transaction is planned with. Positive numbers are incomes, negative numbers are expenses. The amount is colored
-		    according to your <a href="../settings/colors.html">color preferences</a>.</td>
+		<td>Wert</td>
+		<td>Der geplante Wert dieser Transaktion. Positive Zahlen kennzeichnen Einkommen, negative Zahlen kennzeichnen
+		    Ausgaben. Der Wert ist gem&auml;&szlig; den <a href="../settings/colors.html">Farb-Einstellungen</a>
+		    koloriert.</td>
 	</tr>
 </table>
 
-<h2 id="tasks">Tasks</h2>
-<h3 id="createtx">Create a new transaction</h3>
-<p>Create a new transaction by</p>
+<h2 id="tasks">Aufgaben</h2>
+<h3 id="createtx">Eine neue Buchung anlegen</h3>
+<p>Erzeugen Sie eine neue Buchung, indem Sie</p>
 <ul>
-	<li>Right-click on the transaction table. Select "New Transaction" from the context menu.</li>
-	<li>Click the "New Transaction" button <img src="../../images/table-insert-row.png"/> directly above the transaction table.</li>
-	<li>Click the "New Transaction" button <img src="../../images/table-insert-row.png"/> from the view's toolbar.</li>
-	<li>Press the "Insert" key.</li>
+	<li>mit der rechten Maustaste auf die Tabelle klicken. W&auml;hlen Sie "Neue Buchung" aus dem Kontextmen&uuml;.</li>
+	<li>Klicken Sie auf die Schaltfl&auml;che <img src="../../images/table-insert-row.png"/> direkt &uuml;ber der Buchungstabelle.</li>
+	<li>Klicken Sie auf die Schaltfl&auml;che <img src="../../images/table-insert-row.png"/> in der Werzeugleiste der Ansicht.</li>
+	<li>Dr&uuml;cken Sie die <code>Einf&uuml;gen</code>-Taste</li>
 </ul>
-<p>All methods will create a new transaction at the end of the table and scroll to the new row in order to make it visible.
-The editing cursor is placed within the Text field so you can start typing.</p>
+<p>Alle Methoden erzeugen eine neue Buchung am Ende der Tabelle und scrollen dorthin, falls notwendig. Die Textmarke (Cursor) ist bereits
+im Feld f&uuml;r den Buchungstext platziert, so dass Sie sofort anfangen k&ouml;nnen, Ihren Text einzugeben.</p>
 
-<h3 id="modifytx">Modify a transaction</h3>
-<p>Double-click the value in the transaction table that you want to modify. Depending on the column, a text editor or combo box will
-appear so you can change the current value of the cell. Hit "Enter" when you made your change or click anywhere else on the screen.
-The new new value will be saved immediately.</p>
-<p>You can cancel editing by simply pressing "Esc" on your keyboard. This will revert the change you already made in the editor
-and bring back the old value.</p>
+<h3 id="modifytx">Eine Buchung bearbeiten</h3>
+<p>Doppelklicken Sie in der Tabelle auf den Wert, den Sie bearbeiten m&ouml;chten. Je nach Spalte erscheint ein Auswahlfeld, aus dem Sie
+den neuen Wert selektieren k&ouml;nnen, bzw. ein Textfeld, mit dem Sie den Text &auml;ndern k&ouml;nnen. Dr&uuml;cken Sie <code>Enter</code>,
+wenn Sie Ihre Eingabe beendet haben bzw. klicken Sie mit der Maus auf eine beliebige Stelle au&szlig;erhalb des Eingabefeldes. Ihre
+&Auml;nderung wird sofort abgespeichert.</p>
+<p>Sie k&ouml;nnen das Editieren abbrechen, wenn Sie <code>Esc</code> auf Ihrer Tastatur dr&uuml;cken. Ihr &Auml;nderung wird dann nicht abgespeichert.</p>
 
-<h3 id="movetx">Move a transaction</h3>
-<p>It is possible to change the order of transactions in the table. Right-click the row and select "Move Up" or "Move Down" from the
-context menu. The same action can be triggered by pressing Ctrl+Up or Ctrl+Down respectively.</p>
+<h3 id="movetx">Eine Buchung verschieben</h3>
+<p>Es ist m&ouml;glich, die Reihenfolge der Buchungen zu &auml;ndern. Klicken Sie dazu mit der rechten Maustaste auf die Tabelle und
+w&auml;hlen Sie "Nach oben" bzw. "Nach unten", um die ausgew&auml;hlte Buchung zu verschieben. Dieselbe Aktion k&ouml;nnen Sie
+auch &uuml;ber die Tastenkombinationen <code>Strg+&uarr;</code> und <code>Strg+&darr;</code> ausl&ouml;sen.</p>
 
-<h3 id="transformtx">Convert transactions to budgets</h3>
-<p>Transactions can be converted into budgets and vice versa. Right-click on a row and select "Convert to Budget" or
-"Convert to Transaction" respectively.</p>
+<h3 id="transformtx">Buchungen in Budgets umwandeln</h3>
+<p>Transaktionen k&ouml;nnen in Buchungen und umgekehrt umgewandelt werden. Klicken Sie dazu mit der rechten Maustaste auf die entsprechende
+Zeile und w&auml;hlen Sie "In Budget umwandeln" bzw. "In Buchung umwandeln".</p>
 
-<h3 id="deletetx">Delete a transaction</h3>
-<p>Of course, you can delete transactions and budgets from the transaction table:</p>
+<h3 id="deletetx">Eine Buchung l&ouml;schen</h3>
+<p>Nat&uuml;rlich k&ouml;nnen Sie Buchungen und Budgets aus der Tabelle auch wieder l&ouml;schen:</p>
 <ul>
-	<li>Right-click on the transaction table. Select "Delete" from the context menu.</li>
-	<li>Click the "Delete" button <img src="../../images/table-delete-row.png"/> directly above the transaction table.</li>
-	<li>Click the "Delete" button <img src="../../images/table-delete-row.png"/> from the view's toolbar.</li>
-	<li>Press the "Delete" key.</li>
+	<li>mit der rechten Maustaste auf die Tabelle klicken. W&auml;hlen Sie "Buchung l&ouml;schen" aus dem Kontextmen&uuml;.</li>
+	<li>Klicken Sie auf die Schaltfl&auml;che <img src="../../images/table-delete-row.png"/> direkt &uuml;ber der Buchungstabelle.</li>
+	<li>Klicken Sie auf die Schaltfl&auml;che <img src="../../images/table-delete-row.png"/> in der Werzeugleiste der Ansicht.</li>
+	<li>Dr&uuml;cken Sie die <code>Entfernen</code>-Taste</li>
 </ul>
-<p><em>RsBudget</em> will ask you for confirmation before actually deleting the row(s) selected.</p>
+<p><em>RsBudget</em> wird Sie nach einer Best&auml;tigung fragen, bevor die ausgew&auml;hlte Zeile gel&ouml;scht wird.</p>
 
 </body>
 </html>
