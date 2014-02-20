@@ -30,28 +30,39 @@ public class HistoricalItemStatusDAOImpl extends AbstractRsBudgetDbDAO<Historica
 	@Override
 	public HistoricalItemStatus findLatestBy(HistoricalItem item, RsDate timestamp) {
 		Criterion crit1 = Restrictions.eq("item.id", item.getId());
-		Criterion crit2 = Restrictions.le("timestamp", timestamp);
-		Criteria criteria = buildCriteria(crit1, crit2);
-		criteria.addOrder(Order.desc("timestamp"));
-		return findSingleByCriteria(criteria);
+		List<HistoricalItemStatus> l = findByCriteria(buildCriteria(crit1));
+		HistoricalItemStatus rc = null;
+		for (HistoricalItemStatus status : l) {
+			if (status.getTimestamp().before(timestamp)) {
+				if (rc == null) rc = status;
+				else {
+					if (status.getTimestamp().after(rc.getTimestamp())) rc = status;
+				}
+			}
+		}
+		return rc;
+
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public HistoricalItemStatus findNearest(HistoricalItem item, RsDate timestamp, long maxDiffMilliseconds) {
 		Criterion crit1 = Restrictions.eq("item.id", item.getId());
-		Criterion crit2 = Restrictions.le("timestamp", new RsDate(timestamp.getTimeInMillis()+maxDiffMilliseconds));
-		Criterion crit3 = Restrictions.ge("timestamp", new RsDate(timestamp.getTimeInMillis()-maxDiffMilliseconds));
-		List<HistoricalItemStatus> l = findByCriteria(buildCriteria(crit1, crit2, crit3));
+		List<HistoricalItemStatus> l = findByCriteria(buildCriteria(crit1));
 		HistoricalItemStatus rc = null;
+		long min = timestamp.getTimeInMillis()-maxDiffMilliseconds;
+		long max = timestamp.getTimeInMillis()+maxDiffMilliseconds;
 		for (HistoricalItemStatus status : l) {
-			if (rc == null) rc = status;
-			else {
-				long diffStatus = Math.abs(timestamp.getTimeInMillis()-status.getTimestamp().getTimeInMillis());
-				long diffRc     = Math.abs(timestamp.getTimeInMillis()-rc.getTimestamp().getTimeInMillis());
-				if (diffStatus < diffRc) rc = status;
+			long t = status.getTimestamp().getTimeInMillis();
+			if ((t >= min) && (t <= max)) {
+				if (rc == null) rc = status;
+				else {
+					long diffStatus = Math.abs(timestamp.getTimeInMillis()-status.getTimestamp().getTimeInMillis());
+					long diffRc     = Math.abs(timestamp.getTimeInMillis()-rc.getTimestamp().getTimeInMillis());
+					if (diffStatus < diffRc) rc = status;
+				}
 			}
 		}
 		return rc;
@@ -67,5 +78,5 @@ public class HistoricalItemStatusDAOImpl extends AbstractRsBudgetDbDAO<Historica
 		return findSingleByCriteria(criteria);
 	}
 
-	
+
 }

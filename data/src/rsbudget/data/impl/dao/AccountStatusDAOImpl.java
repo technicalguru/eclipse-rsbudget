@@ -30,28 +30,38 @@ public class AccountStatusDAOImpl extends AbstractRsBudgetDbDAO<AccountStatusDTO
 	@Override
 	public AccountStatus findLatestBy(Account account, RsDate timestamp) {
 		Criterion crit1 = Restrictions.eq("account.id", account.getId());
-		Criterion crit2 = Restrictions.le("timestamp", timestamp);
-		Criteria criteria = buildCriteria(crit1, crit2);
-		criteria.addOrder(Order.desc("timestamp"));
-		return findSingleByCriteria(criteria);
+		List<AccountStatus> l = findByCriteria(buildCriteria(crit1));
+		AccountStatus rc = null;
+		for (AccountStatus status : l) {
+			if (status.getTimestamp().before(timestamp)) {
+				if (rc == null) rc = status;
+				else {
+					if (status.getTimestamp().after(rc.getTimestamp())) rc = status;
+				}
+			}
+		}
+		return rc;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public AccountStatus findNearest(Account account, RsDate timestamp, long maxDiffMilliseconds) {
 		Criterion crit1 = Restrictions.eq("account.id", account.getId());
-		Criterion crit2 = Restrictions.le("timestamp", new RsDate(timestamp.getTimeInMillis()+maxDiffMilliseconds));
-		Criterion crit3 = Restrictions.ge("timestamp", new RsDate(timestamp.getTimeInMillis()-maxDiffMilliseconds));
-		List<AccountStatus> l = findByCriteria(buildCriteria(crit1, crit2, crit3));
+		List<AccountStatus> l = findByCriteria(buildCriteria(crit1));
 		AccountStatus rc = null;
+		long min = timestamp.getTimeInMillis()-maxDiffMilliseconds;
+		long max = timestamp.getTimeInMillis()+maxDiffMilliseconds;
 		for (AccountStatus status : l) {
-			if (rc == null) rc = status;
-			else {
-				long diffStatus = Math.abs(timestamp.getTimeInMillis()-status.getTimestamp().getTimeInMillis());
-				long diffRc     = Math.abs(timestamp.getTimeInMillis()-rc.getTimestamp().getTimeInMillis());
-				if (diffStatus < diffRc) rc = status;
+			long t = status.getTimestamp().getTimeInMillis();
+			if ((t >= min) && (t <= max)) {
+				if (rc == null) rc = status;
+				else {
+					long diffStatus = Math.abs(timestamp.getTimeInMillis()-status.getTimestamp().getTimeInMillis());
+					long diffRc     = Math.abs(timestamp.getTimeInMillis()-rc.getTimestamp().getTimeInMillis());
+					if (diffStatus < diffRc) rc = status;
+				}
 			}
 		}
 		return rc;
@@ -67,5 +77,5 @@ public class AccountStatusDAOImpl extends AbstractRsBudgetDbDAO<AccountStatusDTO
 		return findSingleByCriteria(criteria);
 	}
 
-	
+
 }
