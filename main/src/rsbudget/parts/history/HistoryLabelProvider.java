@@ -23,8 +23,8 @@ public class HistoryLabelProvider extends AbstractColumnLabelProvider {
 	public HistoryLabelProvider(int index, LocalResourceManager resourceManager) {
 		super(null, resourceManager);
 		this.index = index;
-		CommonUtils.SIMPLE_NUMBER_FORMATTER.setMaximumFractionDigits(2);
-		CommonUtils.SIMPLE_NUMBER_FORMATTER.setMinimumFractionDigits(2);
+		CommonUtils.SIMPLE_NUMBER_FORMATTER().setMaximumFractionDigits(2);
+		CommonUtils.SIMPLE_NUMBER_FORMATTER().setMinimumFractionDigits(2);
 	}
 
 	/**
@@ -40,8 +40,8 @@ public class HistoryLabelProvider extends AbstractColumnLabelProvider {
 			String unit = record.getUnit(index);
 			
 			if (value == null) rc = "";
-			else if (record.isFloat(index)) rc = CommonUtils.SIMPLE_NUMBER_FORMATTER.format(value)+" "+unit;
-			else rc = CommonUtils.SIMPLE_INT_FORMATTER.format(value)+" "+unit;
+			else if (record.isFloat(index)) rc = CommonUtils.SIMPLE_NUMBER_FORMATTER().format(value)+" "+unit;
+			else rc = CommonUtils.SIMPLE_INT_FORMATTER().format(value)+" "+unit;
 			
 			return rc;
 		} catch (Throwable t) {

@@ -165,11 +165,11 @@ public class SettingDAOImpl extends AbstractRsBudgetDbDAO<SettingDTO, SettingBO,
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
-	protected void afterNewInstance(Setting object) {
-		super.afterNewInstance(object);
-		object.setDAO(this);
-	}
+//	@Override
+//	protected void afterNewInstance(Setting object, boolean persisted) {
+//		super.afterNewInstance(object, persisted);
+//		object.setDAO(this); // TODO Is this required?
+//	}
 
 	/**
 	 * Returns the crypting delegate.
