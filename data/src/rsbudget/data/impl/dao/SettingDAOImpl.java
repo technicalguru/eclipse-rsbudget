@@ -5,7 +5,6 @@ package rsbudget.data.impl.dao;
 
 import java.util.List;
 
-import org.apache.commons.codec.binary.Base64;
 import org.hibernate.criterion.Restrictions;
 
 import rs.baselib.crypto.Decrypter;
