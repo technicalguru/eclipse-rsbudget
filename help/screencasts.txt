@@ -1,0 +1,59 @@
+Installations-Screencast
+------------------------
+
++ Downloads: MySQL, Java, RSBudget
++ MySQL-DB-Einrichtung erläutern
++ Installation auf Platte
++ Initial Starten
+	- Language
+	- Datenbank-Varianten
+	- Verschlüsselung
+	- Passwort (Sicherheit und Verschlüsselung erwähnen)
+	- Konto einrichten
+	- Standard-Kategorie
++ That’s it!
+
+ 
+FirstSteps-Screencast
+---------------------
++ Starten und Einloggen
++ Oberfläche
+	- Menü
+		* Kurz durchgehen: Exit, Passwort ändern, Preferences, Help
+	- Allgemeine ToolBar
+	- Views
+		* Welche Views gibt es?
+		* Toolbar der View
+		* Views ändern
+		* Views zurücksetzen
++ Kategorien erweitern
++ General Plan anlegen
+	- Transaktion anlegen
+	- TX verändern
+		* Betrag
+		* Zyklus und Auftreten
+	- Budget erzeugen
+	- Reihenfolge
+	- Statistik-Werte erklären
+	- TX oder Budget löschen
++ Monatsplan anlegen
+	- Plan erzeugen
+	- Plan ändern
+		* Betrag anpassen
+		* Text
+	- Reihenfolge
+	- Statistikwerte erklären
++ Tracking
+	- Anfangs-Status festlegen
+	- Transaktion eingeben
+		* Per Aktueller Wert
+		* Per Datum
+	- Transaktion löschen (aktuell/geplant)
+	- Budget erzeugen und abändern
+		* Umwandeln
+		* Budgetzeile erklären
+	- Sortierung
+	- Neue, zusätzliche Transaktionen anlegen
+	- Ende-Status festlegen
+	- Notizen
+
