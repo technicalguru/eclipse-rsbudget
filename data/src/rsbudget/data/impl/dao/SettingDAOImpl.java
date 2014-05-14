@@ -5,6 +5,7 @@ package rsbudget.data.impl.dao;
 
 import java.util.List;
 
+import org.apache.commons.codec.binary.Base64;
 import org.hibernate.criterion.Restrictions;
 
 import rs.baselib.crypto.Decrypter;
@@ -161,15 +162,6 @@ public class SettingDAOImpl extends AbstractRsBudgetDbDAO<SettingDTO, SettingBO,
 		saltSetting.setValue(pwdValue);
 		create(saltSetting);
 	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-//	@Override
-//	protected void afterNewInstance(Setting object, boolean persisted) {
-//		super.afterNewInstance(object, persisted);
-//		object.setDAO(this); // TODO Is this required?
-//	}
 
 	/**
 	 * Returns the crypting delegate.

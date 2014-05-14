@@ -3,7 +3,6 @@
  */
 package rsbudget.data.api.bo;
 
-import rsbudget.data.api.dao.SettingDAO;
 
 
 /**
@@ -42,9 +41,4 @@ public interface Setting extends RsBudgetBO<Long> {
 	 */
 	public void setValue(String value);
 
-	/**
-	 * Set the dao for the setting.
-	 * @param dao the DAO
-	 */
-	public void setDAO(SettingDAO dao);
 }

@@ -16,8 +16,6 @@ import rsbudget.data.dto.SettingDTO;
  */
 public class SettingBO extends AbstractRsBudgetDbBO<SettingDTO> implements Setting {
 
-	private SettingDAO dao;
-	
 	/**
 	 * Serial UID. 
 	 */
@@ -78,14 +76,6 @@ public class SettingBO extends AbstractRsBudgetDbBO<SettingDTO> implements Setti
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setDAO(SettingDAO dao) {
-		this.dao = dao;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
 	public String getDisplay() {
 		return getKey();
 	}
@@ -96,8 +86,8 @@ public class SettingBO extends AbstractRsBudgetDbBO<SettingDTO> implements Setti
 	 * @return encrypted version of string
 	 */
 	protected String encrypt(String s) {
-		if (dao == null) return s;
-		return dao.encrypt(s);
+		if (getDao() == null) return s;
+		return ((SettingDAO)getDao()).encrypt(s);
 	}
 	
 	/**
@@ -122,8 +112,8 @@ public class SettingBO extends AbstractRsBudgetDbBO<SettingDTO> implements Setti
 	 * @return decrypted version of string
 	 */
 	protected String decrypt(String s) {
-		if (dao == null) return s;
-		return dao.decrypt(s);
+		if (getDao() == null) return s;
+		return ((SettingDAO)getDao()).decrypt(s);
 	}
 	
 	/**
