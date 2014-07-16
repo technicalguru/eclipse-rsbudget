@@ -13,9 +13,12 @@
    </configIni>
 
    <launcherArgs>
-      <programArgs>-data @user.home/.rsbudget/workspace</programArgs>
-      <vmArgs>-Dlogback.configurationFile=platform:/plugin/rs.rcpplugins.rsbudget.main/resources/logback.xml</vmArgs>
-      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+      <programArgs>-data @user.home/.rsbudget/workspace
+      </programArgs>
+      <vmArgs>-Dlogback.configurationFile=platform:/plugin/rs.rcpplugins.rsbudget.main/resources/logback.xml
+      </vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
    </launcherArgs>
 
    <windowImages i16="/rs.rcpplugins.rsbudget.main/resources/icons/cash16.png" i32="/rs.rcpplugins.rsbudget.main/resources/icons/cash.png" i48="/rs.rcpplugins.rsbudget.main/resources/icons/cash48.png" i64="/rs.rcpplugins.rsbudget.main/resources/icons/cash64.png" i128="/rs.rcpplugins.rsbudget.main/resources/icons/cash128.png"/>
@@ -58,7 +61,6 @@
       <feature id="org.eclipse.emf.common"/>
       <feature id="org.eclipse.equinox.p2.core.feature"/>
       <feature id="org.eclipse.m2e.logback.feature"/>
-      <feature id="org.eclipse.recommenders.feature.3rd.orbit"/>
    </features>
 
    <configurations>
