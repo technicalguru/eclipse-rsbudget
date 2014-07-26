@@ -50,7 +50,7 @@ import rsbudget.view.wizards.bootstrap.BootstrapWizardLanguage;
 import rsbudget.view.wizards.bootstrap.LanguageDialog;
 
 /**
- * Handles the login
+ * Handles the login.
  * @author ralph
  *
  */
@@ -64,7 +64,7 @@ public class LifecycleHandler {
 		Locale locale = PreferencesUtils.getLocale();
 		Locale.setDefault(locale);
 		ctx.set(TranslationService.LOCALE, locale.toString());
-
+		context.set(TranslationService.LOCALE, locale.toString());
 		cleanupUserXmi();
 
 		Display display = PlatformUI.createDisplay();
