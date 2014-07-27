@@ -1,7 +1,7 @@
 /**
  * 
  */
-package rsbudget.parts.transactions;
+package rsbudget.parts.budgets;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,7 +19,6 @@ import org.slf4j.LoggerFactory;
 
 import rs.baselib.util.IWrapper;
 import rsbudget.Plugin;
-import rsbudget.data.api.bo.Plan;
 import rsbudget.data.api.bo.RsBudgetBO;
 import rsbudget.util.ExportUtil;
 
@@ -42,25 +41,22 @@ public class ExportHandler {
 	@Execute
 	public void execute(IEclipseContext context, @Active MPart part, Shell shell) {
 		Object customPart = part.getObject();
-		if ((customPart != null) && (customPart instanceof TransactionsPart)) {
-			TransactionsPart txPart = (TransactionsPart)customPart;
-			Plan plan = txPart.getPlan();
-			if (plan != null) {
-				try {
-					IObservableList tx = txPart.getTransactions();
-					List<RsBudgetBO<?>> l = new ArrayList<RsBudgetBO<?>>();
-					for (Object o : tx) {
-						IWrapper row = (IWrapper)o;
-						l.add((RsBudgetBO<?>)row.getWrapped());
-					}
-					ExportUtil.exportTransactions(shell, l);
-				} catch (IOException e) {
-					LoggerFactory.getLogger(getClass()).error("Error while exporting transactions", e);
-					MessageDialog.openError(shell, Plugin.translate("%export.error.title"), Plugin.translate("export.error.io.message"));
-				} catch (Exception e) {
-					LoggerFactory.getLogger(getClass()).error("Error while exporting transactions", e);
-					MessageDialog.openError(shell, Plugin.translate("%export.error.title"), Plugin.translate("export.error.unknown.message"));
+		if ((customPart != null) && (customPart instanceof BudgetPart)) {
+			BudgetPart txPart = (BudgetPart)customPart;
+			try {
+				IObservableList budgets = txPart.getBudgets();
+				List<RsBudgetBO<?>> l = new ArrayList<RsBudgetBO<?>>();
+				for (Object o : budgets) {
+					IWrapper row = (IWrapper)o;
+					l.add((RsBudgetBO<?>)row.getWrapped());
 				}
+				ExportUtil.exportPlanning(shell, l);
+			} catch (IOException e) {
+				LoggerFactory.getLogger(getClass()).error("Error while exporting transactions", e);
+				MessageDialog.openError(shell, Plugin.translate("%export.error.title"), Plugin.translate("export.error.io.message"));
+			} catch (Exception e) {
+				LoggerFactory.getLogger(getClass()).error("Error while exporting transactions", e);
+				MessageDialog.openError(shell, Plugin.translate("%export.error.title"), Plugin.translate("export.error.unknown.message"));
 			}
 		}
 	}
@@ -73,10 +69,6 @@ public class ExportHandler {
 	@CanExecute
 	public boolean canExecute(IEclipseContext context, @Active MPart part) {
 		Object customPart = part.getObject();
-		if  ((customPart != null) && (customPart instanceof TransactionsPart)) {
-			TransactionsPart txPart = (TransactionsPart)customPart;
-			return txPart.getPlan() != null;
-		}
-		return false;
+		return (customPart != null) && (customPart instanceof BudgetPart);
 	}
 }
