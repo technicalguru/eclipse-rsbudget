@@ -17,6 +17,7 @@
               <handlers xmi:id="_kVt6ME1QEeKHgqyPStei2Q" elementId="rs.rcpplugins.rsbudget.handler.toplannedtx" contributionURI="bundleclass://rs.rcpplugins.rsbudget.main/rsbudget.parts.transactions.ConvertToTransactionHandler" command="_2WFgEChIEeKSPKb4rAbXuw"/>
               <handlers xmi:id="_q4BJkE1QEeKHgqyPStei2Q" elementId="rs.rcpplugins.rsbudget.handler.tobudget" contributionURI="bundleclass://rs.rcpplugins.rsbudget.main/rsbudget.parts.transactions.ConvertToBudgetHandler" command="_zBC24ChIEeKSPKb4rAbXuw"/>
               <handlers xmi:id="_XMHy0E21EeKbt97r_4TxYw" elementId="rs.rcpplugins.rsbudget.handler.setbalances" contributionURI="bundleclass://rs.rcpplugins.rsbudget.main/rsbudget.parts.transactions.SetBalancesHandler" command="_qFGd4C2eEeKFoMgQaUhvgg"/>
+              <handlers xmi:id="_P75kABVwEeSvdMl5qlrm8g" elementId="rs.rcpplugins.rsbudget.main.handler.export" contributionURI="bundleclass://rs.rcpplugins.rsbudget.main/rsbudget.parts.transactions.ExportHandler" command="_cFBOwBVsEeSvdMl5qlrm8g"/>
               <menus xsi:type="menu:PopupMenu" xmi:id="_R3cPQCnpEeKULaln8TeWRw" elementId="rs.rcpplugins.rsbudget.popupmenu.transactions">
                 <children xsi:type="menu:HandledMenuItem" xmi:id="_Wiu5sCnpEeKULaln8TeWRw" elementId="rs.rcpplugins.rsbudget.handledmenuitem.newtx" label="%e4xmi.part.transactions.menuitem.newtx.label" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/table--plus.png" tooltip="%e4xmi.part.transactions.menuitem.newtx.tooltip" command="_JaykYCRJEeK1q7gtyHONTA"/>
                 <children xsi:type="menu:HandledMenuItem" xmi:id="_e47IkCnpEeKULaln8TeWRw" elementId="rs.rcpplugins.rsbudget.handledmenuitem.deletetx" label="%e4xmi.part.transactions.menuitem.deletetx.label" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/table--minus.png" tooltip="%e4xmi.part.transactions.menuitem.deletetx.tooltip" command="_bP49sCRJEeK1q7gtyHONTA"/>
@@ -26,6 +27,8 @@
                 <children xsi:type="menu:MenuSeparator" xmi:id="_0t5QwCnpEeKULaln8TeWRw" elementId="rs.rcpplugins.rsbudget.menuseparator.0"/>
                 <children xsi:type="menu:HandledMenuItem" xmi:id="_1XwtICnpEeKULaln8TeWRw" elementId="rs.rcpplugins.rsbudget.handledmenuitem.tobudget" label="%e4xmi.part.transactions.menuitem.tobudget.label" command="_zBC24ChIEeKSPKb4rAbXuw"/>
                 <children xsi:type="menu:HandledMenuItem" xmi:id="_5C1QsCnpEeKULaln8TeWRw" elementId="rs.rcpplugins.rsbudget.handledmenuitem.totx" label="%e4xmi.part.transactions.menuitem.totx.label" command="_2WFgEChIEeKSPKb4rAbXuw"/>
+                <children xsi:type="menu:MenuSeparator" xmi:id="_o7iYwBVtEeSvdMl5qlrm8g" elementId="rs.rcpplugins.rsbudget.main.menuseparator.1"/>
+                <children xsi:type="menu:HandledMenuItem" xmi:id="_qFCXcBVtEeSvdMl5qlrm8g" elementId="rs.rcpplugins.rsbudget.main.handledmenuitem.export" label="%e4xmi.menuitem.export.label" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/database-export.png" tooltip="%e4xmi.menuitem.export.tooltip" command="_cFBOwBVsEeSvdMl5qlrm8g"/>
               </menus>
               <toolbar xmi:id="_MkEKcPpwEeGyouYbBldvvA" elementId="rs.rcpplugins.rsbudget2.toolbar.transactions">
                 <children xsi:type="menu:HandledToolItem" xmi:id="_x0LCYC2eEeKFoMgQaUhvgg" elementId="rs.rcpplugins.rsbudget.handledtoolitem.createplan" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/money--plus.png" tooltip="%e4xmi.part.transactions.toolitem.createplan.tooltip" command="_lQsTsC2eEeKFoMgQaUhvgg"/>
@@ -55,6 +58,8 @@
                 <children xsi:type="menu:MenuSeparator" xmi:id="_1UHlYChLEeKSPKb4rAbXuw" elementId="rs.rcpplugins.rsbudget.menuseparator.0"/>
                 <children xsi:type="menu:HandledMenuItem" xmi:id="_171ssChLEeKSPKb4rAbXuw" elementId="rs.rcpplugins.rsbudget.handledmenuitem.topbudget" label="%e4xmi.part.budgets.menuitem.tobudget.label" command="_zBC24ChIEeKSPKb4rAbXuw"/>
                 <children xsi:type="menu:HandledMenuItem" xmi:id="_5k9vgChLEeKSPKb4rAbXuw" elementId="rs.rcpplugins.rsbudget.handledmenuitem.toptx" label="%e4xmi.part.budgets.menuitem.totx.label" command="_2WFgEChIEeKSPKb4rAbXuw"/>
+                <children xsi:type="menu:MenuSeparator" xmi:id="_yUH4wBVtEeSvdMl5qlrm8g" elementId="rs.rcpplugins.rsbudget.main.menuseparator.2"/>
+                <children xsi:type="menu:HandledMenuItem" xmi:id="_zGph4BVtEeSvdMl5qlrm8g" elementId="rs.rcpplugins.rsbudget.main.handledmenuitem.export" label="%e4xmi.menuitem.export.label" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/database-export.png" tooltip="%e4xmi.menuitem.export.tooltip" command="_cFBOwBVsEeSvdMl5qlrm8g"/>
               </menus>
               <toolbar xmi:id="_lNFwMCRVEeK1q7gtyHONTA" elementId="rs.rcpplugins.rsbudget.toolbar.budgeting">
                 <children xsi:type="menu:HandledToolItem" xmi:id="_p-9jwCRVEeK1q7gtyHONTA" elementId="rs.rcpplugins.rsbudget.handledtoolitem.newbudget" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/table-insert-row.png" tooltip="%e4xmi.part.budgets.toolitem.newtx.tooltip" command="_JaykYCRJEeK1q7gtyHONTA"/>
@@ -91,6 +96,8 @@
     <handlers xmi:id="_U4APME3OEeOcW7ECIJ4-tw" elementId="rs.rcpplugins.rsbudget.handler.about" contributionURI="bundleclass://rs.rcpplugins.rsbudget.main/rsbudget.handlers.AboutHandler" command="_OMk5AE3OEeOcW7ECIJ4-tw"/>
     <mainMenu xmi:id="_BrqPwPprEeGyouYbBldvvA" elementId="rs.rcpplugins.rsbudget.menu.0">
       <children xsi:type="menu:Menu" xmi:id="_4WCP0CR9EeKck9aisjEcNQ" elementId="org.eclipse.ui.file" label="%e4xmi.menu.file.label">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_O82pMBVtEeSvdMl5qlrm8g" elementId="rs.rcpplugins.rsbudget.main.handledmenuitem.export" label="%e4xmi.menuitem.export.label" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/database-export.png" tooltip="%e4xmi.menuitem.export.tooltip" command="_cFBOwBVsEeSvdMl5qlrm8g"/>
+        <children xsi:type="menu:MenuSeparator" xmi:id="_aA_sEBVtEeSvdMl5qlrm8g" elementId="rs.rcpplugins.rsbudget.main.menuseparator.0"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_52c5sCR9EeKck9aisjEcNQ" elementId="rs.rcpplugins.rsbudget.handledmenuitem.exit" label="%e4xmi.menuitem.exit.label" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/Exit.png" tooltip="%e4xmi.menuitem.exit.tooltip" command="_NolAYCR-EeKck9aisjEcNQ"/>
       </children>
       <children xsi:type="menu:Menu" xmi:id="_vkGOMCR_EeKWyI8ecfPnnA" elementId="org.eclipse.ui.edit" label="%e4xmi.menu.edit.label"/>
@@ -112,8 +119,9 @@
     <trimBars xmi:id="_rHiYwCR-EeKck9aisjEcNQ" elementId="rs.rcpplugins.rsbudget.trimbar.top">
       <children xsi:type="menu:ToolBar" xmi:id="_sB5IMCR-EeKck9aisjEcNQ" elementId="rs.rcpplugins.rsbudget.toolbar.maintoolbar">
         <tags>addhelp</tags>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_9sgiwBVsEeSvdMl5qlrm8g" elementId="rs.rcpplugins.rsbudget.main.handledtoolitem.export" label="%e4xmi.menuitem.export.label" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/database-export.png" tooltip="%e4xmi.menuitem.export.tooltip" command="_cFBOwBVsEeSvdMl5qlrm8g"/>
         <children xsi:type="menu:ToolBarSeparator" xmi:id="_yliY8F2OEeON78Sob95s5w" elementId="rs.rcpplugins.rsbudget.toolbarseparator.1"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_FNClsFGoEeKNj4RZz9abMQ" elementId="rs.rcpplugins.rsbudget.handledtoolitem.preferences" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/Settings_16x16.png" tooltip="%e4xmi.menuitem.preferences.label" command="_VVP00FGnEeKNj4RZz9abMQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_FNClsFGoEeKNj4RZz9abMQ" elementId="rs.rcpplugins.rsbudget.handledtoolitem.preferences" label="%e4xmi.menuitem.preferences.label" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/Settings_16x16.png" tooltip="" command="_VVP00FGnEeKNj4RZz9abMQ"/>
       </children>
     </trimBars>
     <trimBars xmi:id="_PHoi4CR_EeKck9aisjEcNQ" elementId="rs.rcpplugins.rsbudget.trimbar.statusbar" side="Bottom">
@@ -167,6 +175,7 @@
   <commands xmi:id="_OMk5AE3OEeOcW7ECIJ4-tw" elementId="org.eclipse.ui.help.about" commandName="About"/>
   <commands xmi:id="_CBPgAFdPEeOSSJrg1lOOkg" elementId="rs.rcpplugins.rsbudget.command.changepassword" commandName="Change Password"/>
   <commands xmi:id="_iLoLQF2OEeON78Sob95s5w" elementId="rs.rcpplugins.rsbudget.command.resetperspective" commandName="Reset Perspective"/>
+  <commands xmi:id="_cFBOwBVsEeSvdMl5qlrm8g" elementId="rs.rcpplugins.rsbudget.command.export" commandName="Export" description="Exports transactions"/>
   <addons xmi:id="_y2pjUfpqEeGyouYbBldvvA" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_y2pjUvpqEeGyouYbBldvvA" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_y2pjU_pqEeGyouYbBldvvA" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
