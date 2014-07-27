@@ -59,7 +59,7 @@ public class BootstrapWizardLanguage {
 			"dbsetup.encryption-help", "Full encryption will ensure that your data cannot be read by anyone else than you. However, "+
 			      "you will not be able to recover your data when you forgot your password. Full encryption is recommended only "+
 				  "when you are not the only user of your computer and fear that your data could be available to other users of "+
-			      "your computer.\n\nThe current version does not support the change of this setting.",
+			      "your computer.\n\nFull encryption limits performance of the application. The current version does not support the change of this setting.",
 			"dbsetup.warn.infomissing", "Please, fill in all fields!",
 			"dbsetup.test.ok.title", "Test successful",
 			"dbsetup.test.ok.message", "The database connection test was successful.",
@@ -126,7 +126,8 @@ public class BootstrapWizardLanguage {
 			      "Sie hat aber auch den Nachteil, dass Ihre Daten nicht wiederhergestellt werden k\u00f6nnen, falls Sie Ihr Passwort "+
 				  "vergessen sollten. Die Komplettverschl\u00fcsselung sollten Sie nur w\u00e4hlen, wenn Sie nicht alleiniger Nutzer "+
 			      "Ihres Rechners sind und bef\u00fcrchten, dass ein andere Benutzer Ihre Daten ausliest.\n\n"+
-				  "Die aktuelle Version kann diese Einstellung nicht nachtr\u00e4glich \u00e4ndern.",
+				  "Komplettverschl\u00fcsselung beschr\u00e4nkt auch die Leistung der Anwendung. Die aktuelle Version kann diese Einstellung "+
+			      "nicht nachtr\u00e4glich \u00e4ndern.",
 			"dbsetup.warn.infomissing", "Bitte f\u00fcllen Sie alle Felder aus!",
 			"dbsetup.test.ok.title", "Erfolg",
 			"dbsetup.test.ok.message", "Der Datenbank-Test war erfolgreich.",

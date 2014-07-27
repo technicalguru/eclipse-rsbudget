@@ -33,8 +33,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 import rs.baselib.prefs.PreferencesService;
+import rs.baselib.sql.AbstractJdbcConnectionProvider;
 import rs.baselib.sql.HyperSqlFileJdbcConnectionProvider;
-import rs.baselib.sql.IDataSourceProvider;
 import rs.baselib.sql.IHibernateDialectProvider;
 import rs.baselib.sql.IJdbcConnectionProvider;
 import rs.baselib.sql.IJdbcConnectionProvider2;
@@ -434,8 +434,9 @@ public class DbSetupPage extends AbstractWizardPage {
 			out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 			out.println("<dbconfig>");
 			out.println("   <property name=\"hibernate.dialect\">"+((IHibernateDialectProvider)provider).getHibernateDialect()+"</property>");
-			out.println("   <datasource class=\""+((IDataSourceProvider)provider).getDataSource()+"\">");
-			out.println("      <property name=\"url\">"+provider.getDriverUrl(getHost(), getPort(), getDbName(), getUser(), getPassword())+"</property>");
+			out.println("   <datasource class=\"com.mchange.v2.c3p0.ComboPooledDataSource\">");
+			out.println("      <property name=\"driverClass\">"+((AbstractJdbcConnectionProvider)provider).getDbDriverClassName()+"</property>");
+			out.println("      <property name=\"jdbcUrl\">"+provider.getDriverUrl(getHost(), getPort(), getDbName(), getUser(), getPassword())+"</property>");
 			out.println("      <property name=\"user\">"+provider.getDbLogin(getUser())+"</property>");
 			out.println("      <property name=\"password\">"+provider.getDbPassword(getPassword())+"</property>");
 			out.println("   </datasource>");
@@ -469,11 +470,15 @@ public class DbSetupPage extends AbstractWizardPage {
 	}
 
 	protected static IJdbcConnectionProvider2[] getConnectionProviders() {
-		IJdbcConnectionProvider2 p1 = new HyperSqlFileJdbcConnectionProvider();
+		HyperSqlFileJdbcConnectionProvider p1 = new HyperSqlFileJdbcConnectionProvider();
 		p1.setAdditionalArgumentEnabled(0, false);
 		p1.setDefaultAdditionalArgument(0, PreferencesService.INSTANCE.getUserPreferencesHome(Plugin.APPLICATION_KEY).getAbsolutePath()+File.separatorChar+"database.hsqldb");
 
-		IJdbcConnectionProvider2 p2 = new MySql5JdbcConnectionProvider();
+		MySql5JdbcConnectionProvider p2 = new MySql5JdbcConnectionProvider() {
+			public String getUrlTemplate() {
+				return URL_TEMPLATE+"?autoReconnect=true";
+			}
+		};
 		p2.setDefaultDbLogin("rsbudget");
 		p2.setDefaultDbPassword("rsbudget");
 		//		"DB2", "",
