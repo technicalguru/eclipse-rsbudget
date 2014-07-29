@@ -8,7 +8,7 @@
 	<session-factory>
 		
 		<!-- How to find the Transaction -->
-		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.CMTTransactionFactory</property>
+		<property name="hibernate.transaction.factory_class">org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory</property>
 		
 		<!-- How to produce transaction -->
 		<property name="hibernate.transaction.jta.platform">rs.data.hibernate.util.JOTMJtaPlatform</property>
@@ -18,6 +18,17 @@
 		
 		<!-- Isolation level -->
 		<property name="hibernate.connection.isolation">2</property>
+		<property name="hibernate.c3p0.max_size">20</property>
+		<property name="hibernate.c3p0.min_size">5</property>
+		<property name="hibernate.c3p0.timeout">0</property>
+		<property name="hibernate.c3p0.max_statements">100</property>
+		<property name="hibernate.c3p0.idle_test_period">0</property>
+		<property name="hibernate.c3p0.acquire_increment">1</property>
+		<property name="hibernate.c3p0.validate">true</property>
+
+		<property name="connection.autoReconnect">true</property>
+		<property name="connection.autoReconnectForPools">true</property>
+		<property name="connection.is-connection-validation-required">true</property>
 		
 		<!-- Performance speedup -->
 		<property name="hibernate.jdbc.batch_size">40</property>
