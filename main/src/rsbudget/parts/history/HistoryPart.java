@@ -248,6 +248,9 @@ public class HistoryPart {
 			factory.commit();
 		}
 
+		// Context menu
+		menuService.registerContextMenu(table, "rs.rcpplugins.rsbudget.popupmenu.history");
+
 		// Content provider
 		tableViewer.setContentProvider(new ObservableListContentProvider());
 		tableViewer.setInput(createModel());
@@ -299,6 +302,15 @@ public class HistoryPart {
 	protected void unbind() {
 	}
 
+	public String[] getTableHeaders() {
+		String rc[] = new String[table.getColumnCount()];
+		int i=0;
+		for (TableColumn column : table.getColumns()) {
+			rc[i++] = column.getText();
+		}
+		return rc;
+	}
+	
 	/**
 	 * Sorting the history records.
 	 * @author ralph

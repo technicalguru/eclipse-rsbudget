@@ -67,7 +67,12 @@
                 <children xsi:type="menu:HandledToolItem" xmi:id="_wgDSMCRVEeK1q7gtyHONTA" elementId="rs.rcpplugins.rsbudget.handledtoolitem.deletebudget" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/table-delete-row.png" tooltip="%e4xmi.part.budgets.toolitem.deletetx.tooltip" command="_bP49sCRJEeK1q7gtyHONTA"/>
               </toolbar>
             </children>
-            <children xsi:type="basic:Part" xmi:id="_-sIRoPpsEeGyouYbBldvvA" elementId="rs.rcpplugins.rsbudget.part.history" contributionURI="bundleclass://rs.rcpplugins.rsbudget.main/rsbudget.parts.history.HistoryPart" label="%e4xmi.part.history.title" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/chart-up.png"/>
+            <children xsi:type="basic:Part" xmi:id="_-sIRoPpsEeGyouYbBldvvA" elementId="rs.rcpplugins.rsbudget.part.history" contributionURI="bundleclass://rs.rcpplugins.rsbudget.main/rsbudget.parts.history.HistoryPart" label="%e4xmi.part.history.title" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/chart-up.png">
+              <handlers xmi:id="_FBndQBccEeSaAISMj3p8Yw" elementId="rs.rcpplugins.rsbudget.main.handler.export" contributionURI="bundleclass://rs.rcpplugins.rsbudget.main/rsbudget.parts.history.ExportHandler" command="_cFBOwBVsEeSvdMl5qlrm8g"/>
+              <menus xsi:type="menu:PopupMenu" xmi:id="_nQHVoBcWEeSaAISMj3p8Yw" elementId="rs.rcpplugins.rsbudget.popupmenu.history">
+                <children xsi:type="menu:HandledMenuItem" xmi:id="_pxiJgBcWEeSaAISMj3p8Yw" elementId="rs.rcpplugins.rsbudget.main.handledmenuitem.export" label="%e4xmi.menuitem.export.label" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/database-export.png" tooltip="%e4xmi.menuitem.export.tooltip" command="_cFBOwBVsEeSvdMl5qlrm8g"/>
+              </menus>
+            </children>
           </children>
           <children xsi:type="basic:PartSashContainer" xmi:id="_DRlikE2rEeKbt97r_4TxYw" elementId="rs.rcpplugins.rsbudget.partsashcontainer.right" containerData="20" selectedElement="_JvCHIE2rEeKbt97r_4TxYw">
             <children xsi:type="basic:PartStack" xmi:id="_cpAKgPpsEeGyouYbBldvvA" elementId="rs.rcpplugins.rsbudget.partstack.util" selectedElement="_CJphYPptEeGyouYbBldvvA">
