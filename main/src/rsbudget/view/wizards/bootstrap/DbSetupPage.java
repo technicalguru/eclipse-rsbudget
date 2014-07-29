@@ -474,11 +474,7 @@ public class DbSetupPage extends AbstractWizardPage {
 		p1.setAdditionalArgumentEnabled(0, false);
 		p1.setDefaultAdditionalArgument(0, PreferencesService.INSTANCE.getUserPreferencesHome(Plugin.APPLICATION_KEY).getAbsolutePath()+File.separatorChar+"database.hsqldb");
 
-		MySql5JdbcConnectionProvider p2 = new MySql5JdbcConnectionProvider() {
-			public String getUrlTemplate() {
-				return URL_TEMPLATE+"?autoReconnect=true";
-			}
-		};
+		MySql5JdbcConnectionProvider p2 = new MySql5JdbcConnectionProvider();
 		p2.setDefaultDbLogin("rsbudget");
 		p2.setDefaultDbPassword("rsbudget");
 		//		"DB2", "",
