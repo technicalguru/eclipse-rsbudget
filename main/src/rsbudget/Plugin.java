@@ -6,10 +6,14 @@ package rsbudget;
 import java.util.prefs.BackingStoreException;
 
 import org.eclipse.e4.core.services.translation.TranslationService;
+import org.eclipse.e4.ui.workbench.IWorkbench;
+import org.jboss.logging.Logger;
 
 import rs.baselib.prefs.IPreferences;
 import rs.baselib.prefs.PreferencesService;
+import rs.data.JotmSupport;
 import rs.e4.E4Utils;
+import rsbudget.data.RsBudgetModelService;
 import rsbudget.data.api.RsBudgetDaoFactory;
 
 /**
@@ -59,5 +63,21 @@ public class Plugin {
 	 */
 	public static IPreferences getSystemPreferences() throws BackingStoreException {
 		return PreferencesService.INSTANCE.getSystemPreferences(APPLICATION_KEY);
+	}
+	
+	/**
+	 * Handles the restart of the application.
+	 * @param workbench workbench performing the restart
+	 * @return the return value from the restart operation
+	 */
+	public static boolean doRestart(IWorkbench workbench) {
+		RsBudgetDaoFactory factory = RsBudgetModelService.INSTANCE.getFactory();
+		if (factory != null) try {
+			factory.shutdown();
+			JotmSupport.stop();
+		} catch (Throwable t) {
+			Logger.getLogger(Plugin.class).error("Cannot shutdown data model", t);
+		}
+		return workbench.restart();
 	}
 }

@@ -159,7 +159,7 @@ public class UpdateHandler {
 											
 										}
 										if (restart) {
-											workbench.restart();
+											Plugin.doRestart(workbench);
 										}
 									}
 								});

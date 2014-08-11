@@ -337,7 +337,7 @@ public class PreferencesDialog extends TitleAreaDialog {
 				if (MessageDialog.openConfirm(getParentShell(), Plugin.translate("dialog.preferences.restart.title"), Plugin.translate("dialog.preferences.restart.message"))) {
 					// Save and restart
 					savePreferences();
-					workbench.restart();
+					Plugin.doRestart(workbench);
 				}
 			}
 		});

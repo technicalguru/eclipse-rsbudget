@@ -30,7 +30,7 @@ public class ResetPerspectiveHandler {
 			} catch (BackingStoreException e) {
 				e.printStackTrace();
 			}
-			workbench.restart();
+			Plugin.doRestart(workbench);
 		}
 	}
 	

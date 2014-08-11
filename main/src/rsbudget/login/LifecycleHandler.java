@@ -164,4 +164,5 @@ public class LifecycleHandler {
 			LoggerFactory.getLogger(getClass()).warn("Cannot reset application", t);
 		}
 	}
+	
 }
