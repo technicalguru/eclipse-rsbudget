@@ -6,6 +6,7 @@ package rsbudget.login;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.slf4j.LoggerFactory;
 
 import rs.e4.splash.ISplashFormHandler;
 import rsbudget.Plugin;
@@ -19,7 +20,7 @@ import rsbudget.data.api.RsBudgetDaoFactory;
 public class RsBudgetLoginFormHandler implements ISplashFormHandler {
 
 	private String password;
-	
+
 	/**
 	 * Constructor.
 	 */
@@ -35,14 +36,23 @@ public class RsBudgetLoginFormHandler implements ISplashFormHandler {
 		monitor.worked(1);
 		RsBudgetDaoFactory factory = RsBudgetModelService.INSTANCE.getFactory(monitor, 1);
 		monitor.worked(2+RsBudgetModelService.TOTAL_LOAD_PROGRESS_TASK_COUNT);
-		factory.begin();
-		monitor.worked(3+RsBudgetModelService.TOTAL_LOAD_PROGRESS_TASK_COUNT);
-		factory.getSettingDAO().setUserPassword(password.toCharArray());
-		monitor.worked(4+RsBudgetModelService.TOTAL_LOAD_PROGRESS_TASK_COUNT);
-		boolean rc = factory.getSettingDAO().checkUserPassword();
-		monitor.worked(5+RsBudgetModelService.TOTAL_LOAD_PROGRESS_TASK_COUNT);
-		factory.commit();
-		monitor.done();
+		boolean rc = false;
+		try {
+			factory.begin();
+			monitor.worked(3+RsBudgetModelService.TOTAL_LOAD_PROGRESS_TASK_COUNT);
+			factory.getSettingDAO().setUserPassword(password.toCharArray());
+			monitor.worked(4+RsBudgetModelService.TOTAL_LOAD_PROGRESS_TASK_COUNT);
+			rc = factory.getSettingDAO().checkUserPassword();
+			monitor.worked(5+RsBudgetModelService.TOTAL_LOAD_PROGRESS_TASK_COUNT);
+			factory.commit();
+		} catch (Throwable t) {
+			LoggerFactory.getLogger(getClass()).error("Cannot check password: ", t);
+			try {
+				factory.rollback();
+			} catch (Throwable t2) {}
+		} finally {
+			monitor.done();
+		}
 		if (rc) {
 			return new Status(IStatus.OK, getClass().getSimpleName(), 0, Plugin.translate("splash.login.message.loggedin"), null);
 		} 
@@ -59,6 +69,6 @@ public class RsBudgetLoginFormHandler implements ISplashFormHandler {
 		}
 	}
 
-	
+
 
 }

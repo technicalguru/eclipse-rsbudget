@@ -69,6 +69,7 @@ import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -157,7 +158,7 @@ public class PreferencesDialog extends TitleAreaDialog {
 	private AccountPanel accountPanel;
 	private DaoContentProvider<Account> accountContentProvider;
 	private long nextAccountId = -1;
-	
+
 	// COLOR tab
 	private TabItem tabColors;
 	private ColorButtonViewer positiveColorButtonViewer;
@@ -205,7 +206,7 @@ public class PreferencesDialog extends TitleAreaDialog {
 	private IObservableList historyItems;
 	private List<HistoricalItem> initialHistoryItems;
 	private int initialActiveHistoryItems = 0;
-	
+
 	private RsBudgetPreferences preferences;
 	private DataBindingContext bindingContext;
 	private IWorkbench workbench;
@@ -238,15 +239,18 @@ public class PreferencesDialog extends TitleAreaDialog {
 
 		TabFolder tabFolder = new TabFolder(container, SWT.NONE);
 
-		createGeneralTab(tabFolder);
-		createNetworkTab(tabFolder);
-		createAccountsTab(tabFolder);
-		createRulesTab(tabFolder);
-		createHistoryTab(tabFolder);
-		createColorsTab(tabFolder);
+		try {
+			createGeneralTab(tabFolder);
+			createNetworkTab(tabFolder);
+			createAccountsTab(tabFolder);
+			createRulesTab(tabFolder);
+			createHistoryTab(tabFolder);
+			createColorsTab(tabFolder);
 
-		loadPreferences();
-
+			loadPreferences();
+		} catch (Throwable t) {
+			t.printStackTrace();
+		}
 		return area;
 	}
 
@@ -588,7 +592,7 @@ public class PreferencesDialog extends TitleAreaDialog {
 		nextAccountId--;
 		return Long.valueOf(nextAccountId+1);
 	}
-	
+
 	/**
 	 * Removes the account.
 	 * Actually the account is set inactive when saved.
@@ -618,7 +622,7 @@ public class PreferencesDialog extends TitleAreaDialog {
 	protected Account getAccount() {
 		return (Account)((IStructuredSelection)accountCombo.getSelection()).getFirstElement();
 	}
-	
+
 	/**
 	 * Create the accounts tab.
 	 * @param tabFolder the parent folder
@@ -847,8 +851,8 @@ public class PreferencesDialog extends TitleAreaDialog {
 		tabCategoryRules = createTab(tabFolder, Plugin.translate("dialog.preferences.tab.category-rules"));
 		Composite composite = (Composite)tabCategoryRules.getControl();
 		composite.setLayout(new GridLayout(1, true));
-
-		categoryTable = new Table(composite, SWT.MULTI | SWT.H_SCROLL
+		FormToolkit toolkit = new FormToolkit(composite.getDisplay());
+		categoryTable = toolkit.createTable(composite, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER);
 		TableLayout tableLayout = new TableLayout();
 		categoryTable.setLayout(tableLayout);
@@ -863,7 +867,7 @@ public class PreferencesDialog extends TitleAreaDialog {
 		categoryTable.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		categoryTable.setHeaderVisible(true);
 		categoryTable.setLinesVisible(true);
-
+		
 		RsBudgetDaoFactory factory = RsBudgetModelService.INSTANCE.getFactory();
 		{
 			TableViewerColumn column1 = new TableViewerColumn(categoryTableViewer, SWT.NONE);

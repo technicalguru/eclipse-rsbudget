@@ -46,7 +46,9 @@ public class SettingDAOImpl extends AbstractRsBudgetDbDAO<SettingDTO, SettingBO,
 	 */
 	@Override
 	public Setting findByKey(String key) {
-		return findSingleByCriteria(buildCriteria(Restrictions.eq("key", encrypt(key))));
+		String eKey = encrypt(key);
+		getLog().debug("Searching for key: "+eKey);
+		return findSingleByCriteria(buildCriteria(Restrictions.eq("key", eKey)));
 	}
 
 	/**
@@ -63,7 +65,11 @@ public class SettingDAOImpl extends AbstractRsBudgetDbDAO<SettingDTO, SettingBO,
 	@Override
 	public boolean checkUserPassword() {
 		Setting setting = findByKey(Setting.KEY_APPLICATION_ID);
-		if (setting == null) return false;
+		if (setting == null) {
+			getLog().info("Application key not found");
+			return false;
+		}
+		getLog().debug("Application key: "+setting.getValue());
 		return setting.getValue().startsWith("APPL_ID:");
 	}
 
