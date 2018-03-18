@@ -18,6 +18,7 @@ import org.eclipse.core.databinding.beans.PojoProperties;
 import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.databinding.property.Properties;
+import org.eclipse.core.databinding.property.list.IListProperty;
 import org.eclipse.e4.ui.workbench.IWorkbench;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
@@ -177,7 +178,7 @@ public class PreferencesDialog extends TitleAreaDialog {
 	private TableColumn categoryTblclmn1;
 	private TableColumn categoryTblclmn2;
 	/** The list of rules currently displayed */
-	private IObservableList categoryExpressions;
+	private IObservableList<CategoryRecognition> categoryExpressions;
 	private List<CategoryRecognition> initialCategoryExpressions;
 
 	// BUDGET RULES TAB
@@ -187,7 +188,7 @@ public class PreferencesDialog extends TitleAreaDialog {
 	private TableColumn budgetTblclmn1;
 	private TableColumn budgetTblclmn2;
 	/** The list of rules currently displayed */
-	private IObservableList budgetExpressions;
+	private IObservableList<BudgetRecognition> budgetExpressions;
 	private List<BudgetRecognition> initialBudgetExpressions;
 
 	// HISTORY tab
@@ -203,7 +204,7 @@ public class PreferencesDialog extends TitleAreaDialog {
 	private TableColumn historyTblclmn4;
 	private TableColumn historyTblclmn5;
 	/** The list of history items currently displayed */
-	private IObservableList historyItems;
+	private IObservableList<HistoricalItem> historyItems;
 	private List<HistoricalItem> initialHistoryItems;
 	private int initialActiveHistoryItems = 0;
 
@@ -761,7 +762,7 @@ public class PreferencesDialog extends TitleAreaDialog {
 	 * Creates the initial model for history items.
 	 * @return the model
 	 */
-	protected IObservableList createHistoryModel() {
+	protected IObservableList<HistoricalItem> createHistoryModel() {
 		if (historyItems == null) {
 			RsBudgetDaoFactory factory = RsBudgetModelService.INSTANCE.getFactory();
 			List<HistoricalItem> l = new ArrayList<>();
@@ -783,7 +784,8 @@ public class PreferencesDialog extends TitleAreaDialog {
 				if (o.isShowHistory()) initialActiveHistoryItems++;
 			}
 			Collections.sort(l);
-			historyItems = Properties.selfList(HistoricalItem.class).observe(l);
+			IListProperty<List<HistoricalItem>, HistoricalItem> property = Properties.selfList(HistoricalItem.class);
+			historyItems = property.observe(l);
 			BeanProperties.value(HistoricalItem.class, HistoricalItem.PROPERTY_SHOW_HISTORY).observeDetail(historyItems);
 			BeanProperties.value(HistoricalItem.class, HistoricalItem.PROPERTY_NAME).observeDetail(historyItems);
 			BeanProperties.value(HistoricalItem.class, HistoricalItem.PROPERTY_UNIT).observeDetail(historyItems);
@@ -908,7 +910,7 @@ public class PreferencesDialog extends TitleAreaDialog {
 	 * Creates the initial model for category expressions.
 	 * @return the model
 	 */
-	protected IObservableList createCategoryRulesModel() {
+	protected IObservableList<CategoryRecognition> createCategoryRulesModel() {
 		if (categoryExpressions == null) {
 			RsBudgetDaoFactory factory = RsBudgetModelService.INSTANCE.getFactory();
 			List<CategoryRecognition> l = new ArrayList<>();
@@ -926,7 +928,8 @@ public class PreferencesDialog extends TitleAreaDialog {
 			}
 			initialCategoryExpressions = new ArrayList<>(l);
 			Collections.sort(l);
-			categoryExpressions = Properties.selfList(CategoryRecognition.class).observe(l);
+			IListProperty<List<CategoryRecognition>, CategoryRecognition> property = Properties.selfList(CategoryRecognition.class);
+			categoryExpressions = property.observe(l);
 			BeanProperties.value(CategoryRecognition.class, CategoryRecognition.PROPERTY_CATEGORY).observeDetail(categoryExpressions);
 			BeanProperties.value(CategoryRecognition.class, CategoryRecognition.PROPERTY_EXPRESSION).observeDetail(categoryExpressions);
 		}
@@ -1017,7 +1020,8 @@ public class PreferencesDialog extends TitleAreaDialog {
 			}
 			initialBudgetExpressions = new ArrayList<>(l);
 			Collections.sort(l);
-			budgetExpressions = Properties.selfList(BudgetRecognition.class).observe(l);
+			IListProperty<List<BudgetRecognition>, BudgetRecognition> property = Properties.selfList(BudgetRecognition.class);
+			budgetExpressions = property.observe(l);
 			BeanProperties.value(BudgetRecognition.class, BudgetRecognition.PROPERTY_BUDGET).observeDetail(budgetExpressions);
 			BeanProperties.value(BudgetRecognition.class, BudgetRecognition.PROPERTY_EXPRESSION).observeDetail(budgetExpressions);
 		}
@@ -1256,6 +1260,7 @@ public class PreferencesDialog extends TitleAreaDialog {
 		}
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	protected DataBindingContext initDataBindings() {
 		DataBindingContext bindingContext = new DataBindingContext();
 		//

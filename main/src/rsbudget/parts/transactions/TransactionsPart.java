@@ -19,10 +19,12 @@ import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
 import org.eclipse.core.databinding.beans.BeanProperties;
+import org.eclipse.core.databinding.beans.IBeanValueProperty;
 import org.eclipse.core.databinding.observable.ChangeEvent;
 import org.eclipse.core.databinding.observable.IChangeListener;
 import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.property.Properties;
+import org.eclipse.core.databinding.property.list.IListProperty;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
@@ -32,8 +34,8 @@ import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.di.UISynchronize;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
-import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.e4.ui.services.EMenuService;
+import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.JFaceResources;
@@ -97,7 +99,6 @@ import rsbudget.data.api.bo.Plan;
 import rsbudget.data.api.bo.PlannedTransaction;
 import rsbudget.data.api.bo.RsBudgetBO;
 import rsbudget.data.api.bo.Transaction;
-import rsbudget.parts.budgets.BudgetRowWrapper;
 import rsbudget.preferences.PreferencesUtils;
 import rsbudget.util.CurrencyColumnLabelProvider;
 import rsbudget.util.RsBudgetColors;
@@ -177,8 +178,8 @@ public class TransactionsPart {
 	private UISynchronize uiSynchronize;
 
 	/** The list of transactions currently displayed */
-	private IObservableList transactions;
-	private Map<String, IObservableList> bindings = new HashMap<String, IObservableList>();
+	private IObservableList<TxRowWrapper> transactions;
+	private Map<String, IObservableList<TxRowWrapper>> bindings = new HashMap<String, IObservableList<TxRowWrapper>>();
 	
 	/** Listener to changes of properties in budgets */
 	private IChangeListener changeListener = new IChangeListener() {
@@ -562,7 +563,6 @@ public class TransactionsPart {
 	 * Handles the create/delete notifications
 	 * @param event
 	 */
-	@SuppressWarnings("unchecked")
 	protected void handleDaoEvent(DaoEvent event) {
 		Object src = event.getSource();
 		IGeneralBO<?> bo = event.getObject();
@@ -766,10 +766,11 @@ public class TransactionsPart {
 	 * Creates the initial model.
 	 * @return
 	 */
-	protected IObservableList createModel() {
+	protected IObservableList<TxRowWrapper> createModel() {
 		if (transactions != null) return transactions;
 		List<TxRowWrapper> l = new ArrayList<>();
-		transactions = Properties.selfList(BudgetRowWrapper.class).observe(l);
+		IListProperty<List<TxRowWrapper>, TxRowWrapper> property = Properties.selfList(TxRowWrapper.class);
+		transactions = property.observe(l);
 		bind();
 		
 		// Listen to the DAOs for changes
@@ -805,8 +806,10 @@ public class TransactionsPart {
 	 * Bind change listener to a specific column.
 	 * @param property column property
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected void bind(String property) {
-		IObservableList list = BeanProperties.value(TxRowWrapper.class, property).observeDetail(transactions);
+		IBeanValueProperty beanProperty = BeanProperties.value(TxRowWrapper.class, property);
+		IObservableList list = beanProperty.observeDetail(transactions);
 		list.addChangeListener(changeListener);
 		bindings.put(property, list);
 	}
@@ -816,7 +819,7 @@ public class TransactionsPart {
 	 * @param property column property
 	 */
 	protected void unbind(String property) {
-		IObservableList list = bindings.get(property);
+		IObservableList<TxRowWrapper> list = bindings.get(property);
 		list.removeChangeListener(changeListener);
 	}
 	
@@ -862,7 +865,7 @@ public class TransactionsPart {
 	 * Returns the budgets.
 	 * @return
 	 */
-	protected IObservableList getTransactions() {
+	protected IObservableList<TxRowWrapper> getTransactions() {
 		return transactions;
 	}
 	

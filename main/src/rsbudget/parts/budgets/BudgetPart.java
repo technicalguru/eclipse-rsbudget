@@ -13,18 +13,20 @@ import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
 import org.eclipse.core.databinding.beans.BeanProperties;
+import org.eclipse.core.databinding.beans.IBeanValueProperty;
 import org.eclipse.core.databinding.observable.ChangeEvent;
 import org.eclipse.core.databinding.observable.IChangeListener;
 import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.property.Properties;
+import org.eclipse.core.databinding.property.list.IListProperty;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.internal.contexts.EclipseContext;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.di.UISynchronize;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
-import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.e4.ui.services.EMenuService;
+import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
 import org.eclipse.jface.resource.FontDescriptor;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -130,7 +132,8 @@ public class BudgetPart {
 	private IEclipseContext context;
 	
 	/** The list of budgets currently displayed */
-	private IObservableList budgets;
+	private IObservableList<BudgetRowWrapper> budgets;
+	
 	/** Listener to changes of properties in budgets */
 	private IChangeListener changeListener = new IChangeListener() {
 		@Override
@@ -394,7 +397,6 @@ public class BudgetPart {
 	 * Handles the create/delete notifications
 	 * @param event
 	 */
-	@SuppressWarnings("unchecked")
 	protected void handleDaoEvent(DaoEvent event) {
 		Object src = event.getSource();
 		IGeneralBO<?> bo = event.getObject();
@@ -497,7 +499,7 @@ public class BudgetPart {
 	 * Creates the initial model.
 	 * @return
 	 */
-	protected IObservableList createModel() {
+	protected IObservableList<BudgetRowWrapper> createModel() {
 		if (budgets != null) return budgets;
 		List<BudgetRowWrapper> l = new ArrayList<>();
 		factory.begin();
@@ -514,7 +516,8 @@ public class BudgetPart {
 			factory.commit();
 		}
 		Collections.sort(l, SORTER);
-		budgets = Properties.selfList(BudgetRowWrapper.class).observe(l);
+		IListProperty<List<BudgetRowWrapper>, BudgetRowWrapper> property = Properties.selfList(BudgetRowWrapper.class);
+		budgets = property.observe(l);
 		budgets.addChangeListener(changeListener);
 		bind(BudgetRowWrapper.PROPERTY_PLANNED_PERIOD);
 		bind(BudgetRowWrapper.PROPERTY_SEQUENCE_NUMBER);
@@ -528,8 +531,10 @@ public class BudgetPart {
 		
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected void bind(String property) {
-		IObservableList list = BeanProperties.value(BudgetRowWrapper.class, property).observeDetail(budgets);
+		IBeanValueProperty beanProperty = BeanProperties.value(BudgetRowWrapper.class, property);
+		IObservableList list = beanProperty.observeDetail(budgets);
 		list.addChangeListener(changeListener);
 	}
 	
@@ -652,7 +657,7 @@ public class BudgetPart {
 	 * Returns the budgets.
 	 * @return
 	 */
-	protected IObservableList getBudgets() {
+	protected IObservableList<BudgetRowWrapper> getBudgets() {
 		return budgets;
 	}
 	

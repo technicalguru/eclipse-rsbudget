@@ -13,23 +13,24 @@
    </configIni>
 
    <launcherArgs>
-      <programArgs>-data @user.home/.rsbudget/workspace</programArgs>
-      <vmArgs>-Dlogback.configurationFile=platform:/plugin/rs.rcpplugins.rsbudget.main/resources/logback.xml</vmArgs>
-      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+      <programArgs>-data @user.home/.rsbudget/workspace
+      </programArgs>
+      <vmArgs>-Dlogback.configurationFile=platform:/plugin/rs.rcpplugins.rsbudget.main/resources/logback.xml
+      </vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
    </launcherArgs>
 
    <windowImages i16="/rs.rcpplugins.rsbudget.main/resources/icons/cash16.png" i32="/rs.rcpplugins.rsbudget.main/resources/icons/cash.png" i48="/rs.rcpplugins.rsbudget.main/resources/icons/cash48.png" i64="/rs.rcpplugins.rsbudget.main/resources/icons/cash64.png" i128="/rs.rcpplugins.rsbudget.main/resources/icons/cash128.png"/>
 
-
    <launcher name="rsbudget">
       <linux icon="/rs.rcpplugins.rsbudget.main/resources/icons/cash.xpm"/>
       <macosx icon="/rs.rcpplugins.rsbudget.main/resources/icons/cash.icns"/>
-      <solaris/>
       <win useIco="true">
          <ico path="/rs.rcpplugins.rsbudget.main/resources/icons/cash.ico"/>
+         <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
@@ -51,6 +52,12 @@
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.emf.common"/>
       <feature id="org.eclipse.equinox.p2.core.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient4.feature"/>
+      <feature id="org.eclipse.ecf.core.ssl.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient4.ssl.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.ssl.feature"/>
+      <feature id="org.eclipse.ecf.core.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.feature"/>
    </features>
 
 

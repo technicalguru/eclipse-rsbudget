@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Rsbudget2
 Bundle-SymbolicName: rs.rcpplugins.rsbudget.main;singleton:=true
 Bundle-Version: 2.0.1.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-9
 Require-Bundle: org.eclipse.swt,
  javax.inject;bundle-version="1.0.0",
  org.eclipse.e4.core.di,

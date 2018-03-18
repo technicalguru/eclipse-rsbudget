@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import org.eclipse.core.databinding.beans.BeanProperties;
 import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.property.Properties;
+import org.eclipse.core.databinding.property.list.IListProperty;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.services.EMenuService;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
@@ -68,7 +69,7 @@ public class HistoryPart {
 	public static HistoryListSorter SORTER = new HistoryListSorter();
 
 	/** The list of transactions currently displayed */
-	private IObservableList records;
+	private IObservableList<StatusRecord> records;
 
 	private Table table;
 	private TableViewer tableViewer;
@@ -279,11 +280,13 @@ public class HistoryPart {
 	 * Creates the initial model.
 	 * @return
 	 */
-	protected IObservableList createModel() {
+	protected IObservableList<StatusRecord> createModel() {
 		if (records != null) return records;
 		HistoryModelCreator modelCreator = new HistoryModelCreator(factory, tableViewer);
 		List<StatusRecord> l = modelCreator.retrieveRecords();
-		records = Properties.selfList(StatusRecord.class).observe(l);
+		
+		IListProperty<List<StatusRecord>, StatusRecord> property = Properties.selfList(StatusRecord.class);
+		records = property.observe(l);
 		bind();
 
 		return records;
@@ -292,6 +295,7 @@ public class HistoryPart {
 	/**
 	 * Bind our change listener.
 	 */
+	@SuppressWarnings("unchecked")
 	protected void bind() {
 		BeanProperties.value(StatusRecord.class, StatusRecord.PROPERTY_STATUS_DATE).observeDetail(records);
 	}
