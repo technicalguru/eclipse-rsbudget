@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>eu.ralph-schuster</groupId>
 		<artifactId>rs.rcpplugins.tycho-parent</artifactId>
-		<version>1.2.1</version>
+		<version>1.3.0</version>
 	</parent>
 	
 	<properties>
@@ -27,11 +27,11 @@
 	<distributionManagement>
 		<repository>
 			<id>strato-server</id>
-			<url>scp://download.ralph-schuster.eu/var/www/ralph-schuster.eu/download/rsbudget/luna/releases</url>
+			<url>scp://download.ralph-schuster.eu/var/www/ralph-schuster.eu/download/rsbudget/oxygen/releases</url>
 		</repository>
 		<snapshotRepository>
 			<id>strato-server</id>
-			<url>scp://download.ralph-schuster.eu/var/www/ralph-schuster.eu/download/rsbudget/luna/snapshots</url>
+			<url>scp://download.ralph-schuster.eu/var/www/ralph-schuster.eu/download/rsbudget/oxygen/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 
