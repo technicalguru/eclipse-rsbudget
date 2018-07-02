@@ -56,7 +56,7 @@
 			<plugin>
 				<groupId>eu.ralph-schuster</groupId>
 				<artifactId>uploadfiles-maven-plugin</artifactId>
-				<version>1.1.1</version>
+				<version>1.2.0-SNAPSHOT</version>
 				<executions>
 					<execution>
 						<goals>
