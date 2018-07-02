@@ -29,7 +29,8 @@ public class PlannedTransactionDTO extends RsBudgetDTO {
 	private TransactionDTO transaction;
 	private PlanDTO plan;
 	private int displayOrder;
-	
+	private String matchString;
+
 	/**
 	 * Constructor.
 	 */
@@ -178,6 +179,22 @@ public class PlannedTransactionDTO extends RsBudgetDTO {
 	 */
 	public void setDisplayOrder(int displayOrder) {
 		this.displayOrder = displayOrder;
+	}
+
+	/**
+	 * Returns the matchString.
+	 * @return the matchString
+	 */
+	public String getMatchString() {
+		return matchString;
+	}
+
+	/**
+	 * Sets the matchString.
+	 * @param matchString the matchString to set
+	 */
+	public void setMatchString(String matchString) {
+		this.matchString = matchString;
 	}
 
 }

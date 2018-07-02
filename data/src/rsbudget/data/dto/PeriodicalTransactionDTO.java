@@ -28,6 +28,7 @@ public class PeriodicalTransactionDTO extends RsBudgetDTO {
 	/** The number of the month within the planned period this transaction shall occur */
 	private int monthSequenceNumber = 1;
 	private int displayOrder;
+	private String matchString;
 	
 	/**
 	 * Constructor.
@@ -178,4 +179,22 @@ public class PeriodicalTransactionDTO extends RsBudgetDTO {
 	public void setDisplayOrder(int displayOrder) {
 		this.displayOrder = displayOrder;
 	}
+
+	/**
+	 * Returns the matchString.
+	 * @return the matchString
+	 */
+	public String getMatchString() {
+		return matchString;
+	}
+
+	/**
+	 * Sets the matchString.
+	 * @param matchString the matchString to set
+	 */
+	public void setMatchString(String matchString) {
+		this.matchString = matchString;
+	}
+	
+	
 }

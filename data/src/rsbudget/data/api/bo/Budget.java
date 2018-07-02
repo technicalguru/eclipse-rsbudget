@@ -19,6 +19,7 @@ public interface Budget extends RsBudgetBO<Long>, MonetaryValue {
 	public static final String PROPERTY_PLANNED_TRANSACTIONS = "plannedTransactions";
 	public static final String PROPERTY_AMOUNT               = "amount";
 	public static final String PROPERTY_DISPLAY_ORDER        = "displayOrder";
+	public static final String PROPERTY_MATCH_STRING         = "matchString";
 	
 	/**
 	 * Returns the name.
@@ -126,4 +127,17 @@ public interface Budget extends RsBudgetBO<Long>, MonetaryValue {
 	 * @param displayOrder the displayOrder to set
 	 */
 	public void setDisplayOrder(int displayOrder);
+	
+	/**
+	 * Returns the matching string.
+	 * @return the mtching string
+	 */
+	public String getMatchString();
+
+	/**
+	 * Sets the matching string.
+	 * @param matchString the matching string to set
+	 */
+	public void setMatchString(String matchString);
+
 }

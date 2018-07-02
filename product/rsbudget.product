@@ -15,7 +15,7 @@
    <launcherArgs>
       <programArgs>-data @user.home/.rsbudget/workspace
       </programArgs>
-      <vmArgs>-Dlogback.configurationFile=platform:/plugin/rs.rcpplugins.rsbudget.main/resources/logback.xml
+      <vmArgs>--add-modules=ALL-SYSTEM -Dosgi.requiredJavaVersion=1.8 -Dlogback.configurationFile=platform:/plugin/rs.rcpplugins.rsbudget.main/resources/logback.xml
       </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
@@ -26,7 +26,6 @@
    <launcher name="rsbudget">
       <linux icon="/../../../../main/resources/icons/cash.xpm"/>
       <macosx icon="/../../../../main/resources/icons/cash.icns"/>
-      <solaris/>
       <win useIco="true">
          <ico path="/../../../../main/resources/icons/cash.ico"/>
          <bmp

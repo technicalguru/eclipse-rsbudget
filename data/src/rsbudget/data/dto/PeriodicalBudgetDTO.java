@@ -23,7 +23,8 @@ public class PeriodicalBudgetDTO extends RsBudgetDTO {
 	private PlannedPeriod plannedPeriod;
 	private int displayOrder;
 	private int monthSequenceNumber = 1;
-	
+	private String matchString;
+
 	/**
 	 * Constructor.
 	 */
@@ -126,5 +127,20 @@ public class PeriodicalBudgetDTO extends RsBudgetDTO {
 		this.monthSequenceNumber = monthSequenceNumber;
 	}
 
-	
+	/**
+	 * Returns the matchString.
+	 * @return the matchString
+	 */
+	public String getMatchString() {
+		return matchString;
+	}
+
+	/**
+	 * Sets the matchString.
+	 * @param matchString the matchString to set
+	 */
+	public void setMatchString(String matchString) {
+		this.matchString = matchString;
+	}
+
 }

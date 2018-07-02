@@ -178,5 +178,22 @@ public class PeriodicalBudgetBO extends AbstractRsBudgetDbBO<PeriodicalBudgetDTO
 		return rc;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getMatchString() {
+		return getTransferObject().getMatchString();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setMatchString(String matchString) {
+		String oldValue = getMatchString();
+		getTransferObject().setMatchString(matchString);
+		firePropertyChange(PROPERTY_MATCH_STRING, oldValue, matchString);
+	}
 
 }

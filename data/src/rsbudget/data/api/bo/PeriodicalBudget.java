@@ -18,6 +18,7 @@ public interface PeriodicalBudget extends RsBudgetBO<Long>, MonetaryValue {
 	public static final String PROPERTY_PLANNED_PERIOD        = "plannedPeriod";
 	public static final String PROPERTY_DISPLAY_ORDER         = "displayOrder";
 	public static final String PROPERTY_MONTH_SEQUENCE_NUMBER = "monthSequenceNumber";
+	public static final String PROPERTY_MATCH_STRING          = "matchString";
 
 	/**
 	 * Returns the name.
@@ -86,5 +87,17 @@ public interface PeriodicalBudget extends RsBudgetBO<Long>, MonetaryValue {
 	 * @return amount planned
 	 */
 	public float getPlanned();
+
+	/**
+	 * Returns the matching string.
+	 * @return the mtching string
+	 */
+	public String getMatchString();
+
+	/**
+	 * Sets the matching string.
+	 * @param matchString the matching string to set
+	 */
+	public void setMatchString(String matchString);
 
 }

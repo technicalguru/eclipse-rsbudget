@@ -77,6 +77,7 @@ public class CreatePlanHandler {
 						budget.setCategory(b.getCategory());
 						budget.setAmount(b.getAmount());
 						budget.setDisplayOrder(b.getDisplayOrder());
+						budget.setMatchString(b.getMatchString());
 						factory.getBudgetDAO().create(budget);
 						map.put(b, budget);
 					}
@@ -125,6 +126,7 @@ public class CreatePlanHandler {
 						tx.setAnnotation(t.getAnnotation());
 						tx.setAmount(t.getAmount());
 						tx.setDisplayOrder(displayOrder);
+						tx.setMatchString(t.getMatchString());
 						factory.getPlannedTransactionDAO().create(tx);
 						displayOrder++;
 					}
