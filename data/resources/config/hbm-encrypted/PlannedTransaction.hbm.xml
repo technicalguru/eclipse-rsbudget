@@ -22,5 +22,6 @@
 		<one-to-one name="transaction" class="rsbudget.data.dto.TransactionDTO" property-ref="plannedTransaction"/>
 		<many-to-one name="plan" class="rsbudget.data.dto.PlanDTO" column="plan"/> 
 		<property name="displayOrder" type="int-encrypted" column="display_order"/>
+		<property name="matchRule" type="string-encrypted" column="match_rule"/>
 	</class>
 </hibernate-mapping>

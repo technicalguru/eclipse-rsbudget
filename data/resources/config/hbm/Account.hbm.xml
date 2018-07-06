@@ -19,6 +19,8 @@
 		<property name="password" type="string" column="password"/>		
 		<property name="active" type="boolean" column="active"/>
 		<property name="planningRelevant" type="boolean" column="planning_relevant"/>
+		<property name="hbciUser" type="string" column="hbci_user"/>
+		<property name="hbciPin" type="string" column="hbci_pin"/>
 		<property name="creationDate" type="RsDate" column="creation_date"/>
 		<property name="changeDate" type="RsDate" column="change_date"/>
 	</class>

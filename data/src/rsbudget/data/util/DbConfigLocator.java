@@ -56,6 +56,13 @@ public class DbConfigLocator implements IUrlProvider {
 				rc = getAppDbConfigFile();
 			}
 
+			// Overwrite by env variable RSBUDGET_DBCONFIG_FILE
+			String env = System.getenv(RsBudgetDaoFactory.APPLICATION_KEY.toUpperCase()+"_DBCONFIG_FILE");
+			if (env != null) {
+				f = new File(env);
+				if (f.exists()) rc = f.toURI().toURL();
+			}
+			
 			// Return the file:/// link for this URL
 			if ((rc != null) && !rc.getProtocol().equals("file")) {
 				rc = FileLocator.toFileURL(rc);

@@ -182,18 +182,18 @@ public class PeriodicalBudgetBO extends AbstractRsBudgetDbBO<PeriodicalBudgetDTO
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getMatchString() {
-		return getTransferObject().getMatchString();
+	public String getMatchRule() {
+		return getTransferObject().getMatchRule();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setMatchString(String matchString) {
-		String oldValue = getMatchString();
-		getTransferObject().setMatchString(matchString);
-		firePropertyChange(PROPERTY_MATCH_STRING, oldValue, matchString);
+	public void setMatchRule(String matchRule) {
+		String oldValue = getMatchRule();
+		getTransferObject().setMatchRule(matchRule);
+		firePropertyChange(PROPERTY_MATCH_RULE, oldValue, matchRule);
 	}
 
 }

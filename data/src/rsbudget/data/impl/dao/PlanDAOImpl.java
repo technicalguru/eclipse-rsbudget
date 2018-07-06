@@ -3,6 +3,8 @@
  */
 package rsbudget.data.impl.dao;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
@@ -59,4 +61,16 @@ public class PlanDAOImpl extends AbstractRsBudgetDbDAO<PlanDTO, PlanBO, Plan> im
 		return rc;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<Plan> findLatest(RsMonth from) {
+		Criterion criterion = Restrictions.ge("month", from);
+		Criteria criteria = buildCriteria(criterion);
+		criteria.addOrder(Order.desc("month"));
+		return findByCriteria(criteria);
+	}
+
+	
 }

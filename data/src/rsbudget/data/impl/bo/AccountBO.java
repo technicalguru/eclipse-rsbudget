@@ -182,6 +182,42 @@ public class AccountBO extends AbstractRsBudgetDbBO<AccountDTO> implements Accou
 	 * {@inheritDoc}
 	 */
 	@Override
+	public String getHbciUser() {
+		return getTransferObject().getHbciUser();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setHbciUser(String hbciUser) {
+		String oldValue = getHbciUser();
+		getTransferObject().setHbciUser(hbciUser);
+		firePropertyChange(PROPERTY_HBCI_USER, oldValue, hbciUser);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getHbciPin() {
+		return getTransferObject().getHbciPin();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setHbciPin(String hbciPin) {
+		String oldValue = getHbciPin();
+		getTransferObject().setHbciPin(hbciPin);
+		firePropertyChange(PROPERTY_HBCI_PIN, oldValue, hbciPin);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public String getDisplay() {
 		return getName();
 	}

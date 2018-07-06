@@ -24,7 +24,7 @@ public interface PlannedTransaction extends RsBudgetBO<Long>, MonetaryValue {
 	public static final String PROPERTY_TRANSACTION = "transaction";
 	public static final String PROPERTY_PLAN        = "plan";
 	public static final String PROPERTY_DISPLAY_ORDER = "displayOrder";
-	public static final String PROPERTY_MATCH_STRING = "matchString";
+	public static final String PROPERTY_MATCH_RULE  = "matchRule";
 	
 	/**
 	 * Returns the name.
@@ -123,15 +123,16 @@ public interface PlannedTransaction extends RsBudgetBO<Long>, MonetaryValue {
 	public void setDisplayOrder(int displayOrder);
 	
 	/**
-	 * Returns the matching string.
-	 * @return the mtching string
+	 * Returns the matching rule.
+	 * @return the matching rule
 	 */
-	public String getMatchString();
+	public String getMatchRule();
 
 	/**
-	 * Sets the matching string.
-	 * @param matchString the matching string to set
+	 * Sets the matching rule.
+	 * @param matchRule the matching rule to set
 	 */
-	public void setMatchString(String matchString);
+	public void setMatchRule(String matchRule);
+
 
 }

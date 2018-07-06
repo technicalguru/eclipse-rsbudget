@@ -42,14 +42,14 @@ public interface Transaction extends RsBudgetBO<Long>, MonetaryValue {
 
 	/**
 	 * Returns the identifying hash of this transaction.
-	 * The hash shall be computed from transaction date, value and original usage text of a transaction.
+	 * The hash shall be computed from transaction date, amount and balance after transaction.
 	 * @return the hash of this transaction.
 	 */
 	public String getHash();
 
 	/**
 	 * Sets the identifying hash of this transaction.
-	 * The hash shall be computed from transaction date, value and original usage text of a transaction.
+	 * The hash shall be computed from transaction date, amount and balance after transaction.
 	 * @param hash the hash of this transaction.
 	 */
 	public void setHash(String hash);

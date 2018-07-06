@@ -19,6 +19,8 @@
 		<property name="password" type="string-encrypted" column="password"/>		
 		<property name="active" type="boolean-encrypted" column="active"/>
 		<property name="planningRelevant" type="boolean-encrypted" column="planning_relevant"/>
+		<property name="hbciUser" type="string-encrypted" column="hbci_user"/>
+		<property name="hbciPin" type="string-encrypted" column="hbci_pin"/>
 		<property name="creationDate" type="RsDate-encrypted" column="creation_date"/>
 		<property name="changeDate" type="RsDate-encrypted" column="change_date"/>
 	</class>

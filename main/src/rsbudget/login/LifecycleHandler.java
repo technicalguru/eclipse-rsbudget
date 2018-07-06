@@ -63,8 +63,8 @@ public class LifecycleHandler {
 		IEclipseContext ctx = E4Utils.getTopContext();
 		Locale locale = PreferencesUtils.getLocale();
 		Locale.setDefault(locale);
-		ctx.set(TranslationService.LOCALE, locale.toString());
-		context.set(TranslationService.LOCALE, locale.toString());
+		ctx.set(TranslationService.LOCALE, locale);
+		context.set(TranslationService.LOCALE, locale);
 		cleanupUserXmi();
 
 		Display display = PlatformUI.createDisplay();

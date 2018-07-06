@@ -24,7 +24,9 @@ public class AccountDTO extends RsBudgetDTO {
 	private String password;
 	private boolean active;
 	private boolean planningRelevant;
-
+	private String hbciUser;
+	private String hbciPin;
+	
 	/**
 	 * Constructor.
 	 */
@@ -158,6 +160,38 @@ public class AccountDTO extends RsBudgetDTO {
 	 */
 	public void setPlanningRelevant(boolean planningRelevant) {
 		this.planningRelevant = planningRelevant;
+	}
+
+	/**
+	 * Returns the hbciUser.
+	 * @return the hbciUser
+	 */
+	public String getHbciUser() {
+		return hbciUser;
+	}
+
+	/**
+	 * Sets the hbciUser.
+	 * @param hbciUser the hbciUser to set
+	 */
+	public void setHbciUser(String hbciUser) {
+		this.hbciUser = hbciUser;
+	}
+
+	/**
+	 * Returns the hbciPin.
+	 * @return the hbciPin
+	 */
+	public String getHbciPin() {
+		return hbciPin;
+	}
+
+	/**
+	 * Sets the hbciPin.
+	 * @param hbciPin the hbciPin to set
+	 */
+	public void setHbciPin(String hbciPin) {
+		this.hbciPin = hbciPin;
 	}
 
 	

@@ -112,6 +112,7 @@
       </children>
       <children xsi:type="menu:Menu" xmi:id="_z_RZACR_EeKWyI8ecfPnnA" elementId="org.eclipse.ui.tools" label="%e4xmi.menu.tools.label">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_Kw1GUFdPEeOSSJrg1lOOkg" elementId="rs.rcpplugins.rsbudget.handledmenuitem.changepassword" label="%e4xmi.menuitem.changepassword.label" tooltip="%e4xmi.menuitem.changepassword.tooltip" command="_CBPgAFdPEeOSSJrg1lOOkg"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_7GFTwIEjEeiKMNgoig9DWg" elementId="rs.rcpplugins.rsbudget.handledmenuitem.hbciload" label="%e4xmi.menuitem.hbciload.label" tooltip="%e4xmi.menuitem.hbciload.tooltip" command="_u1SZ4IEKEeiKMNgoig9DWg"/>
         <children xsi:type="menu:MenuSeparator" xmi:id="_JyyJsFdPEeOSSJrg1lOOkg" elementId="rs.rcpplugins.rsbudget.menuseparator.3"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_gJxuYFGnEeKNj4RZz9abMQ" elementId="rs.rcpplugins.rsbudget.handledmenuitem.preferences" label="%e4xmi.menuitem.preferences.label" iconURI="platform:/plugin/rs.rcpplugins.rsbudget.main/resources/icons/Settings_16x16.png" tooltip="%e4xmi.menuitem.preferences.tooltip" command="_VVP00FGnEeKNj4RZz9abMQ"/>
       </children>
@@ -144,6 +145,7 @@
   <handlers xmi:id="_wNmIwEX2EeOgZuhWEf-8Fg" elementId="rs.rcpplugins.rsbudget.handler.update" contributionURI="bundleclass://rs.rcpplugins.rsbudget.main/rsbudget.update.UpdateHandler" command="_pczKYEX2EeOgZuhWEf-8Fg"/>
   <handlers xmi:id="_E_FxMFdPEeOSSJrg1lOOkg" elementId="rs.rcpplugins.rsbudget.handler.changepassword" contributionURI="bundleclass://rs.rcpplugins.rsbudget.main/rsbudget.handlers.ChangePasswordHandler" command="_CBPgAFdPEeOSSJrg1lOOkg"/>
   <handlers xmi:id="_lD9qUF2OEeON78Sob95s5w" elementId="rs.rcpplugins.rsbudget.handler.resetperspective" contributionURI="bundleclass://rs.rcpplugins.rsbudget.main/rsbudget.handlers.ResetPerspectiveHandler" command="_iLoLQF2OEeON78Sob95s5w"/>
+  <handlers xmi:id="_5Qf0gIEKEeiKMNgoig9DWg" elementId="rs.rcpplugins.rsbudget.handler.loadbyhbci" contributionURI="bundleclass://rs.rcpplugins.rsbudget.main/rsbudget.handlers.HbciLoadHandler" command="_u1SZ4IEKEeiKMNgoig9DWg"/>
   <bindingTables xmi:id="_85gO0CTcEeKnAs5osbhstQ" elementId="rs.rcpplugins.rsbudget.bindingtable.windows" bindingContext="_Yn1t4J3NEeKoLt6wIuRNag">
     <bindings xmi:id="_mzAcUCTdEeKnAs5osbhstQ" keySequence="INSERT" command="_JaykYCRJEeK1q7gtyHONTA">
       <tags>type:user</tags>
@@ -182,6 +184,7 @@
   <commands xmi:id="_CBPgAFdPEeOSSJrg1lOOkg" elementId="rs.rcpplugins.rsbudget.command.changepassword" commandName="Change Password"/>
   <commands xmi:id="_iLoLQF2OEeON78Sob95s5w" elementId="rs.rcpplugins.rsbudget.command.resetperspective" commandName="Reset Perspective"/>
   <commands xmi:id="_cFBOwBVsEeSvdMl5qlrm8g" elementId="rs.rcpplugins.rsbudget.command.export" commandName="Export" description="Exports transactions"/>
+  <commands xmi:id="_u1SZ4IEKEeiKMNgoig9DWg" elementId="rs.rcpplugins.rsbudget.command.loadbyhbci" commandName="Load by HBCI"/>
   <addons xmi:id="_y2pjUfpqEeGyouYbBldvvA" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_y2pjUvpqEeGyouYbBldvvA" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_y2pjU_pqEeGyouYbBldvvA" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

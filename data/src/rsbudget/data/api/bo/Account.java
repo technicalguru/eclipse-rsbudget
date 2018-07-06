@@ -20,6 +20,8 @@ public interface Account extends RsBudgetBO<Long> {
 	public static final String PROPERTY_PASSWORD          = "password";
 	public static final String PROPERTY_ACTIVE            = "active";
 	public static final String PROPERTY_PLANNING_RELEVANT = "planningRelevant";
+	public static final String PROPERTY_HBCI_USER         = "hbciUser";
+	public static final String PROPERTY_HBCI_PIN          = "hbciPin";
 	
 	/**
 	 * Returns the name.
@@ -117,5 +119,29 @@ public interface Account extends RsBudgetBO<Long> {
 	 * @param planningRelevant the planningRelevant to set
 	 */
 	public void setPlanningRelevant(boolean planningRelevant);
+
+	/**
+	 * Returns the hbciUser.
+	 * @return the hbciUser
+	 */
+	public String getHbciUser();
+
+	/**
+	 * Sets the hbciUser.
+	 * @param hbciUser the hbciUser to set
+	 */
+	public void setHbciUser(String hbciUser);
+
+	/**
+	 * Returns the hbciPin.
+	 * @return the hbciPin
+	 */
+	public String getHbciPin();
+
+	/**
+	 * Sets the hbciPin.
+	 * @param hbciPin the hbciPin to set
+	 */
+	public void setHbciPin(String hbciPin);
 
 }

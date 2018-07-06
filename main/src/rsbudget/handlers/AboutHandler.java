@@ -59,7 +59,7 @@ public class AboutHandler {
 		s += "\n\nVersion: "+getVersionString(product.getDefiningBundle().getVersion());
 		s += getBuildId(product.getDefiningBundle().getVersion());
 		s += "\n\n\u00a9 Copyright by Ralph Schuster, published under GPL3";
-		s += "\nVisit http://techblog.ralph-schuster.eu/rsbudget";
+		s += "\nVisit https://www.ralph-schuster.eu/rsbudget";
 		s += "\n\n\nInstallation Key:\n"+EncryptionUtils.encodeBase64(applicationKey)+"\n";
 		return s;
 	}

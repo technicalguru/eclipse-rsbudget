@@ -27,7 +27,7 @@ public class Plugin {
 	public static final String CONTRIBUTOR_URI = "platform:/plugin/"+SYMBOLIC_NAME;
 	public static final String APPLICATION_KEY = RsBudgetDaoFactory.APPLICATION_KEY;
 	public static final String APPLICATION_NAME = "RsBudget";
-	public static final String APPLICATION_SPLASH_VERSION = "2.0";
+	public static final String APPLICATION_SPLASH_VERSION = "2.1";
 	public static final String BRANDING_TITLE = "";
 	public static final String APPLICATION_SUBTITLE = "Track your expenses";
 	public static final String NEW_ROW_COMMAND_ID = "rs.rcpplugins.rsbudget.command.newrow";

@@ -40,6 +40,8 @@ import rsbudget.data.api.dao.AccountDAO;
 import rsbudget.data.api.dao.BankDAO;
 import rsbudget.data.impl.bo.AccountBO;
 import rsbudget.data.impl.dao.BankInfoDAOImpl;
+import rsbudget.license.Module;
+import rsbudget.license.RsBudgetLicenseManager;
 
 /**
  * Composite containing account data.
@@ -49,10 +51,12 @@ import rsbudget.data.impl.dao.BankInfoDAOImpl;
 public class AccountPanel extends Composite {
 
 	private static Logger log = LoggerFactory.getLogger(AccountPanel.class);
-	
+
 	private Text txtAccountOwner;
 	private Text txtAccountNumber;
 	private Text txtKontoname;
+	private Text txtHbciUser;
+	private Text txtHbciPin;
 	private Account account;
 	private ComboViewer blzCombo;
 	private Label lblBankName;
@@ -60,7 +64,7 @@ public class AccountPanel extends Composite {
 	private DataBindingContext bindingContext;
 	private Set<Account> changedAccounts = new HashSet<>();
 	private long nextId = -1;
-	
+
 	/**
 	 * Constructor.
 	 */
@@ -76,7 +80,7 @@ public class AccountPanel extends Composite {
 		GridLayout gl_container = new GridLayout(1, false);
 		setLayout(gl_container);
 		account = RsBudgetModelService.INSTANCE.getFactory().getAccountDAO().newInstance();
-		
+
 		Group sctnBank = new Group(this, SWT.NONE);
 		sctnBank.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		sctnBank.setText(Plugin.translate("panels.account.bank.label"));
@@ -90,7 +94,7 @@ public class AccountPanel extends Composite {
 		lblBlz.setText(Plugin.translate("panels.account.blz.label"));
 
 		blzCombo = new ComboViewer(sctnBank, SWT.NONE);
-		blzCombo.addSelectionChangedListener(new ISelectionChangedListener() {
+		blzCombo.addSelectionChangedListener(new ISelectionChangedListener() { 
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
 				bankChanged(event);
@@ -138,7 +142,41 @@ public class AccountPanel extends Composite {
 
 		txtAccountNumber = new Text(sctnAccount, SWT.BORDER);
 		txtAccountNumber.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		
+
+		if (RsBudgetLicenseManager.isLicensed(Module.HBCI)) {
+			Group sctnHbci = new Group(this, SWT.NONE);
+			sctnHbci.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+			sctnHbci.setText(Plugin.translate("panels.account.hbci.label"));
+			GridLayout gl_sctnHbci = new GridLayout(4, false);
+			gl_sctnHbci.marginRight = 5;
+			gl_sctnHbci.marginLeft = 5;
+			gl_sctnHbci.marginBottom = 5;
+			sctnHbci.setLayout(gl_sctnHbci);
+			
+			// Only PIN/TAN method
+			// User ID
+			Label lblHbciUser = new Label(sctnHbci, SWT.NONE);
+			lblHbciUser.setText(Plugin.translate("panels.account.hbci.username"));
+			lblHbciUser.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+
+			txtHbciUser = new Text(sctnHbci, SWT.BORDER);
+			txtHbciUser.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+			new Label(sctnHbci, SWT.NONE);
+			new Label(sctnHbci, SWT.NONE);
+
+			// PIN
+			Label lblHbciPin = new Label(sctnHbci, SWT.NONE);
+			lblHbciPin.setText(Plugin.translate("panels.account.hbci.pin"));
+			lblHbciPin.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+
+			txtHbciPin = new Text(sctnHbci, SWT.BORDER);
+			txtHbciPin.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+			new Label(sctnHbci, SWT.NONE);
+			new Label(sctnHbci, SWT.NONE);
+			
+		}
+
+
 		bindingContext = createDataBinding();
 	}
 
@@ -157,10 +195,18 @@ public class AccountPanel extends Composite {
 		IObservableValue accountNameObserveValue = BeanProperties.value("name").observe(account);
 		bindingContext.bindValue(observeNameText, accountNameObserveValue, null, null);
 		//
+		IObservableValue observeHbciUserText = WidgetProperties.text(SWT.Modify).observe(txtHbciUser);
+		IObservableValue accountHbciUserObserveValue = BeanProperties.value("hbciUser").observe(account);
+		bindingContext.bindValue(observeHbciUserText, accountHbciUserObserveValue, null, null);
+		//
+		IObservableValue observeHbciPinText = WidgetProperties.text(SWT.Modify).observe(txtHbciPin);
+		IObservableValue accountHbciPinObserveValue = BeanProperties.value("hbciPin").observe(account);
+		bindingContext.bindValue(observeHbciPinText, accountHbciPinObserveValue, null, null);
+		//
 		bindingContext.updateModels();
 		return bindingContext;
 	}
-	
+
 	protected void bankChanged(SelectionChangedEvent evt) {
 		BankInfo bankInfo = (BankInfo) ((IStructuredSelection)evt.getSelection()).getFirstElement();
 		if (bankInfo != null) {
@@ -180,13 +226,13 @@ public class AccountPanel extends Composite {
 			} catch (Exception e) {
 				try { factory.rollback(); } catch (Exception e2) {}
 			}
-			
+
 		} else {
 			lblBankName.setText("");
 			lblBankUrl.setText("");
 		}
 	}
-	
+
 	public void setAccount(Account account) {
 		rememberAccountData();
 		if (account != null) {
@@ -211,7 +257,7 @@ public class AccountPanel extends Composite {
 		nextId--;
 		return Long.valueOf(nextId+1);
 	}
-	
+
 	protected void rememberAccountData() {
 		if (this.account.isChanged() && (this.account.getId() != null)) {
 			AccountBO chAccount = (AccountBO)RsBudgetModelService.INSTANCE.getFactory().getAccountDAO().newInstance();
@@ -220,7 +266,7 @@ public class AccountPanel extends Composite {
 			changedAccounts.add(chAccount);
 		}		
 	}
-	
+
 	/** 
 	 * Saves all changes.
 	 */
@@ -244,11 +290,11 @@ public class AccountPanel extends Composite {
 			}
 		}
 	}
-	
+
 	public void removeAccount(Account account) {
 		changedAccounts.remove(account);
 	}
-	
+
 	protected void saveBank(Account account) {
 		BankDAO dao = RsBudgetModelService.INSTANCE.getFactory().getBankDAO();
 		Bank bank = account.getBank();
@@ -261,7 +307,7 @@ public class AccountPanel extends Composite {
 			}
 		}
 	}
-	
+
 	/**
 	 * Returns the account.
 	 * @return the account

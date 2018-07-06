@@ -17,6 +17,7 @@
 		<many-to-one name="category" class="rsbudget.data.dto.CategoryDTO" column="category"/> 
 		<property name="displayOrder" type="int-encrypted" column="display_order"/>
 		<property name="monthSequenceNumber" type="int-encrypted" column="month_sequence_number"/>
+		<property name="matchRule" type="string-encrypted" column="match_rule"/>
 		<property name="creationDate" type="RsDate-encrypted" column="creation_date"/>
 		<property name="changeDate" type="RsDate-encrypted" column="change_date"/>
 	</class>

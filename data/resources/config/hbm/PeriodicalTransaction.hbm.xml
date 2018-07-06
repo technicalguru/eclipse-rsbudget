@@ -20,6 +20,7 @@
 		<many-to-one name="account" class="rsbudget.data.dto.AccountDTO" column="account"/>
 		<property name="monthSequenceNumber" type="int" column="month_sequence_number"/>
 		<property name="displayOrder" type="int" column="display_order"/>
+		<property name="matchRule" type="string" length="300" column="match_rule" />
 		<property name="creationDate" type="RsDate" column="creation_date"/>
 		<property name="changeDate" type="RsDate" column="change_date"/>
 	</class>

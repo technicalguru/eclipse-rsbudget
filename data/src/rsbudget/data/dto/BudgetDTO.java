@@ -24,7 +24,7 @@ public class BudgetDTO extends RsBudgetDTO {
 	private int displayOrder;
 	private Set<TransactionDTO> transactions;
 	private Set<PlannedTransactionDTO> plannedTransactions;
-	private String matchString;
+	private String matchRule;
 
 	/**
 	 * Constructor.
@@ -145,19 +145,19 @@ public class BudgetDTO extends RsBudgetDTO {
 	}
 
 	/**
-	 * Returns the matchString.
-	 * @return the matchString
+	 * Returns the matchRule.
+	 * @return the matchRule
 	 */
-	public String getMatchString() {
-		return matchString;
+	public String getMatchRule() {
+		return matchRule;
 	}
 
 	/**
-	 * Sets the matchString.
-	 * @param matchString the matchString to set
+	 * Sets the matchRule.
+	 * @param matchRule the matchRule to set
 	 */
-	public void setMatchString(String matchString) {
-		this.matchString = matchString;
+	public void setMatchRule(String matchRule) {
+		this.matchRule = matchRule;
 	}
 
 }

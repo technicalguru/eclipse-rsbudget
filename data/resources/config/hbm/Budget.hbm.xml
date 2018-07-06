@@ -18,6 +18,7 @@
 		<property name="changeDate" type="RsDate" column="change_date"/>
 		<many-to-one name="plan" class="rsbudget.data.dto.PlanDTO" column="plan"/> 
 		<property name="displayOrder" type="int" column="display_order"/>
+		<property name="matchRule" type="string" length="300" column="match_rule" />
 		
 		<set name="transactions">
 			<key column="budget"/>

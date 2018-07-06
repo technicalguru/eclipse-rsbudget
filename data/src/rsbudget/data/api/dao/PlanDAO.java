@@ -3,6 +3,8 @@
  */
 package rsbudget.data.api.dao;
 
+import java.util.List;
+
 import rs.baselib.util.RsMonth;
 import rsbudget.data.api.bo.Plan;
 
@@ -31,4 +33,11 @@ public interface PlanDAO extends RsBudgetDAO<Long, Plan> {
 	 * @return plan or null if not found
 	 */
 	public Plan findFirst();
+	
+	/**
+	 * Find the latest plans.
+	 * @param from - earliest plan to retrieve
+	 * @return plans found
+	 */
+	public List<Plan> findLatest(RsMonth from);
 }
