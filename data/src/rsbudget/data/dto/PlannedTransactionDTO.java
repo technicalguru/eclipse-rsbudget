@@ -3,9 +3,7 @@
  */
 package rsbudget.data.dto;
 
-
-
-
+import java.math.BigDecimal;
 
 /**
  * A transaction that shall take place in a specific month.
@@ -21,7 +19,7 @@ public class PlannedTransactionDTO extends RsBudgetDTO {
 	private static final long serialVersionUID = 5470972040797923179L;
 
 	private AccountDTO account;
-	private float amount;
+	private BigDecimal amount;
 	private String name;
 	private CategoryDTO category;
 	private String annotation;
@@ -73,7 +71,7 @@ public class PlannedTransactionDTO extends RsBudgetDTO {
 	 * Returns the amount.
 	 * @return the amount
 	 */
-	public float getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
@@ -81,7 +79,7 @@ public class PlannedTransactionDTO extends RsBudgetDTO {
 	 * Sets the amount.
 	 * @param amount the amount to set
 	 */
-	public void setAmount(float amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 

@@ -13,7 +13,7 @@
 
 		<property name="name" type="string" column="name"/>
 		<property name="annotation" type="string" column="annotation"/>
-		<property name="amount" type="float" column="amount"/>
+		<property name="amount" type="big_decimal" column="amount"/>
 		<many-to-one name="category" class="rsbudget.data.dto.CategoryDTO" column="category"/> 
 		<many-to-one name="budget" class="rsbudget.data.dto.BudgetDTO" column="budget"/> 
 		<many-to-one name="account" class="rsbudget.data.dto.AccountDTO" column="account"/> 

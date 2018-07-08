@@ -1,5 +1,6 @@
 package rsbudget.parts.transactions;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -24,8 +25,8 @@ public class SetBalanceDialog extends TitleAreaDialog {
 	private Plan plan;
 	private SetBalanceForm compositeBegin;
 	private SetBalanceForm compositeEnd;
-	private Float beginValue = null;
-	private Float endValue = null;
+	private BigDecimal beginValue = null;
+	private BigDecimal endValue = null;
 	
 	/**
 	 * Create the dialog.
@@ -85,7 +86,7 @@ public class SetBalanceDialog extends TitleAreaDialog {
 	 * Returns the entered saldo for the begin of the month.
 	 * @return
 	 */
-	public Float getBegin() {
+	public BigDecimal getBegin() {
 		return beginValue;
 	}
 	
@@ -93,7 +94,7 @@ public class SetBalanceDialog extends TitleAreaDialog {
 	 * Returns the entered saldo for the end of the month.
 	 * @return
 	 */
-	public Float getEnd() {
+	public BigDecimal getEnd() {
 		return endValue;
 	}
 	

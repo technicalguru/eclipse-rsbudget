@@ -15,6 +15,7 @@ public interface HistoricalItem extends RsBudgetBO<Long>, Comparable<HistoricalI
 	public static final String PROPERTY_SHOW_HISTORY     = "showHistory";
 	public static final String PROPERTY_SHOW_CHANGES     = "showChanges";
 	public static final String PROPERTY_FLOAT_VALUE      = "floatValue";
+	public static final String PROPERTY_SCALE            = "scale";
 	
 	/**
 	 * Returns the name.
@@ -75,5 +76,17 @@ public interface HistoricalItem extends RsBudgetBO<Long>, Comparable<HistoricalI
 	 * @param showChanges the showChanges to set
 	 */
 	public void setFloatValue(boolean floatValue);
+
+	/**
+	 * Returns the scale.
+	 * @return the scale
+	 */
+	public int getScale();
+
+	/**
+	 * Sets the scale.
+	 * @param scale the scale to set
+	 */
+	public void setScale(int scale);
 
 }

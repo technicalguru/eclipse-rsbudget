@@ -3,6 +3,7 @@
  */
 package rsbudget.parts.transactions;
 
+import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class SetBalanceForm extends Composite {
 	 * @param parent
 	 * @param style
 	 */
-	public SetBalanceForm(Composite parent, int style, Float value,  Iterator<OptionDescriptor> optionIterator) {
+	public SetBalanceForm(Composite parent, int style, BigDecimal value,  Iterator<OptionDescriptor> optionIterator) {
 		super(parent, style);
 
 		setLayout(new GridLayout(3, false));
@@ -75,8 +76,8 @@ public class SetBalanceForm extends Composite {
 			String s = desc.getText();
 			if (desc.isRecommended()) s += " "+Plugin.translate("part.transactions.dialog.balances.label.balance.recommended"); // Highlight!
 			button.setText(s);
-			float f = Float.valueOf(desc.getAmount());
-			if (!hadSelection && (value != null) && (value.floatValue() == f)) {
+			BigDecimal f = desc.getAmount();
+			if (!hadSelection && (value != null) && value.equals(f)) {
 				button.setSelection(true);
 				hadSelection = true;
 			}
@@ -108,7 +109,7 @@ public class SetBalanceForm extends Composite {
 			}
 		});
 
-		if (value == null) value = 0f;
+		if (value == null) value = BigDecimal.ZERO;
 		text = new Text(this, SWT.BORDER | SWT.RIGHT);
 		text.setText(NumberFormat.getNumberInstance().format(value.floatValue()));
 		text.setEnabled(!hadSelection);
@@ -136,7 +137,7 @@ public class SetBalanceForm extends Composite {
 	 * {@inheritDoc}
 	 */
 	public boolean validate() {
-		Float rc = parse();
+		BigDecimal rc = parse();
 		if (rc == null) decoration.show();
 		else decoration.hide();
 		return (rc == null);
@@ -146,11 +147,11 @@ public class SetBalanceForm extends Composite {
 	 * Returns the selected value.
 	 * @return selected value
 	 */
-	public Float getValue() {
-		Float rc = null;
+	public BigDecimal getValue() {
+		BigDecimal rc = null;
 		for (Button b : buttons) {
 			if (b.getSelection()) {
-				rc = (Float)b.getData();
+				rc = (BigDecimal)b.getData();
 				return rc;
 			}
 		}
@@ -164,18 +165,18 @@ public class SetBalanceForm extends Composite {
 	 * Parses the input.
 	 * @return parsed value or null in case of problems
 	 */
-	protected Float parse() {
-		Float rc = null;
+	protected BigDecimal parse() {
+		BigDecimal rc = null;
 		// 1st try
 		if (rc == null) try {
-			rc = NumberFormat.getCurrencyInstance().parse(text.getText()).floatValue();
+			rc = BigDecimal.valueOf(NumberFormat.getCurrencyInstance().parse(text.getText()).doubleValue());
 		} catch (ParseException e) {
 			rc = null;
 		}
 
 		// 2nd try
 		if (rc == null) try {
-			rc = NumberFormat.getNumberInstance().parse(text.getText()).floatValue();
+			rc = BigDecimal.valueOf(NumberFormat.getNumberInstance().parse(text.getText()).doubleValue());
 		} catch (ParseException e) {
 			rc = null;
 		}
@@ -190,7 +191,7 @@ public class SetBalanceForm extends Composite {
 	public static class OptionDescriptor {
 
 		private String text;
-		private float amount;
+		private BigDecimal amount;
 		private boolean recommended;
 
 		/**
@@ -198,7 +199,7 @@ public class SetBalanceForm extends Composite {
 		 * @param text text to be displayed
 		 * @param amount amount to be set
 		 */
-		public OptionDescriptor(String text, float amount) {
+		public OptionDescriptor(String text, BigDecimal amount) {
 			this(text, amount, false);
 		}
 
@@ -208,7 +209,7 @@ public class SetBalanceForm extends Composite {
 		 * @param amount amount to be set
 		 * @param recommended true if its the recommended option
 		 */
-		public OptionDescriptor(String text, float amount, boolean recommended) {
+		public OptionDescriptor(String text, BigDecimal amount, boolean recommended) {
 			this.text = text;
 			this.amount = amount;
 			this.recommended = recommended;
@@ -226,7 +227,7 @@ public class SetBalanceForm extends Composite {
 		 * Returns the amount.
 		 * @return the amount
 		 */
-		public float getAmount() {
+		public BigDecimal getAmount() {
 			return amount;
 		}
 
@@ -243,7 +244,7 @@ public class SetBalanceForm extends Composite {
 		 * Hash code is based on {@link #amount}.
 		 */
 		public int hashCode() {
-			return Float.valueOf(amount).hashCode();
+			return amount.hashCode();
 		}
 
 		/**

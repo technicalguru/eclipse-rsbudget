@@ -3,6 +3,8 @@
  */
 package rsbudget.parts.history;
 
+import java.math.BigDecimal;
+
 import org.apache.commons.lang.time.DateUtils;
 
 import rs.baselib.util.RsDate;
@@ -74,7 +76,7 @@ public class HistoryEditingSupportModel extends BeanEditingSupportModel {
 				if (status != null) {
 					// Update the value
 					if (value != null) {
-						status.setBalance((Float)value);
+						status.setBalance((BigDecimal)value);
 						factory.getAccountStatusDAO().save(status);
 					} else {
 						factory.getAccountStatusDAO().delete(status);
@@ -85,14 +87,14 @@ public class HistoryEditingSupportModel extends BeanEditingSupportModel {
 						status = factory.getAccountStatusDAO().newInstance();
 						status.setTimestamp(timestamp);
 						status.setAccount(account);
-						status.setBalance((Float)value);
+						status.setBalance((BigDecimal)value);
 						factory.getAccountStatusDAO().create(status);
 					}
 				}
 				unit = PreferencesUtils.getCurrency().getSymbol();
 				// The difference
 				if (previous != null) {
-					row.setValue(columnIndex+1, status.getBalance() - previous.getBalance());
+					row.setValue(columnIndex+1, status.getBalance().subtract(previous.getBalance()));
 					row.setUnit(columnIndex+1, unit);
 				}
 			} else if (businessObject instanceof HistoricalItem) {
@@ -102,7 +104,7 @@ public class HistoryEditingSupportModel extends BeanEditingSupportModel {
 				if (status != null) {
 					// Update the value
 					if (value != null) {
-						status.setValue((Float)value);
+						status.setValue((BigDecimal)value);
 						factory.getHistoricalItemStatusDAO().save(status);
 					} else {
 						factory.getHistoricalItemStatusDAO().delete(status);
@@ -113,13 +115,13 @@ public class HistoryEditingSupportModel extends BeanEditingSupportModel {
 						status = factory.getHistoricalItemStatusDAO().newInstance();
 						status.setTimestamp(timestamp);
 						status.setItem(item);
-						status.setValue((Float)value);
+						status.setValue((BigDecimal)value);
 						factory.getHistoricalItemStatusDAO().create(status);
 					}
 				}
 				unit = item.getUnit();
 				if (item.isShowChanges() && (previous != null)) {
-					row.setValue(columnIndex+1, status.getValue()-previous.getValue());
+					row.setValue(columnIndex+1, status.getValue().subtract(previous.getValue()));
 					row.setUnit(columnIndex+1, unit);
 				}
 			}

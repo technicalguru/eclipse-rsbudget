@@ -87,7 +87,7 @@ import rs.e4.celledit.TextEditingSupport;
 import rs.e4.jface.databinding.FloatToStringConverter;
 import rs.e4.jface.databinding.FloatValidator;
 import rs.e4.jface.databinding.IntegerToStringConverter;
-import rs.e4.jface.databinding.StringToFloatConverter;
+import rs.e4.jface.databinding.StringToBigDecimalConverter;
 import rs.e4.jface.databinding.StringToIntegerConverter;
 import rs.e4.swt.ColorButtonViewer;
 import rs.e4.swt.action.AddDaoRowAction;
@@ -625,7 +625,7 @@ public class PreferencesDialog extends TitleAreaDialog {
 	}
 
 	/**
-	 * Create the accounts tab.
+	 * Creates the history tab.
 	 * @param tabFolder the parent folder
 	 */
 	protected void createHistoryTab(TabFolder tabFolder) {
@@ -717,6 +717,7 @@ public class PreferencesDialog extends TitleAreaDialog {
 			column4.setLabelProvider(lp);
 			column4.setEditingSupport(new CheckboxEditingSupport(historyTableViewer, new BeanEditingSupportModel("showChanges")));
 
+			// TODO: allow scale precisions
 			Map<Boolean, String> map = new LinkedHashMap<Boolean,String>();
 			map.put(Boolean.FALSE, "0");
 			map.put(Boolean.TRUE, "0"+((DecimalFormat)DecimalFormat.getInstance()).getDecimalFormatSymbols().getDecimalSeparator()+"00");
@@ -1312,7 +1313,7 @@ public class PreferencesDialog extends TitleAreaDialog {
 		IObservableValue observeAbsLimitTextValue = WidgetProperties.text().observe(absoluteLimitText);
 		IObservableValue absLimitPreferencesObserveValue = PojoProperties.value("absoluteLimit").observe(this);
 		UpdateValueStrategy strategy3 = new UpdateValueStrategy();
-		strategy3.setConverter(new StringToFloatConverter());
+		strategy3.setConverter(new StringToBigDecimalConverter());
 		UpdateValueStrategy strategy4 = new UpdateValueStrategy();
 		strategy4.setConverter(FloatToStringConverter.DEFAULT_INSTANCE);
 		//strategy3.setBeforeSetValidator(new FloatValidator());

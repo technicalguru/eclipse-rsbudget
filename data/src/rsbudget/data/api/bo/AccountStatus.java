@@ -3,6 +3,8 @@
  */
 package rsbudget.data.api.bo;
 
+import java.math.BigDecimal;
+
 import rs.baselib.util.RsDate;
 
 /**
@@ -44,13 +46,13 @@ public interface AccountStatus extends RsBudgetBO<Long> {
 	 * Returns the balance.
 	 * @return the balance
 	 */
-	public float getBalance();
+	public BigDecimal getBalance();
 
 	/**
 	 * Sets the balance.
 	 * @param balance the balance to set
 	 */
-	public void setBalance(float balance);
+	public void setBalance(BigDecimal balance);
 
 	
 }

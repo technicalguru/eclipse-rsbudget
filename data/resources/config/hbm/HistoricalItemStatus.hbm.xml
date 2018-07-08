@@ -13,7 +13,7 @@
 
 		<many-to-one name="item" class="rsbudget.data.dto.HistoricalItemDTO" column="item"/> 
 		<property name="timestamp" type="RsDate" column="date_of_status"/>
-		<property name="value" type="float" column="value"/>
+		<property name="value" type="big_decimal" column="value"/>
 		<property name="creationDate" type="RsDate" column="creation_date"/>
 		<property name="changeDate" type="RsDate" column="change_date"/>
 	</class>

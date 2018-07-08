@@ -3,6 +3,7 @@
  */
 package rsbudget.data.api.bo;
 
+import java.math.BigDecimal;
 import java.util.Set;
 
 /**
@@ -102,19 +103,19 @@ public interface Budget extends RsBudgetBO<Long>, MonetaryValue {
 	 * Returns the amount still available.
 	 * @return amoujt still available
 	 */
-	public float getAvailable();
+	public BigDecimal getAvailable();
 	
 	/**
 	 * Returns the amount still available.
 	 * @return amoujt still available
 	 */
-	public float getActual();
+	public BigDecimal getActual();
 	
 	/**
 	 * Returns the amount that was planned on this budget.
 	 * @return amount planned
 	 */
-	public float getPlanned();
+	public BigDecimal getPlanned();
 
 	/**
 	 * Returns the displayOrder.

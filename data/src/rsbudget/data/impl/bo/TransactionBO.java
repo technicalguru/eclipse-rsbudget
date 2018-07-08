@@ -3,6 +3,8 @@
  */
 package rsbudget.data.impl.bo;
 
+import java.math.BigDecimal;
+
 import rs.baselib.crypto.EncryptionUtils;
 import rs.baselib.util.RsDate;
 import rsbudget.data.api.bo.Account;
@@ -75,7 +77,7 @@ public class TransactionBO extends AbstractRsBudgetDbBO<TransactionDTO> implemen
 	 * {@inheritDoc}
 	 */
 	@Override
-	public float getAmount() {
+	public BigDecimal getAmount() {
 		return getTransferObject().getAmount();
 	}
 
@@ -83,8 +85,8 @@ public class TransactionBO extends AbstractRsBudgetDbBO<TransactionDTO> implemen
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setAmount(float amount) {
-		float oldValue = getAmount();
+	public void setAmount(BigDecimal amount) {
+		BigDecimal oldValue = getAmount();
 		getTransferObject().setAmount(amount);
 		firePropertyChange(PROPERTY_AMOUNT, oldValue, amount);
 	}

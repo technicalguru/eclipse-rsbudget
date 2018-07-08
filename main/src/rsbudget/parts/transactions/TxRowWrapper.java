@@ -5,6 +5,7 @@ package rsbudget.parts.transactions;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ import rs.baselib.util.CommonUtils;
 import rs.baselib.util.IWrapper;
 import rs.baselib.util.RsDate;
 import rs.data.api.bo.IGeneralBO;
+import rsbaselib.util.RsCommonUtils;
 import rsbudget.Plugin;
 import rsbudget.data.RsBudgetModelService;
 import rsbudget.data.api.RsBudgetDaoFactory;
@@ -156,23 +158,23 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 	 * Checks actual and planned amount of the budget.
 	 */
 	protected void checkBudget() {
-		Float oldPlanned = getPlannedAmount();
-		Float oldActual  = getActualAmount();
+		BigDecimal oldPlanned = getPlannedAmount();
+		BigDecimal oldActual  = getActualAmount();
 		
-		float actual  = budget.getActual();
-		float planned = budget.getPlanned();
-		float available = budget.getAvailable();
+		BigDecimal actual  = budget.getActual();
+		BigDecimal planned = budget.getPlanned();
+		BigDecimal available = budget.getAvailable();
 				
-		boolean planChanged   = !CommonUtils.equals(oldPlanned, planned);
-		boolean actualChanged = !CommonUtils.equals(oldActual, actual);
+		boolean planChanged   = !RsCommonUtils.equals(oldPlanned, planned);
+		boolean actualChanged = !RsCommonUtils.equals(oldActual, actual);
 		
 		//System.out.println("oldActual="+oldActual+" actual="+actual+" changed="+actualChanged);
 
 		if (planChanged) {
-			firePropertyChange(PROPERTY_PLANNED_AMOUNT, oldPlanned, new Float(planned));
+			firePropertyChange(PROPERTY_PLANNED_AMOUNT, oldPlanned, planned);
 		}
 		if (actualChanged) {
-			firePropertyChange(PROPERTY_ACTUAL_AMOUNT, oldActual, new Float(actual));
+			firePropertyChange(PROPERTY_ACTUAL_AMOUNT, oldActual, actual);
 		}
 		
 		if (actualChanged || planChanged) {
@@ -261,7 +263,7 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 			// Convert to transaction
 			createTransaction();
 			transaction.setValueDate(date);
-			firePropertyChange(PROPERTY_ACTUAL_AMOUNT, new Float(0), new Float(transaction.getAmount()));
+			firePropertyChange(PROPERTY_ACTUAL_AMOUNT, BigDecimal.ZERO, transaction.getAmount());
 		}
 	}
 	
@@ -269,11 +271,11 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 	 * Returns the planned amount.
 	 * @return the planned amount
 	 */
-	public Float getPlannedAmount() {
+	public BigDecimal getPlannedAmount() {
 		if (budget != null) return budget.getAmount();
 		if (transaction != null) {
 			if (transaction.getPlannedTransaction() != null) return transaction.getPlannedTransaction().getAmount();
-			return 0f;
+			return BigDecimal.ZERO;
 		}
 		return plannedTransaction.getAmount();
 	}
@@ -282,7 +284,7 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 	 * Sets the planned amount.
 	 * @param amount the value
 	 */
-	public void setPlannedAmount(Float amount) {
+	public void setPlannedAmount(BigDecimal amount) {
 		if (budget != null) budget.setAmount(amount);
 		else if (transaction != null) {
 			if (transaction.getPlannedTransaction() == null) {
@@ -315,7 +317,7 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 	 * Returns the actual amount.
 	 * @return the planned amount
 	 */
-	public Float getActualAmount() {
+	public BigDecimal getActualAmount() {
 		if (budget != null) return budget.getActual();
 		if (transaction != null) return transaction.getAmount();
 		return null;
@@ -325,12 +327,12 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 	 * Sets the amount.
 	 * @param amount the value
 	 */
-	public void setActualAmount(Float amount) {
+	public void setActualAmount(BigDecimal amount) {
 		if (transaction != null) transaction.setAmount(amount);
 		else if (plannedTransaction != null) {
 			createTransaction();
 			transaction.setAmount(amount);
-			firePropertyChange(PROPERTY_ACTUAL_AMOUNT, new Float(0), amount);
+			firePropertyChange(PROPERTY_ACTUAL_AMOUNT, BigDecimal.ZERO, amount);
 		}
 	}
 
@@ -540,7 +542,7 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 	
 	public void transactionDeleted() {
 		plannedTransaction = transaction.getPlannedTransaction();
-		float oldValue = transaction.getAmount();
+		BigDecimal oldValue = transaction.getAmount();
 		transaction.removePropertyChangeListener(listener);
 		transaction = null;
 		firePropertyChange(PROPERTY_ACTUAL_AMOUNT, oldValue, null);

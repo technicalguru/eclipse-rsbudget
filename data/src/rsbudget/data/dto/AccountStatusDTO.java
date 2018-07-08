@@ -3,6 +3,8 @@
  */
 package rsbudget.data.dto;
 
+import java.math.BigDecimal;
+
 import rs.baselib.util.RsDate;
 
 /**
@@ -19,7 +21,7 @@ public class AccountStatusDTO extends RsBudgetDTO {
 
 	private AccountDTO account;
 	private RsDate timestamp;
-	private float balance;
+	private BigDecimal balance;
 	
 	/**
 	 * Constructor.
@@ -63,7 +65,7 @@ public class AccountStatusDTO extends RsBudgetDTO {
 	 * Returns the balance.
 	 * @return the balance
 	 */
-	public float getBalance() {
+	public BigDecimal getBalance() {
 		return balance;
 	}
 
@@ -71,7 +73,7 @@ public class AccountStatusDTO extends RsBudgetDTO {
 	 * Sets the balance.
 	 * @param balance the balance to set
 	 */
-	public void setBalance(float balance) {
+	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
 

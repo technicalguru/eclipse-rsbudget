@@ -3,6 +3,7 @@
  */
 package rsbudget.parts.transactions;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -56,7 +57,7 @@ public class StatusOptionIterator implements Iterator<OptionDescriptor>{
 		options = new ArrayList<SetBalanceForm.OptionDescriptor>();
 		factory.begin();
 		String text = null;
-		float amount = 0;
+		BigDecimal amount = BigDecimal.ZERO;
 		boolean recommended = true;
 		
 		// Retrieve next/previous plan
@@ -72,10 +73,10 @@ public class StatusOptionIterator implements Iterator<OptionDescriptor>{
 		if (adjacentPlan != null) {
 			if (doBegin && (adjacentPlan.getBalanceEnd() != null)) {
 				text = Plugin.translate("part.transactions.dialog.balances.label.status.on", format(adjacentMonth.getEnd()), format(adjacentPlan.getBalanceEnd()));
-				amount = adjacentPlan.getBalanceEnd().floatValue();
+				amount = adjacentPlan.getBalanceEnd();
 			} else if (!doBegin && (adjacentPlan.getBalanceStart() != null)) {
 				text = Plugin.translate("part.transactions.dialog.balances.label.status.on", format(adjacentMonth.getBegin()), format(adjacentPlan.getBalanceStart()));
-				amount = adjacentPlan.getBalanceStart().floatValue();
+				amount = adjacentPlan.getBalanceStart();
 			}
 		}
 		if (text != null) {
@@ -84,10 +85,10 @@ public class StatusOptionIterator implements Iterator<OptionDescriptor>{
 		}
 		
 		// Option: Account status records at given point in time
-		Float f = getRecordedStatus(doBegin ? month.getBegin() : month.getEnd());
+		BigDecimal f = getRecordedStatus(doBegin ? month.getBegin() : month.getEnd());
 		if (f != null) {
-			text = "Konto-Status zum "+format(doBegin ? month.getBegin() : month.getEnd())+": "+format(f.floatValue());
-			amount = f.floatValue();
+			text = "Konto-Status zum "+format(doBegin ? month.getBegin() : month.getEnd())+": "+format(f);
+			amount = f;
 			OptionDescriptor option = new OptionDescriptor(text, amount, recommended);
 			if (!options.contains(option)) options.add(option);
 			text = null; recommended = false;
@@ -112,8 +113,8 @@ public class StatusOptionIterator implements Iterator<OptionDescriptor>{
 		// Option: computed status from account status and transaction
 		f = getComputedStatus(doBegin ? month.getBegin() : month.getEnd());
 		if (f != null) {
-			text = Plugin.translate("part.transactions.dialog.balances.label.status.computed.on", format(doBegin ? month.getBegin() : month.getEnd()), format(f.floatValue()));
-			amount = f.floatValue();
+			text = Plugin.translate("part.transactions.dialog.balances.label.status.computed.on", format(doBegin ? month.getBegin() : month.getEnd()), format(f));
+			amount = f;
 			OptionDescriptor option = new OptionDescriptor(text, amount, recommended);
 			if (!options.contains(option)) options.add(option);
 			text = null; recommended = false;
@@ -122,11 +123,11 @@ public class StatusOptionIterator implements Iterator<OptionDescriptor>{
 		// Option: forecasted status for given point in time
 		if (doBegin && (adjacentPlan != null)) {
 			PlanStatus status = new PlanStatus(adjacentPlan, factory);
-			amount = status.getStatusEnd()+status.getOpenItems();
+			amount = status.getStatusEnd().add(status.getOpenItems());
 			text = Plugin.translate("part.transactions.dialog.balances.label.status.forecasted.on", format(adjacentMonth.getEnd()), format(amount));
 		} else if (!doBegin) {
 			PlanStatus status = new PlanStatus(plan, factory);
-			amount = status.getStatusEnd()+status.getOpenItems();
+			amount = status.getStatusEnd().add(status.getOpenItems());
 			text = Plugin.translate("part.transactions.dialog.balances.label.status.forecasted.on", format(month.getEnd()), format(amount));
 		}
 		if (text != null) {
@@ -143,15 +144,15 @@ public class StatusOptionIterator implements Iterator<OptionDescriptor>{
 	 * @param timestamp
 	 * @return null or found status
 	 */
-	protected Float getRecordedStatus(RsDate timestamp) {
-		float f = 0;
+	protected BigDecimal getRecordedStatus(RsDate timestamp) {
+		BigDecimal f = BigDecimal.ZERO;
 		List<Account> accounts = factory.getAccountDAO().findRelevant();
 		for (Account account : accounts) {
 			AccountStatus status = factory.getAccountStatusDAO().findNearest(account, timestamp, 5*DateUtils.MILLIS_PER_HOUR);
-			if (status != null) f += status.getBalance();
+			if (status != null) f = f.add(status.getBalance());
 			else return null;
 		}
-		return Float.valueOf(f);
+		return f;
 	};
 	
 	/**
@@ -159,26 +160,26 @@ public class StatusOptionIterator implements Iterator<OptionDescriptor>{
 	 * @param timestamp timestamp
 	 * @return null or computed status
 	 */
-	protected Float getComputedStatus(RsDate timestamp) {
+	protected BigDecimal getComputedStatus(RsDate timestamp) {
 		int usedAccounts = 0;
-		float balance = 0;
+		BigDecimal balance = BigDecimal.ZERO;
 		List<Account> relevantAccounts = factory.getAccountDAO().findRelevant();
 		for (Account account : relevantAccounts) {
 			AccountStatus status = factory.getAccountStatusDAO().findLatestBy(account, timestamp);
 			if (status != null) {
 				usedAccounts++;
 				// Base is this status
-				balance += status.getBalance();
+				balance = balance.add(status.getBalance());
 				RsDate t = status.getTimestamp();
 				
 				// Add all transactions
 				List<Transaction> txList = factory.getTransactionDAO().findBy(account, new DateTimePeriod(t, timestamp));
 				for (Transaction tx : txList) {
-					balance += tx.getAmount();	
+					balance = balance.add(tx.getAmount());	
 				}
 			}
 		}
-		if (usedAccounts == relevantAccounts.size()) return Float.valueOf(balance);
+		if (usedAccounts == relevantAccounts.size()) return balance;
 		return null;
 	}
 	
@@ -196,7 +197,7 @@ public class StatusOptionIterator implements Iterator<OptionDescriptor>{
 	 * @param f amount
 	 * @return formatted amount
 	 */
-	protected String format(Float f) {
+	protected String format(BigDecimal f) {
 		return CurrencyLabelProvider.INSTANCE.getText(f);
 	}
 	

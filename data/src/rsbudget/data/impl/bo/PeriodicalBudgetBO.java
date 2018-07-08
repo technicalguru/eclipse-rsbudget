@@ -3,6 +3,8 @@
  */
 package rsbudget.data.impl.bo;
 
+import java.math.BigDecimal;
+
 import rsbudget.data.api.RsBudgetDaoFactory;
 import rsbudget.data.api.bo.Category;
 import rsbudget.data.api.bo.PeriodicalBudget;
@@ -41,7 +43,7 @@ public class PeriodicalBudgetBO extends AbstractRsBudgetDbBO<PeriodicalBudgetDTO
 	 * {@inheritDoc}
 	 */
 	@Override
-	public float getAmount() {
+	public BigDecimal getAmount() {
 		return getTransferObject().getAmount();
 	}
 
@@ -49,8 +51,8 @@ public class PeriodicalBudgetBO extends AbstractRsBudgetDbBO<PeriodicalBudgetDTO
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setAmount(float amount) {
-		float oldValue = getAmount();
+	public void setAmount(BigDecimal amount) {
+		BigDecimal oldValue = getAmount();
 		getTransferObject().setAmount(amount);
 		firePropertyChange(PROPERTY_AMOUNT, oldValue, amount);
 	}
@@ -159,21 +161,21 @@ public class PeriodicalBudgetBO extends AbstractRsBudgetDbBO<PeriodicalBudgetDTO
 	 * {@inheritDoc}
 	 */
 	@Override
-	public float getPlanned() {
-		float rc = 0;
+	public BigDecimal getPlanned() {
+		BigDecimal rc = BigDecimal.ZERO;
 		beginTx();
 		for (PeriodicalTransaction tx : ((RsBudgetDaoFactory)getFactory()).getPeriodicalTransactionDAO().findBy(this)) {
-			if (tx.getPlannedPeriod().equals(getPlannedPeriod())) rc += tx.getAmount();
+			if (tx.getPlannedPeriod().equals(getPlannedPeriod())) rc = rc.add(tx.getAmount());
 		}
-		float budget = getAmount();
+		BigDecimal budget = getAmount();
 		commitTx();
 		
-		if (budget < 0) {
+		if (budget.signum() < 0) {
 			// Less budget than planned expenses
-			if (rc >= budget) rc = budget; 
+			if (rc.compareTo(budget) >= 0) rc = budget; 
 		} else {
 			// More plans than budgeted
-			if (rc >= budget) rc = budget;
+			if (rc.compareTo(budget) >= 0) rc = budget;
 		}
 		return rc;
 	}

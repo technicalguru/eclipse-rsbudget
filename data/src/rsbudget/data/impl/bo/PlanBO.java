@@ -3,6 +3,7 @@
  */
 package rsbudget.data.impl.bo;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -71,7 +72,7 @@ public class PlanBO extends AbstractRsBudgetDbBO<PlanDTO> implements Plan {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Float getBalanceStart() {
+	public BigDecimal getBalanceStart() {
 		return getTransferObject().getBalanceStart();
 	}
 
@@ -79,8 +80,8 @@ public class PlanBO extends AbstractRsBudgetDbBO<PlanDTO> implements Plan {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setBalanceStart(Float balanceStart) {
-		Float oldValue = getBalanceStart();
+	public void setBalanceStart(BigDecimal balanceStart) {
+		BigDecimal oldValue = getBalanceStart();
 		getTransferObject().setBalanceStart(balanceStart);
 		firePropertyChange(PROPERTY_BALANCE_START, oldValue, balanceStart);
 	}
@@ -89,7 +90,7 @@ public class PlanBO extends AbstractRsBudgetDbBO<PlanDTO> implements Plan {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Float getBalanceEnd() {
+	public BigDecimal getBalanceEnd() {
 		return getTransferObject().getBalanceEnd();
 	}
 
@@ -97,8 +98,8 @@ public class PlanBO extends AbstractRsBudgetDbBO<PlanDTO> implements Plan {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setBalanceEnd(Float balanceEnd) {
-		Float oldValue = getBalanceEnd();
+	public void setBalanceEnd(BigDecimal balanceEnd) {
+		BigDecimal oldValue = getBalanceEnd();
 		getTransferObject().setBalanceEnd(balanceEnd);
 		firePropertyChange(PROPERTY_BALANCE_END, oldValue, balanceEnd);
 	}

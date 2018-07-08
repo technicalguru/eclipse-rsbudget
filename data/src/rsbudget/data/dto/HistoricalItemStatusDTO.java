@@ -3,6 +3,8 @@
  */
 package rsbudget.data.dto;
 
+import java.math.BigDecimal;
+
 import rs.baselib.util.RsDate;
 
 /**
@@ -19,7 +21,7 @@ public class HistoricalItemStatusDTO extends RsBudgetDTO {
 
 	private HistoricalItemDTO item;
 	private RsDate timestamp;
-	private float value;
+	private BigDecimal value;
 	
 	/**
 	 * Constructor.
@@ -63,7 +65,7 @@ public class HistoricalItemStatusDTO extends RsBudgetDTO {
 	 * Returns the value.
 	 * @return the value
 	 */
-	public float getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
@@ -71,7 +73,7 @@ public class HistoricalItemStatusDTO extends RsBudgetDTO {
 	 * Sets the value.
 	 * @param value the value to set
 	 */
-	public void setValue(float value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 

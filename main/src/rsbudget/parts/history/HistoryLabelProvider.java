@@ -3,6 +3,8 @@
  */
 package rsbudget.parts.history;
 
+import java.text.DecimalFormat;
+
 import org.eclipse.jface.resource.LocalResourceManager;
 
 import rs.baselib.util.CommonUtils;
@@ -16,15 +18,16 @@ import rs.e4.util.AbstractColumnLabelProvider;
 public class HistoryLabelProvider extends AbstractColumnLabelProvider {
 
 	private int index;
+	private DecimalFormat formatter = new DecimalFormat();
 	
 	/**
 	 * Constructor.
 	 */
-	public HistoryLabelProvider(int index, LocalResourceManager resourceManager) {
+	public HistoryLabelProvider(int index, int precision, LocalResourceManager resourceManager) {
 		super(null, resourceManager);
 		this.index = index;
-		CommonUtils.SIMPLE_NUMBER_FORMATTER().setMaximumFractionDigits(2);
-		CommonUtils.SIMPLE_NUMBER_FORMATTER().setMinimumFractionDigits(2);
+		formatter.setMaximumFractionDigits(precision);
+		formatter.setMinimumFractionDigits(precision);
 	}
 
 	/**
@@ -40,8 +43,7 @@ public class HistoryLabelProvider extends AbstractColumnLabelProvider {
 			String unit = record.getUnit(index);
 			
 			if (value == null) rc = "";
-			else if (record.isFloat(index)) rc = CommonUtils.SIMPLE_NUMBER_FORMATTER().format(value)+" "+unit;
-			else rc = CommonUtils.SIMPLE_INT_FORMATTER().format(value)+" "+unit;
+			else rc = formatter.format(value)+" "+unit;
 			
 			return rc;
 		} catch (Throwable t) {

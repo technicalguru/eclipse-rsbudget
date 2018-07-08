@@ -16,6 +16,7 @@
 		<property name="showHistory" type="boolean-encrypted" column="show_history"/>
 		<property name="showChanges" type="boolean-encrypted" column="show_changes"/>
 		<property name="floatValue" type="boolean-encrypted" column="is_float_value"/>
+		<property name="scale" type="int-encrypted" column="scale"/>
 		<property name="creationDate" type="RsDate-encrypted" column="creation_date"/>
 		<property name="changeDate" type="RsDate-encrypted" column="change_date"/>
 	</class>

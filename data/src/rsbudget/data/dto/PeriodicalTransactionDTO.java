@@ -3,6 +3,8 @@
  */
 package rsbudget.data.dto;
 
+import java.math.BigDecimal;
+
 import rsbudget.data.util.PlannedPeriod;
 
 /**
@@ -19,7 +21,7 @@ public class PeriodicalTransactionDTO extends RsBudgetDTO {
 	private static final long serialVersionUID = 5470972040797923179L;
 
 	private AccountDTO account;
-	private float amount;
+	private BigDecimal amount;
 	private String name;
 	private CategoryDTO category;
 	private String annotation;
@@ -72,7 +74,7 @@ public class PeriodicalTransactionDTO extends RsBudgetDTO {
 	 * Returns the amount.
 	 * @return the amount
 	 */
-	public float getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
@@ -80,7 +82,7 @@ public class PeriodicalTransactionDTO extends RsBudgetDTO {
 	 * Sets the amount.
 	 * @param amount the amount to set
 	 */
-	public void setAmount(float amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 

@@ -3,6 +3,7 @@
  */
 package rsbudget.data.impl.bo;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -52,7 +53,7 @@ public class BudgetBO extends AbstractRsBudgetDbBO<BudgetDTO> implements Budget 
 	 * {@inheritDoc}
 	 */
 	@Override
-	public float getAmount() {
+	public BigDecimal getAmount() {
 		return getTransferObject().getAmount();
 	}
 
@@ -60,8 +61,8 @@ public class BudgetBO extends AbstractRsBudgetDbBO<BudgetDTO> implements Budget 
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setAmount(float amount) {
-		float oldValue = getAmount();
+	public void setAmount(BigDecimal amount) {
+		BigDecimal oldValue = getAmount();
 		getTransferObject().setAmount(amount);
 		firePropertyChange(PROPERTY_AMOUNT, oldValue, amount);
 	}
@@ -71,15 +72,15 @@ public class BudgetBO extends AbstractRsBudgetDbBO<BudgetDTO> implements Budget 
 	 * @{inheritDoc}
 	 */
 	@Override
-	public float getAvailable() {
-		float budget = getAmount();
-		float actual = getActual();
-		if (budget < 0) {
-			if (budget - actual > 0) return 0;
+	public BigDecimal getAvailable() {
+		BigDecimal budget = getAmount();
+		BigDecimal actual = getActual();
+		if (budget.signum() < 0) {
+			if (budget.subtract(actual).signum() > 0) return BigDecimal.ZERO;
 		} else {
-			if (budget - actual < 0) return 0;
+			if (budget.subtract(actual).signum() < 0) return BigDecimal.ZERO;
 		}
-		return budget - actual;
+		return budget.subtract(actual);
 	}
 
 	/**
@@ -87,10 +88,10 @@ public class BudgetBO extends AbstractRsBudgetDbBO<BudgetDTO> implements Budget 
 	 * @param coll collection of amounts
 	 * @return total of amounts
 	 */
-	protected float getTotal(Collection<? extends MonetaryValue> coll) {
-		float rc = 0f;
+	protected BigDecimal getTotal(Collection<? extends MonetaryValue> coll) {
+		BigDecimal rc = BigDecimal.ZERO;
 		for (MonetaryValue v : coll) {
-			rc += v.getAmount();
+			rc = rc.add(v.getAmount());
 		}
 		return rc;
 	}
@@ -99,7 +100,7 @@ public class BudgetBO extends AbstractRsBudgetDbBO<BudgetDTO> implements Budget 
 	 * {@inheritDoc}
 	 */
 	@Override
-	public float getActual() {
+	public BigDecimal getActual() {
 		return getTotal(getTransactions());
 	}
 
@@ -107,16 +108,16 @@ public class BudgetBO extends AbstractRsBudgetDbBO<BudgetDTO> implements Budget 
 	 * {@inheritDoc}
 	 */
 	@Override
-	public float getPlanned() {
-		float amount = getAmount();
-		float planned = 0;
+	public BigDecimal getPlanned() {
+		BigDecimal amount = getAmount();
+		BigDecimal planned = BigDecimal.ZERO;
 		for (PlannedTransaction ptx : getPlannedTransactions()) {
-			planned += ptx.getAmount();
+			planned = planned.add(ptx.getAmount());
 		}
-		if (amount < 0) {
-			return amount < planned ? amount : planned;
+		if (amount.signum() < 0) {
+			return amount.compareTo(planned) < 0 ? amount : planned;
 		}
-		return amount > planned ? amount : planned;
+		return amount.compareTo(planned) > 0 ? amount : planned;
 	}
 
 	/**

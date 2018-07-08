@@ -3,6 +3,7 @@
  */
 package rsbudget.data.dto;
 
+import java.math.BigDecimal;
 import java.util.Set;
 
 import rs.baselib.util.RsMonth;
@@ -20,8 +21,8 @@ public class PlanDTO extends RsBudgetDTO {
 	private static final long serialVersionUID = 1134792478907420028L;
 	
 	private RsMonth month;
-	private Float balanceStart;
-	private Float balanceEnd;
+	private BigDecimal balanceStart;
+	private BigDecimal balanceEnd;
 	private Set<BudgetDTO> budgets;
 	private Set<PlannedTransactionDTO> plannedTransactions;
 	private Set<TransactionDTO> transactions;
@@ -53,7 +54,7 @@ public class PlanDTO extends RsBudgetDTO {
 	 * Returns the balanceStart.
 	 * @return the balanceStart
 	 */
-	public Float getBalanceStart() {
+	public BigDecimal getBalanceStart() {
 		return balanceStart;
 	}
 
@@ -61,7 +62,7 @@ public class PlanDTO extends RsBudgetDTO {
 	 * Sets the balanceStart.
 	 * @param balanceStart the balanceStart to set
 	 */
-	public void setBalanceStart(Float balanceStart) {
+	public void setBalanceStart(BigDecimal balanceStart) {
 		this.balanceStart = balanceStart;
 	}
 
@@ -69,7 +70,7 @@ public class PlanDTO extends RsBudgetDTO {
 	 * Returns the balanceEnd.
 	 * @return the balanceEnd
 	 */
-	public Float getBalanceEnd() {
+	public BigDecimal getBalanceEnd() {
 		return balanceEnd;
 	}
 
@@ -77,7 +78,7 @@ public class PlanDTO extends RsBudgetDTO {
 	 * Sets the balanceEnd.
 	 * @param balanceEnd the balanceEnd to set
 	 */
-	public void setBalanceEnd(Float balanceEnd) {
+	public void setBalanceEnd(BigDecimal balanceEnd) {
 		this.balanceEnd = balanceEnd;
 	}
 

@@ -3,6 +3,7 @@
  */
 package rsbudget.data.dto;
 
+import java.math.BigDecimal;
 import java.util.Set;
 
 /**
@@ -19,7 +20,7 @@ public class BudgetDTO extends RsBudgetDTO {
 
 	private String name;
 	private CategoryDTO category;
-	private float amount;
+	private BigDecimal amount;
 	private PlanDTO plan;
 	private int displayOrder;
 	private Set<TransactionDTO> transactions;
@@ -68,7 +69,7 @@ public class BudgetDTO extends RsBudgetDTO {
 	 * Returns the amount.
 	 * @return the amount
 	 */
-	public float getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
@@ -76,7 +77,7 @@ public class BudgetDTO extends RsBudgetDTO {
 	 * Sets the amount.
 	 * @param amount the amount to set
 	 */
-	public void setAmount(float amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 

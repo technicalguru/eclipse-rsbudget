@@ -3,6 +3,8 @@
  */
 package rsbudget.data.impl.bo;
 
+import java.math.BigDecimal;
+
 import rsbudget.data.api.bo.Account;
 import rsbudget.data.api.bo.Category;
 import rsbudget.data.api.bo.PeriodicalBudget;
@@ -41,7 +43,7 @@ public class PeriodicalTransactionBO extends AbstractRsBudgetDbBO<PeriodicalTran
 	 * {@inheritDoc}
 	 */
 	@Override
-	public float getAmount() {
+	public BigDecimal getAmount() {
 		return getTransferObject().getAmount();
 	}
 
@@ -49,8 +51,8 @@ public class PeriodicalTransactionBO extends AbstractRsBudgetDbBO<PeriodicalTran
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setAmount(float amount) {
-		float oldValue = getAmount();
+	public void setAmount(BigDecimal amount) {
+		BigDecimal oldValue = getAmount();
 		getTransferObject().setAmount(amount);
 		firePropertyChange(PROPERTY_AMOUNT, oldValue, amount);
 	}

@@ -3,6 +3,8 @@
  */
 package rsbudget.util;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.NumberFormat;
 
 import org.eclipse.jface.viewers.LabelProvider;
@@ -38,6 +40,9 @@ public class CurrencyLabelProvider extends LabelProvider {
 	@Override
 	public String getText(Object element) {
 		if (element == null) return "";
+		if (element instanceof BigDecimal) {
+			((BigDecimal)element).setScale(2, RoundingMode.HALF_UP);
+		}
 		if (element instanceof Number) {
 			return formatter.format(((Number)element).doubleValue());
 		}

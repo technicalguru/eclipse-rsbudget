@@ -15,11 +15,12 @@ public class HistoricalItemDTO extends RsBudgetDTO {
 	 */
 	private static final long serialVersionUID = 1535572940840810653L;
 
-	private String name;
-	private String unit;
+	private String  name;
+	private String  unit;
 	private boolean showHistory;
 	private boolean showChanges;
 	private boolean floatValue;
+	private Integer scale;
 	
 	/**
 	 * Constructor.
@@ -107,5 +108,20 @@ public class HistoricalItemDTO extends RsBudgetDTO {
 		this.floatValue = floatValue;
 	}
 
-	
+	/**
+	 * Returns the scale.
+	 * @return the scale
+	 */
+	public Integer getScale() {
+		return scale;
+	}
+
+	/**
+	 * Sets the scale.
+	 * @param scale the scale to set
+	 */
+	public void setScale(Integer scale) {
+		this.scale = scale;
+	}
+
 }

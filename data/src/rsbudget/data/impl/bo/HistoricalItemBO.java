@@ -124,6 +124,32 @@ public class HistoricalItemBO extends AbstractRsBudgetDbBO<HistoricalItemDTO> im
 		firePropertyChange(PROPERTY_FLOAT_VALUE, oldValue, floatValue);
 	}
 
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public int getScale() {
+		if (isFloatValue()) {
+			Integer rc = getTransferObject().getScale();
+			if (rc == null) return 2;
+			return rc.intValue();
+		}
+		return 0;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setScale(int scale) {
+		if (scale < 0) scale = 0;
+		int oldValue = getScale();
+		getTransferObject().setScale(scale);
+		setFloatValue(scale > 0);
+		firePropertyChange(PROPERTY_SCALE, oldValue, scale);
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */

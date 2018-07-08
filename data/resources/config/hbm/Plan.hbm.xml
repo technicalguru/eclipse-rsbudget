@@ -12,8 +12,8 @@
 		</id>
 
 		<property name="month" type="RsMonth" column="month"/>
-		<property name="balanceStart" type="float" column="balance_start"/>
-		<property name="balanceEnd" type="float" column="balance_end"/>
+		<property name="balanceStart" type="big_decimal" column="balance_start"/>
+		<property name="balanceEnd" type="big_decimal" column="balance_end"/>
 		<property name="comment" type="string" column="comment"/>
 		<property name="changeDate" type="RsDate" column="change_date"/>
 		<set name="budgets" inverse="true">

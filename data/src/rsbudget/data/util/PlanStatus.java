@@ -3,14 +3,15 @@
  */
 package rsbudget.data.util;
 
+import java.math.BigDecimal;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.slf4j.LoggerFactory;
 
-import rs.baselib.lang.LangUtils;
 import rs.baselib.util.DateTimePeriod;
 import rs.baselib.util.RsDate;
+import rsbaselib.util.RsCommonUtils;
 import rsbudget.data.api.RsBudgetDaoFactory;
 import rsbudget.data.api.bo.Account;
 import rsbudget.data.api.bo.AccountStatus;
@@ -29,18 +30,18 @@ public class PlanStatus {
 
 	private RsBudgetDaoFactory factory;
 	private Plan plan;
-	private float statusStart;
-	private float currentStatus;
-	private float statusEnd;
-	private float openItems;
-	private float plannedExpenses;
-	private float actualExpenses;
-	private float relativeBalance;
-	private float absoluteBalance;
-	private float plannedBalance;
-	private float actualBalance;
-	private float plannedIncome;
-	private float actualIncome;
+	private BigDecimal statusStart;
+	private BigDecimal currentStatus;
+	private BigDecimal statusEnd;
+	private BigDecimal openItems;
+	private BigDecimal plannedExpenses;
+	private BigDecimal actualExpenses;
+	private BigDecimal relativeBalance;
+	private BigDecimal absoluteBalance;
+	private BigDecimal plannedBalance;
+	private BigDecimal actualBalance;
+	private BigDecimal plannedIncome;
+	private BigDecimal actualIncome;
 	private Setting profitLossThreshold = null;
 	
 	/**
@@ -70,41 +71,41 @@ public class PlanStatus {
 	protected void computeValues() {
 		factory.begin();
 		statusStart     = computeStatusStart();
-		currentStatus   = 0;
-		statusEnd       = 0;
-		openItems       = 0;
-		plannedExpenses = 0;
-		actualExpenses  = 0;
-		relativeBalance = 0;
-		absoluteBalance = 0;
-		plannedBalance  = 0;
-		actualBalance   = 0;
-		plannedIncome   = 0;
-		actualIncome    = 0;
+		currentStatus   = BigDecimal.ZERO;
+		statusEnd       = BigDecimal.ZERO;
+		openItems       = BigDecimal.ZERO;
+		plannedExpenses = BigDecimal.ZERO;
+		actualExpenses  = BigDecimal.ZERO;
+		relativeBalance = BigDecimal.ZERO;
+		absoluteBalance = BigDecimal.ZERO;
+		plannedBalance  = BigDecimal.ZERO;
+		actualBalance   = BigDecimal.ZERO;
+		plannedIncome   = BigDecimal.ZERO;
+		actualIncome    = BigDecimal.ZERO;
 		boolean doForecast = true;
 
 		doForecast = plan.getMonth().getEnd().after(new GregorianCalendar());
 
 		// Add budgets to the plan
 		for (Budget budget: plan.getBudgets()) {
-			float amount = budget.getPlanned();
-			float budgetOpen = 0;
+			BigDecimal amount = budget.getPlanned();
+			BigDecimal budgetOpen = BigDecimal.ZERO;
 			
 			// What is planned on this budget
-			float bPlanned = budget.getPlanned();
+			BigDecimal bPlanned = budget.getPlanned();
 			for (PlannedTransaction ptx : budget.getPlannedTransactions()) {
-				float f = ptx.getAmount();
-				if (f < 0) plannedExpenses += f;
-				else       plannedIncome   += f;
-				if (ptx.getTransaction() == null) budgetOpen += f;
+				BigDecimal f = ptx.getAmount();
+				if (f.signum() < 0) plannedExpenses = plannedExpenses.add(f);
+				else       plannedIncome   = plannedIncome.add(f);
+				if (ptx.getTransaction() == null) budgetOpen = budgetOpen.add(f);
 			}
 			
 			// If planned is more than budget then add this difference
-			if (amount < 0) {
-				if (bPlanned > amount) plannedExpenses += (amount-bPlanned);
+			if (amount.signum() < 0) {
+				if (bPlanned.compareTo(amount) > 0) plannedExpenses = plannedExpenses.add(amount).subtract(bPlanned);
 				else amount = bPlanned; // for openItems computation
 			} else {
-				if (bPlanned < amount) plannedIncome   += (amount-bPlanned);
+				if (bPlanned.compareTo(amount) < 0) plannedIncome   = plannedIncome.add(amount).subtract(bPlanned);
 				else amount = bPlanned; // for openItems computation
 			}
 			
@@ -115,24 +116,24 @@ public class PlanStatus {
 //			}
 			
 			// Open items
-			float budgetAvailable = budget.getAvailable();
+			BigDecimal budgetAvailable = budget.getAvailable();
 			//System.out.println(budget.getName()+": planned="+bPlanned+" spent="+spent+" open="+budgetOpen+" available="+budgetAvailable);
-			if (budgetAvailable != 0) {
-				if (amount < 0) {
+			if (budgetAvailable.signum() != 0) {
+				if (amount.signum() < 0) {
 					// This was an expenses budget
-					if (budgetOpen < budgetAvailable) {
+					if (budgetOpen.compareTo(budgetAvailable) < 0) {
 						// Open transactions exceed available budget: add all open
-						openItems += budgetOpen;
+						openItems = openItems.add(budgetOpen);
 						//System.out.println("    adding open");
 					} else {
 						// Open transactions fit in available: add available
-						openItems += budgetAvailable;
+						openItems = openItems.add(budgetAvailable);
 						//System.out.println("    adding available");
 					}
 				}
 			} else {
 				// No budget available: add open transactions
-				openItems += budgetOpen;
+				openItems = openItems.add(budgetOpen);
 				//System.out.println("    adding open");
 			}
 			//openItems += budget.getAvailable();
@@ -142,36 +143,36 @@ public class PlanStatus {
 		for (PlannedTransaction tx : plan.getPlannedTransactions()) {
 			// If there is already a budget, its included
 			if (tx.getBudget() == null) {
-				float amount = tx.getAmount();
-				if (amount < 0) plannedExpenses += amount;
-				else            plannedIncome   += amount;
+				BigDecimal amount = tx.getAmount();
+				if (amount.signum() < 0) plannedExpenses = plannedExpenses.add(amount);
+				else                     plannedIncome   = plannedIncome.add(amount);
 
 				// If not actual yet, add to open items
 				if (tx.getTransaction() == null) {
-					openItems += amount;
+					openItems = openItems.add(amount);
 				}
 			}
 		}
 
 		// Add all TX to the plan
 		for (Transaction tx : plan.getTransactions()) {
-			float amount = tx.getAmount();
-			if (amount < 0) actualExpenses += amount;
-			else            actualIncome   += amount;
+			BigDecimal amount = tx.getAmount();
+			if (amount.signum() < 0) actualExpenses = actualExpenses.add(amount);
+			else                     actualIncome   = actualIncome.add(amount);
 		}
 
 		// No open items anymore if the end status is set
-		if (plan.getBalanceEnd() != null) openItems = 0;
+		if (plan.getBalanceEnd() != null) openItems = BigDecimal.ZERO;
 		
 		// Some totals
-		plannedBalance = plannedIncome + plannedExpenses;
-		actualBalance  = actualIncome  + actualExpenses;
-		statusEnd      = statusStart + actualBalance;
-		if (doForecast) statusEnd += openItems;
+		plannedBalance = plannedIncome.add(plannedExpenses);
+		actualBalance  = actualIncome.add(actualExpenses);
+		statusEnd      = statusStart.add(actualBalance);
+		if (doForecast) statusEnd = statusEnd.add(openItems);
 		if (plan.getBalanceEnd() != null) statusEnd = plan.getBalanceEnd();
-		absoluteBalance = statusEnd - getProfitLossThreshold();
-		relativeBalance = statusEnd - statusStart;
-		currentStatus = doForecast ? statusStart + actualBalance : statusEnd;
+		absoluteBalance = statusEnd.subtract(getProfitLossThreshold());
+		relativeBalance = statusEnd.subtract(statusStart);
+		currentStatus = doForecast ? statusStart.add(actualBalance) : statusEnd;
 		factory.commit();
 	}
 
@@ -179,7 +180,7 @@ public class PlanStatus {
 	 * Returns the absolute limit for balance.
 	 * @return the limit
 	 */
-	public float getProfitLossThreshold() {
+	public BigDecimal getProfitLossThreshold() {
 		if (profitLossThreshold == null) {
 			try {
 				factory.begin();
@@ -200,18 +201,18 @@ public class PlanStatus {
 				} catch (Exception e2) {}
 			}
 		}
-		if (profitLossThreshold != null) return LangUtils.getFloat(profitLossThreshold.getValue(), 0f);
-		return 0f;
+		if (profitLossThreshold != null) return RsCommonUtils.getBigDecimal(profitLossThreshold.getValue(), BigDecimal.ZERO);
+		return BigDecimal.ZERO;
 	}
 	
 	/**
 	 * Compute the correct start of the month.
 	 * @return account balance at begin of month
 	 */
-	protected float computeStatusStart() {
-		float rc = 0;
+	protected BigDecimal computeStatusStart() {
+		BigDecimal rc = BigDecimal.ZERO;
 		// 1. Use the status from this month
-		if (plan.getBalanceStart() != null) return plan.getBalanceStart().floatValue();
+		if (plan.getBalanceStart() != null) return plan.getBalanceStart();
 		
 		// 2. Use the status from last month
 		Plan prev = factory.getPlanDAO().findBy(plan.getMonth().getPrevious());
@@ -221,7 +222,7 @@ public class PlanStatus {
 			// Use account information if possible
 			RsDate timestamp = plan.getMonth().getBegin();
 			int usedAccounts = 0;
-			float balance = 0;
+			BigDecimal balance = BigDecimal.ZERO;
 			List<Account> relevantAccounts = factory.getAccountDAO().findRelevant();
 			for (Account account : relevantAccounts) {
 				AccountStatus status = factory.getAccountStatusDAO().findLatestBy(account, timestamp);
@@ -231,7 +232,7 @@ public class PlanStatus {
 					List<Transaction> tx = factory.getTransactionDAO().findBy(account, new DateTimePeriod(t, timestamp));
 					if (tx.size() == 0) {
 						usedAccounts++;
-						balance += status.getBalance();
+						balance = balance.add(status.getBalance());
 					}
 				}
 			}
@@ -245,7 +246,7 @@ public class PlanStatus {
 		// 3. Use account status information
 		for (Account account : factory.getAccountDAO().findRelevant()) {
 			// What is status at given point in time?
-			rc += computeAccountStatus(account, plan.getMonth().getBegin());
+			rc = rc.add(computeAccountStatus(account, plan.getMonth().getBegin()));
 		}
 		return rc;
 	}
@@ -256,8 +257,8 @@ public class PlanStatus {
 	 * @param timestamp timestamp
 	 * @return status at given timestamp
 	 */
-	protected float computeAccountStatus(Account account, RsDate timestamp) {
-		float rc = 0;
+	protected BigDecimal computeAccountStatus(Account account, RsDate timestamp) {
+		BigDecimal rc = BigDecimal.ZERO;
 		RsDate lastTimestamp = new RsDate(0);
 		
 		// 1. Last status information before timestamp
@@ -270,7 +271,7 @@ public class PlanStatus {
 		// 2. Add all transactions from remaining period
 		List<Transaction> txList = factory.getTransactionDAO().findBy(account, new DateTimePeriod(lastTimestamp, timestamp));
 		for (Transaction tx : txList) {
-			rc += tx.getAmount();
+			rc = rc.add(tx.getAmount());
 		}
 		
 		return rc;
@@ -280,7 +281,7 @@ public class PlanStatus {
 	 * Returns the statusStart.
 	 * @return the statusStart
 	 */
-	public float getStatusStart() {
+	public BigDecimal getStatusStart() {
 		return statusStart;
 	}
 
@@ -288,7 +289,7 @@ public class PlanStatus {
 	 * Returns the currentStatus.
 	 * @return the currentStatus
 	 */
-	public float getCurrentStatus() {
+	public BigDecimal getCurrentStatus() {
 		return currentStatus;
 	}
 
@@ -296,7 +297,7 @@ public class PlanStatus {
 	 * Returns the statusEnd.
 	 * @return the statusEnd
 	 */
-	public float getStatusEnd() {
+	public BigDecimal getStatusEnd() {
 		return statusEnd;
 	}
 
@@ -304,7 +305,7 @@ public class PlanStatus {
 	 * Returns the openItems.
 	 * @return the openItems
 	 */
-	public float getOpenItems() {
+	public BigDecimal getOpenItems() {
 		return openItems;
 	}
 
@@ -312,7 +313,7 @@ public class PlanStatus {
 	 * Returns the plannedExpenses.
 	 * @return the plannedExpenses
 	 */
-	public float getPlannedExpenses() {
+	public BigDecimal getPlannedExpenses() {
 		return plannedExpenses;
 	}
 
@@ -320,7 +321,7 @@ public class PlanStatus {
 	 * Returns the actualExpenses.
 	 * @return the actualExpenses
 	 */
-	public float getActualExpenses() {
+	public BigDecimal getActualExpenses() {
 		return actualExpenses;
 	}
 
@@ -328,7 +329,7 @@ public class PlanStatus {
 	 * Returns the relativeBalance.
 	 * @return the relativeBalance
 	 */
-	public float getRelativeBalance() {
+	public BigDecimal getRelativeBalance() {
 		return relativeBalance;
 	}
 
@@ -336,7 +337,7 @@ public class PlanStatus {
 	 * Returns the absoluteBalance.
 	 * @return the absoluteBalance
 	 */
-	public float getAbsoluteBalance() {
+	public BigDecimal getAbsoluteBalance() {
 		return absoluteBalance;
 	}
 
@@ -344,7 +345,7 @@ public class PlanStatus {
 	 * Returns the plannedBalance.
 	 * @return the plannedBalance
 	 */
-	public float getPlannedBalance() {
+	public BigDecimal getPlannedBalance() {
 		return plannedBalance;
 	}
 
@@ -352,7 +353,7 @@ public class PlanStatus {
 	 * Returns the actualBalance.
 	 * @return the actualBalance
 	 */
-	public float getActualBalance() {
+	public BigDecimal getActualBalance() {
 		return actualBalance;
 	}
 
@@ -360,7 +361,7 @@ public class PlanStatus {
 	 * Returns the plannedIncome.
 	 * @return the plannedIncome
 	 */
-	public float getPlannedIncome() {
+	public BigDecimal getPlannedIncome() {
 		return plannedIncome;
 	}
 
@@ -368,7 +369,7 @@ public class PlanStatus {
 	 * Returns the actualIncome.
 	 * @return the actualIncome
 	 */
-	public float getActualIncome() {
+	public BigDecimal getActualIncome() {
 		return actualIncome;
 	}
 	

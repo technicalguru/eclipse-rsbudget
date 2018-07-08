@@ -78,7 +78,7 @@ import rs.e4.E4Utils;
 import rs.e4.SwtUtils;
 import rs.e4.celledit.CellEditorActivationStrategy;
 import rs.e4.celledit.ComboBoxEditingSupport;
-import rs.e4.celledit.FloatEditingSupport;
+import rs.e4.celledit.BigDecimalEditingSupport;
 import rs.e4.celledit.IComboBoxEditingSupportModel;
 import rs.e4.celledit.IEditingSupportModel;
 import rs.e4.celledit.RsDateEditingSupport;
@@ -470,7 +470,7 @@ public class TransactionsPart {
 			column6.getColumn().addControlListener(new TableColumnResizeListener("transactions", "plannedAmount"));
 			IEditingSupportModel plannedModel = new TransactionSupportModel("plannedAmount");
 			plannedModel.addEditingSupportModelListener(editListener);
-			column6.setEditingSupport(new FloatEditingSupport(tableViewer, plannedModel, false));
+			column6.setEditingSupport(new BigDecimalEditingSupport(tableViewer, plannedModel, false, 2));
 			
 			TableViewerColumn column7 = new TableViewerColumn(tableViewer, SWT.RIGHT);
 			tblclmn7 = column7.getColumn();
@@ -482,7 +482,7 @@ public class TransactionsPart {
 			column7.getColumn().addControlListener(new TableColumnResizeListener("transactions", "actualAmount"));
 			IEditingSupportModel actualModel = new TransactionSupportModel("actualAmount");
 			actualModel.addEditingSupportModelListener(editListener);
-			column7.setEditingSupport(new FloatEditingSupport(tableViewer, actualModel, true));
+			column7.setEditingSupport(new BigDecimalEditingSupport(tableViewer, actualModel, true, 2));
 			
 		}
 		

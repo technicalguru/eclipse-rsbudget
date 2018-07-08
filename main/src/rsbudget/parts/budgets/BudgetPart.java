@@ -3,6 +3,8 @@
  */
 package rsbudget.parts.budgets;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -63,7 +65,7 @@ import rs.e4.celledit.BeanEditingSupportModel;
 import rs.e4.celledit.CellEditorActivationStrategy;
 import rs.e4.celledit.ComboBoxEditingSupport;
 import rs.e4.celledit.EnumerationEditingSupportModel;
-import rs.e4.celledit.FloatEditingSupport;
+import rs.e4.celledit.BigDecimalEditingSupport;
 import rs.e4.celledit.IComboBoxEditingSupportModel;
 import rs.e4.celledit.IEditingSupportModel;
 import rs.e4.celledit.TextEditingSupport;
@@ -316,7 +318,7 @@ public class BudgetPart {
 			column7.getColumn().addControlListener(new TableColumnResizeListener("budgets", "amount"));
 			IEditingSupportModel amountModel = new BeanEditingSupportModel("amount");
 			amountModel.addEditingSupportModelListener(editListener);
-			column7.setEditingSupport(new FloatEditingSupport(tableViewer, amountModel, false));
+			column7.setEditingSupport(new BigDecimalEditingSupport(tableViewer, amountModel, false, 2));
 			
 		}
 		
@@ -542,15 +544,15 @@ public class BudgetPart {
 	 * Update all labels.
 	 */
 	protected void updateInfoPart() {
-		float incomeMonth          = 0;
-		float expensesMonth        = 0;
-		float balanceMonth         = 0;
-		float incomeYear           = 0;
-		float expensesYear         = 0;
-		//float balanceYear          = 0;
-		float incomeMonthAverage   = 0;
-		float expensesMonthAverage = 0;
-		float balanceMonthAverage  = 0;
+		BigDecimal incomeMonth          = BigDecimal.ZERO;
+		BigDecimal expensesMonth        = BigDecimal.ZERO;
+		BigDecimal balanceMonth         = BigDecimal.ZERO;
+		BigDecimal incomeYear           = BigDecimal.ZERO;
+		BigDecimal expensesYear         = BigDecimal.ZERO;
+		//float balanceYear          = BigDecimal.ZERO;
+		BigDecimal incomeMonthAverage   = BigDecimal.ZERO;
+		BigDecimal expensesMonthAverage = BigDecimal.ZERO;
+		BigDecimal balanceMonthAverage  = BigDecimal.ZERO;
 
 		// Budgets
 		for (Object o : budgets) {
@@ -558,48 +560,46 @@ public class BudgetPart {
 			// If there is a budget, we need to ignore it
 			if (row.getTxBudget() != null) continue;
 			// This is the same for budgets and transactions
-			float amount = row.getAmount();
+			BigDecimal amount = row.getAmount();
 			if (row.isBudget()) amount = ((PeriodicalBudget)row.getWrapped()).getPlanned();
-			if (amount >= 0) {
+			if (amount.signum() >= 0) {
 				switch (row.getPlannedPeriod()) {
 				case WEEKLY:
-					incomeMonth += 4*amount; break;
+					incomeMonth = incomeMonth.add(amount.multiply(BigDecimal.valueOf(4))); break;
 				case MONTHLY:
-					incomeMonth += amount;					
-					break;
+					incomeMonth = incomeMonth.add(amount);	break;
 				case QUARTERLY:
-					incomeYear += 4*amount; break;
+					incomeYear = incomeYear.add(amount.multiply(BigDecimal.valueOf(4))); break;
 				case HALF_YEARLY:
-					incomeYear += 2*amount; break;
+					incomeYear = incomeYear.add(amount.multiply(BigDecimal.valueOf(2))); break;
 				case YEARLY:
-					incomeYear += amount; break;
+					incomeYear = incomeYear.add(amount); break;
 				}
 			} else {
 				switch (row.getPlannedPeriod()) {
 				case WEEKLY:
-					expensesMonth += 4*amount; break;
+					expensesMonth = expensesMonth.add(amount.multiply(BigDecimal.valueOf(4))); break;
 				case MONTHLY:
-					expensesMonth += amount; 
-					break;
+					expensesMonth = expensesMonth.add(amount); break;
 				case QUARTERLY:
-					expensesYear += 4*amount; break;
+					expensesYear = expensesYear.add(amount.multiply(BigDecimal.valueOf(4))); break;
 				case HALF_YEARLY:
-					expensesYear += 2*amount; break;
+					expensesYear = expensesYear.add(amount.multiply(BigDecimal.valueOf(2))); break;
 				case YEARLY:
-					expensesYear += amount; break;
+					expensesYear = expensesYear.add(amount); break;
 				}
 			}
 		}
 
 		// Some totals
-		balanceMonth = incomeMonth + expensesMonth;
+		balanceMonth = incomeMonth.add(expensesMonth);
 		//balanceYear  = incomeYear + expensesYear;
-		incomeMonthAverage = incomeMonth + incomeYear / 12;
-		expensesMonthAverage = expensesMonth + expensesYear / 12;
-		balanceMonthAverage = incomeMonthAverage + expensesMonthAverage;
-		float totalIncomeYear = 12*incomeMonth + incomeYear;
-		float totalExpensesYear = 12*expensesMonth + expensesYear;
-		float totalBalanceYear = totalIncomeYear + totalExpensesYear;
+		incomeMonthAverage = incomeMonth.add(incomeYear.divide(BigDecimal.valueOf(12), RoundingMode.HALF_UP));
+		expensesMonthAverage = expensesMonth.add(expensesYear.divide(BigDecimal.valueOf(12), RoundingMode.HALF_UP));
+		balanceMonthAverage = incomeMonthAverage.add(expensesMonthAverage);
+		BigDecimal totalIncomeYear = BigDecimal.valueOf(12).multiply(incomeMonth).add(incomeYear);
+		BigDecimal totalExpensesYear = BigDecimal.valueOf(12).multiply(expensesMonth).add(expensesYear);
+		BigDecimal totalBalanceYear = totalIncomeYear.add(totalExpensesYear);
 		
 		// Update the values
 		updateValueField(this.incomeMonth, incomeMonth);
@@ -619,11 +619,11 @@ public class BudgetPart {
 	 * @param field label field
 	 * @param amount amount
 	 */
-	private void updateValueField(Label field, float amount) {
+	private void updateValueField(Label field, BigDecimal amount) {
 		if (field.isDisposed()) return;
 		field.setText(CurrencyLabelProvider.INSTANCE.getText(amount));
 		RGB rgb = RsBudgetColors.RGB_BLACK;
-		if (amount < 0) {
+		if (amount.signum() < 0) {
 			rgb = RsBudgetColors.RGB_RED;
 		}
 		field.setForeground(resourceManager.createColor(rgb));

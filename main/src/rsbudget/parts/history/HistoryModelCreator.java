@@ -3,6 +3,7 @@
  */
 package rsbudget.parts.history;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -142,7 +143,7 @@ public class HistoryModelCreator {
 				} else if (o instanceof HistoricalItem) {
 					HistoricalItemStatus status = get(itemStatus, (HistoricalItem)o, month);
 					if (status != null) {
-						Float value = status.getValue();
+						BigDecimal value = status.getValue();
 						if (((HistoricalItem)o).isFloatValue()) row.addValue(value, ((HistoricalItem)o).getUnit(), true, true);
 						else row.addValue(value.longValue(), ((HistoricalItem)o).getUnit(), true, false);
 					} else row.addEmpty(true, ((HistoricalItem)o).isFloatValue());
@@ -150,26 +151,26 @@ public class HistoryModelCreator {
 			} else if (purpose.equals(HistoryPart.VALUE_CHANGE)) {
 				if (o == null) {
 					// The plan change
-					Float status1 = null;
+					BigDecimal status1 = null;
 					Plan plan1 = plans.get(month.getPrevious().getBegin().getDay());
 					if (plan1 != null) status1 = plan1.getBalanceStart();
-					Float status2 = null;
+					BigDecimal status2 = null;
 					Plan plan2 = plans.get(month.getBegin().getDay());
 					if (plan2 != null) status2 = plan2.getBalanceStart();
 					row.addValue(getChange(status1, status2), PreferencesUtils.getCurrency().getSymbol(), false, true);
 				} else if (o instanceof Account) {
-					Float status1 = null;
+					BigDecimal status1 = null;
 					AccountStatus statusRow1 = get(acctStatus, (Account)o, month.getPrevious());
 					if (statusRow1 != null) status1 = statusRow1.getBalance();
-					Float status2 = null;
+					BigDecimal status2 = null;
 					AccountStatus statusRow2 = get(acctStatus, (Account)o, month);
 					if (statusRow2 != null) status2 = statusRow2.getBalance();
 					row.addValue(getChange(status1, status2), PreferencesUtils.getCurrency().getSymbol(), false, true);
 				} else if (o instanceof HistoricalItem) {
-					Float status1 = null;
+					BigDecimal status1 = null;
 					HistoricalItemStatus statusRow1 = get(itemStatus, (HistoricalItem)o, month.getPrevious());
 					if (statusRow1 != null) status1 = statusRow1.getValue();
-					Float status2 = null;
+					BigDecimal status2 = null;
 					HistoricalItemStatus statusRow2 = get(itemStatus, (HistoricalItem)o, month);
 					if (statusRow2 != null) status2 = statusRow2.getValue();
 					row.addValue(getChange(status1, status2, ((HistoricalItem)o).isFloatValue()), ((HistoricalItem)o).getUnit(), false, ((HistoricalItem)o).isFloatValue());
@@ -230,7 +231,7 @@ public class HistoryModelCreator {
 	 * @param f2 second value
 	 * @return change
 	 */
-	public Number getChange(Float f1, Float f2) {
+	public Number getChange(BigDecimal f1, BigDecimal f2) {
 		return getChange(f1, f2, true);
 	}
 	
@@ -240,10 +241,10 @@ public class HistoryModelCreator {
 	 * @param f2 second value
 	 * @return change
 	 */
-	public Number getChange(Float f1, Float f2, boolean isFloat) {
+	public Number getChange(BigDecimal f1, BigDecimal f2, boolean isFloat) {
 		if (f1 == null) return makeNumber(f2, isFloat);
 		if (f2 == null) return null;
-		return makeNumber(f2.floatValue()-f1.floatValue(), isFloat);
+		return makeNumber(f2.subtract(f1), isFloat);
 	}
 	
 	/**
@@ -252,7 +253,7 @@ public class HistoryModelCreator {
 	 * @param isFloat shall it be a float?
 	 * @return long or float (or null)
 	 */
-	protected Number makeNumber(Float f, boolean isFloat) {
+	protected Number makeNumber(BigDecimal f, boolean isFloat) {
 		if (f == null) return null;
 		if (isFloat) return f;
 		return Long.valueOf(f.longValue());

@@ -2,6 +2,7 @@ package rsbudget.parts.transactions;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 
 import javax.inject.Inject;
@@ -270,11 +271,11 @@ public class CurrentStatusView extends Composite {
 	 * @param field label field
 	 * @param amount amount
 	 */
-	private void updateValueField(Label field, float amount) {
+	private void updateValueField(Label field, BigDecimal amount) {
 		if (field.isDisposed()) return;
 		field.setText(CurrencyLabelProvider.INSTANCE.getText(amount));
 		RGB rgb = RsBudgetColors.RGB_BLACK;
-		if (amount < 0) {
+		if (amount.signum() < 0) {
 			rgb = RsBudgetColors.RGB_RED;
 		}
 		field.setForeground(resourceManager.createColor(rgb));

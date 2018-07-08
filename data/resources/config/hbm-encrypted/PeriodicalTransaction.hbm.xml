@@ -14,7 +14,7 @@
 		<property name="plannedPeriod" type="PlannedPeriod-encrypted" column="planned_period"/>
 		<property name="name" type="string-encrypted" column="name"/>
 		<property name="annotation" type="string-encrypted" column="annotation"/>
-		<property name="amount" type="float-encrypted" column="amount"/>
+		<property name="amount" type="BigDecimal-encrypted" column="amount"/>
 		<many-to-one name="category" class="rsbudget.data.dto.CategoryDTO" column="category"/> 
 		<many-to-one name="budget" class="rsbudget.data.dto.PeriodicalBudgetDTO" column="periodical_budget"/> 
 		<many-to-one name="account" class="rsbudget.data.dto.AccountDTO" column="account"/>

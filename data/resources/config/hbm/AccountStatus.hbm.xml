@@ -13,7 +13,7 @@
 
 		<many-to-one name="account" class="rsbudget.data.dto.AccountDTO" column="account"/> 
 		<property name="timestamp" type="RsDate" column="date_of_status"/>
-		<property name="balance" type="float" column="balance"/>
+		<property name="balance" type="big_decimal" column="balance"/>
 		<property name="creationDate" type="RsDate" column="creation_date"/>
 		<property name="changeDate" type="RsDate" column="change_date"/>
 	</class>

@@ -3,6 +3,8 @@
  */
 package rsbudget.parts.transactions;
 
+import java.math.BigDecimal;
+
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.Active;
@@ -46,8 +48,8 @@ public class SetBalancesHandler {
 			dlg.create();
 			if (dlg.open() == Dialog.OK) {
 				// Do something!
-				Float begin = dlg.getBegin();
-				Float end   = dlg.getEnd();
+				BigDecimal begin = dlg.getBegin();
+				BigDecimal end   = dlg.getEnd();
 				try {
 					factory.begin();
 					plan.setBalanceStart(begin);

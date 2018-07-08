@@ -3,6 +3,8 @@
  */
 package rsbudget.parts.budgets;
 
+import java.math.BigDecimal;
+
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.Active;
@@ -49,7 +51,7 @@ public class NewBudgetHandler {
 		newRow.setCategory(factory.getCategoryDAO().findDefault());
 		newRow.setPlannedPeriod(PlannedPeriod.MONTHLY);
 		newRow.setMonthSequenceNumber(1);
-		newRow.setAmount(0);
+		newRow.setAmount(BigDecimal.ZERO);
 		newRow.setDisplayOrder(factory.getPeriodicalTransactionDAO().getMaxDisplayOrder()+1);
 		factory.getPeriodicalTransactionDAO().create(newRow);
 		factory.commit();

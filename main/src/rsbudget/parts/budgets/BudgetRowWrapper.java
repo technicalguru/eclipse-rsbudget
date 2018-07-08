@@ -5,6 +5,7 @@ package rsbudget.parts.budgets;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.math.BigDecimal;
 
 import rs.baselib.bean.AbstractBean;
 import rs.baselib.util.IWrapper;
@@ -157,7 +158,7 @@ public class BudgetRowWrapper extends AbstractBean implements IWrapper {
 	 * Returns the amount.
 	 * @return the amount
 	 */
-	public float getAmount() {
+	public BigDecimal getAmount() {
 		return budget != null ? budget.getAmount() : transaction.getAmount();
 	}
 	
@@ -165,7 +166,7 @@ public class BudgetRowWrapper extends AbstractBean implements IWrapper {
 	 * Sets the amount.
 	 * @param amount the value
 	 */
-	public void setAmount(float amount) {
+	public void setAmount(BigDecimal amount) {
 		if (budget != null) budget.setAmount(amount);
 		else transaction.setAmount(amount);
 	}

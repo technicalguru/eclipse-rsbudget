@@ -39,7 +39,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import rs.e4.SwtUtils;
 import rs.e4.celledit.CellEditorActivationStrategy;
 import rs.e4.celledit.EditingSupportModelAdapter;
-import rs.e4.celledit.FloatEditingSupport;
+import rs.e4.celledit.BigDecimalEditingSupport;
 import rs.e4.celledit.IEditingSupportModel;
 import rs.e4.util.AbstractColumnLabelProvider;
 import rs.e4.util.ColumnAdapter;
@@ -145,7 +145,7 @@ public class HistoryPart {
 			column.setText(Plugin.translate("part.history.column.status.title"));
 			column.addControlListener(new TableColumnResizeListener("history", "status"));
 			column.setData(KEY_PURPOSE, VALUE_VALUE);
-			lp = new HistoryLabelProvider(0, resourceManager); 
+			lp = new HistoryLabelProvider(0, 2, resourceManager); 
 			lp.addColorProvider(new HistoryBackgroundProvider(0));
 			lp.addColorProvider(new HistoryForegroundProvider(0));
 			lp.addFontProvider(historyFontProvider);
@@ -159,7 +159,7 @@ public class HistoryPart {
 			column.setText(Plugin.translate("part.history.column.change.title"));
 			column.addControlListener(new TableColumnResizeListener("history", "change"));
 			column.setData(KEY_PURPOSE, VALUE_CHANGE);
-			lp = new HistoryLabelProvider(1, resourceManager); 
+			lp = new HistoryLabelProvider(1, 2, resourceManager); 
 			lp.addColorProvider(new HistoryBackgroundProvider(1));
 			lp.addColorProvider(new HistoryForegroundProvider(1));
 			lp.addFontProvider(historyFontProvider);
@@ -179,14 +179,14 @@ public class HistoryPart {
 					column.setData(KEY_PURPOSE, VALUE_VALUE);
 					column.setData(KEY_OBJECT, account);
 					column.addControlListener(new TableColumnResizeListener("history", "column"+index));
-					lp = new HistoryLabelProvider(index, resourceManager); 
+					lp = new HistoryLabelProvider(index, 2, resourceManager); 
 					lp.addColorProvider(new HistoryBackgroundProvider(index));
 					lp.addColorProvider(new HistoryForegroundProvider(index));
 					lp.addFontProvider(historyFontProvider);
 					columnViewer.setLabelProvider(lp);
 					IEditingSupportModel accountModel = new HistoryEditingSupportModel(account, index);
 					accountModel.addEditingSupportModelListener(modelListener);
-					columnViewer.setEditingSupport(new FloatEditingSupport(tableViewer, accountModel, true));
+					columnViewer.setEditingSupport(new BigDecimalEditingSupport(tableViewer, accountModel, true, 2));
 					columns.add(column);
 					index++;
 
@@ -197,7 +197,7 @@ public class HistoryPart {
 					column.setData(KEY_PURPOSE, VALUE_CHANGE);
 					column.setData(KEY_OBJECT, account);
 					column.addControlListener(new TableColumnResizeListener("history", "column"+index));
-					lp = new HistoryLabelProvider(index, resourceManager); 
+					lp = new HistoryLabelProvider(index, 2, resourceManager); 
 					lp.addColorProvider(new HistoryBackgroundProvider(index));
 					lp.addColorProvider(new HistoryForegroundProvider(index));
 					lp.addFontProvider(historyFontProvider);
@@ -217,13 +217,13 @@ public class HistoryPart {
 					column.setData(KEY_PURPOSE, VALUE_VALUE);
 					column.setData(KEY_OBJECT, item);
 					column.addControlListener(new TableColumnResizeListener("history", "column"+index));
-					lp = new HistoryLabelProvider(index, resourceManager); 
+					lp = new HistoryLabelProvider(index, item.getScale(), resourceManager); 
 					lp.addColorProvider(new HistoryBackgroundProvider(index));
 					lp.addFontProvider(historyFontProvider);
 					columnViewer.setLabelProvider(lp);
 					IEditingSupportModel itemModel = new HistoryEditingSupportModel(item, index);
 					itemModel.addEditingSupportModelListener(modelListener);
-					columnViewer.setEditingSupport(new FloatEditingSupport(tableViewer, itemModel, true));
+					columnViewer.setEditingSupport(new BigDecimalEditingSupport(tableViewer, itemModel, true, item.getScale()));
 					columns.add(column);
 					index++;
 
@@ -235,7 +235,7 @@ public class HistoryPart {
 						column.setData(KEY_PURPOSE, VALUE_CHANGE);
 						column.setData(KEY_OBJECT, item);
 						column.addControlListener(new TableColumnResizeListener("history", "column"+index));
-						lp = new HistoryLabelProvider(index, resourceManager); 
+						lp = new HistoryLabelProvider(index, item.getScale(), resourceManager); 
 						lp.addColorProvider(new HistoryBackgroundProvider(index));
 						lp.addFontProvider(historyFontProvider);
 						columnViewer.setLabelProvider(lp);

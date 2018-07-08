@@ -3,6 +3,8 @@
  */
 package rsbudget.data.api.bo;
 
+import java.math.BigDecimal;
+
 import rsbudget.data.util.PlannedPeriod;
 
 /**
@@ -86,7 +88,7 @@ public interface PeriodicalBudget extends RsBudgetBO<Long>, MonetaryValue {
 	 * if they exceed this budget.
 	 * @return amount planned
 	 */
-	public float getPlanned();
+	public BigDecimal getPlanned();
 
 	/**
 	 * Returns the matching rule.

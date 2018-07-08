@@ -5,6 +5,8 @@ package rsbudget.parts.details;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -116,13 +118,13 @@ public class TxDetailsPart {
 				if (row.isBudget()) {
 					Budget budget = (Budget)row.getWrapped();
 					addTitle(Plugin.translate("part.txdetails.addon.budget", row.getText()));
-					Float planned = row.getPlannedAmount();
-					Float actual = row.getActualAmount();
+					BigDecimal planned = row.getPlannedAmount();
+					BigDecimal actual = row.getActualAmount();
 					addAmount(Plugin.translate("part.txdetails.label.amount"), row.getPlannedAmount());
-					float ratio = 1;
-					if (budget.getPlanned() != 0) ratio = actual / planned;
+					BigDecimal ratio = BigDecimal.ONE;
+					if (budget.getPlanned().signum() != 0) ratio = actual.divide(planned, RoundingMode.HALF_UP);
 					addDiffAmount(Plugin.translate("part.txdetails.label.exhausted"), ratio, actual);
-					addDiffAmount(Plugin.translate("part.txdetails.label.difference"), ratio, actual - planned);
+					addDiffAmount(Plugin.translate("part.txdetails.label.difference"), ratio, actual.subtract(planned));
 					addBudgetCategory((Budget)null, row.getCategory());
 					addPlan(row.getPlan());
 				} else if (row.isTransaction()) {
@@ -131,7 +133,7 @@ public class TxDetailsPart {
 					addAmount(Plugin.translate("part.txdetails.label.amount"), row.getActualAmount());
 					if (!row.getActualAmount().equals(row.getPlannedAmount())) {
 						addAmount(Plugin.translate("part.txdetails.label.planned"), row.getPlannedAmount());
-						addAmount(Plugin.translate("part.txdetails.label.difference"), row.getActualAmount() - row.getPlannedAmount());
+						addAmount(Plugin.translate("part.txdetails.label.difference"), row.getActualAmount().subtract(row.getPlannedAmount()));
 					}
 					addDate(Plugin.translate("part.txdetails.label.accountingdate"), ((Transaction)row.getWrapped()).getTransactionDate());
 					addDate(Plugin.translate("part.txdetails.label.valuedate"), row.getValueDate());
@@ -150,8 +152,7 @@ public class TxDetailsPart {
 				BudgetRowWrapper row = (BudgetRowWrapper)wrapper;
 				if (row.isBudget()) {
 					addTitle(Plugin.translate("part.txdetails.addon.periodicalbudget", row.getText()));
-					Float planned = row.getAmount();
-					addAmount(Plugin.translate("part.txdetails.label.amount"), planned);
+					addAmount(Plugin.translate("part.txdetails.label.amount"), row.getAmount());
 					addBudgetCategory((PeriodicalBudget)null, row.getCategory());
 				} else {
 					PeriodicalTransaction ptx = (PeriodicalTransaction)row.getWrapped();
@@ -165,39 +166,39 @@ public class TxDetailsPart {
 		} else {
 			// Multiple selection
 			addTitle(Plugin.translate("part.txdetails.label.multiple", rows.length));
-			float planned = 0;
-			float actual = 0;
-			float total = 0;
-			Float budgetPlanned = null;
-			Float budgetActual = null;
+			BigDecimal planned = BigDecimal.ZERO;
+			BigDecimal actual = BigDecimal.ZERO;
+			BigDecimal total = BigDecimal.ZERO;
+			BigDecimal budgetPlanned = null;
+			BigDecimal budgetActual = null;
 			for (IWrapper wrapper : rows) {
 				if (wrapper instanceof TxRowWrapper) {
 					TxRowWrapper row = (TxRowWrapper)wrapper;
 					if (row.isBudget()) {
 						if (budgetPlanned == null) {
-							budgetPlanned = 0f;
-							budgetActual = 0f;
+							budgetPlanned = BigDecimal.ZERO;
+							budgetActual = BigDecimal.ZERO;
 						}
-						budgetPlanned += row.getPlannedAmount();
-						budgetActual += row.getActualAmount();
+						budgetPlanned = budgetPlanned.add(row.getPlannedAmount());
+						budgetActual  = budgetActual.add(row.getActualAmount());
 					} else if (row.isTransaction()) {
-						actual += row.getActualAmount();
-						planned += row.getPlannedAmount();
-						total += row.getActualAmount();
+						actual  = actual.add(row.getActualAmount());
+						planned = planned.add(row.getPlannedAmount());
+						total   = total.add(row.getActualAmount());
 					} else {
-						planned += row.getPlannedAmount();
-						total += row.getPlannedAmount();
+						planned = planned.add(row.getPlannedAmount());
+						total   = total.add(row.getPlannedAmount());
 					}
 				} else if (wrapper instanceof BudgetRowWrapper) {
 					BudgetRowWrapper row = (BudgetRowWrapper)wrapper;
 					if (row.isBudget()) {
 						if (budgetPlanned == null) {
-							budgetPlanned = 0f;
+							budgetPlanned = BigDecimal.ZERO;
 						}
-						budgetPlanned += row.getAmount();
+						budgetPlanned = budgetPlanned.add(row.getAmount());
 					} else {
-						planned += row.getAmount();
-						total += row.getAmount();
+						planned = planned.add(row.getAmount());
+						total   = total.add(row.getAmount());
 					}
 				}
 			}
@@ -276,20 +277,20 @@ public class TxDetailsPart {
 	 * @param label label for the amount
 	 * @param amount amount
 	 */
-	protected void addAmount(String label, float amount) {
+	protected void addAmount(String label, BigDecimal amount) {
 		addLabel(label);
 
 		RGB color = null;
-		if (amount < 0) color = RsBudgetColors.RGB_RED;
+		if (amount.signum() < 0) color = RsBudgetColors.RGB_RED;
 		addValue(CurrencyLabelProvider.INSTANCE.getText(amount), color);
 	}
 
-	protected void addDiffAmount(String label, float ratio,  float amount) {
+	protected void addDiffAmount(String label, BigDecimal ratio,  BigDecimal amount) {
 		addLabel(label);
 
 		RGB color = null;
-		if (amount < 0) color = RsBudgetColors.RGB_RED;
-		else if ((ratio > 0)  && (ratio <= 0.1)) color = RsBudgetColors.RGB_YELLOW;
+		if (amount.signum() < 0) color = RsBudgetColors.RGB_RED;
+		else if ((ratio.signum() > 0)  && (ratio.compareTo(BigDecimal.valueOf(0.1)) <= 0)) color = RsBudgetColors.RGB_YELLOW;
 		addValue(CurrencyLabelProvider.INSTANCE.getText(amount), color);
 	}
 

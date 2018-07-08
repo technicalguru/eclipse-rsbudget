@@ -16,6 +16,7 @@
 		<property name="showHistory" type="boolean" column="show_history"/>
 		<property name="showChanges" type="boolean" column="show_changes"/>
 		<property name="floatValue" type="boolean" column="is_float_value"/>
+		<property name="scale" type="int" column="scale"/>
 		<property name="creationDate" type="RsDate" column="creation_date"/>
 		<property name="changeDate" type="RsDate" column="change_date"/>
 	</class>

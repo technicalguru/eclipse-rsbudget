@@ -3,6 +3,8 @@
  */
 package rsbudget.data.impl.bo;
 
+import java.math.BigDecimal;
+
 import rs.baselib.util.RsDate;
 import rsbudget.data.api.bo.Account;
 import rsbudget.data.api.bo.AccountStatus;
@@ -75,7 +77,7 @@ public class AccountStatusBO extends AbstractRsBudgetDbBO<AccountStatusDTO> impl
 	 * {@inheritDoc}
 	 */
 	@Override
-	public float getBalance() {
+	public BigDecimal getBalance() {
 		return getTransferObject().getBalance();
 	}
 
@@ -83,8 +85,8 @@ public class AccountStatusBO extends AbstractRsBudgetDbBO<AccountStatusDTO> impl
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setBalance(float balance) {
-		float oldValue = getBalance();
+	public void setBalance(BigDecimal balance) {
+		BigDecimal oldValue = getBalance();
 		getTransferObject().setBalance(balance);
 		firePropertyChange(PROPERTY_BALANCE, oldValue, balance);
 	}

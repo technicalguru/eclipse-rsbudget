@@ -12,7 +12,7 @@
 		</id>
 
 		<property name="name" type="string" column="name"/>
-		<property name="amount" type="float" column="amount"/>
+		<property name="amount" type="big_decimal" column="amount"/>
 		<property name="plannedPeriod" type="PlannedPeriod" column="planned_period"/>
 		<many-to-one name="category" class="rsbudget.data.dto.CategoryDTO" column="category"/> 
 		<property name="displayOrder" type="int" column="display_order"/>

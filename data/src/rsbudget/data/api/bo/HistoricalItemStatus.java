@@ -3,6 +3,8 @@
  */
 package rsbudget.data.api.bo;
 
+import java.math.BigDecimal;
+
 import rs.baselib.util.RsDate;
 
 /**
@@ -44,13 +46,13 @@ public interface HistoricalItemStatus extends RsBudgetBO<Long> {
 	 * Returns the value.
 	 * @return the value
 	 */
-	public float getValue();
+	public BigDecimal getValue();
 
 	/**
 	 * Sets the value.
 	 * @param value the value to set
 	 */
-	public void setValue(float value);
+	public void setValue(BigDecimal value);
 
 	
 }

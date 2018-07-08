@@ -38,6 +38,7 @@
 	<typedef class="rs.data.hibernate.type.crypto.FloatEncryptedType" name="Float-encrypted">
 		<param name="simple">false</param>
 	</typedef>
+	<typedef class="rs.data.hibernate.type.crypto.BigDecimalEncryptedType" name="BigDecimal-encrypted"/>
 	<typedef class="rs.data.hibernate.type.crypto.IntEncryptedType" name="int-encrypted"/>
 	<typedef class="rs.data.hibernate.type.crypto.IntEncryptedType" name="Integer-encrypted">
 		<param name="simple">false</param>

@@ -3,6 +3,8 @@
  */
 package rsbudget.parts.transactions;
 
+import java.math.BigDecimal;
+
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.Active;
@@ -46,7 +48,7 @@ public class NewTransactionHandler {
 				factory.begin();
 				newRow = factory.getPlannedTransactionDAO().newInstance();
 				newRow.setAccount(factory.getAccountDAO().findDefault());
-				newRow.setAmount(0);
+				newRow.setAmount(BigDecimal.ZERO);
 				newRow.setAnnotation("");
 				newRow.setBudget(null);
 				newRow.setCategory(factory.getCategoryDAO().findDefault());

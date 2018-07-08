@@ -3,6 +3,8 @@
  */
 package rsbudget.data.impl.bo;
 
+import java.math.BigDecimal;
+
 import rs.baselib.util.RsDate;
 import rsbudget.data.api.bo.HistoricalItem;
 import rsbudget.data.api.bo.HistoricalItemStatus;
@@ -75,7 +77,7 @@ public class HistoricalItemStatusBO extends AbstractRsBudgetDbBO<HistoricalItemS
 	 * {@inheritDoc}
 	 */
 	@Override
-	public float getValue() {
+	public BigDecimal getValue() {
 		return getTransferObject().getValue();
 	}
 
@@ -83,8 +85,8 @@ public class HistoricalItemStatusBO extends AbstractRsBudgetDbBO<HistoricalItemS
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setValue(float value) {
-		float oldValue = getValue();
+	public void setValue(BigDecimal value) {
+		BigDecimal oldValue = getValue();
 		getTransferObject().setValue(value);
 		firePropertyChange(PROPERTY_VALUE, oldValue, value);
 	}

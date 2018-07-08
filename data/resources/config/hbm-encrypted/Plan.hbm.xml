@@ -12,8 +12,8 @@
 		</id>
 
 		<property name="month" type="RsMonth-encrypted" column="month"/>
-		<property name="balanceStart" type="float-encrypted" column="balance_start"/>
-		<property name="balanceEnd" type="float-encrypted" column="balance_end"/>
+		<property name="balanceStart" type="BigDecimal-encrypted" column="balance_start"/>
+		<property name="balanceEnd" type="BigDecimal-encrypted" column="balance_end"/>
 		<property name="comment" type="string-encrypted" column="comment"/>
 		<property name="creationDate" type="RsDate-encrypted" column="creation_date"/>
 		<property name="changeDate" type="RsDate-encrypted" column="change_date"/>
