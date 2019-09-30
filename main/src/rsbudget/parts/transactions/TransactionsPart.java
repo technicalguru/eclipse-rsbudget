@@ -148,7 +148,7 @@ public class TransactionsPart {
 	private Hyperlink hprlnkDecember;
 	private ImageHyperlink hprlnkNext;
 	private ImageHyperlink hyperlinkNextYear;
-	
+
 	private IHyperlinkListener navigationListener = new HyperlinkAdapter() {
 		@Override
 		public void linkActivated(HyperlinkEvent e) {
@@ -158,29 +158,29 @@ public class TransactionsPart {
 
 	private Plan plan;
 	private RsMonth month;
-	
+
 	@Inject
 	private IEclipseContext context;
-	
+
 	@Inject
 	private RsBudgetDaoFactory factory;
-	
+
 	@Inject
 	private ESelectionService selectionService;
-	
+
 	@Inject
 	private MPart part;
-	
+
 	@Inject
 	private IEventBroker eventBroker;
-	
+
 	@Inject
 	private UISynchronize uiSynchronize;
 
 	/** The list of transactions currently displayed */
 	private IObservableList<TxRowWrapper> transactions;
 	private Map<String, IObservableList<TxRowWrapper>> bindings = new HashMap<String, IObservableList<TxRowWrapper>>();
-	
+
 	/** Listener to changes of properties in budgets */
 	private IChangeListener changeListener = new IChangeListener() {
 		@Override
@@ -188,7 +188,7 @@ public class TransactionsPart {
 			updateInfoPart();
 		}
 	};
-	
+
 	/** Listener to DAO inserts/deletes */
 	private IDaoListener daoListener = new IDaoListener() {
 		@Override
@@ -196,7 +196,7 @@ public class TransactionsPart {
 			TransactionsPart.this.handleDaoEvent(event);
 		}
 	};
-	
+
 	/**
 	 * Creates the controls.
 	 */
@@ -204,11 +204,11 @@ public class TransactionsPart {
 	public void createControls(Composite parent, EMenuService menuService) {
 		toolkit = new FormToolkit(parent.getDisplay());
 		resourceManager = new LocalResourceManager(JFaceResources.getResources(), parent);
-		
+
 		Composite container = toolkit.createComposite(parent, SWT.NONE);
 		toolkit.paintBordersFor(container);
 		container.setLayout(new GridLayout(1, false));
-		
+
 		lblTitle = toolkit.createLabel(container, "Dezember 2011", SWT.NONE);
 		lblTitle.setFont(resourceManager.createFont(SwtUtils.deriveBoldFont(SwtUtils.deriveFont(lblTitle.getFont(), 12))));
 		lblTitle.setAlignment(SWT.CENTER);
@@ -216,7 +216,7 @@ public class TransactionsPart {
 
 		createInfoSection(container);
 		createTableSection(container, menuService);
-		
+
 		try {
 			factory.begin();
 			Plan plan = factory.getPlanDAO().findCurrent();
@@ -228,11 +228,11 @@ public class TransactionsPart {
 		}
 
 	}
-	
+
 	public void setModel(Plan plan) {
 		this.plan = plan;
 		if (plan != null) month = plan.getMonth();
-		
+
 		// Status view
 		statusView.setModel(plan);
 
@@ -268,17 +268,17 @@ public class TransactionsPart {
 		updateInfoPart();
 		eventBroker.post(TOPIC_SELECTED_PLAN, plan);
 	}
-	
+
 	public void setModel(RsMonth month) {
 		this.plan = null;
 		this.month = month;
-		
+
 		// Status view
 		statusView.setModel(month);
 
 		// Table
 		transactions.clear();
-		
+
 		updateInfoPart();
 		eventBroker.post(TOPIC_SELECTED_PLAN, null);
 	}
@@ -288,11 +288,11 @@ public class TransactionsPart {
 		toolkit.paintBordersFor(container);
 		container.setLayout(new GridLayout(1, false));
 		container.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-		
+
 		createNavigationSection(container);
 		createValuesSection(container);
 	}
-	
+
 	protected void createNavigationSection(Composite parent) {
 		Composite container = toolkit.createComposite(parent, SWT.NONE);
 		container.setLayout(new GridLayout(16, false));
@@ -316,7 +316,7 @@ public class TransactionsPart {
 		hprlnkNext = createImageHyperlink(container, "resources/icons/go-next.png");
 		hyperlinkNextYear = createImageHyperlink(container, "resources/icons/go-last.png");
 	}
-	
+
 	/**
 	 * Creates an image hyperlink.
 	 * @param parent
@@ -331,7 +331,7 @@ public class TransactionsPart {
 		rc.addHyperlinkListener(navigationListener);
 		return rc;
 	}
-	
+
 	/**
 	 * Creates the image from the path.
 	 * @param path
@@ -343,7 +343,7 @@ public class TransactionsPart {
 		ImageDescriptor descriptor = ImageDescriptor.createFromURL(url);
 		return resourceManager.createImage(descriptor);
 	}
-	
+
 	/**
 	 * Creates an hyperlink.
 	 * @param parent
@@ -358,7 +358,7 @@ public class TransactionsPart {
 		rc.setForeground(resourceManager.createColor(LINK_COLOR));
 		return rc;
 	}
-	
+
 	/**
 	 * Creates the section with the status summaries.
 	 * @param parent
@@ -378,7 +378,7 @@ public class TransactionsPart {
 		Composite tableButtonsParent = toolkit.createComposite(parent, SWT.NONE);
 		createTableButtons(tableButtonsParent);
 		tableButtonsParent.setLayoutData(new GridData(SWT.LEFT, SWT.BOTTOM, true, false, 1, 1));
-		
+
 		// Create the table viewer for our table
 		table = toolkit.createTable(parent, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER);
@@ -399,7 +399,7 @@ public class TransactionsPart {
 		{
 			TxBackgroundProvider backgroundProvider = new TxBackgroundProvider();
 			EditingSupportModelListener editListener = new EditingSupportModelListener();
-			
+
 			TableViewerColumn column1 = new TableViewerColumn(tableViewer, SWT.NONE);
 			tblclmn1 = column1.getColumn();
 			tableLayout.addColumnData(PreferencesUtils.getTableColumnData("transactions", "date", 80, 10, true));
@@ -411,7 +411,7 @@ public class TransactionsPart {
 			IEditingSupportModel dateModel = new TransactionSupportModel("valueDate");
 			dateModel.addEditingSupportModelListener(editListener);
 			column1.setEditingSupport(new RsDateEditingSupport(tableViewer, dateModel, false));
-							
+
 			TableViewerColumn column2 = new TableViewerColumn(tableViewer, SWT.NONE);
 			tblclmn2 = column2.getColumn();
 			tableLayout.addColumnData(PreferencesUtils.getTableColumnData("transactions", "text", 350, 10, true));
@@ -423,7 +423,7 @@ public class TransactionsPart {
 			IEditingSupportModel nameModel = new TransactionSupportModel("text");
 			nameModel.addEditingSupportModelListener(editListener);
 			column2.setEditingSupport(new TextEditingSupport(tableViewer, nameModel, false));
-			
+
 			TableViewerColumn column3 = new TableViewerColumn(tableViewer, SWT.NONE);
 			tblclmn3 = column3.getColumn();
 			tableLayout.addColumnData(PreferencesUtils.getTableColumnData("transactions", "details", 350, 10, true));
@@ -435,7 +435,7 @@ public class TransactionsPart {
 			IEditingSupportModel detailsModel = new TransactionSupportModel("details");
 			detailsModel.addEditingSupportModelListener(editListener);
 			column3.setEditingSupport(new TextEditingSupport(tableViewer, detailsModel, false));
-			
+
 			TableViewerColumn column4 = new TableViewerColumn(tableViewer, SWT.NONE);
 			tblclmn4 = column4.getColumn();
 			tableLayout.addColumnData(PreferencesUtils.getTableColumnData("transactions", "budget", 100, 10, true));
@@ -447,7 +447,7 @@ public class TransactionsPart {
 			IComboBoxEditingSupportModel budgetModel = new BudgetSelectionSupportModel(factory.getBudgetDAO(), "txBudget");
 			budgetModel.addEditingSupportModelListener(editListener);
 			column4.setEditingSupport(new ComboBoxEditingSupport(tableViewer, budgetModel, true));
-			
+
 			TableViewerColumn column5 = new TableViewerColumn(tableViewer, SWT.NONE);
 			tblclmn5 = column5.getColumn();
 			tableLayout.addColumnData(PreferencesUtils.getTableColumnData("transactions", "category", 100, 10, true));
@@ -459,7 +459,7 @@ public class TransactionsPart {
 			IComboBoxEditingSupportModel categoryModel = new BoSelectionSupportModel<Category>(factory.getCategoryDAO(), "category");
 			categoryModel.addEditingSupportModelListener(editListener);
 			column5.setEditingSupport(new ComboBoxEditingSupport(tableViewer, categoryModel, false));
-			
+
 			TableViewerColumn column6 = new TableViewerColumn(tableViewer, SWT.RIGHT);
 			tblclmn6 = column6.getColumn();
 			tableLayout.addColumnData(PreferencesUtils.getTableColumnData("transactions", "plannedAmount", 100, 10, true));
@@ -471,7 +471,7 @@ public class TransactionsPart {
 			IEditingSupportModel plannedModel = new TransactionSupportModel("plannedAmount");
 			plannedModel.addEditingSupportModelListener(editListener);
 			column6.setEditingSupport(new BigDecimalEditingSupport(tableViewer, plannedModel, false, 2));
-			
+
 			TableViewerColumn column7 = new TableViewerColumn(tableViewer, SWT.RIGHT);
 			tblclmn7 = column7.getColumn();
 			tableLayout.addColumnData(PreferencesUtils.getTableColumnData("transactions", "actualAmount", 100, 10, true));
@@ -483,24 +483,24 @@ public class TransactionsPart {
 			IEditingSupportModel actualModel = new TransactionSupportModel("actualAmount");
 			actualModel.addEditingSupportModelListener(editListener);
 			column7.setEditingSupport(new BigDecimalEditingSupport(tableViewer, actualModel, true, 2));
-			
+
 		}
-		
+
 		// Content provider
 		tableViewer.setContentProvider(new ObservableListContentProvider());
 		tableViewer.setInput(createModel());
-		
+
 		// Propagate the selection
 		tableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
 				handleSelectionChanged(event);
 			}
 		});
-		
+
 		// Context menu
 		menuService.registerContextMenu(table, "rs.rcpplugins.rsbudget.popupmenu.transactions");
 	}
-	
+
 	/**
 	 * Creates the button for the table.
 	 * @param parent parent composite
@@ -510,10 +510,10 @@ public class TransactionsPart {
 		GridLayout gl = new GridLayout(2, false);
 		gl.verticalSpacing = 0;
 		parent.setLayout(gl);
-		
+
 		Object newHandler = E4Utils.getHandlerFor(part, Plugin.NEW_ROW_COMMAND_ID);
 		Object deleteHandler = E4Utils.getHandlerFor(part, Plugin.DELETE_ROW_COMMAND_ID);
-		
+
 		Button b1 = new Button(parent, SWT.PUSH);
 		b1.setImage(resourceManager.createImage(ImageDescriptor.createFromURL(FileFinder.find("resources/icons/table-insert-row.png"))));
 		b1.setToolTipText(Plugin.translate("e4xmi.part.transactions.menuitem.newtx.tooltip"));
@@ -523,7 +523,7 @@ public class TransactionsPart {
 		b2.setToolTipText(Plugin.translate("e4xmi.part.transactions.menuitem.deletetx.tooltip"));
 		createButtonHandler(b2, deleteHandler);
 	}
-	
+
 	/**
 	 * Creates a button for the handler.
 	 * @param button the button
@@ -535,7 +535,7 @@ public class TransactionsPart {
 		tempContext.set("handler", handler);
 		ContextInjectionFactory.make(ButtonHandler.class, context, tempContext);
 	}
-	
+
 	/**
 	 * Handles the selection change event.
 	 * @param event
@@ -545,7 +545,7 @@ public class TransactionsPart {
 		// set the selection to the service
 		selectionService.setSelection(toArray(selection.toArray()));
 	}
-	
+
 	/**
 	 * Transform to typed array.
 	 * @param array
@@ -558,7 +558,7 @@ public class TransactionsPart {
 		for (Object o : array) rc[i++] = (TxRowWrapper)o;
 		return rc;
 	}
-	
+
 	/**
 	 * Handles the create/delete notifications
 	 * @param event
@@ -566,57 +566,76 @@ public class TransactionsPart {
 	protected void handleDaoEvent(DaoEvent event) {
 		Object src = event.getSource();
 		IGeneralBO<?> bo = event.getObject();
-		switch (event.getType()) {
-		case OBJECT_CREATED: {
-			TxRowWrapper row = null;
-			if (src == factory.getBudgetDAO()) row = new TxRowWrapper((Budget)bo);
-			else if (src == factory.getPlannedTransactionDAO()) row = new TxRowWrapper((PlannedTransaction)bo);
-			else row = new TxRowWrapper((Transaction)bo);
-			if (!row.isBudget()) {
-				int idx = transactions.indexOf(row);
-				if (idx >= 0) {
-					TxRowWrapper existingRow = (TxRowWrapper)transactions.get(idx);
-					if (existingRow != row) {
-						transactions.set(idx, row);
+
+		// check whether this event is for the plan shown
+		boolean isCurrentPlan = false;
+		if (bo != null) {
+			if (src == factory.getBudgetDAO()) {
+				isCurrentPlan = ((Budget)bo).getPlan().equals(plan);
+			} else if (src == factory.getPlannedTransactionDAO()) {
+				isCurrentPlan = ((PlannedTransaction)bo).getPlan().equals(plan);
+			} else {
+				isCurrentPlan = ((Transaction)bo).getPlan().equals(plan);
+			}
+		}
+		if (isCurrentPlan) {
+			switch (event.getType()) {
+			case OBJECT_CREATED: {
+				TxRowWrapper row = null;
+				if (src == factory.getBudgetDAO()) {
+					row = new TxRowWrapper((Budget)bo);
+				} else if (src == factory.getPlannedTransactionDAO()) {
+					row = new TxRowWrapper((PlannedTransaction)bo);
+				} else {
+					row = new TxRowWrapper((Transaction)bo);
+				}
+
+				if (!row.isBudget()) {
+					int idx = transactions.indexOf(row);
+					if (idx >= 0) {
+						TxRowWrapper existingRow = (TxRowWrapper)transactions.get(idx);
+						if (existingRow != row) {
+							transactions.set(idx, row);
+						} else {
+							transactions.add(row);
+						}
 					} else {
 						transactions.add(row);
 					}
 				} else {
-					transactions.add(row);
+					int index = transactions.size();
+					for (int i=0; i<transactions.size(); i++) {
+						if (!((TxRowWrapper)transactions.get(i)).isBudget()) {
+							index = i; break;
+						}
+					}
+					transactions.add(index, row);
 				}
-			} else {
-				int index = transactions.size();
-				for (int i=0; i<transactions.size(); i++) {
-					if (!((TxRowWrapper)transactions.get(i)).isBudget()) {
-						index = i; break;
+				break;
+			}
+			case OBJECT_DELETED:
+				if (bo instanceof Transaction) {
+					if (((Transaction)bo).getPlannedTransaction() != null) {
+						// We keep the planned TX
+						tableViewer.refresh();
+						break; 
 					}
 				}
-				transactions.add(index, row);
-			}
-			break;
-		}
-		case OBJECT_DELETED:
-			if (bo instanceof Transaction) {
-				if (((Transaction)bo).getPlannedTransaction() != null) {
-					// We keep the planned TX
-					tableViewer.refresh();
-					break; 
+				Object found = null;
+				for (Object o : transactions) {
+					if (o.equals(bo)) { found = o; break; }
 				}
+				transactions.remove(found);
+				break;
+			case ALL_DEFAULT_DELETED:
+			case ALL_DELETED:
+				// Dunno yet what to do
+				transactions.clear();
+			default:
 			}
-			Object found = null;
-			for (Object o : transactions) {
-				if (o.equals(bo)) { found = o; break; }
-			}
-			transactions.remove(found);
-			break;
-		case ALL_DEFAULT_DELETED:
-		case ALL_DELETED:
-			// Dunno yet what to do
-			transactions.clear();
-		default:
 		}
 	}
-	
+
 	/**
 	 * Edit the given row.
 	 * @param row
@@ -639,7 +658,7 @@ public class TransactionsPart {
 			}
 		}
 	}
-	
+
 	/**
 	 * Edit the given row.
 	 * @param row
@@ -657,7 +676,7 @@ public class TransactionsPart {
 			}
 		}
 	}
-	
+
 	/**
 	 * Sets the focus to the table widget.
 	 * (Required by E4)
@@ -688,9 +707,9 @@ public class TransactionsPart {
 		else if (hyperlink == hprlnkDecember)     navigateToMonth(11);
 		else if (hyperlink == hprlnkNext)         navigateToNextMonth();
 		else if (hyperlink == hprlnkPrev)         navigateToPreviousMonth();
-		
+
 	}
-	
+
 	/**
 	 * Navigate to this year.
 	 * @param year year to show
@@ -698,7 +717,7 @@ public class TransactionsPart {
 	public void navigateToYear(int year) {
 		navigateToMonth(month.get(Calendar.MONTH), year);
 	}
-	
+
 	/**
 	 * Navigate to this month of the same year.
 	 * @param month month
@@ -706,7 +725,7 @@ public class TransactionsPart {
 	public void navigateToMonth(int month) {
 		navigateToMonth(month, this.month.get(Calendar.YEAR));
 	}
-	
+
 	/**
 	 * Navigate to next month.
 	 */
@@ -720,7 +739,7 @@ public class TransactionsPart {
 		}
 		navigateToMonth(m, y);
 	}
-	
+
 	/**
 	 * Navigate to previous month.
 	 */
@@ -734,8 +753,8 @@ public class TransactionsPart {
 		}
 		navigateToMonth(m, y);
 	}
-	
-	
+
+
 	/**
 	 * Navigate to this month.
 	 * @param month month
@@ -749,7 +768,7 @@ public class TransactionsPart {
 		else setModel(m);
 		factory.commit();
 	}
-	
+
 	/**
 	 * Disposes everything.
 	 */
@@ -761,7 +780,7 @@ public class TransactionsPart {
 		toolkit.dispose();
 		transactions.dispose();
 	}
-	
+
 	/**
 	 * Creates the initial model.
 	 * @return
@@ -772,14 +791,14 @@ public class TransactionsPart {
 		IListProperty<List<TxRowWrapper>, TxRowWrapper> property = Properties.selfList(TxRowWrapper.class);
 		transactions = property.observe(l);
 		bind();
-		
+
 		// Listen to the DAOs for changes
 		factory.getBudgetDAO().addDaoListener(daoListener);
 		factory.getTransactionDAO().addDaoListener(daoListener);
 		factory.getPlannedTransactionDAO().addDaoListener(daoListener);
 		return transactions;
 	}
-	
+
 	/**
 	 * Bind our change listener.
 	 */
@@ -790,7 +809,7 @@ public class TransactionsPart {
 		bind(TxRowWrapper.PROPERTY_ACTUAL_AMOUNT);
 		bind(TxRowWrapper.PROPERTY_PLANNED_AMOUNT);		
 	}
-	
+
 	/**
 	 * Unbind our change listener.
 	 */
@@ -801,7 +820,7 @@ public class TransactionsPart {
 		unbind(TxRowWrapper.PROPERTY_ACTUAL_AMOUNT);
 		unbind(TxRowWrapper.PROPERTY_PLANNED_AMOUNT);		
 	}
-	
+
 	/**
 	 * Bind change listener to a specific column.
 	 * @param property column property
@@ -813,7 +832,7 @@ public class TransactionsPart {
 		list.addChangeListener(changeListener);
 		bindings.put(property, list);
 	}
-	
+
 	/**
 	 * Unbind change listener from a specific column.
 	 * @param property column property
@@ -822,7 +841,7 @@ public class TransactionsPart {
 		IObservableList<TxRowWrapper> list = bindings.get(property);
 		list.removeChangeListener(changeListener);
 	}
-	
+
 	/**
 	 * Update all labels.
 	 */
@@ -843,8 +862,8 @@ public class TransactionsPart {
 			}
 		});
 	}
-	
-	
+
+
 	/**
 	 * Returns the plan.
 	 * @return the plan
@@ -868,7 +887,7 @@ public class TransactionsPart {
 	protected IObservableList<TxRowWrapper> getTransactions() {
 		return transactions;
 	}
-	
+
 	/**
 	 * Provides the color for the background.
 	 * @author ralph
@@ -884,9 +903,9 @@ public class TransactionsPart {
 			if (((TxRowWrapper)element).isBudget()) return RsBudgetColors.RGB_BG_BUDGET;
 			return null;
 		}
-		
+
 	}
-	
+
 	public static class TransactionSorter implements Comparator<TxRowWrapper> {
 
 		@Override
@@ -904,8 +923,8 @@ public class TransactionsPart {
 			}
 			return rc;
 		}
-		
+
 	}
 
-	
+
 }

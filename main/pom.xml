@@ -12,4 +12,7 @@
 	<packaging>eclipse-plugin</packaging>
 	<name>${project.artifactId}</name>
 	<description>Main UI for RsBudget</description>
+	
+	
+	
 </project>

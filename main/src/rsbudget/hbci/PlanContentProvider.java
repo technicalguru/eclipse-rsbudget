@@ -40,7 +40,6 @@ public class PlanContentProvider implements IStructuredContentProvider {
 		try {
 			factory.begin();
 			for (Plan plan : planDao.findLatest(new RsMonth(System.currentTimeMillis()-182*DateUtils.MILLIS_PER_DAY))) {
-				System.out.println(plan.getMonth().getKey());
 				if (plan.getBalanceEnd() == null) {
 					plans.add(plan.getMonth());
 				}

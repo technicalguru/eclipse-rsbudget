@@ -3,12 +3,10 @@
  */
 package rsbudget.data.impl.dao;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.type.StandardBasicTypes;
 
 import rs.baselib.util.RsMonth;
 import rsbudget.data.api.bo.Budget;
@@ -41,9 +39,10 @@ public class PlannedTransactionDAOImpl extends AbstractRsBudgetDbDAO<PlannedTran
 	@Override
 	public List<PlannedTransaction> findBy(Plan plan) {
 		if (plan == null) return null;
-		Criterion c1 = Restrictions.sqlRestriction("{alias}.effective_from >= ?", new Timestamp(plan.getMonth().getBegin().getTimeInMillis()), StandardBasicTypes.TIMESTAMP);
-		Criterion c2 = Restrictions.sqlRestriction("{alias}.effective_until <= ?", new Timestamp(plan.getMonth().getEnd().getTimeInMillis()), StandardBasicTypes.TIMESTAMP);
-		return findByCriteria(buildCriteria(c1, c2));
+		Criterion c = Restrictions.eqOrIsNull("plan.id", plan.getId());
+//		Criterion c1 = Restrictions.sqlRestriction("{alias}.effective_from >= ?", new Timestamp(plan.getMonth().getBegin().getTimeInMillis()), StandardBasicTypes.TIMESTAMP);
+//		Criterion c2 = Restrictions.sqlRestriction("{alias}.effective_until <= ?", new Timestamp(plan.getMonth().getEnd().getTimeInMillis()), StandardBasicTypes.TIMESTAMP);
+		return findByCriteria(buildCriteria(c));
 	}
 
 	

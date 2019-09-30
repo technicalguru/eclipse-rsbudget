@@ -96,7 +96,7 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 			switch (evtProperty) {
 			case Budget.PROPERTY_AMOUNT: propertyName = PROPERTY_PLANNED_AMOUNT; break;
 			case Budget.PROPERTY_CATEGORY: propertyName = PROPERTY_CATEGORY; break;
-			case Budget.PROPERTY_CREATION_DATE: propertyName = PROPERTY_CREATION_DATE; break;
+			case Budget.CREATION_DATE: propertyName = PROPERTY_CREATION_DATE; break;
 			case Budget.PROPERTY_DISPLAY_ORDER: propertyName = PROPERTY_DISPLAY_ORDER; break;
 			case Budget.PROPERTY_NAME: propertyName = PROPERTY_TEXT; break;
 			case Budget.PROPERTY_PLANNED_TRANSACTIONS:
@@ -109,7 +109,7 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 			switch (evtProperty) {
 			case PlannedTransaction.PROPERTY_AMOUNT: propertyName = PROPERTY_PLANNED_AMOUNT; break;
 			case PlannedTransaction.PROPERTY_CATEGORY: propertyName = PROPERTY_CATEGORY; break;
-			case PlannedTransaction.PROPERTY_CREATION_DATE: propertyName = PROPERTY_CREATION_DATE; break;
+			case PlannedTransaction.CREATION_DATE: propertyName = PROPERTY_CREATION_DATE; break;
 			case PlannedTransaction.PROPERTY_ANNOTATION: propertyName = PROPERTY_DETAILS; break;
 			case PlannedTransaction.PROPERTY_DISPLAY_ORDER: propertyName = PROPERTY_DISPLAY_ORDER; break;
 			case PlannedTransaction.PROPERTY_NAME: propertyName = PROPERTY_TEXT; break;
@@ -120,7 +120,7 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 			case Transaction.PROPERTY_VALUE_DATE: propertyName = PROPERTY_VALUE_DATE; break;
 			case Transaction.PROPERTY_AMOUNT: propertyName = PROPERTY_ACTUAL_AMOUNT; break;
 			case Transaction.PROPERTY_CATEGORY: propertyName = PROPERTY_CATEGORY; break;
-			case Transaction.PROPERTY_CREATION_DATE: propertyName = PROPERTY_CREATION_DATE; break;
+			case Transaction.CREATION_DATE: propertyName = PROPERTY_CREATION_DATE; break;
 			case Transaction.PROPERTY_ANNOTATION: propertyName = PROPERTY_DETAILS; break;
 			case Transaction.PROPERTY_DISPLAY_ORDER: propertyName = PROPERTY_DISPLAY_ORDER; break;
 			case Transaction.PROPERTY_TEXT: propertyName = PROPERTY_TEXT; break;
@@ -502,7 +502,7 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 		transaction.setPartnerName("");
 		transaction.setPartnerBank("");
 		transaction.setPartnerAccountNumber("");
-		transaction.updateHash();
+		transaction.setHash("");
 		
 		// Convert this object and save
 		plannedTransaction.setTransaction(transaction);

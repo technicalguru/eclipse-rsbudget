@@ -272,7 +272,7 @@ public class CurrentStatusView extends Composite {
 	 * @param amount amount
 	 */
 	private void updateValueField(Label field, BigDecimal amount) {
-		if (field.isDisposed()) return;
+		if (field.isDisposed() || (amount == null)) return;
 		field.setText(CurrencyLabelProvider.INSTANCE.getText(amount));
 		RGB rgb = RsBudgetColors.RGB_BLACK;
 		if (amount.signum() < 0) {
