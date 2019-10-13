@@ -640,10 +640,10 @@ public class TransactionsPart {
 	}
 
 	private TxRowWrapper getExistingRow(PlannedTransaction tx) {
-		TxRowWrapper rc = null;
-		int idx = transactions.indexOf(tx);
-		if (idx >= 0) rc = transactions.get(idx);
-		return rc;
+		for (TxRowWrapper row : transactions) {
+			if (row.getWrapped().equals(tx)) return row;
+		}
+		return null;
 	}
 	
 	/**
