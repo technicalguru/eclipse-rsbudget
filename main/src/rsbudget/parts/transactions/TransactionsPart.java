@@ -582,12 +582,14 @@ public class TransactionsPart {
 			switch (event.getType()) {
 			case OBJECT_CREATED: {
 				TxRowWrapper row = null;
+				TxRowWrapper toBeDeleted = null;
 				if (src == factory.getBudgetDAO()) {
 					row = new TxRowWrapper((Budget)bo);
 				} else if (src == factory.getPlannedTransactionDAO()) {
 					row = new TxRowWrapper((PlannedTransaction)bo);
 				} else {
 					row = new TxRowWrapper((Transaction)bo);
+					toBeDeleted = getExistingRow(((Transaction)bo).getPlannedTransaction());
 				}
 
 				if (!row.isBudget()) {
@@ -602,6 +604,7 @@ public class TransactionsPart {
 					} else {
 						transactions.add(row);
 					}
+					if (toBeDeleted != null) transactions.remove(toBeDeleted);
 				} else {
 					int index = transactions.size();
 					for (int i=0; i<transactions.size(); i++) {
@@ -636,6 +639,13 @@ public class TransactionsPart {
 		}
 	}
 
+	private TxRowWrapper getExistingRow(PlannedTransaction tx) {
+		TxRowWrapper rc = null;
+		int idx = transactions.indexOf(tx);
+		if (idx >= 0) rc = transactions.get(idx);
+		return rc;
+	}
+	
 	/**
 	 * Edit the given row.
 	 * @param row
