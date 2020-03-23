@@ -302,7 +302,7 @@ public class HbciSyncDialog extends TitleAreaDialog {
 	protected boolean saveTransactions() {
 		// CHECKS:
 		// 1. Make sure no Planned TX is assigned twice
-		// 2. No SEPARATORS seected
+		// 2. No SEPARATORS selected
 		boolean error = false;
 		Set<PlannedTransaction> planned = new HashSet<>();
 		for (Map.Entry<HbciTransaction, ComboViewer> entry : assignments.entrySet()) {

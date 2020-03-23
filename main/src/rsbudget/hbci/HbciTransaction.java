@@ -99,7 +99,7 @@ public class HbciTransaction {
 				setSaldo(entry.saldo.value.getBigDecimalValue());
 				setSaldoCurrency(entry.saldo.value.getCurr());
 			}
-			setInstRef(entry.instref);
+			setInstRef(entry.instRef);
 			if (entry.other != null) {
 				setOtherIban(entry.other.iban);
 				setOtherBic(entry.other.bic);
@@ -109,11 +109,11 @@ public class HbciTransaction {
 				s += entry.other.name2 != null ? entry.other.name2 : "";
 				setOtherName(s);
 			}
-			setCustomerReference(entry.customerref);
+			setCustomerReference(entry.customerRef);
 			setAdditionalKey(entry.addkey);
 			setAdditional(entry.additional);
-			setSepa(entry.isSepa);
-			setStorno(entry.isSepa);
+			setSepa(entry.sepa);
+			setStorno(entry.storno);
 		}
 	}
 

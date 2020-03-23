@@ -7,19 +7,24 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.lang.time.DateUtils;
-import org.kapott.hbci.GV.HBCIJob;
+import org.kapott.hbci.GV.AbstractHBCIJob;
+import org.kapott.hbci.GV.GVKUmsAllCamt;
 import org.kapott.hbci.GV_Result.GVRKUms;
 import org.kapott.hbci.callback.AbstractHBCICallback;
-import org.kapott.hbci.manager.HBCIHandler;
+import org.kapott.hbci.dialog.HBCIJobsDialog;
+import org.kapott.hbci.manager.BankInfo;
+import org.kapott.hbci.manager.HBCIJobFactory;
 import org.kapott.hbci.manager.HBCIUtils;
 import org.kapott.hbci.manager.HBCIVersion;
-import org.kapott.hbci.passport.AbstractHBCIPassport;
 import org.kapott.hbci.passport.HBCIPassport;
+import org.kapott.hbci.passport.PinTanPassport;
 import org.kapott.hbci.status.HBCIExecStatus;
 import org.kapott.hbci.structures.Konto;
 import org.slf4j.Logger;
@@ -75,22 +80,75 @@ public class HbciLoader implements Runnable {
 			File file      = new File(parentDir, "hbci-account.properties");
 			accountProperties = new Properties();
 			accountProperties.load(new FileInputStream(file));
+			
+			// HBCI basic properties (behaviour of HBCI4J)
 			Properties props = new Properties();
+			props.setProperty("log.loglevel.default", "4");
+			props.setProperty("log.filter","2");
+			props.setProperty("client.passport.PinTan.init", "1");
+			props.setProperty("client.passport.PinTan.filename", parentDir.getAbsolutePath()+"/pintan.txt");
+			props.setProperty("client.passport.PinTan.checkcert", "1");
+			props.setProperty("client.passport.PinTan.proxy", "");
+			props.setProperty("client.passport.PinTan.proxyuser", "");
+			props.setProperty("client.passport.PinTan.proxypass", "");
 			file      = new File(parentDir, "hbci.properties");
 			props.load(new FileInputStream(file));
+			
 			MyCallback callback = new MyCallback();
-			HBCIUtils.initThread(props, callback);
-			HBCIUtils.setParam("log.loglevel.default", "3");
-			HBCIUtils.setParam("log.filter","2");
-			HBCIUtils.setParam("client.passport.default", "PinTan");
-			HBCIUtils.setParam("client.passport.PinTan.filename", parentDir.getAbsolutePath()+"/pintan.txt");
-			Konto konto = new Konto(accountProperties.getProperty("BLZ"), accountProperties.getProperty("NUMBER"));
+			
+			String blz = accountProperties.getProperty("BLZ");
+			Konto konto = new Konto(blz, accountProperties.getProperty("NUMBER"));
+			konto.country = "DE";
+			
+			String host    = accountProperties.getProperty("HOST");
+	        String version = HBCIVersion.HBCI_300.getId();
+	        if ((blz != null) && (host == null)) {
+	            BankInfo bank = HBCIUtils.getBankInfo(blz);
+	            if (bank != null) {
+	                host = bank.getPinTanAddress();
+	            }
+	            version = bank.getPinTanVersion().getId();
+		        accountProperties.put("HOST", host);
+	        }
+	        
+	        // ******************** Adorsys Version *************************
+	        // We need to convert to a map
+	        log.info("HBCI version: "+version);
+	        PinTanPassport passport = new PinTanPassport(version, toMap(props), callback, null);
+			passport.fillAccountInfo(konto);
+			passport.setPort(443);
+//			passport.setFilterType("Base64");
 
+			//HbciHandler hbciHandle =new HBCIHandler(version.getId(), passport);
+			//HBCIJob job = hbciHandle.newJob("KUmsAll"); // Umsätze
+	        AbstractHBCIJob job = HBCIJobFactory.newJob("KUmsAll", passport);
+	        //AbstractHBCIJob job = new GVKUmsAllCamt(passport, "KUmsZeitCamt");
+	        
+            job.setParam("my.blz", konto.blz);
+            job.setParam("my.number", konto.number);
+            job.setParam("my.bic",    accountProperties.getProperty("BIC"));
+            job.setParam("my.iban",   accountProperties.getProperty("IBAN"));
+
+			// Kontostand ist: SaldoReq	
+			job.setParam("my", konto);
+			job.setParam("startdate", new Date(getMonth().getBegin().getTimeInMillis()-3*DateUtils.MILLIS_PER_DAY)); // 21.5.2018 (inclusive)
+			if (getMonth().getEnd().getTimeInMillis()+3*DateUtils.MILLIS_PER_DAY < System.currentTimeMillis()) {
+				job.setParam("enddate",   new Date(getMonth().getEnd().getTimeInMillis()+3*DateUtils.MILLIS_PER_DAY)); // 21.6.2018 (inclusive!)
+			}
+			
+			// Initialize dialog with task
+			HBCIJobsDialog hbciJobDialog = new HBCIJobsDialog(passport);
+			hbciJobDialog.addTask(job);
+			
+			HBCIExecStatus status = hbciJobDialog.execute(true);
+			// ************** Ende Adorsys version *****************/
+			
+			// *************** hbci4java-core version ****************/
 			HBCIPassport passport = AbstractHBCIPassport.getInstance();
 			passport.fillAccountInfo(konto);
 			HBCIVersion version = HBCIVersion.HBCI_300;
 
-			HBCIHandler hbciHandle =new HBCIHandler(version.getId(), passport);
+			HBCIHandler hbciHandle = new HBCIHandler(version.getId(), passport);
 			HBCIJob job = hbciHandle.newJob("KUmsAll"); // Umsätze
 			// Kontostand ist: SaldoReq	
 			job.setParam("my", konto);
@@ -101,7 +159,10 @@ public class HbciLoader implements Runnable {
 			job.addToQueue();
 			HBCIExecStatus status = hbciHandle.execute();
 			GVRKUms result = (GVRKUms)job.getJobResult();
+			// ************** Ende hbci4j-core version *****************/
+			
 			if (status.isOK()) {
+				GVRKUms result = (GVRKUms)job.getJobResult();
 				List<?> lines=result.getFlatData();
 				for (Iterator<?> j=lines.iterator(); j.hasNext(); ) { // alle Umsatzeinträge durchlaufen
 					GVRKUms.UmsLine entry=(GVRKUms.UmsLine)j.next();
@@ -119,6 +180,18 @@ public class HbciLoader implements Runnable {
 		new File(parentDir, "pintan.txt").delete();
 	}
 
+	public static Map<String,String> toMap(Properties p) {
+		Map<String,String> rc = new HashMap<>();
+        for (Map.Entry<Object, Object> e : p.entrySet()) {
+            Object k = e.getKey();
+            Object v = e.getValue();
+            if (k instanceof String && v instanceof String) {
+                rc.put((String) k, (String) v);
+            }
+        }
+        return rc;
+	}
+	
 	public List<HbciTransaction> getTransactions() {
 		return transactions;
 	}
