@@ -2,7 +2,7 @@
 <feature
       id="rs.rcpplugins.rsbudget.feature"
       label="Feature1"
-      version="2.1.0.qualifier">
+      version="2.2.0.qualifier">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -78,6 +78,13 @@
 
    <plugin
          id="org.apache.lucene.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.lucene.analyzers-common"
          download-size="0"
          install-size="0"
          version="0.0.0"

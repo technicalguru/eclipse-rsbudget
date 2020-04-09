@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Rsbudget2
 Bundle-SymbolicName: rs.rcpplugins.rsbudget.main;singleton:=true
-Bundle-Version: 2.1.0.qualifier
+Bundle-Version: 2.2.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-9
 Require-Bundle: javax.activation;bundle-version="1.1.0",
  javax.annotation;bundle-version="1.2.0",
@@ -44,7 +44,10 @@ Require-Bundle: javax.activation;bundle-version="1.1.0",
  org.eclipse.equinox.p2.metadata.repository,
  org.eclipse.equinox.p2.operations,
  org.eclipse.core.net,
- org.slf4j.api
+ org.slf4j.api,
+ org.apache.lucene.analyzers-common;bundle-version="8.4.1",
+ org.apache.lucene.core;bundle-version="8.4.1",
+ com.google.guava;bundle-version="27.1.0"
 Eclipse-RegisterBuddy: rs.rcpplugins.common.baselib,rs.rcpplugins.common.data,rs.rcpplugins.common.data-hibernate,rs.rcpplugins.rsbudget.data
 Bundle-ClassPath: resources/,
  .

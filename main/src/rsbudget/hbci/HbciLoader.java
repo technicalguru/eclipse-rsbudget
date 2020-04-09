@@ -15,7 +15,6 @@ import java.util.Properties;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.kapott.hbci.GV.AbstractHBCIJob;
-import org.kapott.hbci.GV.GVKUmsAllCamt;
 import org.kapott.hbci.GV_Result.GVRKUms;
 import org.kapott.hbci.callback.AbstractHBCICallback;
 import org.kapott.hbci.dialog.HBCIJobsDialog;
@@ -23,6 +22,7 @@ import org.kapott.hbci.manager.BankInfo;
 import org.kapott.hbci.manager.HBCIJobFactory;
 import org.kapott.hbci.manager.HBCIUtils;
 import org.kapott.hbci.manager.HBCIVersion;
+import org.kapott.hbci.passport.AbstractHBCIPassport;
 import org.kapott.hbci.passport.HBCIPassport;
 import org.kapott.hbci.passport.PinTanPassport;
 import org.kapott.hbci.status.HBCIExecStatus;
@@ -144,6 +144,7 @@ public class HbciLoader implements Runnable {
 			// ************** Ende Adorsys version *****************/
 			
 			// *************** hbci4java-core version ****************/
+			/*
 			HBCIPassport passport = AbstractHBCIPassport.getInstance();
 			passport.fillAccountInfo(konto);
 			HBCIVersion version = HBCIVersion.HBCI_300;

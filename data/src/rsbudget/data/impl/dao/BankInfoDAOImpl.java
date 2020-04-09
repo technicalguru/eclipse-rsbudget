@@ -134,11 +134,8 @@ public class BankInfoDAOImpl extends AbstractRsBudgetFileDAO<BankInfoId, BankInf
 		return objects.get(id);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
-	public List<BankInfo> findAll(int firstResult, int maxResults) {
+	public List<BankInfo> findAll(int firstResult, int maxResults, String orderBy) {
 		if (firstResult < 0) firstResult = 0;
 		if (maxResults < 0) maxResults = objectsSorted.size();
 		firstResult = Math.min(firstResult, objectsSorted.size());
@@ -146,11 +143,8 @@ public class BankInfoDAOImpl extends AbstractRsBudgetFileDAO<BankInfoId, BankInf
 		return objectsSorted.subList(firstResult, maxResults);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
-	public List<BankInfo> findDefaultAll(int firstResult, int maxResults) {
+	public List<BankInfo> findDefaultAll(int firstResult, int maxResults, String orderBy) {
 		if (firstResult < 0) firstResult = 0;
 		if (maxResults < 0) maxResults = objectsSorted.size();
 		firstResult = Math.min(firstResult, objectsSorted.size());
@@ -158,11 +152,8 @@ public class BankInfoDAOImpl extends AbstractRsBudgetFileDAO<BankInfoId, BankInf
 		return objectsSorted.subList(firstResult, maxResults);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
-	public IDaoIterator<BankInfo> iterateAll(int firstResult, int maxResults) {
+	public IDaoIterator<BankInfo> iterateAll(int firstResult, int maxResults, String orderBy) {
 		if (firstResult < 0) firstResult = 0;
 		if (maxResults < 0) maxResults = objectsSorted.size();
 		firstResult = Math.min(firstResult, objectsSorted.size());
@@ -170,18 +161,14 @@ public class BankInfoDAOImpl extends AbstractRsBudgetFileDAO<BankInfoId, BankInf
 		return new DaoCollectionIterator<BankInfo>(objectsSorted.subList(firstResult, maxResults));
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
-	public IDaoIterator<BankInfo> iterateDefaultAll(int firstResult,	int maxResults) {
+	public IDaoIterator<BankInfo> iterateDefaultAll(int firstResult, int maxResults, String orderBy) {
 		if (firstResult < 0) firstResult = 0;
 		if (maxResults < 0) maxResults = objectsSorted.size();
 		firstResult = Math.min(firstResult, objectsSorted.size());
 		maxResults = Math.min(maxResults, objectsSorted.size()-firstResult);
 		return new DaoCollectionIterator<BankInfo>(objectsSorted.subList(firstResult, maxResults));
 	}
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -273,6 +260,7 @@ public class BankInfoDAOImpl extends AbstractRsBudgetFileDAO<BankInfoId, BankInf
 	public BankInfo findBy(String blz) {
 		return objectsByBlz.get(blz);
 	}
+
 
 	
 }
