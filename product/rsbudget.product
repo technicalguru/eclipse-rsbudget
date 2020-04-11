@@ -23,7 +23,6 @@
 
    <windowImages i16="../main/resources/icons/cash16.png" i32="../main/resources/icons/cash.png" i48="../main/resources/icons/cash48.png" i64="../main/resources/icons/cash64.png" i128="../main/resources/icons/cash128.png"/>
 
-
    <launcher name="rsbudget">
       <linux icon="../main/resources/icons/cash.xpm"/>
       <macosx icon="../main/resources/icons/cash.icns"/>
@@ -39,7 +38,6 @@
             winExtraLargeHigh="../main/resources/icons/cash256.bmp"/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
@@ -204,6 +202,7 @@
 
    <features>
       <feature id="org.eclipse.e4.rcp"/>
+      <feature id="org.eclipse.equinox.p2.rcp.feature" installMode="root"/>
       <feature id="rs.rcpplugins.common.feature"/>
       <feature id="rs.rcpplugins.rsbudget.feature"/>
       <feature id="org.eclipse.emf.ecore"/>
