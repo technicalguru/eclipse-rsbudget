@@ -27,7 +27,7 @@
       <linux icon="/rs.rcpplugins.rsbudget.main/resources/icons/cash.xpm"/>
       <macosx icon="/rs.rcpplugins.rsbudget.main/resources/icons/cash.icns"/>
       <win useIco="true">
-         <ico path="/rs.rcpplugins.rsbudget.main/resources/icons/cash.ico"/>
+         <ico path="resources/icons/cash.ico"/>
          <bmp/>
       </win>
    </launcher>
