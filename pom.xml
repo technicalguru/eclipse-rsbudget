@@ -9,10 +9,12 @@
 	
 	<properties>
 		<maven.deploy.skip>true</maven.deploy.skip>
-		<product-root-folder>2.0</product-root-folder>
+		<!-- Version needs to be updated here when upgraded -->
+		<product-root-folder>2.2</product-root-folder>
 	</properties>
 
 	<artifactId>rs.rcpplugins.rsbudget</artifactId>
+	<!-- Version needs to be updated here when upgraded -->
 	<version>2.2.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
@@ -27,11 +29,11 @@
 	<distributionManagement>
 		<repository>
 			<id>strato-server</id>
-			<url>scp://download.ralph-schuster.eu/var/www/ralph-schuster.eu/download/rsbudget/oxygen/releases</url>
+			<url>scp://download.ralph-schuster.eu/var/www/ralph-schuster.eu/download/rsbudget/releases</url>
 		</repository>
 		<snapshotRepository>
 			<id>strato-server</id>
-			<url>scp://download.ralph-schuster.eu/var/www/ralph-schuster.eu/download/rsbudget/oxygen/snapshots</url>
+			<url>scp://download.ralph-schuster.eu/var/www/ralph-schuster.eu/download/rsbudget/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 
