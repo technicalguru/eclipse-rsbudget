@@ -27,16 +27,16 @@ public class Plugin {
 	public static final String CONTRIBUTOR_URI = "platform:/plugin/"+SYMBOLIC_NAME;
 	public static final String APPLICATION_KEY = RsBudgetDaoFactory.APPLICATION_KEY;
 	public static final String APPLICATION_NAME = "RsBudget";
-	public static final String APPLICATION_SPLASH_VERSION = "2.1";
+	public static final String APPLICATION_SPLASH_VERSION = "2.2";
 	public static final String BRANDING_TITLE = "";
 	public static final String APPLICATION_SUBTITLE = "Track your expenses";
 	public static final String NEW_ROW_COMMAND_ID = "rs.rcpplugins.rsbudget.command.newrow";
 	public static final String DELETE_ROW_COMMAND_ID = "rs.rcpplugins.rsbudget.command.deleterow";
 	
 	/** The release site */
-	public static final String RELEASE_CHANNEL = "http://download.ralph-schuster.eu/rsbudget/luna/releases";
+	public static final String RELEASE_CHANNEL = "http://download.ralph-schuster.eu/rsbudget/releases";
 	/** The snapshot site */
-	public static final String SNAPSHOT_CHANNEL = "http://download.ralph-schuster.eu/rsbudget/luna/snapshots/";
+	public static final String SNAPSHOT_CHANNEL = "http://download.ralph-schuster.eu/rsbudget/snapshots/";
 	
 	public static final TranslationService TRANSLATIONS = E4Utils.getTopContext().get(TranslationService.class);
 	
