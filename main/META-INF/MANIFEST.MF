@@ -5,7 +5,6 @@ Bundle-SymbolicName: rs.rcpplugins.rsbudget.main;singleton:=true
 Bundle-Version: 2.2.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-9
 Require-Bundle: javax.activation;bundle-version="1.1.0",
- javax.annotation;bundle-version="1.2.0",
  org.eclipse.swt,
  javax.inject;bundle-version="1.0.0",
  org.eclipse.e4.core.di,
@@ -51,4 +50,3 @@ Require-Bundle: javax.activation;bundle-version="1.1.0",
 Eclipse-RegisterBuddy: rs.rcpplugins.common.baselib,rs.rcpplugins.common.data,rs.rcpplugins.common.data-hibernate,rs.rcpplugins.rsbudget.data
 Bundle-ClassPath: resources/,
  .
-Import-Package: javax.annotation;version="1.1.0"
