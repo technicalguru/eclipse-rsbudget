@@ -75,6 +75,8 @@ public class SortHandler {
 			} else if (row1.isTransaction() && row2.isTransaction()) {
 				RsDate d1 = row1.getValueDate();
 				RsDate d2 = row2.getValueDate();
+				if ((d1 != null) && (d2 == null)) return -1;
+				if ((d1 == null) && (d2 != null)) return 1;
 				rc = d1.compareTo(d2);
 				if (rc == 0) {
 					rc = row1.getDisplayOrder()-row2.getDisplayOrder();
