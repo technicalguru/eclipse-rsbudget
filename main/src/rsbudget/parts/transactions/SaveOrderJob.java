@@ -3,6 +3,7 @@
  */
 package rsbudget.parts.transactions;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,7 +33,8 @@ import rsbudget.statusbar.StatusEntry;
 public class SaveOrderJob extends Job {
 
 	private TxRowWrapper list[];
-
+	private BigDecimal initialAccountInfo;
+	
 	@Inject
 	private IEventBroker eventBroker;
 	
@@ -62,6 +64,14 @@ public class SaveOrderJob extends Job {
 	}
 	
 	/**
+	 * Sets the initial account Info for calculation
+	 * @param amount amount to be set
+	 */
+	public void setInitialAccountInfo(BigDecimal amount) {
+		initialAccountInfo = amount != null ? amount : BigDecimal.ZERO;
+	}
+	
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -72,10 +82,14 @@ public class SaveOrderJob extends Job {
 		try {
 			factory.begin(300000L);
 			int index = 0;
+			BigDecimal status = initialAccountInfo != null ? initialAccountInfo : BigDecimal.ZERO;
 			for (TxRowWrapper row : list) {
 				row.setDisplayOrder(index++);
 				if (row.isBudget()) factory.getBudgetDAO().save((Budget)row.getWrapped());
 				else if (row.isTransaction()) {
+					// set the accountStatusInfo
+					status = status.add(row.getActualAmount());
+					row.setAccountStatusInfo(status);
 					Transaction tx = (Transaction)row.getWrapped();
 					factory.getTransactionDAO().save(tx);
 					if (tx.getPlannedTransaction() != null) {

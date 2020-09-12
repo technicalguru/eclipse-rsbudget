@@ -41,6 +41,7 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 	public static final String PROPERTY_VALUE_DATE = "valueDate";
 	public static final String PROPERTY_PLANNED_AMOUNT = "plannedAmount";
 	public static final String PROPERTY_ACTUAL_AMOUNT = "actualAmount";
+	public static final String PROPERTY_ACCOUNT_STATUS_INFO = "accountStatusInfo";
 	public static final String PROPERTY_CATEGORY = "category";
 	public static final String PROPERTY_CREATION_DATE = "creationDate";
 	public static final String PROPERTY_DETAILS = "details";
@@ -315,7 +316,7 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 
 	/**
 	 * Returns the actual amount.
-	 * @return the planned amount
+	 * @return the actual amount
 	 */
 	public BigDecimal getActualAmount() {
 		if (budget != null) return budget.getActual();
@@ -324,7 +325,7 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 	}
 
 	/**
-	 * Sets the amount.
+	 * Sets the actual amount.
 	 * @param amount the value
 	 */
 	public void setActualAmount(BigDecimal amount) {
@@ -337,8 +338,30 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 	}
 
 	/**
-	 * Returns the displayable name.
-	 * @return the displayable name
+	 * Returns the status of the account from actual TX.
+	 * @return the status of the account from actual TX
+	 */
+	public BigDecimal getAccountStatusInfo() {
+		if (transaction != null) return transaction.getAccountStatusInfo();
+		return null;
+	}
+
+	/**
+	 * Sets the status of the account from actual TX.
+	 * @param amount the value
+	 */
+	public void setAccountStatusInfo(BigDecimal amount) {
+		if (transaction != null) transaction.setAccountStatusInfo(amount);
+		else if (plannedTransaction != null) {
+			createTransaction();
+			transaction.setAccountStatusInfo(amount);
+			firePropertyChange(PROPERTY_ACCOUNT_STATUS_INFO, BigDecimal.ZERO, amount);
+		}
+	}
+
+	/**
+	 * Returns the display name.
+	 * @return the display name
 	 */
 	public String getText() {
 		if (budget != null) return budget.getName();
@@ -347,7 +370,7 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 	}
 	
 	/**
-	 * Sets the displayable name.
+	 * Sets the display name.
 	 * @param text
 	 */
 	public void setText(String text) {
@@ -490,6 +513,7 @@ public class TxRowWrapper extends AbstractBean implements IWrapper {
 		// Set properties
 		transaction.setAccount(plannedTransaction.getAccount());
 		transaction.setAmount(plannedTransaction.getAmount());
+		transaction.setAccountStatusInfo(new BigDecimal(0));
 		transaction.setAnnotation(plannedTransaction.getAnnotation());
 		transaction.setBudget(plannedTransaction.getBudget());
 		transaction.setCategory(plannedTransaction.getCategory());

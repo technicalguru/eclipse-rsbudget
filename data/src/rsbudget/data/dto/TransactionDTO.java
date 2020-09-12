@@ -22,6 +22,7 @@ public class TransactionDTO extends RsBudgetDTO {
 	private String hash;
 	private AccountDTO account;
 	private BigDecimal amount;
+	private BigDecimal accountStatusInfo;
 	private String text;
 	private CategoryDTO category;
 	private String partnerName;
@@ -90,6 +91,22 @@ public class TransactionDTO extends RsBudgetDTO {
 	 */
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
+	}
+
+	/**
+	 * Returns the status of the account.
+	 * @return the status of the account
+	 */
+	public BigDecimal getAccountStatusInfo() {
+		return accountStatusInfo;
+	}
+
+	/**
+	 * Sets the status of the account.
+	 * @param amount the account status to set
+	 */
+	public void setAccountStatusInfo(BigDecimal accountStatusInfo) {
+		this.accountStatusInfo = accountStatusInfo;
 	}
 
 	/**

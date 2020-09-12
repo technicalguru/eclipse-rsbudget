@@ -412,6 +412,7 @@ public class HbciSyncDialog extends TitleAreaDialog {
 		Transaction rc = factory.getTransactionDAO().newInstance();
 		rc.setAccount(planned.getAccount());
 		rc.setAmount(transaction.getValue());
+		rc.setAccountStatusInfo(transaction.getSaldo());
 		rc.setAnnotation(planned.getAnnotation());
 		rc.setBudget(planned.getBudget());
 		rc.setCategory(planned.getCategory());

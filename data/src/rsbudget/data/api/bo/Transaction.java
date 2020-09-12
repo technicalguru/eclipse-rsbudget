@@ -3,6 +3,8 @@
  */
 package rsbudget.data.api.bo;
 
+import java.math.BigDecimal;
+
 import rs.baselib.util.RsDate;
 
 /**
@@ -24,6 +26,7 @@ public interface Transaction extends RsBudgetBO<Long>, MonetaryValue {
 	public static final String PROPERTY_ANNOTATION             = "annotation";
 	public static final String PROPERTY_PLANNED_TRANSACTION    = "plannedTransaction";
 	public static final String PROPERTY_AMOUNT                 = "amount";
+	public static final String PROPERTY_ACCOUNT_STATUS_INFO    = "accountStatusInfo";
 	public static final String PROPERTY_BUDGET                 = "budget";
 	public static final String PROPERTY_PLAN                   = "plan";
 	public static final String PROPERTY_DISPLAY_ORDER          = "displayOrder";
@@ -59,6 +62,18 @@ public interface Transaction extends RsBudgetBO<Long>, MonetaryValue {
 	 * The hash shall be computed from transaction date, value and original usage text of a transaction.
 	 */
 	public void updateHash();
+
+	/**
+	 * Returns the status of the account.
+	 * @return the status of the account
+	 */
+	public BigDecimal getAccountStatusInfo();
+	
+	/**
+	 * Sets the status of the account.
+	 * @param accountStatusInfo the value
+	 */
+	public void setAccountStatusInfo(BigDecimal accountStatusInfo);
 
 	/**
 	 * Returns the text.

@@ -153,6 +153,7 @@ CREATE TABLE transactions (
 	transaction_text VARBINARY(128) NOT NULL,
 	account INT(11) UNSIGNED NOT NULL,
 	amount VARBINARY(32) NOT NULL,
+	account_status_info VARBINARY(32) NOT NULL,
 	category INT(11) UNSIGNED NOT NULL,
 	annotation VARBINARY(128),
 	budget INT(11) UNSIGNED,

@@ -153,6 +153,7 @@ CREATE TABLE transactions (
 	transaction_text VARCHAR(100) NOT NULL,
 	account INT(11) UNSIGNED NOT NULL,
 	amount DECIMAL(10,2) NOT NULL,
+	account_status_info DECIMAL(10,2) NOT NULL DEFAULT 0,
 	category INT(11) UNSIGNED NOT NULL,
 	annotation VARCHAR(200),
 	budget INT(11) UNSIGNED,

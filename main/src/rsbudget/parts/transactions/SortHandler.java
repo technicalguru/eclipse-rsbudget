@@ -30,17 +30,17 @@ public class SortHandler {
 	public SortHandler() {
 	}
 
-	@SuppressWarnings("unchecked")
 	@Execute
 	public void execute(IEclipseContext context, @Active MPart part) {
 		Object customPart = part.getObject();
 		if ((customPart != null) && (customPart instanceof TransactionsPart)) {
 			TransactionsPart txPart = (TransactionsPart)customPart;
-			IObservableList list = txPart.getTransactions();
+			IObservableList<TxRowWrapper> list = txPart.getTransactions();
 			Collections.sort(list, DEFAULT_SORTER);
 			// start job to save
 			SaveOrderJob job = ContextInjectionFactory.make(SaveOrderJob.class, context);
 			job.setRows(list);
+			job.setInitialAccountInfo(txPart.getPlan().getBalanceStart());
 			job.schedule();
 		}
 	}

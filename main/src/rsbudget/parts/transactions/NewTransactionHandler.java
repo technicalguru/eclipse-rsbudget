@@ -19,7 +19,7 @@ import rsbudget.data.api.bo.Plan;
 import rsbudget.data.api.bo.PlannedTransaction;
 
 /**
- * Creates a new category.
+ * Creates a new transaction.
  * @author ralph
  *
  */

@@ -138,6 +138,7 @@ public class TxDetailsPart {
 					addDate(Plugin.translate("part.txdetails.label.accountingdate"), ((Transaction)row.getWrapped()).getTransactionDate());
 					addDate(Plugin.translate("part.txdetails.label.valuedate"), row.getValueDate());
 					addInformation(Plugin.translate("part.txdetails.label.account"), row.getAccount().getName());
+					addAmount(Plugin.translate("part.txdetails.label.accountStatus"), row.getAccountStatusInfo());
 					addBudgetCategory(row.getTxBudget(), row.getCategory());
 					addPlan(row.getPlan());
 				} else {
@@ -171,6 +172,7 @@ public class TxDetailsPart {
 			BigDecimal total = BigDecimal.ZERO;
 			BigDecimal budgetPlanned = null;
 			BigDecimal budgetActual = null;
+			BigDecimal lastAccountStatus = null;
 			for (IWrapper wrapper : rows) {
 				if (wrapper instanceof TxRowWrapper) {
 					TxRowWrapper row = (TxRowWrapper)wrapper;
@@ -185,6 +187,7 @@ public class TxDetailsPart {
 						actual  = actual.add(row.getActualAmount());
 						planned = planned.add(row.getPlannedAmount());
 						total   = total.add(row.getActualAmount());
+						lastAccountStatus = row.getAccountStatusInfo();
 					} else {
 						planned = planned.add(row.getPlannedAmount());
 						total   = total.add(row.getPlannedAmount());
@@ -210,6 +213,9 @@ public class TxDetailsPart {
 			}
 			if (budgetActual != null) {
 				addAmount(Plugin.translate("part.txdetails.label.multiple.budget.actual"), budgetActual);
+			}
+			if (lastAccountStatus != null) {
+				addAmount(Plugin.translate("part.txdetails.label.multiple.lastAccountStatus"), lastAccountStatus);
 			}
 		}
 		this.rows = rows;

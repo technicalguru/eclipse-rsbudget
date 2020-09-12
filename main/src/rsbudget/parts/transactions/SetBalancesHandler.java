@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 
 import javax.inject.Inject;
 
+import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.e4.core.contexts.Active;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.CanExecute;
@@ -17,6 +18,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import rsbudget.data.api.RsBudgetDaoFactory;
 import rsbudget.data.api.bo.Plan;
+import rsbudget.data.api.bo.Transaction;
 
 /**
  * Handles the creation of a plan.
@@ -53,6 +55,21 @@ public class SetBalancesHandler {
 				try {
 					factory.begin();
 					plan.setBalanceStart(begin);
+					if (begin != null) {
+						// Recalculate the account status info
+						BigDecimal status = begin;
+						IObservableList<TxRowWrapper> list = txPart.getTransactions();
+						TxRowWrapper rows[] = list.toArray(new TxRowWrapper[list.size()]);
+						for (TxRowWrapper row : rows) {
+							if (row.isTransaction()) {
+								// set the accountStatusInfo
+								status = status.add(row.getActualAmount());
+								row.setAccountStatusInfo(status);
+								Transaction tx = (Transaction)row.getWrapped();
+								factory.getTransactionDAO().save(tx);
+							}
+						}
+					}
 					plan.setBalanceEnd(end);
 					factory.getPlanDAO().save(plan);
 					factory.commit();

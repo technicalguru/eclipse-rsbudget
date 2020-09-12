@@ -66,6 +66,24 @@ public class TransactionBO extends AbstractRsBudgetDbBO<TransactionDTO> implemen
 	 * {@inheritDoc}
 	 */
 	@Override
+	public BigDecimal getAccountStatusInfo() {
+		return getTransferObject().getAccountStatusInfo();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setAccountStatusInfo(BigDecimal accountStatusInfo) {
+		BigDecimal oldValue = getAccountStatusInfo();
+		getTransferObject().setAccountStatusInfo(accountStatusInfo);
+		firePropertyChange(PROPERTY_ACCOUNT_STATUS_INFO, oldValue, accountStatusInfo);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public void updateHash() {
 		String hashed = getTransactionDate().getTimeInMillis()+":"+getAmount()+":"+getName();
 		String hash = EncryptionUtils.encodeBase64(EncryptionUtils.createMD5(hashed));

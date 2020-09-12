@@ -15,6 +15,7 @@
 		<property name="text" type="string" column="transaction_text"/>
 		<property name="annotation" type="string" column="annotation"/>
 		<property name="amount" type="big_decimal" column="amount"/>
+		<property name="accountStatusInfo" type="big_decimal" column="account_status_info"/>
 		<many-to-one name="category" class="rsbudget.data.dto.CategoryDTO" column="category"/> 
 		<many-to-one name="budget" class="rsbudget.data.dto.BudgetDTO" column="budget"/> 
 		<many-to-one name="plannedTransaction" class="rsbudget.data.dto.PlannedTransactionDTO" column="planned_transaction"/> 
